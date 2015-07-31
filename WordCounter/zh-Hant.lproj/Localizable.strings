@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  WordCounter
+
+  Created by Arefly on 14/7/2015.
+  Copyright (c) 2015年 Arefly. All rights reserved.
+*/
+
+DONE_BUTTON = "完成";
+
+WORD_SINGULAR = "字";
+WORD_PLURAL = "字";
+
+CHAR_SINGULAR = "字符";
+CHAR_PLURAL = "字符";
+
+PARA_SINGULAR = "段";
+PARA_PLURAL = "段";
+
+ZERO_WORDS = "0個%@";
+ZERO_PARAS = "0%@";
+ZERO_CHARS = "0個%@";
+
+MANY_CHARS = "%1$@個%2$@";
+MANY_PARAS = "%1$@%2$@";
+MANY_WORDS = "%1$@個%2$@";
+
+COUNTER_ALERT_TITLE = "統計";
+
+WORDS_ALERT_CONTENT = "字數：%@\n";
+CHARS_ALERT_CONTENT = "字符：%@\n";
+PARAS_ALERT_CONTENT = "段落：%@";
+
+OK_BUTTON = "好！";
+
+VERSION_TITLE = "版本 %@";
+BUILD_SUBTITLE = "版本號 %@";
+
+SHARE_MESSAGE = "還在逐字統計字數？快去 App Store 上看看「字數統計工具」吧！";

@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  WordCounter
+
+  Created by Arefly on 14/7/2015.
+  Copyright (c) 2015年 Arefly. All rights reserved.
+*/
+
+DONE_BUTTON = "Done";
+
+WORD_SINGULAR = "word";
+WORD_PLURAL = "words";
+
+CHAR_SINGULAR = "character";
+CHAR_PLURAL = "characters";
+
+PARA_SINGULAR = "paragraph";
+PARA_PLURAL = "paragraphs";
+
+ZERO_WORDS = "0 %@";
+ZERO_PARAS = "0 %@";
+ZERO_CHARS = "0 %@";
+
+MANY_CHARS = "%1$@ %2$@";
+MANY_PARAS = "%1$@ %2$@";
+MANY_WORDS = "%1$@ %2$@";
+
+COUNTER_ALERT_TITLE = "Counter";
+
+WORDS_ALERT_CONTENT = "Words: %@\n";
+CHARS_ALERT_CONTENT = "Characters: %@\n";
+PARAS_ALERT_CONTENT = "Paragraphs: %@";
+
+OK_BUTTON = "OK!";
+
+VERSION_TITLE = "Version %@";
+BUILD_SUBTITLE = "Build %@";
+
+SHARE_MESSAGE = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
