@@ -8,14 +8,25 @@
 
 DONE_BUTTON = "Done";
 
+BUTTON_COUNT_DOT_DOT_DOT = "Count...";
+
 WORD_SINGULAR = "word";
 WORD_PLURAL = "words";
+
+WORD_SINGULAR_SHORT = "word";
+WORD_PLURAL_SHORT = "words";
 
 CHAR_SINGULAR = "character";
 CHAR_PLURAL = "characters";
 
+CHAR_SINGULAR_SHORT = "char.";
+CHAR_PLURAL_SHORT = "chars.";
+
 PARA_SINGULAR = "paragraph";
 PARA_PLURAL = "paragraphs";
+
+PARA_SINGULAR_SHORT = "para.";
+PARA_PLURAL_SHORT = "paras.";
 
 ZERO_WORDS = "0 %@";
 ZERO_PARAS = "0 %@";
@@ -33,7 +44,21 @@ PARAS_ALERT_CONTENT = "Paragraphs: %@";
 
 OK_BUTTON = "OK!";
 
+ALERT_LABEL_THANKS = "Thanks!";
+ALERT_MESSAGE_LOVE_SO_REVIEW_PLZ = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
+ALERT_BUTTON_SURE = "Sure!";
+ALERT_BUTTON_NOT_NOW = "Not now";
+ALERT_BUTTON_CANCEL = "No, thanks!";
+
 VERSION_TITLE = "Version %@";
 BUILD_SUBTITLE = "Build %@";
 
 SHARE_MESSAGE = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
+
+NOTHING_IN_CLIPBOARD = "Nothing in your clipboard!";
+
+"WELCOME_1_1_TODAY_WIDGET" = "- NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
+"WELCOME_1_1_TODAY_WIDGET_HOW" = "- Add widget by \"Edit\" button in Today view";
+"WELCOME_1_1_TOO_MANY_CHARS" = "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";
+"WELCOME_1_1_PROMISE_TO_KEEP_ON" = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
+//"WELCOME_1_1_THANKS" = "- Developer: Jason Ho (Arefly)\n- Email: eflyjason@gmail.com\n- Website: http://www.arefly.com/";

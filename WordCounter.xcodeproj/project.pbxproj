@@ -16,7 +16,25 @@
 		3021E3791B54DCD900AEF136 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
 		3021E37F1B54DDA500AEF136 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E3811B54DDA500AEF136 /* InfoPlist.strings */; };
 		3021E38E1B54E3C900AEF136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */; };
+		30438A9A1B7599330053FA8E /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30438A971B7599330053FA8E /* StartPageViewController.swift */; };
+		30438A9B1B7599330053FA8E /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30438A981B7599330053FA8E /* WelcomePageViewController.swift */; };
+		30438A9C1B7599330053FA8E /* StartPageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30438A991B7599330053FA8E /* StartPageItemController.swift */; };
+		30438AA51B75A2AC0053FA8E /* 1_1_today_widget.png in Resources */ = {isa = PBXBuildFile; fileRef = 30438AA41B75A2AC0053FA8E /* 1_1_today_widget.png */; };
+		30438AA71B75AABB0053FA8E /* 1_1_too_many_charas in Resources */ = {isa = PBXBuildFile; fileRef = 30438AA61B75AAB80053FA8E /* 1_1_too_many_charas */; };
+		30438AA91B75AB4D0053FA8E /* 1_1_today_widget_how.png in Resources */ = {isa = PBXBuildFile; fileRef = 30438AA81B75AB4D0053FA8E /* 1_1_today_widget_how.png */; };
+		30438AAB1B75AB840053FA8E /* 1_1_thanks.png in Resources */ = {isa = PBXBuildFile; fileRef = 30438AAA1B75AB840053FA8E /* 1_1_thanks.png */; };
+		306CF5591B7588EC0085FC3B /* WordCounterTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		309080611B4A0A7700C0AE5A /* InfoTabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */; };
+		309496621B748F8E00360A77 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 309496641B748F8E00360A77 /* MainInterface.storyboard */; };
+		309B41C31B7AE85B001C9E80 /* BasicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B41C21B7AE85B001C9E80 /* BasicConfig.swift */; };
+		309B41C41B7AE85B001C9E80 /* BasicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B41C21B7AE85B001C9E80 /* BasicConfig.swift */; };
+		30B7AC961B74698E00517036 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B7AC951B74698E00517036 /* NotificationCenter.framework */; };
+		30B7AC9B1B74698F00517036 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7AC9A1B74698F00517036 /* TodayViewController.swift */; };
+		30B7ACA71B746F6100517036 /* WordCounterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7ACA61B746F6100517036 /* WordCounterClass.swift */; };
+		30B7ACA81B746F6100517036 /* WordCounterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7ACA61B746F6100517036 /* WordCounterClass.swift */; };
+		30B7ACAB1B747BD400517036 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
+		30B7ACDF1B748B8700517036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30B7ACE11B748B8700517036 /* InfoPlist.strings */; };
+		D98E725804178E675EAD6E65 /* libPods-WordCounter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A16E77AE1CE31B1287177FD /* libPods-WordCounter.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +45,28 @@
 			remoteGlobalIDString = 300BAB611B49097100FE8B37;
 			remoteInfo = WordCounter;
 		};
+		306CF55A1B7588EC0085FC3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 300BAB5A1B49097100FE8B37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30B7AC921B74698E00517036;
+			remoteInfo = WordCounterTodayWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		306CF55C1B7588ED0085FC3B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				306CF5591B7588EC0085FC3B /* WordCounterTodayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		300BAB621B49097100FE8B37 /* WordCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,7 +79,6 @@
 		300BAB7A1B49097100FE8B37 /* WordCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		300BAB7F1B49097100FE8B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		300BAB801B49097100FE8B37 /* WordCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCounterTests.swift; sourceTree = "<group>"; };
-		3012E3421B6B6A49006D5844 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		3021E37A1B54DCD900AEF136 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3021E37C1B54DCDE00AEF136 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3021E3801B54DDA500AEF136 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -49,7 +87,31 @@
 		3021E3841B54E2D100AEF136 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3021E3851B54E2D100AEF136 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		30438A971B7599330053FA8E /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
+		30438A981B7599330053FA8E /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
+		30438A991B7599330053FA8E /* StartPageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageItemController.swift; sourceTree = "<group>"; };
+		30438AA41B75A2AC0053FA8E /* 1_1_today_widget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_1_today_widget.png; sourceTree = "<group>"; };
+		30438AA61B75AAB80053FA8E /* 1_1_too_many_charas */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1_1_too_many_charas; sourceTree = "<group>"; };
+		30438AA81B75AB4D0053FA8E /* 1_1_today_widget_how.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_1_today_widget_how.png; sourceTree = "<group>"; };
+		30438AAA1B75AB840053FA8E /* 1_1_thanks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_1_thanks.png; sourceTree = "<group>"; };
+		305E388D1B7D822E00CCFD0B /* WordCounter-BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordCounter-BridgingHeader.h"; sourceTree = "<group>"; };
 		309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabelViewController.swift; sourceTree = "<group>"; };
+		309496631B748F8E00360A77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		309B41C21B7AE85B001C9E80 /* BasicConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicConfig.swift; sourceTree = "<group>"; };
+		309B41C61B7AED4A001C9E80 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WordCounterTodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B7AC951B74698E00517036 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		30B7AC991B74698E00517036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30B7AC9A1B74698F00517036 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		30B7ACA61B746F6100517036 /* WordCounterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCounterClass.swift; sourceTree = "<group>"; };
+		30B7ACA91B7471DE00517036 /* WordCounterTodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WordCounterTodayWidget.entitlements; sourceTree = "<group>"; };
+		30B7ACAA1B74721000517036 /* WordCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WordCounter.entitlements; sourceTree = "<group>"; };
+		30B7ACE01B748B8700517036 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		30B7ACE31B748BBA00517036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		30B7ACE41B748BBB00517036 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		8A16E77AE1CE31B1287177FD /* libPods-WordCounter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WordCounter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98E725804178E675EAD6E65 /* libPods-WordCounter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,15 +130,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30B7AC901B74698E00517036 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30B7AC961B74698E00517036 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AE76AEC7D189EB0CE73CFF0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */,
+				E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		300BAB591B49097100FE8B37 = {
 			isa = PBXGroup;
 			children = (
 				300BAB641B49097100FE8B37 /* WordCounter */,
 				300BAB7D1B49097100FE8B37 /* WordCounterTests */,
+				30B7AC971B74698E00517036 /* WordCounterTodayWidget */,
+				30B7AC941B74698E00517036 /* Frameworks */,
 				300BAB631B49097100FE8B37 /* Products */,
+				0AE76AEC7D189EB0CE73CFF0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +167,7 @@
 			children = (
 				300BAB621B49097100FE8B37 /* WordCounter.app */,
 				300BAB7A1B49097100FE8B37 /* WordCounterTests.xctest */,
+				30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,11 +175,15 @@
 		300BAB641B49097100FE8B37 /* WordCounter */ = {
 			isa = PBXGroup;
 			children = (
+				30B7ACAA1B74721000517036 /* WordCounter.entitlements */,
 				300BAB671B49097100FE8B37 /* AppDelegate.swift */,
+				309B41C21B7AE85B001C9E80 /* BasicConfig.swift */,
 				300BAB6C1B49097100FE8B37 /* ViewController.swift */,
+				309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */,
+				30B7ACA61B746F6100517036 /* WordCounterClass.swift */,
+				30438A9D1B7599660053FA8E /* Welcome Pages */,
 				3021E37B1B54DCD900AEF136 /* Localizable.strings */,
 				300BAB6E1B49097100FE8B37 /* Main.storyboard */,
-				309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */,
 				3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */,
 				300BAB711B49097100FE8B37 /* Images.xcassets */,
 				300BAB691B49097100FE8B37 /* WordCounter.xcdatamodeld */,
@@ -107,8 +195,10 @@
 		300BAB651B49097100FE8B37 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				30438A9E1B759D060053FA8E /* Welcome Image */,
 				300BAB661B49097100FE8B37 /* Info.plist */,
 				3021E3811B54DDA500AEF136 /* InfoPlist.strings */,
+				305E388D1B7D822E00CCFD0B /* WordCounter-BridgingHeader.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -130,6 +220,64 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		30438A9D1B7599660053FA8E /* Welcome Pages */ = {
+			isa = PBXGroup;
+			children = (
+				30438A971B7599330053FA8E /* StartPageViewController.swift */,
+				30438A991B7599330053FA8E /* StartPageItemController.swift */,
+				30438A981B7599330053FA8E /* WelcomePageViewController.swift */,
+			);
+			name = "Welcome Pages";
+			sourceTree = "<group>";
+		};
+		30438A9E1B759D060053FA8E /* Welcome Image */ = {
+			isa = PBXGroup;
+			children = (
+				30438A9F1B759D0E0053FA8E /* V1.1 */,
+			);
+			name = "Welcome Image";
+			sourceTree = "<group>";
+		};
+		30438A9F1B759D0E0053FA8E /* V1.1 */ = {
+			isa = PBXGroup;
+			children = (
+				30438AA61B75AAB80053FA8E /* 1_1_too_many_charas */,
+				30438AA81B75AB4D0053FA8E /* 1_1_today_widget_how.png */,
+				30438AA41B75A2AC0053FA8E /* 1_1_today_widget.png */,
+				30438AAA1B75AB840053FA8E /* 1_1_thanks.png */,
+			);
+			name = V1.1;
+			sourceTree = "<group>";
+		};
+		30B7AC941B74698E00517036 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30B7AC951B74698E00517036 /* NotificationCenter.framework */,
+				8A16E77AE1CE31B1287177FD /* libPods-WordCounter.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30B7AC971B74698E00517036 /* WordCounterTodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				30B7ACA91B7471DE00517036 /* WordCounterTodayWidget.entitlements */,
+				309496641B748F8E00360A77 /* MainInterface.storyboard */,
+				30B7AC9A1B74698F00517036 /* TodayViewController.swift */,
+				30B7AC981B74698E00517036 /* Supporting Files */,
+			);
+			path = WordCounterTodayWidget;
+			sourceTree = "<group>";
+		};
+		30B7AC981B74698E00517036 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30B7AC991B74698E00517036 /* Info.plist */,
+				30B7ACE11B748B8700517036 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,14 +285,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 300BAB841B49097100FE8B37 /* Build configuration list for PBXNativeTarget "WordCounter" */;
 			buildPhases = (
+				0910EA49AEB7C0B4746B7106 /* Check Pods Manifest.lock */,
 				300BAB5E1B49097100FE8B37 /* Sources */,
 				300BAB5F1B49097100FE8B37 /* Frameworks */,
 				300BAB601B49097100FE8B37 /* Resources */,
 				3090805F1B4A0A3800C0AE5A /* ShellScript */,
+				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
+				160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				306CF55B1B7588EC0085FC3B /* PBXTargetDependency */,
 			);
 			name = WordCounter;
 			productName = WordCounter;
@@ -169,22 +321,56 @@
 			productReference = 300BAB7A1B49097100FE8B37 /* WordCounterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		30B7AC921B74698E00517036 /* WordCounterTodayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30B7ACA31B74698F00517036 /* Build configuration list for PBXNativeTarget "WordCounterTodayWidget" */;
+			buildPhases = (
+				30B7AC8F1B74698E00517036 /* Sources */,
+				30B7AC901B74698E00517036 /* Frameworks */,
+				30B7AC911B74698E00517036 /* Resources */,
+				30B7ACA51B7469AE00517036 /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WordCounterTodayWidget;
+			productName = WordCounterTodayWidget;
+			productReference = 30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		300BAB5A1B49097100FE8B37 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Arefly;
 				TargetAttributes = {
 					300BAB611B49097100FE8B37 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 77T9PEZRU7;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					300BAB791B49097100FE8B37 = {
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 300BAB611B49097100FE8B37;
+					};
+					30B7AC921B74698E00517036 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 77T9PEZRU7;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -205,6 +391,7 @@
 			targets = (
 				300BAB611B49097100FE8B37 /* WordCounter */,
 				300BAB791B49097100FE8B37 /* WordCounterTests */,
+				30B7AC921B74698E00517036 /* WordCounterTodayWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -217,8 +404,12 @@
 				300BAB701B49097100FE8B37 /* Main.storyboard in Resources */,
 				3021E3791B54DCD900AEF136 /* Localizable.strings in Resources */,
 				300BAB721B49097100FE8B37 /* Images.xcassets in Resources */,
+				30438AA51B75A2AC0053FA8E /* 1_1_today_widget.png in Resources */,
+				30438AA91B75AB4D0053FA8E /* 1_1_today_widget_how.png in Resources */,
+				30438AA71B75AABB0053FA8E /* 1_1_too_many_charas in Resources */,
 				3021E38E1B54E3C900AEF136 /* LaunchScreen.storyboard in Resources */,
 				3021E37F1B54DDA500AEF136 /* InfoPlist.strings in Resources */,
+				30438AAB1B75AB840053FA8E /* 1_1_thanks.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,9 +420,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30B7AC911B74698E00517036 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30B7ACDF1B748B8700517036 /* InfoPlist.strings in Resources */,
+				309496621B748F8E00360A77 /* MainInterface.storyboard in Resources */,
+				30B7ACAB1B747BD400517036 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0910EA49AEB7C0B4746B7106 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3090805F1B4A0A3800C0AE5A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +470,20 @@
 			);
 			inputPaths = (
 			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
+		};
+		30B7ACA51B7469AE00517036 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,8 +498,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				300BAB6D1B49097100FE8B37 /* ViewController.swift in Sources */,
+				309B41C31B7AE85B001C9E80 /* BasicConfig.swift in Sources */,
+				30438A9B1B7599330053FA8E /* WelcomePageViewController.swift in Sources */,
 				300BAB6B1B49097100FE8B37 /* WordCounter.xcdatamodeld in Sources */,
+				30B7ACA71B746F6100517036 /* WordCounterClass.swift in Sources */,
 				300BAB681B49097100FE8B37 /* AppDelegate.swift in Sources */,
+				30438A9A1B7599330053FA8E /* StartPageViewController.swift in Sources */,
+				30438A9C1B7599330053FA8E /* StartPageItemController.swift in Sources */,
 				309080611B4A0A7700C0AE5A /* InfoTabelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +517,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30B7AC8F1B74698E00517036 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30B7AC9B1B74698F00517036 /* TodayViewController.swift in Sources */,
+				309B41C41B7AE85B001C9E80 /* BasicConfig.swift in Sources */,
+				30B7ACA81B746F6100517036 /* WordCounterClass.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -274,6 +534,11 @@
 			isa = PBXTargetDependency;
 			target = 300BAB611B49097100FE8B37 /* WordCounter */;
 			targetProxy = 300BAB7B1B49097100FE8B37 /* PBXContainerItemProxy */;
+		};
+		306CF55B1B7588EC0085FC3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30B7AC921B74698E00517036 /* WordCounterTodayWidget */;
+			targetProxy = 306CF55A1B7588EC0085FC3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -283,7 +548,7 @@
 			children = (
 				300BAB6F1B49097100FE8B37 /* Base */,
 				3021E3831B54E2D100AEF136 /* zh-Hans */,
-				3012E3421B6B6A49006D5844 /* zh-Hant */,
+				309B41C61B7AED4A001C9E80 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -304,6 +569,24 @@
 				3021E3801B54DDA500AEF136 /* en */,
 				3021E3821B54DDA700AEF136 /* zh-Hant */,
 				3021E3851B54E2D100AEF136 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		309496641B748F8E00360A77 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				309496631B748F8E00360A77 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		30B7ACE11B748B8700517036 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30B7ACE01B748B8700517036 /* zh-Hant */,
+				30B7ACE31B748BBA00517036 /* en */,
+				30B7ACE41B748BBB00517036 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -332,6 +615,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -396,27 +680,37 @@
 		};
 		300BAB851B49097100FE8B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WordCounter/WordCounter-BridgingHeader.h";
 			};
 			name = Debug;
 		};
 		300BAB861B49097100FE8B37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xueqin Huang (S6HWT47C7L)";
+				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WordCounter/WordCounter-BridgingHeader.h";
 			};
 			name = Release;
 		};
@@ -424,16 +718,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WordCounterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordCounter.app/WordCounter";
 			};
@@ -443,14 +735,48 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = WordCounterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordCounter.app/WordCounter";
+			};
+			name = Release;
+		};
+		30B7ACA11B74698F00517036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WordCounterTodayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.WordCounter.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		30B7ACA21B74698F00517036 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = WordCounterTodayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.WordCounter.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -480,6 +806,15 @@
 			buildConfigurations = (
 				300BAB881B49097100FE8B37 /* Debug */,
 				300BAB891B49097100FE8B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30B7ACA31B74698F00517036 /* Build configuration list for PBXNativeTarget "WordCounterTodayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30B7ACA11B74698F00517036 /* Debug */,
+				30B7ACA21B74698F00517036 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

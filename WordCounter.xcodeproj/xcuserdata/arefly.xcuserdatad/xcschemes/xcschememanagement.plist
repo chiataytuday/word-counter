@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WordCounterTodayWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>300BAB791B49097100FE8B37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30B7AC921B74698E00517036</key>
 		<dict>
 			<key>primary</key>
 			<true/>

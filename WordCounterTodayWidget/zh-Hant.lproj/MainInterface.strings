@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "0 words"; ObjectID = "Tqs-j5-30a"; */
+"Tqs-j5-30a.text" = "0個字";
+
+/* Class = "UILabel"; text = "0 chars."; ObjectID = "UUY-WR-bNI"; */
+"UUY-WR-bNI.text" = "0個字符";
+
+/* Class = "UITextView"; text = "Nothing in your clipboard!"; ObjectID = "dY3-Px-AS9"; */
+"dY3-Px-AS9.text" = "剪貼簿並無任何內容！";
+
+/* Class = "UILabel"; text = "0 paras."; ObjectID = "pAU-Ct-5Mq"; */
+"pAU-Ct-5Mq.text" = "0段";

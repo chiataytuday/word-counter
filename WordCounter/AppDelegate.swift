@@ -7,14 +7,39 @@
 //
 
 import UIKit
+import iAd
 import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var bannerView: ADBannerView!
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        /*
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        // Optional: configure GAI options.
+        var gai = GAI.sharedInstance()
+        gai.trackerWithTrackingId("UA-38324036-2")
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        //gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+        */
+        
+        //NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.presentReviewAlert", object: self)
+        
+        bannerView = ADBannerView(adType: .Banner)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.hidden = true
+        bannerView.alpha = 0
         
         // Override point for customization after application launch.
         return true
@@ -49,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.arefly.WordCounter" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -65,7 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("WordCounter.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch var error1 as NSError {
+            error = error1
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -77,6 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
+        } catch {
+            fatalError()
         }
         
         return coordinator
@@ -98,14 +128,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if let userUrl = String(url) as String? {
+            print("[提示] 用戶輸入的網址爲：\(userUrl)")
+            /*if NSString(string: userUrl).containsString("count://") {
+                var words = userUrl.stringByReplacingOccurrencesOfString("count://", withString: "")
+                if let viewController = self.window?.rootViewController as? ViewController{
+                    //viewController.weNeedGetMoreTime()
+                    //println("[提示] 已請求使用 weNeedGetMoreTime() 函數")
+                    println(words)
+                }
+            }*/
+            if (userUrl == "count://fromClipBoard") {
+                print("[提示] 已準備將用戶剪貼簿內容設定爲TextView之內容")
+                /*if let viewController = self.window?.rootViewController as? ViewController{
+                    viewController.contentFromClipBoard()
+                }*/
+                /*var rootViewController = self.window!.rootViewController
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                var viewController = mainStoryboard.instantiateViewControllerWithIdentifier("mainViewController") as! ViewController
+                viewController.contentFromClipBoard()*/
+                NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.getContentFromClipBoard", object: self)
+            }
+        }
+        return false
+    }
 
 }
-

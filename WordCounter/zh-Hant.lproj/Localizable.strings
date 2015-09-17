@@ -8,14 +8,25 @@
 
 DONE_BUTTON = "完成";
 
+BUTTON_COUNT_DOT_DOT_DOT = "統計...";
+
 WORD_SINGULAR = "字";
 WORD_PLURAL = "字";
+
+WORD_SINGULAR_SHORT = "字";
+WORD_PLURAL_SHORT = "字";
 
 CHAR_SINGULAR = "字符";
 CHAR_PLURAL = "字符";
 
+CHAR_SINGULAR_SHORT = "字符";
+CHAR_PLURAL_SHORT = "字符";
+
 PARA_SINGULAR = "段";
 PARA_PLURAL = "段";
+
+PARA_SINGULAR_SHORT = "段";
+PARA_PLURAL_SHORT = "段";
 
 ZERO_WORDS = "0個%@";
 ZERO_PARAS = "0%@";
@@ -33,7 +44,20 @@ PARAS_ALERT_CONTENT = "段落：%@";
 
 OK_BUTTON = "好！";
 
+ALERT_LABEL_THANKS = "多謝！";
+ALERT_MESSAGE_LOVE_SO_REVIEW_PLZ = "你已經使用%d次「字數統計工具」啦！\n喜歡麼？去 App Store 評分吧！";
+ALERT_BUTTON_SURE = "好的";
+ALERT_BUTTON_NOT_NOW = "稍等";
+ALERT_BUTTON_CANCEL = "不再提示";
+
 VERSION_TITLE = "版本 %@";
 BUILD_SUBTITLE = "版本號 %@";
 
 SHARE_MESSAGE = "還在逐字統計字數？快去 App Store 上看看「字數統計工具」吧！";
+
+NOTHING_IN_CLIPBOARD = "剪貼簿內並無任何內容！";
+
+"WELCOME_1_1_TODAY_WIDGET" = "- 重點：直接於通知中心「今天」視圖內統計您剪貼簿內的字數！";
+"WELCOME_1_1_TODAY_WIDGET_HOW" = "- 通過「編輯」按鈕加入該工具";
+"WELCOME_1_1_TOO_MANY_CHARS" = "- 爲防止卡頓、在字符數量超過1500後「字數統計工具」將自動切換爲手動模式";
+"WELCOME_1_1_PROMISE_TO_KEEP_ON" = "- 我們將繼續爲「字數統計工具」提供支援並加入更多功能；如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";
