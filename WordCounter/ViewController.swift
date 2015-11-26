@@ -318,6 +318,24 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
+        let clearContentAlert = UIAlertController(
+            title: NSLocalizedString("ALERT_LABEL_ARE_YOU_SURE", comment: "Are you sure?"),
+            message: NSLocalizedString("ALERT_MESSAGE_IF_CLEAR_CONTENT", comment: "Clear all content?\nWARNING: This action is irreversible!"),
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_YES", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下確定清空按鈕")
+            self.clearContent()
+        }))
+        
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_CLOSE", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下取消清空按鈕")
+        }))
+        
+        presentViewController(clearContentAlert, animated: true, completion: nil)
+    }
+    
+    func clearContent() {
         self.view.endEditing(true)
         tv.text = ""
         tooManyWords = false

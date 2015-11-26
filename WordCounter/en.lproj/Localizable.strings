@@ -44,6 +44,11 @@ PARAS_ALERT_CONTENT = "Paragraphs: %@";
 
 OK_BUTTON = "OK!";
 
+ALERT_LABEL_ARE_YOU_SURE = "Are you sure?";
+ALERT_MESSAGE_IF_CLEAR_CONTENT = "Clear all content?\nWARNING: This action is irreversible!";
+ALERT_BUTTON_YES = "Yes";
+ALERT_BUTTON_CLOSE = "Close";
+
 ALERT_LABEL_THANKS = "Thanks!";
 ALERT_MESSAGE_LOVE_SO_REVIEW_PLZ = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
 ALERT_BUTTON_SURE = "Sure!";

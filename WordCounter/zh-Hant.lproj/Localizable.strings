@@ -44,6 +44,11 @@ PARAS_ALERT_CONTENT = "段落：%@";
 
 OK_BUTTON = "好！";
 
+ALERT_LABEL_ARE_YOU_SURE = "請確認";
+ALERT_MESSAGE_IF_CLEAR_CONTENT = "確定清空所有文字？\n警告：此操作不可逆！";
+ALERT_BUTTON_YES = "確定";
+ALERT_BUTTON_CLOSE = "關閉";
+
 ALERT_LABEL_THANKS = "多謝！";
 ALERT_MESSAGE_LOVE_SO_REVIEW_PLZ = "你已經使用%d次「字數統計工具」啦！\n喜歡麼？去 App Store 評分吧！";
 ALERT_BUTTON_SURE = "好的";

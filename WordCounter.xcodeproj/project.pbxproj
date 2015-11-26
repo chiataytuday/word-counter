@@ -292,6 +292,7 @@
 				3090805F1B4A0A3800C0AE5A /* ShellScript */,
 				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
 				160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */,
+				FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -489,6 +490,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
+		};
+		FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
