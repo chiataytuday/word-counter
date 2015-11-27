@@ -37,25 +37,25 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         let tapGesture = UITapGestureRecognizer(target: self, action: "pressedOnce")
         self.view.addGestureRecognizer(tapGesture)
         
-        var wordSingular = NSLocalizedString("WORD_SINGULAR_SHORT", comment: "word")
-        var wordPlural = NSLocalizedString("WORD_PLURAL_SHORT", comment: "words")
+        var wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
+        var wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
         
-        var charSingular = NSLocalizedString("CHAR_SINGULAR_SHORT", comment: "char.")
-        var charPlural = NSLocalizedString("CHAR_PLURAL_SHORT", comment: "chars.")
+        var charSingular = NSLocalizedString("Global.Units.Short.Character.Singular", comment: "char.")
+        var charPlural = NSLocalizedString("Global.Units.Short.Character.Plural", comment: "chars.")
         
-        var paraSingular = NSLocalizedString("PARA_SINGULAR_SHORT", comment: "para.")
-        var paraPlural = NSLocalizedString("PARA_PLURAL_SHORT", comment: "paras.")
+        var paraSingular = NSLocalizedString("Global.Units.Short.Paragraph.Singular", comment: "para.")
+        var paraPlural = NSLocalizedString("Global.Units.Short.Paragraph.Plural", comment: "paras.")
         
         if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
             print("提示：用戶正使用iPad！")
-            wordSingular = NSLocalizedString("WORD_SINGULAR", comment: "word")
-            wordPlural = NSLocalizedString("WORD_PLURAL", comment: "words")
+            wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
+            wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
             
-            charSingular = NSLocalizedString("CHAR_SINGULAR", comment: "character")
-            charPlural = NSLocalizedString("CHAR_PLURAL", comment: "characters")
+            charSingular = NSLocalizedString("Global.Units.Character.Singular", comment: "character")
+            charPlural = NSLocalizedString("Global.Units.Character.Plural", comment: "characters")
             
-            paraSingular = NSLocalizedString("PARA_SINGULAR", comment: "paragraph")
-            paraPlural = NSLocalizedString("PARA_PLURAL", comment: "paragraphs")
+            paraSingular = NSLocalizedString("Global.Units.Paragraph.Singular", comment: "paragraph")
+            paraPlural = NSLocalizedString("Global.Units.Paragraph.Plural", comment: "paragraphs")
         }
         
         //var clipBoard = UIPasteboard.generalPasteboard().string
@@ -72,15 +72,15 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
             
             let wordCounts = wordCounterClass.wordCount(textView.text)
             let wordWords = (wordCounts == 1) ? wordSingular : wordPlural
-            let wordTitle = String.localizedStringWithFormat(NSLocalizedString("MANY_WORDS", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
+            let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
             
             let charCount = wordCounterClass.characterCount(textView.text)
             let charWords = (charCount == 1) ? charSingular : charPlural
-            let charTitle = String.localizedStringWithFormat(NSLocalizedString("MANY_CHARS", comment: "%1$@ %2$@"), String(charCount), charWords)
+            let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(charCount), charWords)
             
             let paraCount = wordCounterClass.paragraphCount(textView.text)
             let paraWords = (paraCount == 1) ? paraSingular : paraPlural
-            let paraTitle = String.localizedStringWithFormat(NSLocalizedString("MANY_PARAS", comment: "%1$@ %2$@"), String(paraCount), paraWords)
+            let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(paraCount), paraWords)
             
             wordsCountLabel.text = wordTitle
             parasCountLabel.text = paraTitle
@@ -88,11 +88,11 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         }else{
             print("[提示] 用戶剪貼簿內並未任何內容")
             
-            textView.text = NSLocalizedString("NOTHING_IN_CLIPBOARD", comment: "Nothing in your clipboard!")
+            textView.text = NSLocalizedString("Global.Text.NothingOnClipboard", comment: "Nothing in your clipboard!")
             
-            wordsCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("ZERO_WORDS", comment: "0 %@<-words"), wordPlural)
-            parasCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("ZERO_PARAS", comment: "0 %@<-paragraphs"), paraPlural)
-            charsCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("ZERO_CHARS", comment: "0 %@<-characters"), charPlural)
+            wordsCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
+            parasCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural)
+            charsCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural)
         }
     }
     

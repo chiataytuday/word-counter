@@ -18,10 +18,10 @@ class StartPageViewController: UIViewController, UIPageViewControllerDataSource 
     private let contentImages = ["1_1_today_widget.png", "1_1_today_widget_how.png", "1_1_too_many_charas.png", "1_1_thanks.png"]
     
     private let contentDetailTexts = [
-        NSLocalizedString("WELCOME_1_1_TODAY_WIDGET", comment: "- Check how many words is there in your clipboard using Today Widget inside Notification Centre!"),
-        NSLocalizedString("WELCOME_1_1_TODAY_WIDGET_HOW", comment: "- Add widget by \"Edit\" button in Today view"),
-        NSLocalizedString("WELCOME_1_1_TOO_MANY_CHARS", comment: "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag."),
-        NSLocalizedString("WELCOME_1_1_PROMISE_TO_KEEP_ON", comment: "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)")]
+        NSLocalizedString("Welcome.Version.1-1.Text.TodayWidget.Introduction", comment: "- Check how many words is there in your clipboard using Today Widget inside Notification Centre!"),
+        NSLocalizedString("Welcome.Version.1-1.Text.TodayWidget.How", comment: "- Add widget by \"Edit\" button in Today view"),
+        NSLocalizedString("Welcome.Version.1-1.Text.TooManyCharacter", comment: "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag."),
+        NSLocalizedString("Welcome.Global.Text.About", comment: "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)")]
         //NSLocalizedString("WELCOME_1_1_THANKS", comment: "- Developer: Jason Ho (Arefly)\n- Email: eflyjason@gmail.com\n- Website: http://www.arefly.com/")]
     
     // MARK: - View Lifecycle

@@ -6,64 +6,125 @@
   Copyright (c) 2015年 Arefly. All rights reserved.
 */
 
-DONE_BUTTON = "Done";
+/*//Global.Button.Done = "Done";
 
-BUTTON_COUNT_DOT_DOT_DOT = "Count...";
+//Global.Button.CountEllipsis = "Count...";
 
-WORD_SINGULAR = "word";
-WORD_PLURAL = "words";
+Global.Units.Short.Word.Singular = "word";
+Global.Units.Short.Word.Plural = "words";
 
-WORD_SINGULAR_SHORT = "word";
-WORD_PLURAL_SHORT = "words";
+Global.Units.Short.Word.Singular = "word";
+Global.Units.Short.Word.Plural = "words";
 
-CHAR_SINGULAR = "character";
-CHAR_PLURAL = "characters";
+Global.Units.Character.Singular = "character";
+Global.Units.Character.Plural = "characters";
 
-CHAR_SINGULAR_SHORT = "char.";
-CHAR_PLURAL_SHORT = "chars.";
+Global.Units.Short.Character.Singular = "char.";
+Global.Units.Short.Character.Plural = "chars.";
 
-PARA_SINGULAR = "paragraph";
-PARA_PLURAL = "paragraphs";
+Global.Units.Paragraph.Singular = "paragraph";
+Global.Units.Paragraph.Plural = "paragraphs";
 
-PARA_SINGULAR_SHORT = "para.";
-PARA_PLURAL_SHORT = "paras.";
+Global.Units.Short.Paragraph.Singular = "para.";
+Global.Units.Short.Paragraph.Plural = "paras.";
 
-ZERO_WORDS = "0 %@";
-ZERO_PARAS = "0 %@";
-ZERO_CHARS = "0 %@";
+Global.Count.Text.Word.Zero = "0 %@";
+Global.Count.Text.Paragraph.Zero = "0 %@";
+Global.Count.Text.Character.Zero = "0 %@";
 
-MANY_CHARS = "%1$@ %2$@";
-MANY_PARAS = "%1$@ %2$@";
-MANY_WORDS = "%1$@ %2$@";
+Global.Count.Text.Character.NonZero = "%1$@ %2$@";
+Global.Count.Text.Paragraph.NonZero = "%1$@ %2$@";
+Global.Count.Text.Word.NonZero = "%1$@ %2$@";
 
-COUNTER_ALERT_TITLE = "Counter";
+Global.Alert.Counter.Title = "Counter";
 
-WORDS_ALERT_CONTENT = "Words: %@\n";
-CHARS_ALERT_CONTENT = "Characters: %@\n";
-PARAS_ALERT_CONTENT = "Paragraphs: %@";
+Global.Alert.Counter.Content.Word = "Words: %@\n";
+Global.Alert.Counter.Content.Character = "Characters: %@\n";
+Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
 
-OK_BUTTON = "OK!";
+Global.Button.OK = "OK!";
 
-ALERT_LABEL_ARE_YOU_SURE = "Are you sure?";
-ALERT_MESSAGE_IF_CLEAR_CONTENT = "Clear all content?\nWARNING: This action is irreversible!";
-ALERT_BUTTON_YES = "Yes";
-ALERT_BUTTON_CLOSE = "Close";
+Global.Alert.BeforeClear.Title = "Are you sure?";
+Global.Alert.BeforeClear.Content = "Clear all content?\nWARNING: This action is irreversible!";
+Global.Button.Yes = "Yes";
+Global.Button.Close = "Close";
 
-ALERT_LABEL_THANKS = "Thanks!";
-ALERT_MESSAGE_LOVE_SO_REVIEW_PLZ = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
-ALERT_BUTTON_SURE = "Sure!";
-ALERT_BUTTON_NOT_NOW = "Not now";
-ALERT_BUTTON_CANCEL = "No, thanks!";
+Global.Alert.PlzRate.Title = "Thanks!";
+Global.Alert.PlzRate.Content = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
+Global.Alert.PlzRate.Button.Yes = "Sure!";
+Global.Alert.PlzRate.Button.Later = "Not now";
+Global.Alert.PlzRate.Button.Cancel = "No, thanks!";
 
-VERSION_TITLE = "Version %@";
-BUILD_SUBTITLE = "Build %@";
+About.Title.Text.Version = "Version %@";
+About.Subtitle.Text.Build = "Build %@";
 
-SHARE_MESSAGE = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
+Global.Text.ShareMessage = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
 
-NOTHING_IN_CLIPBOARD = "Nothing in your clipboard!";
+Global.Text.NothingOnClipboard = "Nothing in your clipboard!";
 
-"WELCOME_1_1_TODAY_WIDGET" = "- NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
-"WELCOME_1_1_TODAY_WIDGET_HOW" = "- Add widget by \"Edit\" button in Today view";
-"WELCOME_1_1_TOO_MANY_CHARS" = "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";
-"WELCOME_1_1_PROMISE_TO_KEEP_ON" = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
-//"WELCOME_1_1_THANKS" = "- Developer: Jason Ho (Arefly)\n- Email: eflyjason@gmail.com\n- Website: http://www.arefly.com/";
+"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
+"Welcome.Version.1-1.Text.TodayWidget.How" = "- Add widget by \"Edit\" button in Today view";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";
+"Welcome.Global.Text.About" = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
+//"WELCOME_1_1_THANKS" = "- Developer: Jason Ho (Arefly)\n- Email: eflyjason@gmail.com\n- Website: http://www.arefly.com/";*/
+
+Global.Text.ShareMessage = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
+Global.Text.NothingOnClipboard = "Nothing on your clipboard!";
+
+Global.Button.Done = "Done";
+Global.Button.OK = "OK";
+Global.Button.Yes = "Yes";
+Global.Button.Close = "Close";
+
+Global.Button.CountEllipsis = "Count...";
+
+Global.Units.Word.Singular = "word";
+Global.Units.Word.Plural = "words";
+
+Global.Units.Short.Word.Singular = "word";
+Global.Units.Short.Word.Plural = "words";
+
+Global.Units.Character.Singular = "character";
+Global.Units.Character.Plural = "characters";
+
+Global.Units.Short.Character.Singular = "char.";
+Global.Units.Short.Character.Plural = "chars.";
+
+Global.Units.Paragraph.Singular = "paragraph";
+Global.Units.Paragraph.Plural = "paragraphs";
+
+Global.Units.Short.Paragraph.Singular = "para.";
+Global.Units.Short.Paragraph.Plural = "paras.";
+
+Global.Count.Text.Word.Zero = "0 %@";
+Global.Count.Text.Paragraph.Zero = "0 %@";
+Global.Count.Text.Character.Zero = "0 %@";
+
+Global.Count.Text.Word.NonZero = "%1$@ %2$@";
+Global.Count.Text.Paragraph.NonZero = "%1$@ %2$@";
+Global.Count.Text.Character.NonZero = "%1$@ %2$@";
+
+Global.Alert.Counter.Title = "Counter";
+Global.Alert.Counter.Content.Word = "Words: %@\n";
+Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
+Global.Alert.Counter.Content.Character = "Characters: %@\n";
+
+
+Global.Alert.BeforeClear.Title = "Are you sure?";
+Global.Alert.BeforeClear.Content = "Clear all content?\nWARNING: This action is irreversible!";
+
+
+Global.Alert.PlzRate.Title = "Thanks!";
+Global.Alert.PlzRate.Content = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
+Global.Alert.PlzRate.Button.Yes = "Sure!";
+Global.Alert.PlzRate.Button.Later = "Not now";
+Global.Alert.PlzRate.Button.Cancel = "No, thanks!";
+
+About.Title.Text.Version = "Version %@";
+About.Subtitle.Text.Build = "Build %@";
+
+Welcome.Global.Text.About = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
+
+"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
+"Welcome.Version.1-1.Text.TodayWidget.How" = "- Add widget by \"Edit\" button in Today view";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";

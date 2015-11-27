@@ -47,14 +47,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     //var isZhUser = false
     
-    var wordSingular = NSLocalizedString("WORD_SINGULAR", comment: "word")
-    var wordPlural = NSLocalizedString("WORD_PLURAL", comment: "words")
+    var wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
+    var wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
     
-    var charSingular = NSLocalizedString("CHAR_SINGULAR", comment: "character")
-    var charPlural = NSLocalizedString("CHAR_PLURAL", comment: "characters")
+    var charSingular = NSLocalizedString("Global.Units.Character.Singular", comment: "character")
+    var charPlural = NSLocalizedString("Global.Units.Character.Plural", comment: "characters")
     
-    var paraSingular = NSLocalizedString("PARA_SINGULAR", comment: "paragraph")
-    var paraPlural = NSLocalizedString("PARA_PLURAL", comment: "paragraphs")
+    var paraSingular = NSLocalizedString("Global.Units.Paragraph.Singular", comment: "paragraph")
+    var paraPlural = NSLocalizedString("Global.Units.Paragraph.Plural", comment: "paragraphs")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -279,19 +279,19 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         paddingWordsSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         
-        let done: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("DONE_BUTTON", comment: "Done"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
+        let done: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
         
         let infoButton: UIButton = UIButton(type: UIButtonType.InfoLight)
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
         let info: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
         
-        wordKeyboard = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("ZERO_WORDS", comment: "0 %@<-words"), wordPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
+        wordKeyboard = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
         wordKeyboard.tintColor = UIColor.blackColor()
         
-        paragraph = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("ZERO_PARAS", comment: "0 %@<-paragraphs"), paraPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
+        paragraph = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
         paragraph.tintColor = UIColor.blackColor()
         
-        character = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("ZERO_CHARS", comment: "0 %@<-characters"), charPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
+        character = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
         character.tintColor = UIColor.blackColor()
         
         
@@ -319,16 +319,16 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
         let clearContentAlert = UIAlertController(
-            title: NSLocalizedString("ALERT_LABEL_ARE_YOU_SURE", comment: "Are you sure?"),
-            message: NSLocalizedString("ALERT_MESSAGE_IF_CLEAR_CONTENT", comment: "Clear all content?\nWARNING: This action is irreversible!"),
+            title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Are you sure?"),
+            message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "Clear all content?\nWARNING: This action is irreversible!"),
             preferredStyle: UIAlertControllerStyle.Alert)
         
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_YES", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下確定清空按鈕")
             self.clearContent()
         }))
         
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_CLOSE", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下取消清空按鈕")
         }))
         
@@ -340,16 +340,16 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         tv.text = ""
         tooManyWords = false
         
-        topBarCountButton.title = String.localizedStringWithFormat(NSLocalizedString("ZERO_WORDS", comment: "0 %@<-words"), wordPlural)
+        topBarCountButton.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
         topBarCountButton.tintColor = UIColor.blackColor()
         
-        wordKeyboard.title = String.localizedStringWithFormat(NSLocalizedString("ZERO_WORDS", comment: "0 %@<-words"), wordPlural)
+        wordKeyboard.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
         wordKeyboard.tintColor = UIColor.blackColor()
         
-        paragraph.title = String.localizedStringWithFormat(NSLocalizedString("ZERO_PARAS", comment: "0 %@<-paragraphs"), paraPlural)
+        paragraph.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural)
         paragraph.tintColor = UIColor.blackColor()
         
-        character.title = String.localizedStringWithFormat(NSLocalizedString("ZERO_CHARS", comment: "0 %@<-characters"), charPlural)
+        character.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural)
         character.tintColor = UIColor.blackColor()
         
         checkScreenWidthToSetButton()
@@ -379,17 +379,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             changeParagraphCounts()
             changeCharacterCounts()
         }else{
-            topBarCountButton.title = NSLocalizedString("BUTTON_COUNT_DOT_DOT_DOT", comment: "Count...")
+            topBarCountButton.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
             topBarCountButton.tintColor = self.view.tintColor
             
             wordKeyboard.title = ""
             paragraph.title = ""
             
             if (UIScreen.mainScreen().bounds.size.width > 750){
-                wordKeyboard.title = NSLocalizedString("BUTTON_COUNT_DOT_DOT_DOT", comment: "Count...")
+                wordKeyboard.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
                 wordKeyboard.tintColor = self.view.tintColor
             }else{
-                paragraph.title = NSLocalizedString("BUTTON_COUNT_DOT_DOT_DOT", comment: "Count...")
+                paragraph.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
                 paragraph.tintColor = self.view.tintColor
             }
             
@@ -407,7 +407,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }
             
             let words = (count == 1) ? charSingular : charPlural
-            let title = String.localizedStringWithFormat(NSLocalizedString("MANY_CHARS", comment: "%1$@ %2$@"), String(count), words)
+            let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(count), words)
             
             character.title = title
         }
@@ -417,7 +417,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let count = wordCounterClass.paragraphCount(tv.text)
         
         let words = (count == 1) ? paraSingular : paraPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("MANY_PARAS", comment: "%1$@ %2$@"), String(count), words)
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(count), words)
         
         paragraph.title = title
     }
@@ -426,7 +426,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let count = wordCounterClass.wordCount(tv.text)
         
         let words = (count == 1) ? wordSingular : wordPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("MANY_WORDS", comment: "%1$@ %2$@"), String(count), words)
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(count), words)
         
         topBarCountButton.title = title
         
@@ -463,26 +463,26 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func countResultButtonAction () {
         let wordCounts = wordCounterClass.wordCount(tv.text)
         let wordWords = (wordCounts == 1) ? wordSingular : wordPlural
-        let wordTitle = String.localizedStringWithFormat(NSLocalizedString("MANY_WORDS", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
+        let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
         
         let charCount = wordCounterClass.characterCount(tv.text)
         let charWords = (charCount == 1) ? charSingular : charPlural
-        let charTitle = String.localizedStringWithFormat(NSLocalizedString("MANY_CHARS", comment: "%1$@ %2$@"), String(charCount), charWords)
+        let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(charCount), charWords)
 
         let paraCount = wordCounterClass.paragraphCount(tv.text)
         let paraWords = (paraCount == 1) ? paraSingular : paraPlural
-        let paraTitle = String.localizedStringWithFormat(NSLocalizedString("MANY_PARAS", comment: "%1$@ %2$@"), String(paraCount), paraWords)
+        let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(paraCount), paraWords)
     
-        /*alert.title = NSLocalizedString("COUNTER_ALERT_TITLE", comment: "Counter")
-        alert.message = String.localizedStringWithFormat(NSLocalizedString("WORDS_ALERT_CONTENT", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("CHARS_ALERT_CONTENT", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("PARAS_ALERT_CONTENT", comment: "Paragraphs: %@"), paraTitle)
-        alert.addButtonWithTitle(NSLocalizedString("OK_BUTTON", comment: "OK!"))
+        /*alert.title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
+        alert.message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
+        alert.addButtonWithTitle(NSLocalizedString("Global.Button.OK", comment: "OK!"))
         alert.show()*/
         
-        let title = NSLocalizedString("COUNTER_ALERT_TITLE", comment: "Counter")
-        let message = String.localizedStringWithFormat(NSLocalizedString("WORDS_ALERT_CONTENT", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("CHARS_ALERT_CONTENT", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("PARAS_ALERT_CONTENT", comment: "Paragraphs: %@"), paraTitle)
+        let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
+        let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: NSLocalizedString("OK_BUTTON", comment: "OK!"), style: .Cancel) { _ in
+        let action = UIAlertAction(title: NSLocalizedString("Global.Button.OK", comment: "OK!"), style: .Cancel) { _ in
             // DO NOTHING
         }
         alert.addAction(action)
@@ -599,24 +599,24 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func presentReviewAlert() {
         let reviewAlert = UIAlertController(
-            title: NSLocalizedString("ALERT_LABEL_THANKS", comment: "Thanks!"),
+            title: NSLocalizedString("Global.Alert.PlzRate.Title", comment: "Thanks!"),
             message: String.localizedStringWithFormat(
-                NSLocalizedString("ALERT_MESSAGE_LOVE_SO_REVIEW_PLZ", comment: "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?"),
+                NSLocalizedString("Global.Alert.PlzRate.Content", comment: "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?"),
                 defaults.integerForKey("appLaunchTimes")),
             preferredStyle: UIAlertControllerStyle.Alert)
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_SURE", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下發表評論按鈕")
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
             UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_NOT_NOW", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Later", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下以後再說按鈕")
             self.defaults.setBool(true, forKey: "everShowPresentReviewAgain")
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("ALERT_BUTTON_CANCEL", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下永遠再不顯示按鈕")
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
         }))

@@ -25,8 +25,8 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
         
-        versionTitle.text = String.localizedStringWithFormat(NSLocalizedString("VERSION_TITLE", comment: "Version %@"), version)
-        buildSubtitle.text = String.localizedStringWithFormat(NSLocalizedString("BUILD_SUBTITLE", comment: "Build %@"), build)
+        versionTitle.text = String.localizedStringWithFormat(NSLocalizedString("About.Title.Text.Version", comment: "Version %@"), version)
+        buildSubtitle.text = String.localizedStringWithFormat(NSLocalizedString("About.Subtitle.Text.Build", comment: "Build %@"), build)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,7 +45,7 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
             if(indexPath.row == 0){
                 print("[提示] 用戶已按下分享按鈕")
                 
-                let textToShare = NSLocalizedString("SHARE_MESSAGE", comment: "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!")
+                let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!")
                 
                 if let appStoreURL = BasicConfig().appStoreShortUrl {
                     let objectsToShare = [textToShare, appStoreURL]
