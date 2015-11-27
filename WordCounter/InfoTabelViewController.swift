@@ -45,7 +45,7 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
             if(indexPath.row == 0){
                 print("[提示] 用戶已按下分享按鈕")
                 
-                let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!")
+                let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!")
                 
                 if let appStoreURL = BasicConfig().appStoreShortUrl {
                     let objectsToShare = [textToShare, appStoreURL]

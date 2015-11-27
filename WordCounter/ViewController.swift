@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.delegate = self
         
-        addDoneButtonOnKeyboard()
+        addToolBarToKeyboard()
         
         //self.canDisplayBannerAds = true
         
@@ -104,9 +104,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
+        
         
         checkScreenWidthToSetButton()
         
@@ -181,17 +184,24 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
         
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
+                
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
         
         //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func checkScreenWidthToSetButton () {
+        print("[提示] 準備使用 checkScreenWidthToSetButton() 函數")
+        
+        //let bounds = UIScreen.mainScreen().bounds
+        //let bounds = UIScreen.mainScreen().applicationFrame
+        let bounds = UIApplication.sharedApplication().keyWindow?.bounds
+        let width = bounds!.size.width
+        let height = bounds!.size.height
+        print("[提示] 屏幕高度：\(height)、屏幕寬度：\(width)")
+        
         if(!tooManyWords){
-            let bounds = UIScreen.mainScreen().bounds
-            let width = bounds.size.width
-            //var height = bounds.size.height
-            //println(width)
             if (width < 330){
                 doNotShowCharacter = true
                 paddingWordsSpace.width = 0
@@ -203,6 +213,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 character.enabled = true
                 changeCharacterCounts()
             }
+            //changeWordCounts()
+            //changeParagraphCounts()
             
             if (width > 750){
                 doNotShowWords = false
@@ -264,7 +276,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         tv.selectedRange = selectedRangeBeforeHide
     }
     
-    func addDoneButtonOnKeyboard(){
+    func addToolBarToKeyboard(){
         let keyBoardToolBar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
         keyBoardToolBar.barStyle = UIBarStyle.Default
         

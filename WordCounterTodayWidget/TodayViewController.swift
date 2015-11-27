@@ -24,7 +24,7 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         super.viewDidLoad()
         print("[提示] Today View Controller 之 super.viewDidLoad() 已加載")
         
-        //self.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.translatesAutoresizingMaskIntoConstraints = false
         
         //self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         //textView.setTranslatesAutoresizingMaskIntoConstraints(false)

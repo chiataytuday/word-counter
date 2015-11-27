@@ -6,7 +6,7 @@
   Copyright (c) 2015 Arefly. All rights reserved.
 */
 
-Global.Text.ShareMessage = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
+Global.Text.ShareMessage = "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!";
 Global.Text.NothingOnClipboard = "Nothing on your clipboard!";
 
 Global.Button.Done = "Done";

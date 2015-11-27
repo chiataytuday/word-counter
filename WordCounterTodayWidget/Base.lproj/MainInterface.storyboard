@@ -67,7 +67,7 @@
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="dY3-Px-AS9" firstAttribute="width" secondItem="S3S-Oj-5AN" secondAttribute="width" id="2YT-xH-95g"/>
+                            <constraint firstItem="dY3-Px-AS9" firstAttribute="width" secondItem="S3S-Oj-5AN" secondAttribute="width" priority="999" id="2YT-xH-95g"/>
                             <constraint firstItem="pAU-Ct-5Mq" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="3be-1A-bdU"/>
                             <constraint firstItem="UUY-WR-bNI" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailing" id="73A-CX-9hr"/>
                             <constraint firstItem="Tqs-j5-30a" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="9bJ-u4-k3U"/>
@@ -75,7 +75,7 @@
                             <constraint firstItem="UUY-WR-bNI" firstAttribute="leading" secondItem="pAU-Ct-5Mq" secondAttribute="trailing" id="IrE-kP-AjE"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="UUY-WR-bNI" secondAttribute="bottom" id="MNA-qA-hLm"/>
                             <constraint firstItem="dY3-Px-AS9" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="NMI-92-SEI"/>
-                            <constraint firstItem="pAU-Ct-5Mq" firstAttribute="width" secondItem="S3S-Oj-5AN" secondAttribute="width" multiplier="0.333" id="NSr-10-7oI"/>
+                            <constraint firstItem="pAU-Ct-5Mq" firstAttribute="width" secondItem="S3S-Oj-5AN" secondAttribute="width" multiplier="0.333" priority="999" id="NSr-10-7oI"/>
                             <constraint firstItem="pAU-Ct-5Mq" firstAttribute="leading" secondItem="Tqs-j5-30a" secondAttribute="trailing" id="TVS-1U-QQb"/>
                             <constraint firstItem="dY3-Px-AS9" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="UI1-26-rtR"/>
                             <constraint firstItem="Tqs-j5-30a" firstAttribute="top" secondItem="dY3-Px-AS9" secondAttribute="bottom" id="iiy-SG-V1n"/>
