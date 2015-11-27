@@ -24,6 +24,8 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         super.viewDidLoad()
         print("[提示] Today View Controller 之 super.viewDidLoad() 已加載")
         
+        //self.view.translatesAutoresizingMaskIntoConstraints = false
+        
         //self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         //textView.setTranslatesAutoresizingMaskIntoConstraints(false)
         //self.view.sizeToFit()
@@ -107,20 +109,6 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         
     }
     
-    /*override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if let touch = touches.first as? UITouch {
-            
-        }
-        println("TOUCH LAHAHAHAHAH")
-        super.touchesBegan(touches , withEvent:event)
-    }*/
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
@@ -145,6 +133,11 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
                 print("[提示] 已開啓App")
             })
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 }
