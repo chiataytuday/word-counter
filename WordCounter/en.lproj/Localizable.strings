@@ -3,70 +3,8 @@
   WordCounter
 
   Created by Arefly on 14/7/2015.
-  Copyright (c) 2015年 Arefly. All rights reserved.
+  Copyright (c) 2015 Arefly. All rights reserved.
 */
-
-/*//Global.Button.Done = "Done";
-
-//Global.Button.CountEllipsis = "Count...";
-
-Global.Units.Short.Word.Singular = "word";
-Global.Units.Short.Word.Plural = "words";
-
-Global.Units.Short.Word.Singular = "word";
-Global.Units.Short.Word.Plural = "words";
-
-Global.Units.Character.Singular = "character";
-Global.Units.Character.Plural = "characters";
-
-Global.Units.Short.Character.Singular = "char.";
-Global.Units.Short.Character.Plural = "chars.";
-
-Global.Units.Paragraph.Singular = "paragraph";
-Global.Units.Paragraph.Plural = "paragraphs";
-
-Global.Units.Short.Paragraph.Singular = "para.";
-Global.Units.Short.Paragraph.Plural = "paras.";
-
-Global.Count.Text.Word.Zero = "0 %@";
-Global.Count.Text.Paragraph.Zero = "0 %@";
-Global.Count.Text.Character.Zero = "0 %@";
-
-Global.Count.Text.Character.NonZero = "%1$@ %2$@";
-Global.Count.Text.Paragraph.NonZero = "%1$@ %2$@";
-Global.Count.Text.Word.NonZero = "%1$@ %2$@";
-
-Global.Alert.Counter.Title = "Counter";
-
-Global.Alert.Counter.Content.Word = "Words: %@\n";
-Global.Alert.Counter.Content.Character = "Characters: %@\n";
-Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
-
-Global.Button.OK = "OK!";
-
-Global.Alert.BeforeClear.Title = "Are you sure?";
-Global.Alert.BeforeClear.Content = "Clear all content?\nWARNING: This action is irreversible!";
-Global.Button.Yes = "Yes";
-Global.Button.Close = "Close";
-
-Global.Alert.PlzRate.Title = "Thanks!";
-Global.Alert.PlzRate.Content = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
-Global.Alert.PlzRate.Button.Yes = "Sure!";
-Global.Alert.PlzRate.Button.Later = "Not now";
-Global.Alert.PlzRate.Button.Cancel = "No, thanks!";
-
-About.Title.Text.Version = "Version %@";
-About.Subtitle.Text.Build = "Build %@";
-
-Global.Text.ShareMessage = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
-
-Global.Text.NothingOnClipboard = "Nothing in your clipboard!";
-
-"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
-"Welcome.Version.1-1.Text.TodayWidget.How" = "- Add widget by \"Edit\" button in Today view";
-"Welcome.Version.1-1.Text.TooManyCharacter" = "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";
-"Welcome.Global.Text.About" = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
-//"WELCOME_1_1_THANKS" = "- Developer: Jason Ho (Arefly)\n- Email: eflyjason@gmail.com\n- Website: http://www.arefly.com/";*/
 
 Global.Text.ShareMessage = "Hi! Still counting words 1 by 1? Get Word Counter Tools on App Store today!";
 Global.Text.NothingOnClipboard = "Nothing on your clipboard!";
@@ -110,8 +48,8 @@ Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
 Global.Alert.Counter.Content.Character = "Characters: %@\n";
 
 
-Global.Alert.BeforeClear.Title = "Are you sure?";
-Global.Alert.BeforeClear.Content = "Clear all content?\nWARNING: This action is irreversible!";
+Global.Alert.BeforeClear.Title = "Clear all content?";
+Global.Alert.BeforeClear.Content = "WARNING: This action is irreversible!";
 
 
 Global.Alert.PlzRate.Title = "Thanks!";
@@ -122,6 +60,7 @@ Global.Alert.PlzRate.Button.Cancel = "No, thanks!";
 
 About.Title.Text.Version = "Version %@";
 About.Subtitle.Text.Build = "Build %@";
+
 
 Welcome.Global.Text.About = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
 

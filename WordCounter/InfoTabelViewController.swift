@@ -3,7 +3,7 @@
 //  WordCounter
 //
 //  Created by Arefly on 6/7/2015.
-//  Copyright (c) 2015年 Arefly. All rights reserved.
+//  Copyright (c) 2015 Arefly. All rights reserved.
 //
 
 import UIKit

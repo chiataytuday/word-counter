@@ -3,7 +3,7 @@
 //  WordCounter
 //
 //  Created by Arefly on 5/7/2015.
-//  Copyright (c) 2015年 Arefly. All rights reserved.
+//  Copyright (c) 2015 Arefly. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        if let userUrl = launchOptions?[UIApplicationLaunchOptionsURLKey] as? NSURL {
+            //等待2秒後執行
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                self.callToSetClipBoard(userUrl.absoluteString)
+            })
+        }
         
         /*
         // Configure tracker from GoogleService-Info.plist.
@@ -145,27 +152,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if let userUrl = String(url) as String? {
             print("[提示] 用戶輸入的網址爲：\(userUrl)")
-            /*if NSString(string: userUrl).containsString("count://") {
-                var words = userUrl.stringByReplacingOccurrencesOfString("count://", withString: "")
-                if let viewController = self.window?.rootViewController as? ViewController{
-                    //viewController.weNeedGetMoreTime()
-                    //println("[提示] 已請求使用 weNeedGetMoreTime() 函數")
-                    println(words)
-                }
-            }*/
-            if (userUrl == "count://fromClipBoard") {
-                print("[提示] 已準備將用戶剪貼簿內容設定爲TextView之內容")
-                /*if let viewController = self.window?.rootViewController as? ViewController{
-                    viewController.contentFromClipBoard()
-                }*/
-                /*var rootViewController = self.window!.rootViewController
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                var viewController = mainStoryboard.instantiateViewControllerWithIdentifier("mainViewController") as! ViewController
-                viewController.contentFromClipBoard()*/
-                NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.getContentFromClipBoard", object: self)
-            }
+            callToSetClipBoard(userUrl)
+            return true
         }
         return false
+    }
+    
+    func callToSetClipBoard(url: String) {
+        print("[提示] callToSetClipBoard 接受的網址爲：\(url)")
+        if (url == "count://fromClipBoard") {
+            print("[提示] 已準備將用戶剪貼簿內容設定爲TextView之內容")
+            NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.getContentFromClipBoard", object: self)
+        }
     }
 
 }

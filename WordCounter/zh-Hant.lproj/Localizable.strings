@@ -3,18 +3,18 @@
   WordCounter
 
   Created by Arefly on 14/7/2015.
-  Copyright (c) 2015年 Arefly. All rights reserved.
+  Copyright (c) 2015 Arefly. All rights reserved.
 */
 
 Global.Text.ShareMessage = "還在逐字統計字數？快去 App Store 上看看「字數統計工具」吧！";
 Global.Text.NothingOnClipboard = "剪貼簿內並無任何內容！";
 
-
 Global.Button.Done = "完成";
-Global.Button.CountEllipsis = "統計...";
 Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
 Global.Button.Close = "關閉";
+
+Global.Button.CountEllipsis = "統計...";
 
 Global.Units.Short.Word.Singular = "字";
 Global.Units.Short.Word.Plural = "字";
@@ -43,14 +43,13 @@ Global.Count.Text.Paragraph.NonZero = "%1$@%2$@";
 Global.Count.Text.Word.NonZero = "%1$@個%2$@";
 
 Global.Alert.Counter.Title = "統計";
-
 Global.Alert.Counter.Content.Word = "字數：%@\n";
 Global.Alert.Counter.Content.Character = "字符：%@\n";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
 
 
-Global.Alert.BeforeClear.Title = "請確認";
-Global.Alert.BeforeClear.Content = "確定清空所有文字？\n警告：此操作不可逆！";
+Global.Alert.BeforeClear.Title = "確認清空所有文字？";
+Global.Alert.BeforeClear.Content = "警告：本操作不可逆！";
 
 
 Global.Alert.PlzRate.Title = "多謝！";
@@ -61,7 +60,6 @@ Global.Alert.PlzRate.Button.Cancel = "不再提示";
 
 About.Title.Text.Version = "版本 %@";
 About.Subtitle.Text.Build = "版本號 %@";
-
 
 
 "Welcome.Global.Text.About" = "- 我們將繼續爲「字數統計工具」提供支援並加入更多功能；如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";

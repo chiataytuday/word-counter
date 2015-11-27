@@ -3,17 +3,15 @@
 //  WordCounter
 //
 //  Created by Arefly on 5/7/2015.
-//  Copyright (c) 2015年 Arefly. All rights reserved.
+//  Copyright (c) 2015 Arefly. All rights reserved.
 //
 
 import UIKit
-import iAd
 import Foundation
+import iAd
 
 class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate {
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-    
-    //let alert = UIAlertView()
     
     var wordCounterClass = WordCounter()
     
@@ -78,9 +76,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
         
         
-        
-        
-        
         self.tv.delegate = self
         
         addDoneButtonOnKeyboard()
@@ -110,13 +105,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
-        
-        /*var tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Main View Controller")
-        
-        var builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])*/
         
         checkScreenWidthToSetButton()
         
@@ -186,8 +176,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         appDelegate.bannerView.removeFromSuperview()
         
-        //NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
+        
+        //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func checkScreenWidthToSetButton () {
@@ -318,9 +314,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
+        
+        self.tv.endEditing(true)
+        
         let clearContentAlert = UIAlertController(
-            title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Are you sure?"),
-            message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "Clear all content?\nWARNING: This action is irreversible!"),
+            title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Clear all content?"),
+            message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "WARNING: This action is irreversible!"),
             preferredStyle: UIAlertControllerStyle.Alert)
         
         clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
@@ -472,17 +471,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let paraCount = wordCounterClass.paragraphCount(tv.text)
         let paraWords = (paraCount == 1) ? paraSingular : paraPlural
         let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(paraCount), paraWords)
-    
-        /*alert.title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-        alert.message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
-        alert.addButtonWithTitle(NSLocalizedString("Global.Button.OK", comment: "OK!"))
-        alert.show()*/
-        
+
         let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
         let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: NSLocalizedString("Global.Button.OK", comment: "OK!"), style: .Cancel) { _ in
+        let action = UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel) { _ in
             // DO NOTHING
         }
         alert.addAction(action)
@@ -515,6 +509,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func setContentFromClipBoard() {
         print("[提示] -- 已開始使用 setContentFromClipBoard() 函數 --")
+        
+        tv.text = "WAHAHA"
+        
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             tv.text = clipBoard

@@ -3,12 +3,15 @@
   WordCounter
 
   Created by Arefly on 14/7/2015.
-  Copyright (c) 2015年 Arefly. All rights reserved.
+  Copyright (c) 2015 Arefly. All rights reserved.
 */
 
-Global.Button.Done = "完成";
+Global.Text.ShareMessage = "还在逐字统计字数？快去 App Store 上看看「字数统计工具」吧！";
+Global.Text.NothingOnClipboard = "剪切板内并无任何内容！";
 
+Global.Button.Done = "完成";
 Global.Button.CountEllipsis = "统计...";
+Global.Button.OK = "好！";
 
 Global.Units.Short.Word.Singular = "字";
 Global.Units.Short.Word.Plural = "字";
@@ -37,12 +40,14 @@ Global.Count.Text.Paragraph.NonZero = "%1$@%2$@";
 Global.Count.Text.Word.NonZero = "%1$@个%2$@";
 
 Global.Alert.Counter.Title = "统计";
-
 Global.Alert.Counter.Content.Word = "字数：%@\n";
 Global.Alert.Counter.Content.Character = "字符：%@\n";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
 
-Global.Button.OK = "好！";
+
+Global.Alert.BeforeClear.Title = "确认清空所有文字？";
+Global.Alert.BeforeClear.Content = "警告：本操作不可逆！";
+
 
 Global.Alert.PlzRate.Title = "多谢！";
 Global.Alert.PlzRate.Content = "你已经使用%d次字数统计工具啦！\n喜欢么？去 App Store 评分吧！";
@@ -53,9 +58,6 @@ Global.Alert.PlzRate.Button.Cancel = "不再提示";
 About.Title.Text.Version = "版本 %@";
 About.Subtitle.Text.Build = "版本号 %@";
 
-Global.Text.ShareMessage = "还在逐字统计字数？快去 App Store 上看看「字数统计工具」吧！";
-
-Global.Text.NothingOnClipboard = "剪切板内并无任何内容！";
 
 "Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- 重点：直接于通知中心“今天”视图内统计您剪切板内的字数！";
 "Welcome.Version.1-1.Text.TodayWidget.How" = "- 通过“编辑”按钮加入该工具";
