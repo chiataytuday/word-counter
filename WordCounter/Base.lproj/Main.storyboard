@@ -242,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whe-qS-vlc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -252,8 +252,8 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="whe-qS-vlc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1Yj-WI-YFX"/>
                             <constraint firstAttribute="trailing" secondItem="whe-qS-vlc" secondAttribute="trailing" id="7NN-gP-3eL"/>
+                            <constraint firstItem="whe-qS-vlc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ML8-vg-AeU"/>
                             <constraint firstItem="whe-qS-vlc" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="YjS-R0-sHV"/>
                             <constraint firstItem="whe-qS-vlc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sbe-wf-gKm"/>
                         </constraints>

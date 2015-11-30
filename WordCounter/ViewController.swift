@@ -247,6 +247,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         //println(UIApplication.sharedApplication().statusBarOrientation.isPortrait)
         
+        /*
+        Removed due to the top of TV change to TopGuide which is the nav bar
+        
         var topHeight: CGFloat = self.navigationController!.navigationBar.frame.size.height
         //if(UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
         if ( (UIApplication.sharedApplication().statusBarOrientation.isPortrait) || (UIDevice.currentDevice().userInterfaceIdiom == .Pad) ) {
@@ -254,7 +257,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
         
         self.tv.contentInset.top = topHeight
-        self.tv.scrollIndicatorInsets.top = topHeight
+        self.tv.scrollIndicatorInsets.top = topHeight*/
+        
+        self.tv.contentInset.top = 0
+        self.tv.scrollIndicatorInsets.top = 0
     }
     
     func keyboardHide(n: NSNotification) {
