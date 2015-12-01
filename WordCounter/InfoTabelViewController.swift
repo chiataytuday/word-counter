@@ -32,17 +32,14 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print("[提示] Info Table View Controller 之 super.viewWillAppear() 已加載")
-
-        /*var tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Info View Controller")
-        
-        var builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])*/
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(indexPath.section == 0){
-            if(indexPath.row == 0){
+        
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
                 print("[提示] 用戶已按下分享按鈕")
                 
                 let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!")
@@ -60,34 +57,30 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
                     }
                 }
                 
-                /*println("[提示] 準備發送分享按鈕統計數據")
-                var tracker = GAI.sharedInstance().defaultTracker
-                var event = GAIDictionaryBuilder.createEventWithCategory("Info Action", action: "Share Cell Clicked", label: nil, value: nil)
-                tracker.send(event.build() as [NSObject : AnyObject])*/
-            }
-            if(indexPath.row == 1){
+                break
+            case 1:
                 print("[提示] 用戶已按下評分按鈕")
                 
                 UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
                 
-                /*println("[提示] 準備發送評分按鈕統計數據")
-                var tracker = GAI.sharedInstance().defaultTracker
-                var event = GAIDictionaryBuilder.createEventWithCategory("Info Action", action: "Rate Cell Clicked", label: nil, value: nil)
-                tracker.send(event.build() as [NSObject : AnyObject])*/
-            }
-            if(indexPath.row == 2){
+                break
+            case 2:
                 print("[提示] 用戶已按下查看其它Apps按鈕")
                 
                 UIApplication.sharedApplication().openURL(BasicConfig().otherAppsByMe!)
                 
-                /*println("[提示] 準備發送「查看其它Apps」按鈕統計數據")
-                var tracker = GAI.sharedInstance().defaultTracker
-                var event = GAIDictionaryBuilder.createEventWithCategory("Info Action", action: "Check other Apps Cell Clicked", label: nil, value: nil)
-                tracker.send(event.build() as [NSObject : AnyObject])*/
+                break
+            default:
+                //DO NOTHING
+                break
             }
-        }
-        if(indexPath.section == 1){
-            if(indexPath.row == 1){
+            break
+        case 1:
+            switch indexPath.row {
+            case 0:
+                //DO NOTHING
+                break
+            case 1:
                 let mailComposerVC = MFMailComposeViewController()
                 mailComposerVC.mailComposeDelegate = self
                 
@@ -101,20 +94,19 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
                     }
                 }
                 
-                /*println("[提示] 準備發送發送郵件按鈕統計數據")
-                var tracker = GAI.sharedInstance().defaultTracker
-                var event = GAIDictionaryBuilder.createEventWithCategory("Info Action", action: "Email eflyjason@gmail.com Cell Clicked", label: nil, value: nil)
-                tracker.send(event.build() as [NSObject : AnyObject])*/
-            }
-            
-            if(indexPath.row == 2){
+                break
+            case 2:
                 UIApplication.sharedApplication().openURL(NSURL(string: "http://www.arefly.com/")!)
                 
-                /*println("[提示] 準備發送發送郵件按鈕統計數據")
-                var tracker = GAI.sharedInstance().defaultTracker
-                var event = GAIDictionaryBuilder.createEventWithCategory("Info Action", action: "Open AREFLY.COM Cell Clicked", label: nil, value: nil)
-                tracker.send(event.build() as [NSObject : AnyObject])*/
+                break
+            default:
+                //DO NOTHING
+                break
             }
+            break
+        default:
+            //DO NOTHING
+            break
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
