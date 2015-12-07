@@ -188,6 +188,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        endEditing()
+    }
+    
     func checkScreenWidthToSetButton () {
         print("[提示] 準備使用 checkScreenWidthToSetButton() 函數")
         
@@ -242,8 +246,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.tv.scrollIndicatorInsets.bottom = r.size.height
         }
         
-        self.tv.contentInset.top = 0
-        self.tv.scrollIndicatorInsets.top = 0
+        //self.tv.contentInset.top = 0
+        //self.tv.scrollIndicatorInsets.top = 0
     }
     
     func keyboardHide(n: NSNotification) {
@@ -419,7 +423,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
 
     func doAfterRotate () {
         if(iAdShowing){
-            iAdHeight = appDelegate.bannerView.frame.size.height
+            iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
         }
         print("[提示] 已設定iAd高度：\(iAdHeight)")
         
@@ -503,7 +507,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             
             iAdShowing = true
             
-            iAdHeight = appDelegate.bannerView.frame.size.height
+            iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
             
             if(!keyboardShowing){
                 self.tv.contentInset.bottom = iAdHeight
@@ -576,9 +580,5 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }))
         
         presentViewController(reviewAlert, animated: true, completion: nil)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        endEditing()
     }
 }
