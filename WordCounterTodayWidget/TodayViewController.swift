@@ -3,7 +3,7 @@
 //  WordCounterTodayWidget
 //
 //  Created by Arefly on 7/8/2015.
-//  Copyright (c) 2015年 Arefly. All rights reserved.
+//  Copyright (c) 2015 Arefly. All rights reserved.
 //
 
 import UIKit
@@ -60,29 +60,28 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         }
         
         
+        var wordCounts = 0
+        var charCount = 0
+        var paraCount = 0
+        
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
-            
             textView.text = clipBoard
+            
+            wordCounts = wordCounterClass.wordCount(textView.text)
+            charCount = wordCounterClass.characterCount(textView.text)
+            paraCount = wordCounterClass.paragraphCount(textView.text)
         }else{
             print("[提示] 用戶剪貼簿內並未任何內容")
-            
             textView.text = NSLocalizedString("Global.Text.NothingOnClipboard", comment: "Nothing in your clipboard!")
-            
-            /*wordsCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
-            parasCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural)
-            charsCountLabel.text = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural)*/
         }
         
-        let wordCounts = wordCounterClass.wordCount(textView.text)
         let wordWords = (wordCounts == 1) ? wordSingular : wordPlural
         let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
         
-        let charCount = wordCounterClass.characterCount(textView.text)
         let charWords = (charCount == 1) ? charSingular : charPlural
         let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(charCount), charWords)
         
-        let paraCount = wordCounterClass.paragraphCount(textView.text)
         let paraWords = (paraCount == 1) ? paraSingular : paraPlural
         let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(paraCount), paraWords)
         
