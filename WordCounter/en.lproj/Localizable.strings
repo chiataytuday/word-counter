@@ -37,9 +37,9 @@ Global.Count.Text.Paragraph = "%1$@ %2$@";
 Global.Count.Text.Character = "%1$@ %2$@";
 
 Global.Alert.Counter.Title = "Counter";
-Global.Alert.Counter.Content.Word = "Words: %@\n";
+Global.Alert.Counter.Content.Word = "Words: %@";
+Global.Alert.Counter.Content.Character = "Characters: %@";
 Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
-Global.Alert.Counter.Content.Character = "Characters: %@\n";
 
 
 Global.Alert.BeforeClear.Title = "Clear all content?";

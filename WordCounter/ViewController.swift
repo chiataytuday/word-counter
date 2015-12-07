@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import iAd
 import Async
+import MBProgressHUD
 
 class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate {
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -70,6 +71,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         
         self.tv.delegate = self
+        self.tv.layoutManager.allowsNonContiguousLayout = false
+        
         
         addToolBarToKeyboard()
         
@@ -254,16 +257,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let selectedRangeBeforeHide = tv.selectedRange
         
         keyboardShowing = false
-        /*self.tv.contentInset = UIEdgeInsetsZero
-        self.tv.scrollIndicatorInsets = UIEdgeInsetsZero*/
+        
         if( (iAdShowing) && (iAdHeight > 0.0) ){
             self.tv.contentInset.bottom = iAdHeight
             self.tv.scrollIndicatorInsets.bottom = iAdHeight
-        //}else if (self.tv.contentInset.bottom != 0){
         }else{
             self.tv.contentInset.bottom = 0
             self.tv.scrollIndicatorInsets.bottom = 0
         }
+        
+        self.tv.contentInset.top = 0
+        self.tv.scrollIndicatorInsets.top = 0
         
         tv.scrollRangeToVisible(selectedRangeBeforeHide)
         tv.selectedRange = selectedRangeBeforeHide
@@ -331,7 +335,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let clearContentAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Clear all content?"),
             message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "WARNING: This action is irreversible!"),
-            preferredStyle: UIAlertControllerStyle.Alert)
+            preferredStyle: .Alert)
         
         clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下確定清空按鈕")
@@ -448,19 +452,31 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func countResultButtonAction () {
         endEditing()
         
-        let wordTitle = WordCounter().getWordCountString(tv.text)
-        let charTitle = WordCounter().getCharacterCountString(tv.text)
-        let paraTitle = WordCounter().getParagraphCountString(tv.text)
-
-        let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-        let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
+        let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        progressHUD.labelText = "Counting..."
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel) { _ in
-            // DO NOTHING
+        var wordTitle = ""
+        var charTitle = ""
+        var paraTitle = ""
+        
+        Async.background {
+            wordTitle = WordCounter().getWordCountString(self.tv.text)
+            charTitle = WordCounter().getCharacterCountString(self.tv.text)
+            paraTitle = WordCounter().getParagraphCountString(self.tv.text)
+            }.main {
+                MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+                
+                let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
+                let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), charTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
+                
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                let action = UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel) { _ in
+                    // DO NOTHING
+                }
+                alert.addAction(action)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
         }
-        alert.addAction(action)
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     
@@ -561,7 +577,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             message: String.localizedStringWithFormat(
                 NSLocalizedString("Global.Alert.PlzRate.Content", comment: "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?"),
                 defaults.integerForKey("appLaunchTimes")),
-            preferredStyle: UIAlertControllerStyle.Alert)
+            preferredStyle: .Alert)
         
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下發表評論按鈕")

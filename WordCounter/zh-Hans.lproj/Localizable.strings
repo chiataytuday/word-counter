@@ -37,8 +37,8 @@ Global.Count.Text.Paragraph = "%1$@%2$@";
 Global.Count.Text.Word = "%1$@个%2$@";
 
 Global.Alert.Counter.Title = "统计";
-Global.Alert.Counter.Content.Word = "字数：%@\n";
-Global.Alert.Counter.Content.Character = "字符：%@\n";
+Global.Alert.Counter.Content.Word = "字数：%@";
+Global.Alert.Counter.Content.Character = "字符：%@";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
 
 
