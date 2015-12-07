@@ -34,13 +34,9 @@ Global.Units.Paragraph.Plural = "paragraphs";
 Global.Units.Short.Paragraph.Singular = "para.";
 Global.Units.Short.Paragraph.Plural = "paras.";
 
-/*Global.Count.Text.Word.Zero = "0 %@";
-Global.Count.Text.Paragraph.Zero = "0 %@";
-Global.Count.Text.Character.Zero = "0 %@";*/
-
-Global.Count.Text.Word.NonZero = "%1$@ %2$@";
-Global.Count.Text.Paragraph.NonZero = "%1$@ %2$@";
-Global.Count.Text.Character.NonZero = "%1$@ %2$@";
+Global.Count.Text.Word = "%1$@ %2$@";
+Global.Count.Text.Paragraph = "%1$@ %2$@";
+Global.Count.Text.Character = "%1$@ %2$@";
 
 Global.Alert.Counter.Title = "Counter";
 Global.Alert.Counter.Content.Word = "Words: %@\n";

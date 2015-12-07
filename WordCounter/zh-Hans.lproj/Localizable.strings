@@ -34,13 +34,9 @@ Global.Units.Paragraph.Plural = "段";
 Global.Units.Short.Paragraph.Singular = "段";
 Global.Units.Short.Paragraph.Plural = "段";
 
-/*Global.Count.Text.Word.Zero = "0个%@";
-Global.Count.Text.Paragraph.Zero = "0%@";
-Global.Count.Text.Character.Zero = "0个%@";*/
-
-Global.Count.Text.Character.NonZero = "%1$@个%2$@";
-Global.Count.Text.Paragraph.NonZero = "%1$@%2$@";
-Global.Count.Text.Word.NonZero = "%1$@个%2$@";
+Global.Count.Text.Character = "%1$@个%2$@";
+Global.Count.Text.Paragraph = "%1$@%2$@";
+Global.Count.Text.Word = "%1$@个%2$@";
 
 Global.Alert.Counter.Title = "统计";
 Global.Alert.Counter.Content.Word = "字数：%@\n";

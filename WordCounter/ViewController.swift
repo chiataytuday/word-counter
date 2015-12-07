@@ -282,16 +282,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
         let info: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
         
-        /*wordKeyboardBarButtonItem = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), WordCounter().wordPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
-        wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
-        
-        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), WordCounter().paraPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
-        paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
-
-        
-        characterKeyboardBarButtonItem = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), WordCounter().charPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
-        characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()*/
-        
         wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
         wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
@@ -355,23 +345,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         endEditing()
         tv.text = ""
         
-        /*topBarCountButton.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
-        topBarCountButton.tintColor = UIColor.blackColor()
-        
-        wordKeyboardBarButtonItem.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
-        wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
-        
-        paragraphKeyboardBarButtonItem.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural)
-        paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
-        
-        characterKeyboardBarButtonItem.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural)
-        characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()*/
-        
         changeTextViewCounting()
         
         doAfterRotate()
-        
-        //checkScreenWidthToSetButton()
     }
     
     func textViewDidChange(textView: UITextView) {

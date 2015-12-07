@@ -24,7 +24,7 @@ class WordCounter {
         let count = characterCount(s)
         
         let words = (count == 1) ? charSingular : charPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(count), words)
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(count), words)
         
         return title
     }
@@ -33,7 +33,7 @@ class WordCounter {
         let count = paragraphCount(s)
         
         let words = (count == 1) ? paraSingular : paraPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(count), words)
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(count), words)
         
         return title
     }
@@ -42,7 +42,7 @@ class WordCounter {
         let count = wordCount(s)
         
         let words = (count == 1) ? wordSingular : wordPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(count), words)
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(count), words)
         
         return title
     }
@@ -60,12 +60,6 @@ class WordCounter {
             return true
         })
         characterCounts = modifiedCharacter.count
-        
-        /*
-        if(characterCounts >= 1500){
-            tooManyWords = true
-        }
-*/
         
         return characterCounts
     }

@@ -74,15 +74,15 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
             
             let wordCounts = wordCounterClass.wordCount(textView.text)
             let wordWords = (wordCounts == 1) ? wordSingular : wordPlural
-            let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
+            let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
             
             let charCount = wordCounterClass.characterCount(textView.text)
             let charWords = (charCount == 1) ? charSingular : charPlural
-            let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(charCount), charWords)
+            let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(charCount), charWords)
             
             let paraCount = wordCounterClass.paragraphCount(textView.text)
             let paraWords = (paraCount == 1) ? paraSingular : paraPlural
-            let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(paraCount), paraWords)
+            let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(paraCount), paraWords)
             
             wordsCountLabel.text = wordTitle
             parasCountLabel.text = paraTitle
