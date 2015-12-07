@@ -106,6 +106,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
@@ -185,7 +187,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
-                
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
         
         //NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -234,6 +238,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         keyboardShowing = true
         
         setTextViewSize(n)
+        
+        doAfterRotate()
     }
     
     func setTextViewSize (n: NSNotification) {
@@ -330,6 +336,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
     }
     
+    func endEditing() {
+        self.tv.endEditing(true)
+    }
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
         
@@ -533,9 +542,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             tv.text = clipBoard
+            changeCharacterCounts()
             changeWordCounts()
             changeParagraphCounts()
-            changeCharacterCounts()
         }
     }
     
