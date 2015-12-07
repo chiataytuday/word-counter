@@ -14,7 +14,7 @@ Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
 Global.Button.Close = "關閉";
 
-Global.Button.CountEllipsis = "統計...";
+//Global.Button.CountEllipsis = "統計...";
 
 Global.Units.Short.Word.Singular = "字";
 Global.Units.Short.Word.Plural = "字";
@@ -34,9 +34,9 @@ Global.Units.Paragraph.Plural = "段";
 Global.Units.Short.Paragraph.Singular = "段";
 Global.Units.Short.Paragraph.Plural = "段";
 
-Global.Count.Text.Word.Zero = "0個%@";
+/*Global.Count.Text.Word.Zero = "0個%@";
 Global.Count.Text.Paragraph.Zero = "0%@";
-Global.Count.Text.Character.Zero = "0個%@";
+Global.Count.Text.Character.Zero = "0個%@";*/
 
 Global.Count.Text.Character.NonZero = "%1$@個%2$@";
 Global.Count.Text.Paragraph.NonZero = "%1$@%2$@";

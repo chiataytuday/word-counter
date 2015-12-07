@@ -14,7 +14,7 @@ Global.Button.OK = "OK";
 Global.Button.Yes = "Yes";
 Global.Button.Close = "Close";
 
-Global.Button.CountEllipsis = "Count...";
+//Global.Button.CountEllipsis = "Count...";
 
 Global.Units.Word.Singular = "word";
 Global.Units.Word.Plural = "words";
@@ -34,9 +34,9 @@ Global.Units.Paragraph.Plural = "paragraphs";
 Global.Units.Short.Paragraph.Singular = "para.";
 Global.Units.Short.Paragraph.Plural = "paras.";
 
-Global.Count.Text.Word.Zero = "0 %@";
+/*Global.Count.Text.Word.Zero = "0 %@";
 Global.Count.Text.Paragraph.Zero = "0 %@";
-Global.Count.Text.Character.Zero = "0 %@";
+Global.Count.Text.Character.Zero = "0 %@";*/
 
 Global.Count.Text.Word.NonZero = "%1$@ %2$@";
 Global.Count.Text.Paragraph.NonZero = "%1$@ %2$@";

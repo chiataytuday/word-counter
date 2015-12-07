@@ -9,6 +9,46 @@
 import Foundation
 
 class WordCounter {
+    
+    let wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
+    let wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
+    
+    let charSingular = NSLocalizedString("Global.Units.Character.Singular", comment: "character")
+    let charPlural = NSLocalizedString("Global.Units.Character.Plural", comment: "characters")
+    
+    let paraSingular = NSLocalizedString("Global.Units.Paragraph.Singular", comment: "paragraph")
+    let paraPlural = NSLocalizedString("Global.Units.Paragraph.Plural", comment: "paragraphs")
+    
+    
+    func getCharacterCountString (s: String) -> String {
+        let count = characterCount(s)
+        
+        let words = (count == 1) ? charSingular : charPlural
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(count), words)
+        
+        return title
+    }
+    
+    func getParagraphCountString (s: String) -> String {
+        let count = paragraphCount(s)
+        
+        let words = (count == 1) ? paraSingular : paraPlural
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(count), words)
+        
+        return title
+    }
+    
+    func getWordCountString (s: String) -> String {
+        let count = wordCount(s)
+        
+        let words = (count == 1) ? wordSingular : wordPlural
+        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(count), words)
+        
+        return title
+    }
+    
+    
+    
     func characterCount(s: String) -> Int {
         var characterCounts = 0
         let modifiedCharacter = Array(s.characters).filter({

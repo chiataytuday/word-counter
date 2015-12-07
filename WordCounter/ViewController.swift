@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import iAd
+import Async
 
 class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate {
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -26,11 +27,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     @IBOutlet var topBarCountButton: UIBarButtonItem!
     
-    var wordKeyboard: UIBarButtonItem!
-    var paragraph: UIBarButtonItem!
-    var character: UIBarButtonItem!
-    var paddingSpace: UIBarButtonItem!
-    var paddingWordsSpace: UIBarButtonItem!
+    
+    var wordKeyboardBarButtonItem: UIBarButtonItem!
+    var paragraphKeyboardBarButtonItem: UIBarButtonItem!
+    var characterKeyboardBarButtonItem: UIBarButtonItem!
+    var paddingSpaceKeyboardBarButtonItem: UIBarButtonItem!
+    var paddingWordsSpaceKeyboardBarButtonItem: UIBarButtonItem!
     
     var doNotShowCharacter = false
     var doNotShowWords = false
@@ -38,21 +40,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     var keyboardShowing = false
     var iAdShowing = false
     
-    var tooManyWords = false
-    
     var appFirstLaunch = false
     var appJustUpdate = false
     
     //var isZhUser = false
     
-    var wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
-    var wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
     
-    var charSingular = NSLocalizedString("Global.Units.Character.Singular", comment: "character")
-    var charPlural = NSLocalizedString("Global.Units.Character.Plural", comment: "characters")
-    
-    var paraSingular = NSLocalizedString("Global.Units.Paragraph.Singular", comment: "paragraph")
-    var paraPlural = NSLocalizedString("Global.Units.Paragraph.Plural", comment: "paragraphs")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,33 +198,31 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let height = bounds!.size.height
         print("[提示] 屏幕高度：\(height)、屏幕寬度：\(width)")
         
-        if(!tooManyWords){
-            if (width < 330){
-                doNotShowCharacter = true
-                paddingWordsSpace.width = 0
-                character.title = ""
-                character.enabled = false
-            }else{
-                doNotShowCharacter = false
-                paddingSpace.width = 5
-                character.enabled = true
-                changeCharacterCounts()
-            }
-            //changeWordCounts()
-            //changeParagraphCounts()
-            
-            if (width > 750){
-                doNotShowWords = false
-                paddingWordsSpace.width = 5
-                wordKeyboard.enabled = true
-                changeWordCounts()
-            }else{
-                doNotShowWords = true
-                paddingWordsSpace.width = 0
-                wordKeyboard.title = ""
-                wordKeyboard.enabled = false
-            }
+        if (width < 330){
+            doNotShowCharacter = true
+            paddingWordsSpaceKeyboardBarButtonItem.width = 0
+            characterKeyboardBarButtonItem.title = ""
+            characterKeyboardBarButtonItem.enabled = false
+        }else{
+            doNotShowCharacter = false
+            paddingSpaceKeyboardBarButtonItem.width = 5
+            characterKeyboardBarButtonItem.enabled = true
+            //changeTextViewCounting()
         }
+        
+        if (width > 750){
+            doNotShowWords = false
+            paddingWordsSpaceKeyboardBarButtonItem.width = 5
+            wordKeyboardBarButtonItem.enabled = true
+            //changeTextViewCounting()
+        }else{
+            doNotShowWords = true
+            paddingWordsSpaceKeyboardBarButtonItem.width = 0
+            wordKeyboardBarButtonItem.title = ""
+            wordKeyboardBarButtonItem.enabled = false
+        }
+        
+        changeTextViewCounting()
     }
     
     func keyboardShow(n: NSNotification) {
@@ -250,20 +241,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.tv.contentInset.bottom = r.size.height
             self.tv.scrollIndicatorInsets.bottom = r.size.height
         }
-        
-        //println(UIApplication.sharedApplication().statusBarOrientation.isPortrait)
-        
-        /*
-        Removed due to the top of TV change to TopGuide which is the nav bar
-        
-        var topHeight: CGFloat = self.navigationController!.navigationBar.frame.size.height
-        //if(UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
-        if ( (UIApplication.sharedApplication().statusBarOrientation.isPortrait) || (UIDevice.currentDevice().userInterfaceIdiom == .Pad) ) {
-            topHeight += UIApplication.sharedApplication().statusBarFrame.size.height
-        }
-        
-        self.tv.contentInset.top = topHeight
-        self.tv.scrollIndicatorInsets.top = topHeight*/
         
         self.tv.contentInset.top = 0
         self.tv.scrollIndicatorInsets.top = 0
@@ -294,10 +271,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         
-        paddingSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        paddingSpaceKeyboardBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         //paddingSpace.width = 5
         
-        paddingWordsSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        paddingWordsSpaceKeyboardBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         
         let done: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
         
@@ -305,25 +282,36 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
         let info: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
         
-        wordKeyboard = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
-        wordKeyboard.tintColor = UIColor.blackColor()
+        /*wordKeyboardBarButtonItem = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), WordCounter().wordPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
+        wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        paragraph = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
-        paragraph.tintColor = UIColor.blackColor()
+        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), WordCounter().paraPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
+        paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
+
         
-        character = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
-        character.tintColor = UIColor.blackColor()
+        characterKeyboardBarButtonItem = UIBarButtonItem(title: String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), WordCounter().charPlural), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("countResultButtonAction"))
+        characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()*/
+        
+        wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
+        wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
+        
+        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
+        paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
+        
+        
+        characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
+        characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
         
         
         let items = NSMutableArray()
         if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-            items.addObject(wordKeyboard)
-            items.addObject(paddingWordsSpace)
+            items.addObject(wordKeyboardBarButtonItem)
+            items.addObject(paddingWordsSpaceKeyboardBarButtonItem)
         }
-        items.addObject(paragraph)
-        items.addObject(paddingSpace)
-        items.addObject(character)
+        items.addObject(paragraphKeyboardBarButtonItem)
+        items.addObject(paddingSpaceKeyboardBarButtonItem)
+        items.addObject(characterKeyboardBarButtonItem)
         items.addObject(flexSpace)
         items.addObject(done)
         items.addObject(info)
@@ -334,15 +322,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.inputAccessoryView = keyBoardToolBar
         
+        
+        changeTextViewCounting()
     }
     
     func endEditing() {
         self.tv.endEditing(true)
+        //self.view.endEditing(true)
     }
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
-        
-        self.tv.endEditing(true)
+        endEditing()
         
         let clearContentAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Clear all content?"),
@@ -362,28 +352,26 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func clearContent() {
-        self.view.endEditing(true)
+        endEditing()
         tv.text = ""
-        tooManyWords = false
         
-        topBarCountButton.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
+        /*topBarCountButton.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
         topBarCountButton.tintColor = UIColor.blackColor()
         
-        wordKeyboard.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
-        wordKeyboard.tintColor = UIColor.blackColor()
+        wordKeyboardBarButtonItem.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.Zero", comment: "0 %@<-words"), wordPlural)
+        wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        paragraph.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural)
-        paragraph.tintColor = UIColor.blackColor()
+        paragraphKeyboardBarButtonItem.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.Zero", comment: "0 %@<-paragraphs"), paraPlural)
+        paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        character.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural)
-        character.tintColor = UIColor.blackColor()
+        characterKeyboardBarButtonItem.title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.Zero", comment: "0 %@<-characters"), charPlural)
+        characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()*/
         
-        checkScreenWidthToSetButton()
+        changeTextViewCounting()
         
-        /*println("[提示] 準備發送清空按鈕統計數據")
-        var tracker = GAI.sharedInstance().defaultTracker
-        var event = GAIDictionaryBuilder.createEventWithCategory("Action", action: "Clear Button Clicked", label: nil, value: nil)
-        tracker.send(event.build() as [NSObject : AnyObject])*/
+        doAfterRotate()
+        
+        //checkScreenWidthToSetButton()
     }
     
     func textViewDidChange(textView: UITextView) {
@@ -391,19 +379,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         var lastSecChar = String(Array(tv.text)[count(tv.text)-2]) as String?
         if (lastSecChar) != nil {
         if (lastSecChar! == " ") {
-        changeWordCounts()
+        getWordCounts()
         }
         }
         }*/
-        if(!tooManyWords){
+        
+        /*if(!tooManyWords){
             topBarCountButton.tintColor = UIColor.blackColor()
             wordKeyboard.tintColor = UIColor.blackColor()
             paragraph.tintColor = UIColor.blackColor()
             character.tintColor = UIColor.blackColor()
             
-            changeWordCounts()
-            changeParagraphCounts()
-            changeCharacterCounts()
+            getWordCounts()
+            getParagraphCounts()
+            getCharacterCounts()
         }else{
             topBarCountButton.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
             topBarCountButton.tintColor = self.view.tintColor
@@ -421,43 +410,33 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             
             
             character.title = ""
-        }
+        }*/
+        
+        changeTextViewCounting()
     }
     
-    func changeCharacterCounts () {
-        if (!doNotShowCharacter) {
-            let count = wordCounterClass.characterCount(tv.text)
-            
-            if(count >= 1500){
-                tooManyWords = true
-            }
-            
-            let words = (count == 1) ? charSingular : charPlural
-            let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(count), words)
-            
-            character.title = title
-        }
-    }
-    
-    func changeParagraphCounts () {
-        let count = wordCounterClass.paragraphCount(tv.text)
+    func changeTextViewCounting () {
+        var wordTitle = ""
+        var characterTitle = ""
+        var paragraphTitle = ""
         
-        let words = (count == 1) ? paraSingular : paraPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(count), words)
-        
-        paragraph.title = title
-    }
-    
-    func changeWordCounts () {
-        let count = wordCounterClass.wordCount(tv.text)
-        
-        let words = (count == 1) ? wordSingular : wordPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(count), words)
-        
-        topBarCountButton.title = title
-        
-        if (!doNotShowWords) {
-            wordKeyboard.title = title
+        Async.background {
+            wordTitle = WordCounter().getWordCountString(self.tv.text)
+            characterTitle = WordCounter().getCharacterCountString(self.tv.text)
+            paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
+            }.main {
+                self.topBarCountButton.title = wordTitle
+                
+                
+                if (!self.doNotShowWords) {
+                    self.wordKeyboardBarButtonItem.title = wordTitle
+                }
+                
+                if (!self.doNotShowCharacter) {
+                    self.characterKeyboardBarButtonItem.title = characterTitle
+                }
+                
+                self.paragraphKeyboardBarButtonItem.title = paragraphTitle
         }
     }
     
@@ -487,17 +466,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func countResultButtonAction () {
-        let wordCounts = wordCounterClass.wordCount(tv.text)
-        let wordWords = (wordCounts == 1) ? wordSingular : wordPlural
-        let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word.NonZero", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
+        endEditing()
         
-        let charCount = wordCounterClass.characterCount(tv.text)
-        let charWords = (charCount == 1) ? charSingular : charPlural
-        let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character.NonZero", comment: "%1$@ %2$@"), String(charCount), charWords)
-
-        let paraCount = wordCounterClass.paragraphCount(tv.text)
-        let paraWords = (paraCount == 1) ? paraSingular : paraPlural
-        let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph.NonZero", comment: "%1$@ %2$@"), String(paraCount), paraWords)
+        let wordTitle = WordCounter().getWordCountString(tv.text)
+        let charTitle = WordCounter().getCharacterCountString(tv.text)
+        let paraTitle = WordCounter().getParagraphCountString(tv.text)
 
         let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
         let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@\n"), wordTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@\n"), charTitle) + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
@@ -508,11 +481,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
         alert.addAction(action)
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        /*println("[提示] 準備發送統計按鈕統計數據")
-        var tracker = GAI.sharedInstance().defaultTracker
-        var event = GAIDictionaryBuilder.createEventWithCategory("Action", action: "Count Button Clicked", label: nil, value: nil)
-        tracker.send(event.build() as [NSObject : AnyObject])*/
     }
     
     
@@ -520,31 +488,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         countResultButtonAction()
     }
     
-    /*
-    func pasteButtonAction() {
-    if ((UIPasteboard.generalPasteboard().string) != nil) {
-    tv.text = tv.text + UIPasteboard.generalPasteboard().string! as String!
-    changeWordCounts()
-    tv.scrollRangeToVisible(NSMakeRange(count(tv.text), 0))
-    tv.selectedRange = NSMakeRange(count(tv.text), 0)
-    }
-    }*/
-    
     func doneButtonAction() {
-        self.view.endEditing(true)
+        endEditing()
     }
     
     func setContentFromClipBoard() {
         print("[提示] -- 已開始使用 setContentFromClipBoard() 函數 --")
         
-        tv.text = "WAHAHA"
-        
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             tv.text = clipBoard
-            changeCharacterCounts()
-            changeWordCounts()
-            changeParagraphCounts()
+            changeTextViewCounting()
         }
     }
     
@@ -649,6 +603,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.tv.endEditing(true)
+        endEditing()
     }
 }
