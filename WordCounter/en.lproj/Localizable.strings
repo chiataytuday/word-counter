@@ -14,8 +14,6 @@ Global.Button.OK = "OK";
 Global.Button.Yes = "Yes";
 Global.Button.Close = "Close";
 
-//Global.Button.CountEllipsis = "Count...";
-
 Global.Units.Word.Singular = "word";
 Global.Units.Word.Plural = "words";
 

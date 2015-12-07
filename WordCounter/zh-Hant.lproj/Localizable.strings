@@ -14,8 +14,6 @@ Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
 Global.Button.Close = "關閉";
 
-//Global.Button.CountEllipsis = "統計...";
-
 Global.Units.Short.Word.Singular = "字";
 Global.Units.Short.Word.Plural = "字";
 
