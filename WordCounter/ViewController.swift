@@ -46,6 +46,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     //var isZhUser = false
     
+    var tvPlaceholderLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -72,6 +73,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.delegate = self
         self.tv.layoutManager.allowsNonContiguousLayout = false
+
         
         
         addToolBarToKeyboard()
@@ -88,8 +90,16 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }
         }
         println("[提示] isZhUser的值爲：\(isZhUser)")*/
+        
+        tvPlaceholderLabel = UILabel()
+        tvPlaceholderLabel.text = NSLocalizedString("Global.TextView.PlaceHolder.Text", comment: "Type or paste here...")
+        tvPlaceholderLabel.font = UIFont.systemFontOfSize(tv.font!.pointSize)
+        tvPlaceholderLabel.sizeToFit()
+        tv.addSubview(tvPlaceholderLabel)
+        tvPlaceholderLabel.frame.origin = CGPointMake(5, tv.font!.pointSize / 2)
+        tvPlaceholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
+        tvPlaceholderLabel.hidden = !tv.text.isEmpty
     }
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -168,6 +178,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
             }
         }
+        
+        tv.becomeFirstResponder()
     }
    
     
@@ -229,7 +241,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             wordKeyboardBarButtonItem.enabled = false
         }
         
-        changeTextViewCounting()
+        //changeTextViewCounting()
+        textViewDidChange(self.tv)      // Call textViewDidChange manually
     }
     
     func keyboardShow(n: NSNotification) {
@@ -320,7 +333,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.inputAccessoryView = keyBoardToolBar
         
-        
         changeTextViewCounting()
     }
     
@@ -351,9 +363,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func clearContent() {
         endEditing()
-        tv.text = ""
         
-        changeTextViewCounting()
+        tv.text = ""
+        textViewDidChange(self.tv)      // Call textViewDidChange manually
+        
+        //changeTextViewCounting()
         
         doAfterRotate()
     }
@@ -395,6 +409,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             
             character.title = ""
         }*/
+        
+        tvPlaceholderLabel.hidden = !textView.text.isEmpty
         
         changeTextViewCounting()
     }
@@ -453,7 +469,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         endEditing()
         
         let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
-        progressHUD.labelText = "Counting..."
+        progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
         var wordTitle = ""
         var charTitle = ""
@@ -494,7 +510,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             tv.text = clipBoard
-            changeTextViewCounting()
+            //changeTextViewCounting()
+            textViewDidChange(self.tv)      // Call textViewDidChange manually
         }
     }
     

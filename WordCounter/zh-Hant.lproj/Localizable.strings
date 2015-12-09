@@ -9,6 +9,10 @@
 Global.Text.ShareMessage = "還在逐字統計字數？快去 App Store 上看看「字數統計工具」吧！";
 Global.Text.NothingOnClipboard = "剪貼簿內並無任何內容！";
 
+Global.ProgressingHUD.Label.Counting = "統計中...";
+
+Global.TextView.PlaceHolder.Text = "請在此輸入或粘貼文字...";
+
 Global.Button.Done = "完成";
 Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
