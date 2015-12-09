@@ -312,14 +312,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
         let info: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
         
-        wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
+        wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
+        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
         
-        characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countResultButtonAction")
+        characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
         
@@ -365,6 +365,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下確定清空按鈕")
             self.clearContent()
+            self.startEditing()
         }))
         
         clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
@@ -478,7 +479,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         performSegueWithIdentifier("goInfo", sender: nil)
     }
     
-    func countResultButtonAction () {
+    func countButtonClickedFromKeyboardBarButtonItem() {
+        countResultButtonAction("Keyboard")
+    }
+    
+    func countResultButtonAction (from: String) {
         endEditing()
         
         let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
@@ -498,19 +503,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
                 let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), charTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
                 
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-                let action = UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel) { _ in
-                    // DO NOTHING
-                }
-                alert.addAction(action)
-                
-                self.presentViewController(alert, animated: true, completion: nil)
+                let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下確定按鈕")
+                    if(from == "Keyboard"){
+                        self.startEditing()
+                    }
+                }))
+                self.presentViewController(countingResultAlert, animated: true, completion: nil)
         }
     }
     
     
     @IBAction func topBarCountingButtonClicked(sender: AnyObject) {
-        countResultButtonAction()
+        countResultButtonAction("TopBar")
     }
     
     func doneButtonAction() {
