@@ -105,16 +105,25 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewWillAppear(animated)
         print("[提示] View Controller 之 super.viewWillAppear() 已加載")
         
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startEditing", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationWillResignActiveNotification, object: nil)
+        
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
         
@@ -179,7 +188,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }
         }
         
-        tv.becomeFirstResponder()
+        startEditing()
     }
    
     
@@ -339,6 +348,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func endEditing() {
         self.tv.endEditing(true)
         //self.view.endEditing(true)
+    }
+    
+    func startEditing() {
+        tv.becomeFirstResponder()
     }
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
