@@ -158,7 +158,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if( (appFirstLaunch) || (appJustUpdate) ){
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let WelcomePageVC : WelcomePageViewController = storyboard.instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
+            let WelcomePageVC: WelcomePageViewController = storyboard.instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
             
             self.presentViewController(WelcomePageVC, animated: true, completion: nil)
         }
