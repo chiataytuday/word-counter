@@ -77,19 +77,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         
         addToolBarToKeyboard()
-        
-        //self.canDisplayBannerAds = true
-        
-        /*var userPreferredLangs = NSLocale.preferredLanguages()
-        
-        for userPreferredLangFor in userPreferredLangs {
-            var userPreferredLang = userPreferredLangFor as! String
-            var firstTwoChars = userPreferredLang[Range(start:advance(userPreferredLang.startIndex, 0), end: advance(userPreferredLang.startIndex, 2))]
-            if(firstTwoChars == "zh"){
-                isZhUser = true
-            }
-        }
-        println("[提示] isZhUser的值爲：\(isZhUser)")*/
+
         
         tvPlaceholderLabel = UILabel()
         tvPlaceholderLabel.text = NSLocalizedString("Global.TextView.PlaceHolder.Text", comment: "Type or paste here...")
@@ -118,17 +106,22 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startEditing", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         
+        
+        
+        //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationWillResignActiveNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditingIfFullScreen", name: UIApplicationWillResignActiveNotification, object: nil)
+        
+        
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
         
-        
-        checkScreenWidthToSetButton()
+        doAfterRotate()
+        //checkScreenWidthToSetButton()
         
         if(defaults.objectForKey("appLaunchTimes") == nil){
             defaults.setInteger(1, forKey: "appLaunchTimes")
@@ -235,14 +228,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             doNotShowCharacter = false
             paddingSpaceKeyboardBarButtonItem.width = 5
             characterKeyboardBarButtonItem.enabled = true
-            //changeTextViewCounting()
+            //updateTextViewCounting()
         }
         
         if (width > 750){
             doNotShowWords = false
             paddingWordsSpaceKeyboardBarButtonItem.width = 5
             wordKeyboardBarButtonItem.enabled = true
-            //changeTextViewCounting()
+            //updateTextViewCounting()
         }else{
             doNotShowWords = true
             paddingWordsSpaceKeyboardBarButtonItem.width = 0
@@ -250,7 +243,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             wordKeyboardBarButtonItem.enabled = false
         }
         
-        //changeTextViewCounting()
+        //updateTextViewCounting()
         textViewDidChange(self.tv)      // Call textViewDidChange manually
     }
     
@@ -260,6 +253,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         setTextViewSize(n)
         
         doAfterRotate()
+        
+        //updateTextViewCounting()
+        textViewDidChange(self.tv)
     }
     
     func setTextViewSize (n: NSNotification) {
@@ -342,8 +338,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.inputAccessoryView = keyBoardToolBar
         
-        changeTextViewCounting()
+        updateTextViewCounting()
     }
+    
+    /*
+    func endEditingIfFullScreen() {
+        let isFullScreen = CGRectEqualToRect((UIApplication.sharedApplication().keyWindow?.bounds)!, UIScreen.mainScreen().bounds)
+        
+        print("[提示] 目前窗口是否處於全屏狀態：\(isFullScreen)")
+        
+        if(isFullScreen){
+            endEditing()
+        }
+    }
+    */
     
     func endEditing() {
         self.tv.endEditing(true)
@@ -381,7 +389,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         tv.text = ""
         textViewDidChange(self.tv)      // Call textViewDidChange manually
         
-        //changeTextViewCounting()
+        //updateTextViewCounting()
         
         doAfterRotate()
     }
@@ -426,10 +434,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         tvPlaceholderLabel.hidden = !textView.text.isEmpty
         
-        changeTextViewCounting()
+        updateTextViewCounting()
     }
     
-    func changeTextViewCounting () {
+    func updateTextViewCounting () {
         var wordTitle = ""
         var characterTitle = ""
         var paragraphTitle = ""
@@ -529,7 +537,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             tv.text = clipBoard
-            //changeTextViewCounting()
+            //updateTextViewCounting()
             textViewDidChange(self.tv)      // Call textViewDidChange manually
         }
     }

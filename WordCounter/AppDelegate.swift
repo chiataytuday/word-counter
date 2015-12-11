@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let defaults = NSUserDefaults.standardUserDefaults()
 
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         print("[提示] 準備加載 didFinishLaunchingWithOptions")
