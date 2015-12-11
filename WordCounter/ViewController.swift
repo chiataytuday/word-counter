@@ -105,14 +105,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startEditing", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
-        
-        
-        
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditingIfFullScreen", name: UIApplicationWillResignActiveNotification, object: nil)
-        
         
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
@@ -441,14 +435,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         var wordTitle = ""
         var characterTitle = ""
         var paragraphTitle = ""
+        var sentenceTitle = ""
         
         Async.background {
             wordTitle = WordCounter().getWordCountString(self.tv.text)
             characterTitle = WordCounter().getCharacterCountString(self.tv.text)
             paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
+            sentenceTitle = WordCounter().getSentenceCountString(self.tv.text)
             }.main {
                 self.topBarCountButton.title = wordTitle
                 
+                print(sentenceTitle)
                 
                 if (!self.doNotShowWords) {
                     self.wordKeyboardBarButtonItem.title = wordTitle
@@ -498,18 +495,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
         var wordTitle = ""
-        var charTitle = ""
-        var paraTitle = ""
+        var characterTitle = ""
+        var paragraphTitle = ""
+        var sentenceTitle = ""
         
         Async.background {
             wordTitle = WordCounter().getWordCountString(self.tv.text)
-            charTitle = WordCounter().getCharacterCountString(self.tv.text)
-            paraTitle = WordCounter().getParagraphCountString(self.tv.text)
+            characterTitle = WordCounter().getCharacterCountString(self.tv.text)
+            paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
+            sentenceTitle = WordCounter().getSentenceCountString(self.tv.text)
             }.main {
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
                 
                 let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-                let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), charTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paraTitle)
+                let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), characterTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paragraphTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Sentence", comment: "Sentences: %@"), sentenceTitle) 
                 
                 let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
                 countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in

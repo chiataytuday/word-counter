@@ -36,9 +36,13 @@ Global.Units.Paragraph.Plural = "段";
 Global.Units.Short.Paragraph.Singular = "段";
 Global.Units.Short.Paragraph.Plural = "段";
 
+Global.Units.Sentence.Singular = "句";
+Global.Units.Sentence.Plural = "句";
+
 Global.Count.Text.Character = "%1$@個%2$@";
 Global.Count.Text.Paragraph = "%1$@%2$@";
 Global.Count.Text.Word = "%1$@個%2$@";
+Global.Count.Text.Sentence = "%1$@%2$@";
 
 Global.Alert.Counter.Title = "統計";
 Global.Alert.Counter.Content.Word = "字數：%@";
