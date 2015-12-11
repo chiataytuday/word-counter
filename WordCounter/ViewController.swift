@@ -142,7 +142,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewDidAppear(animated)
         print("[提示] View Controller 之 super.viewDidAppear() 已加載")
         
+        var presentingOtherView = false
         if( (appFirstLaunch) || (appJustUpdate) ){
+            presentingOtherView = true
+            
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             
             let WelcomePageVC: WelcomePageViewController = storyboard.instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
@@ -165,17 +168,22 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //var appLaunchTimes = defaults.integerForKey("appLaunchTimes")
         
         print("[提示] everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.boolForKey("everShowPresentReviewAgain")))
-        
         if(defaults.boolForKey("everShowPresentReviewAgain")){
-            print("[提示] appLaunchTimes的值爲"+String(defaults.integerForKey("appLaunchTimes")))
-            //defaults.setInteger(8, forKey: "appLaunchTimes")
-            if(defaults.integerForKey("appLaunchTimes") % 9 == 0){
-                presentReviewAlert()
-                defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
+            if(!presentingOtherView){
+                print("[提示] appLaunchTimes的值爲"+String(defaults.integerForKey("appLaunchTimes")))
+                //defaults.setInteger(8, forKey: "appLaunchTimes")
+                if(defaults.integerForKey("appLaunchTimes") % 9 == 0){
+                    presentingOtherView = true
+                    
+                    presentReviewAlert()
+                    defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
+                }
             }
         }
         
-        startEditing()
+        if(!presentingOtherView){
+            startEditing()
+        }
     }
    
     
@@ -631,11 +639,13 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Later", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下以後再說按鈕")
             self.defaults.setBool(true, forKey: "everShowPresentReviewAgain")
+            self.startEditing()
         }))
         
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下永遠再不顯示按鈕")
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
+            self.startEditing()
         }))
         
         presentViewController(reviewAlert, animated: true, completion: nil)

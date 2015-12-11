@@ -18,8 +18,8 @@ Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
 Global.Button.Close = "關閉";
 
-Global.Units.Short.Word.Singular = "字";
-Global.Units.Short.Word.Plural = "字";
+Global.Units.Word.Singular = "字";
+Global.Units.Word.Plural = "字";
 
 Global.Units.Short.Word.Singular = "字";
 Global.Units.Short.Word.Plural = "字";
@@ -48,6 +48,7 @@ Global.Alert.Counter.Title = "統計";
 Global.Alert.Counter.Content.Word = "字數：%@";
 Global.Alert.Counter.Content.Character = "字符：%@";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
+Global.Alert.Counter.Content.Sentence = "句數：%@";
 
 
 Global.Alert.BeforeClear.Title = "確認清空所有文字？";
