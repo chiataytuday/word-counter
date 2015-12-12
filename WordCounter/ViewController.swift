@@ -493,10 +493,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func countButtonClickedFromKeyboardBarButtonItem() {
-        countResultButtonAction("Keyboard")
+        countResultButtonAction()
     }
     
-    func countResultButtonAction (from: String) {
+    func countResultButtonAction () {
+        let keyboardShowingBefore = keyboardShowing
+        
         endEditing()
         
         let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
@@ -521,7 +523,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
                 countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
                     print("[提示] 用戶已按下確定按鈕")
-                    if(from == "Keyboard"){
+                    if(keyboardShowingBefore){
                         self.startEditing()
                     }
                 }))
@@ -531,7 +533,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     @IBAction func topBarCountingButtonClicked(sender: AnyObject) {
-        countResultButtonAction("TopBar")
+        countResultButtonAction()
     }
     
     func doneButtonAction() {
