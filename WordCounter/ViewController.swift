@@ -13,6 +13,8 @@ import Async
 import MBProgressHUD
 
 class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate {
+    
+    // MARK: - Basic var
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     var wordCounterClass = WordCounter()
@@ -20,21 +22,24 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     let defaults = NSUserDefaults.standardUserDefaults()
     let sharedData = NSUserDefaults(suiteName: "group.com.arefly.WordCounter")
     
+    // MARK: - Init var
     var countNumNow = 0
     
     var iAdHeight: CGFloat = 0.0
     
+    // MARK: - IBOutlet var
     @IBOutlet var tv: UITextView!
     
     @IBOutlet var topBarCountButton: UIBarButtonItem!
     
-    
+    // MARK: - keyboardButton var
     var wordKeyboardBarButtonItem: UIBarButtonItem!
     var paragraphKeyboardBarButtonItem: UIBarButtonItem!
     var characterKeyboardBarButtonItem: UIBarButtonItem!
     var paddingSpaceKeyboardBarButtonItem: UIBarButtonItem!
     var paddingWordsSpaceKeyboardBarButtonItem: UIBarButtonItem!
     
+    // MARK: - Bool var
     var doNotShowCharacter = false
     var doNotShowWords = false
     
@@ -46,9 +51,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     //var isZhUser = false
     
+    // MARK: - UI var
     var tvPlaceholderLabel: UILabel!
     
-    
+    // MARK: - Override func
     override func viewDidLoad() {
         super.viewDidLoad()
         print("[提示] View Controller 之 super.viewDidLoad() 已加載")
@@ -211,6 +217,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         endEditing()
     }
     
+    // MARK: - Screen config func
     func checkScreenWidthToSetButton () {
         print("[提示] 準備使用 checkScreenWidthToSetButton() 函數")
         
@@ -249,6 +256,27 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         textViewDidChange(self.tv)      // Call textViewDidChange manually
     }
     
+    func doAfterRotate () {
+        if(iAdShowing){
+            iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
+        }
+        print("[提示] 已設定iAd高度：\(iAdHeight)")
+        
+        if (!keyboardShowing){
+            if( (iAdShowing) && (iAdHeight > 0.0) ){
+                self.tv.contentInset.bottom = iAdHeight
+                self.tv.scrollIndicatorInsets.bottom = iAdHeight
+                //}else if (self.tv.contentInset.bottom != 0){
+            }else{
+                self.tv.contentInset.bottom = 0
+                self.tv.scrollIndicatorInsets.bottom = 0
+            }
+        }
+        
+        checkScreenWidthToSetButton()
+    }
+    
+    // MARK: - Keyboard func
     func keyboardShow(n: NSNotification) {
         keyboardShowing = true
         
@@ -343,6 +371,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         updateTextViewCounting()
     }
     
+    // MARK: - Textview related func
     /*
     func endEditingIfFullScreen() {
         let isFullScreen = CGRectEqualToRect((UIApplication.sharedApplication().keyWindow?.bounds)!, UIScreen.mainScreen().bounds)
@@ -362,32 +391,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func startEditing() {
         tv.becomeFirstResponder()
-    }
-    
-    @IBAction func clearButtonClicked(sender: AnyObject) {
-        let keyboardShowingBefore = keyboardShowing
-        
-        endEditing()
-        
-        let clearContentAlert = UIAlertController(
-            title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Clear all content?"),
-            message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "WARNING: This action is irreversible!"),
-            preferredStyle: .Alert)
-        
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
-            print("[提示] 用戶已按下確定清空按鈕")
-            self.clearContent()
-            self.startEditing()
-        }))
-        
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
-            print("[提示] 用戶已按下取消清空按鈕")
-            if(keyboardShowingBefore){
-                self.startEditing()
-            }
-        }))
-        
-        presentViewController(clearContentAlert, animated: true, completion: nil)
     }
     
     func clearContent() {
@@ -472,25 +475,43 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
     }
     
+    func setContentFromClipBoard() {
+        print("[提示] -- 已開始使用 setContentFromClipBoard() 函數 --")
+        
+        if let clipBoard = UIPasteboard.generalPasteboard().string {
+            print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
+            tv.text = clipBoard
+            //updateTextViewCounting()
+            textViewDidChange(self.tv)      // Call textViewDidChange manually
+        }
+    }
+    
 
-    func doAfterRotate () {
-        if(iAdShowing){
-            iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
-        }
-        print("[提示] 已設定iAd高度：\(iAdHeight)")
+    // MARK: - Button action func
+    @IBAction func clearButtonClicked(sender: AnyObject) {
+        let keyboardShowingBefore = keyboardShowing
         
-        if (!keyboardShowing){
-            if( (iAdShowing) && (iAdHeight > 0.0) ){
-                self.tv.contentInset.bottom = iAdHeight
-                self.tv.scrollIndicatorInsets.bottom = iAdHeight
-            //}else if (self.tv.contentInset.bottom != 0){
-            }else{
-                self.tv.contentInset.bottom = 0
-                self.tv.scrollIndicatorInsets.bottom = 0
+        endEditing()
+        
+        let clearContentAlert = UIAlertController(
+            title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Clear all content?"),
+            message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "WARNING: This action is irreversible!"),
+            preferredStyle: .Alert)
+        
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下確定清空按鈕")
+            self.clearContent()
+            self.startEditing()
+        }))
+        
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下取消清空按鈕")
+            if(keyboardShowingBefore){
+                self.startEditing()
             }
-        }
+        }))
         
-        checkScreenWidthToSetButton()
+        presentViewController(clearContentAlert, animated: true, completion: nil)
     }
     
     func infoButtonAction () {
@@ -545,17 +566,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         endEditing()
     }
     
-    func setContentFromClipBoard() {
-        print("[提示] -- 已開始使用 setContentFromClipBoard() 函數 --")
-        
-        if let clipBoard = UIPasteboard.generalPasteboard().string {
-            print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
-            tv.text = clipBoard
-            //updateTextViewCounting()
-            textViewDidChange(self.tv)      // Call textViewDidChange manually
-        }
-    }
     
+    
+    // MARK: - iAd func
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
         print("[提示] 用戶已點擊iAd廣告")
         
@@ -618,6 +631,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //self.canDisplayBannerAds = false
     }
     
+    // MARK: - General func
     func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
         if let _ = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
             print("[提示] App於本機並非首次開啓")

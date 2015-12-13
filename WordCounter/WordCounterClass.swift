@@ -10,6 +10,7 @@ import Foundation
 
 class WordCounter {
     
+    // MARK: - Noun var
     let wordSingular = NSLocalizedString("Global.Units.Word.Singular", comment: "word")
     let wordPlural = NSLocalizedString("Global.Units.Word.Plural", comment: "words")
     
@@ -23,7 +24,7 @@ class WordCounter {
     let sentencePlural = NSLocalizedString("Global.Units.Sentence.Plural", comment: "sentences")
     
     
-    
+    // MARK: - Get string func
     func getWordCountString (s: String) -> String {
         let count = wordCount(s)
         
@@ -61,7 +62,7 @@ class WordCounter {
     }
     
     
-    
+    // MARK: - Get count func
     func wordCount(s: String) -> Int {
         var counts = 0
         let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
@@ -145,7 +146,7 @@ class WordCounter {
     }
     
     
-    
+    // MARK: - Related func
     private func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         let regex = try! NSRegularExpression(pattern: regex,
             options: [])
