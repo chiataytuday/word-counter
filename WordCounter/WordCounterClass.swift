@@ -125,23 +125,13 @@ class WordCounter {
     }
     
     func sentenceCount(s: String) -> Int {
-        
-        let englishPunctuations = [".", "!", "?", ";"]
-        let chinesePunctuations = ["。", "！", "？", "；"]
-        
-        let punctuationsString = englishPunctuations.joinWithSeparator("") + chinesePunctuations.joinWithSeparator("")
-        
-        var sWithModify = s
-        for eachP in chinesePunctuations {
-            sWithModify = sWithModify.stringByReplacingOccurrencesOfString(eachP, withString: "\(eachP) ")
-        }
-        
-        let pattern = "(?<=[\(punctuationsString)])\\s+(?=\\p{L})"
-        let sentencesString = sWithModify.stringByReplacingOccurrencesOfString(pattern, withString: "[*-SENTENCE-*]" as String, options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
-        
         var sentenceCounts = 0
-        let lines = sentencesString.componentsSeparatedByString("[*-SENTENCE-*]")
-        let modifiedLines = lines.filter({
+        var sentencesArr = [String]()
+        s.enumerateSubstringsInRange(s.startIndex..<s.endIndex, options: .BySentences) {
+            substring, substringRange, enclosingRange, stop in
+            sentencesArr.append(substring!)
+        }
+        let modifiedLines = sentencesArr.filter({
             let oS = ($0 as String?)!
             let s = oS.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "\n "))
             
