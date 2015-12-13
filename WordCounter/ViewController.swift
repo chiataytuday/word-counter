@@ -365,6 +365,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     @IBAction func clearButtonClicked(sender: AnyObject) {
+        let keyboardShowingBefore = keyboardShowing
+        
         endEditing()
         
         let clearContentAlert = UIAlertController(
@@ -380,6 +382,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下取消清空按鈕")
+            if(keyboardShowingBefore){
+                self.startEditing()
+            }
         }))
         
         presentViewController(clearContentAlert, animated: true, completion: nil)
