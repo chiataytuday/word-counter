@@ -125,24 +125,27 @@ class WordCounter {
     }
     
     func sentenceCount(s: String) -> Int {
-        var punctuations = ".!?;"
-        punctuations += "。！？；"
+        
+        let englishPunctuations = [".", "!", "?", ";"]
+        let chinesePunctuations = ["。", "！", "？", "；"]
+        
+        let punctuationsString = englishPunctuations.joinWithSeparator("") + chinesePunctuations.joinWithSeparator("")
+        
+        var sWithModify = s
+        for eachP in chinesePunctuations {
+            sWithModify = sWithModify.stringByReplacingOccurrencesOfString(eachP, withString: "\(eachP) ")
+        }
+        
+        let pattern = "(?<=[\(punctuationsString)])\\s+(?=\\p{L})"
+        let sentencesString = sWithModify.stringByReplacingOccurrencesOfString(pattern, withString: "[*-SENTENCE-*]" as String, options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
         
         var sentenceCounts = 0
-        let charSet = NSCharacterSet(charactersInString: punctuations)
-        let lines = s.componentsSeparatedByCharactersInSet(charSet)
+        let lines = sentencesString.componentsSeparatedByString("[*-SENTENCE-*]")
         let modifiedLines = lines.filter({
             let oS = ($0 as String?)!
             let s = oS.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "\n "))
             
-            var firstChar = Character(" ")
-            if(oS.characters.count != 0){
-                firstChar = oS[oS.startIndex.advancedBy(0)]
-            }
-            
             if (s).characters.count < 1 { return false }
-            
-            if (  ( (firstChar != " ") && (firstChar != "\n") )  &&  (oS != lines[0])  ) { return false }
             
             return true
         })
