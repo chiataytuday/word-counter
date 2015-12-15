@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="EtB-Dq-eoo">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Word Counter-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ObA-dk-sSI" customClass="ActionViewController" customModule="CounterActionExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
+                        <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E4Z-BR-oF6">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E4Z-BR-oF6" firstAttribute="trailing" secondItem="zMn-AG-sqS" secondAttribute="trailing" id="8pD-xD-Vzy"/>
+                            <constraint firstItem="n38-gi-rB5" firstAttribute="top" secondItem="E4Z-BR-oF6" secondAttribute="bottom" id="Ygn-eE-as7"/>
+                            <constraint firstItem="E4Z-BR-oF6" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" id="g6z-5Q-5my"/>
+                            <constraint firstItem="E4Z-BR-oF6" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="kAe-cJ-Jft"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Word Counter" id="gq1-ds-ID4">
+                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="HlH-WE-9GA">
+                            <connections>
+                                <action selector="done" destination="ObA-dk-sSI" id="1uH-zN-LXw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="E4Z-BR-oF6" id="2Q5-Ie-AGN"/>
+                        <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="-202"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oUf-5t-x6Q">
+            <objects>
+                <navigationController id="EtB-Dq-eoo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xWu-ti-XVc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ObA-dk-sSI" kind="relationship" relationship="rootViewController" id="Fim-uV-u3k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dkb-n3-Vph" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-9" y="-202"/>
+        </scene>
+    </scenes>
+</document>
