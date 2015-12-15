@@ -323,7 +323,7 @@
 				300BAB5E1B49097100FE8B37 /* Sources */,
 				300BAB5F1B49097100FE8B37 /* Frameworks */,
 				300BAB601B49097100FE8B37 /* Resources */,
-				3090805F1B4A0A3800C0AE5A /* ShellScript */,
+				3090805F1B4A0A3800C0AE5A /* Update Build Number */,
 				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
 				160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */,
 				FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */,
@@ -364,7 +364,7 @@
 				30B7AC8F1B74698E00517036 /* Sources */,
 				30B7AC901B74698E00517036 /* Frameworks */,
 				30B7AC911B74698E00517036 /* Resources */,
-				30B7ACA51B7469AE00517036 /* Run Script */,
+				30B7ACA51B7469AE00517036 /* Update Build Number */,
 			);
 			buildRules = (
 			);
@@ -382,6 +382,7 @@
 				ED3235881C20633C0007EF1A /* Sources */,
 				ED3235891C20633C0007EF1A /* Frameworks */,
 				ED32358A1C20633C0007EF1A /* Resources */,
+				ED32359A1C206D570007EF1A /* Update Build Number */,
 			);
 			buildRules = (
 			);
@@ -529,27 +530,42 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3090805F1B4A0A3800C0AE5A /* ShellScript */ = {
+		3090805F1B4A0A3800C0AE5A /* Update Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Update Build Number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
 		};
-		30B7ACA51B7469AE00517036 /* Run Script */ = {
+		30B7ACA51B7469AE00517036 /* Update Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Update Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
+		};
+		ED32359A1C206D570007EF1A /* Update Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update Build Number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -891,7 +907,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = CounterActionExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arefly.WordCounter.CounterActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -905,7 +921,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CounterActionExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arefly.WordCounter.CounterActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
