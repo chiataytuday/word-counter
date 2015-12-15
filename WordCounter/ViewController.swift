@@ -38,6 +38,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     var wordKeyboardBarButtonItem: UIBarButtonItem!
     var characterKeyboardBarButtonItem: UIBarButtonItem!
     var paragraphKeyboardBarButtonItem: UIBarButtonItem!
+    var sentenceKeyboardBarButtonItem: UIBarButtonItem!
     
     var flexSpaceKeyboardBarButtonItem: UIBarButtonItem!
     
@@ -140,13 +141,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if(defaults.objectForKey("everShowPresentReviewAgain") == nil){
             defaults.setBool(true, forKey: "everShowPresentReviewAgain")
         }
-        
-        appDelegate.bannerView.delegate = self
-        view.addSubview(appDelegate.bannerView)
-        
-        let viewsDictionary = ["bannerView": appDelegate.bannerView]
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
     
     
@@ -154,6 +148,13 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print("[提示] View Controller 之 super.viewDidAppear() 已加載")
+        
+        appDelegate.bannerView.delegate = self
+        view.addSubview(appDelegate.bannerView)
+        
+        let viewsDictionary = ["bannerView": appDelegate.bannerView]
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         
         var presentingOtherView = false
         if( (appFirstLaunch) || (appJustUpdate) ){
@@ -232,6 +233,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             "word": false,
             "character": false,
             "paragraph": false,
+            "sentence": false,
         ]
         
         let bounds = UIApplication.sharedApplication().keyWindow?.bounds
@@ -244,16 +246,19 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             showedKeyboardButtons["word"] = false
             showedKeyboardButtons["character"] = false
             showedKeyboardButtons["paragraph"] = true
+            showedKeyboardButtons["sentence"] = false
             break
         case 330..<750:
             showedKeyboardButtons["word"] = false
             showedKeyboardButtons["character"] = true
             showedKeyboardButtons["paragraph"] = true
+            showedKeyboardButtons["sentence"] = false
             break
         default:
             showedKeyboardButtons["word"] = true
             showedKeyboardButtons["character"] = true
             showedKeyboardButtons["paragraph"] = true
+            showedKeyboardButtons["sentence"] = true
         }
         
         updateToolBar()
@@ -352,9 +357,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        
         characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()
+        
+        sentenceKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
+        sentenceKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
         updateToolBar()
     }
@@ -374,6 +381,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         if(showedKeyboardButtons["character"] == true){
             barItems.append(characterKeyboardBarButtonItem)
+        }
+        
+        if(showedKeyboardButtons["sentence"] == true){
+            barItems.append(sentenceKeyboardBarButtonItem)
         }
         
         barItems.append(flexSpaceKeyboardBarButtonItem)
@@ -489,15 +500,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }.main {
                 self.topBarCountButton.title = wordTitle
                 
-                //print(sentenceTitle)
-                
                 self.wordKeyboardBarButtonItem.title = ""
                 self.paragraphKeyboardBarButtonItem.title = ""
                 self.characterKeyboardBarButtonItem.title = ""
+                self.sentenceKeyboardBarButtonItem.title = ""
                 
                 self.wordKeyboardBarButtonItem.title = wordTitle
                 self.characterKeyboardBarButtonItem.title = characterTitle
                 self.paragraphKeyboardBarButtonItem.title = paragraphTitle
+                self.sentenceKeyboardBarButtonItem.title = sentenceTitle
+                
+                print(sentenceTitle)
         }
     }
     
