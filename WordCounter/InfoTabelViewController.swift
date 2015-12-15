@@ -12,11 +12,13 @@ import MessageUI
 
 class InfoTabelViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
+    // MARK: - IBOutlet var
     @IBOutlet var versionTitle: UILabel!
     @IBOutlet var buildSubtitle: UILabel!
     
     @IBOutlet var shareButton: UIButton!
     
+    // MARK: - Override func
     override func viewDidLoad() {
         super.viewDidLoad()
         print("[提示] Info Tabel View Controller 之 super.viewDidLoad() 已加載")
@@ -34,8 +36,8 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         print("[提示] Info Table View Controller 之 super.viewWillAppear() 已加載")
     }
     
+    // MARK: - Table func
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -112,6 +114,7 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    // MARK: - Related func
     func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
         switch result.rawValue {
         case MFMailComposeResultCancelled.rawValue:

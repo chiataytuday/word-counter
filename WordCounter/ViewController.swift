@@ -33,16 +33,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     @IBOutlet var topBarCountButton: UIBarButtonItem!
     
     // MARK: - keyboardButton var
+    var keyBoardToolBar = UIToolbar()
+    
     var wordKeyboardBarButtonItem: UIBarButtonItem!
-    var paragraphKeyboardBarButtonItem: UIBarButtonItem!
     var characterKeyboardBarButtonItem: UIBarButtonItem!
-    var paddingSpaceKeyboardBarButtonItem: UIBarButtonItem!
-    var paddingWordsSpaceKeyboardBarButtonItem: UIBarButtonItem!
+    var paragraphKeyboardBarButtonItem: UIBarButtonItem!
+    
+    var flexSpaceKeyboardBarButtonItem: UIBarButtonItem!
+    
+    var doneKeyboardBarButtonItem: UIBarButtonItem!
+    var infoKeyboardBarButtonItem: UIBarButtonItem!
+    
+    var showedKeyboardButtons = [String: Bool]()
     
     // MARK: - Bool var
-    var doNotShowCharacter = false
-    var doNotShowWords = false
-    
     var keyboardShowing = false
     var iAdShowing = false
     
@@ -82,7 +86,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
 
         
         
-        addToolBarToKeyboard()
+        
 
         
         tvPlaceholderLabel = UILabel()
@@ -99,12 +103,15 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewWillAppear(animated)
         print("[提示] View Controller 之 super.viewWillAppear() 已加載")
         
+        addToolBarToKeyboard()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
@@ -134,14 +141,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             defaults.setBool(true, forKey: "everShowPresentReviewAgain")
         }
         
-        
         appDelegate.bannerView.delegate = self
         view.addSubview(appDelegate.bannerView)
         
         let viewsDictionary = ["bannerView": appDelegate.bannerView]
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
+    
     
     
     override func viewDidAppear(animated: Bool) {
@@ -221,42 +228,43 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func checkScreenWidthToSetButton () {
         print("[提示] 準備使用 checkScreenWidthToSetButton() 函數")
         
-        //let bounds = UIScreen.mainScreen().bounds
-        //let bounds = UIScreen.mainScreen().applicationFrame
+        showedKeyboardButtons = [
+            "word": false,
+            "character": false,
+            "paragraph": false,
+        ]
+        
         let bounds = UIApplication.sharedApplication().keyWindow?.bounds
         let width = bounds!.size.width
         let height = bounds!.size.height
         print("[提示] 屏幕高度：\(height)、屏幕寬度：\(width)")
         
-        if (width < 330){
-            doNotShowCharacter = true
-            paddingWordsSpaceKeyboardBarButtonItem.width = 0
-            characterKeyboardBarButtonItem.title = ""
-            characterKeyboardBarButtonItem.enabled = false
-        }else{
-            doNotShowCharacter = false
-            paddingSpaceKeyboardBarButtonItem.width = 5
-            characterKeyboardBarButtonItem.enabled = true
-            //updateTextViewCounting()
+        switch width {
+        case 0..<330:
+            showedKeyboardButtons["word"] = false
+            showedKeyboardButtons["character"] = false
+            showedKeyboardButtons["paragraph"] = true
+            break
+        case 330..<750:
+            showedKeyboardButtons["word"] = false
+            showedKeyboardButtons["character"] = true
+            showedKeyboardButtons["paragraph"] = true
+            break
+        default:
+            showedKeyboardButtons["word"] = true
+            showedKeyboardButtons["character"] = true
+            showedKeyboardButtons["paragraph"] = true
         }
         
-        if (width > 750){
-            doNotShowWords = false
-            paddingWordsSpaceKeyboardBarButtonItem.width = 5
-            wordKeyboardBarButtonItem.enabled = true
-            //updateTextViewCounting()
-        }else{
-            doNotShowWords = true
-            paddingWordsSpaceKeyboardBarButtonItem.width = 0
-            wordKeyboardBarButtonItem.title = ""
-            wordKeyboardBarButtonItem.enabled = false
-        }
+        updateToolBar()
         
         //updateTextViewCounting()
         textViewDidChange(self.tv)      // Call textViewDidChange manually
     }
     
     func doAfterRotate () {
+        print("[提示] -- 已呼叫 doAfterRotate --")
+        
         if(iAdShowing){
             iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
         }
@@ -322,51 +330,71 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func addToolBarToKeyboard(){
-        let keyBoardToolBar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 50))
-        keyBoardToolBar.barStyle = UIBarStyle.Default
+        keyBoardToolBar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
+        //keyBoardToolBar = UIToolbar()
+        keyBoardToolBar.barStyle = .Default
+        //keyBoardToolBar.translatesAutoresizingMaskIntoConstraints = false
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        keyBoardToolBar.translucent = false
+        keyBoardToolBar.barTintColor = UIColor(colorLiteralRed: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
         
-        paddingSpaceKeyboardBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-        //paddingSpace.width = 5
+        flexSpaceKeyboardBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         
-        paddingWordsSpaceKeyboardBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-        
-        let done: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
+        doneKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Done, target: self, action: "doneButtonAction")
         
         let infoButton: UIButton = UIButton(type: UIButtonType.InfoLight)
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-        let info: UIBarButtonItem = UIBarButtonItem(customView: infoButton)
+        infoKeyboardBarButtonItem = UIBarButtonItem(customView: infoButton)
         
-        wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
+        wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
+        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
         
-        characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
+        characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
         characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
+        updateToolBar()
+    }
+    
+    func updateToolBar() {
+        var barItems: [UIBarButtonItem] = []
         
+        print("i HATE \(showedKeyboardButtons["paragraph"])")
         
-        let items = NSMutableArray()
-        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-            items.addObject(wordKeyboardBarButtonItem)
-            items.addObject(paddingWordsSpaceKeyboardBarButtonItem)
+        if(showedKeyboardButtons["word"] == true){
+            barItems.append(wordKeyboardBarButtonItem)
         }
-        items.addObject(paragraphKeyboardBarButtonItem)
-        items.addObject(paddingSpaceKeyboardBarButtonItem)
-        items.addObject(characterKeyboardBarButtonItem)
-        items.addObject(flexSpace)
-        items.addObject(done)
-        items.addObject(info)
-        //items.addObject(info)
         
-        keyBoardToolBar.items = (items.copy() as! [UIBarButtonItem])
-        keyBoardToolBar.sizeToFit()
+        if(showedKeyboardButtons["paragraph"] == true){
+            barItems.append(paragraphKeyboardBarButtonItem)
+        }
+        
+        if(showedKeyboardButtons["character"] == true){
+            barItems.append(characterKeyboardBarButtonItem)
+        }
+        
+        barItems.append(flexSpaceKeyboardBarButtonItem)
+        barItems.append(doneKeyboardBarButtonItem)
+        barItems.append(infoKeyboardBarButtonItem)
+        
+        //keyBoardToolBar.items = barItems
+        keyBoardToolBar.setItems(barItems, animated: true)
+        
+        keyBoardToolBar.setNeedsLayout()
+        //keyBoardToolBar.layoutIfNeeded()
+        
+        /*keyBoardToolBar.sizeToFit()
+        keyBoardToolBar.frame.size.height = 44*/
         
         self.tv.inputAccessoryView = keyBoardToolBar
+        
+        doneKeyboardBarButtonItem.title = ""
+        doneKeyboardBarButtonItem.title = NSLocalizedString("Global.Button.Done", comment: "Done")
+        
+        print(barItems)
         
         updateTextViewCounting()
     }
@@ -461,16 +489,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }.main {
                 self.topBarCountButton.title = wordTitle
                 
-                print(sentenceTitle)
+                //print(sentenceTitle)
                 
-                if (!self.doNotShowWords) {
-                    self.wordKeyboardBarButtonItem.title = wordTitle
-                }
+                self.wordKeyboardBarButtonItem.title = ""
+                self.paragraphKeyboardBarButtonItem.title = ""
+                self.characterKeyboardBarButtonItem.title = ""
                 
-                if (!self.doNotShowCharacter) {
-                    self.characterKeyboardBarButtonItem.title = characterTitle
-                }
-                
+                self.wordKeyboardBarButtonItem.title = wordTitle
+                self.characterKeyboardBarButtonItem.title = characterTitle
                 self.paragraphKeyboardBarButtonItem.title = paragraphTitle
         }
     }
