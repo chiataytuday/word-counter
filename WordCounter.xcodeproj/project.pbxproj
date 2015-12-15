@@ -35,6 +35,9 @@
 		30B7ACAB1B747BD400517036 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
 		30B7ACDF1B748B8700517036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30B7ACE11B748B8700517036 /* InfoPlist.strings */; };
 		6A2EC6BBF9B6878F846920A5 /* Pods_WordCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */; };
+		ED32358F1C20633C0007EF1A /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32358E1C20633C0007EF1A /* ActionViewController.swift */; };
+		ED3235921C20633C0007EF1A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3235901C20633C0007EF1A /* MainInterface.storyboard */; };
+		ED3235961C20633C0007EF1A /* CounterActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,13 @@
 			remoteGlobalIDString = 30B7AC921B74698E00517036;
 			remoteInfo = WordCounterTodayWidget;
 		};
+		ED3235941C20633C0007EF1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 300BAB5A1B49097100FE8B37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED32358B1C20633C0007EF1A;
+			remoteInfo = CounterActionExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +72,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				306CF5591B7588EC0085FC3B /* WordCounterTodayWidget.appex in Embed App Extensions */,
+				ED3235961C20633C0007EF1A /* CounterActionExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +123,10 @@
 		30B7ACE41B748BBB00517036 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
+		ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED32358E1C20633C0007EF1A /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		ED3235911C20633C0007EF1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		ED3235931C20633C0007EF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +153,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ED3235891C20633C0007EF1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -156,6 +178,7 @@
 				300BAB641B49097100FE8B37 /* WordCounter */,
 				300BAB7D1B49097100FE8B37 /* WordCounterTests */,
 				30B7AC971B74698E00517036 /* WordCounterTodayWidget */,
+				ED32358D1C20633C0007EF1A /* CounterActionExtension */,
 				30B7AC941B74698E00517036 /* Frameworks */,
 				300BAB631B49097100FE8B37 /* Products */,
 				0AE76AEC7D189EB0CE73CFF0 /* Pods */,
@@ -168,6 +191,7 @@
 				300BAB621B49097100FE8B37 /* WordCounter.app */,
 				300BAB7A1B49097100FE8B37 /* WordCounterTests.xctest */,
 				30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */,
+				ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,6 +302,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		ED32358D1C20633C0007EF1A /* CounterActionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				ED32358E1C20633C0007EF1A /* ActionViewController.swift */,
+				ED3235901C20633C0007EF1A /* MainInterface.storyboard */,
+				ED3235931C20633C0007EF1A /* Info.plist */,
+			);
+			path = CounterActionExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +332,7 @@
 			);
 			dependencies = (
 				306CF55B1B7588EC0085FC3B /* PBXTargetDependency */,
+				ED3235951C20633C0007EF1A /* PBXTargetDependency */,
 			);
 			name = WordCounter;
 			productName = WordCounter;
@@ -340,6 +375,23 @@
 			productReference = 30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		ED32358B1C20633C0007EF1A /* CounterActionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED3235991C20633C0007EF1A /* Build configuration list for PBXNativeTarget "CounterActionExtension" */;
+			buildPhases = (
+				ED3235881C20633C0007EF1A /* Sources */,
+				ED3235891C20633C0007EF1A /* Frameworks */,
+				ED32358A1C20633C0007EF1A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CounterActionExtension;
+			productName = CounterActionExtension;
+			productReference = ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -347,7 +399,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Arefly;
 				TargetAttributes = {
@@ -373,6 +425,10 @@
 							};
 						};
 					};
+					ED32358B1C20633C0007EF1A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 77T9PEZRU7;
+					};
 				};
 			};
 			buildConfigurationList = 300BAB5D1B49097100FE8B37 /* Build configuration list for PBXProject "WordCounter" */;
@@ -393,6 +449,7 @@
 				300BAB611B49097100FE8B37 /* WordCounter */,
 				300BAB791B49097100FE8B37 /* WordCounterTests */,
 				30B7AC921B74698E00517036 /* WordCounterTodayWidget */,
+				ED32358B1C20633C0007EF1A /* CounterActionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -428,6 +485,14 @@
 				30B7ACDF1B748B8700517036 /* InfoPlist.strings in Resources */,
 				309496621B748F8E00360A77 /* MainInterface.storyboard in Resources */,
 				30B7ACAB1B747BD400517036 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED32358A1C20633C0007EF1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED3235921C20633C0007EF1A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +608,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ED3235881C20633C0007EF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED32358F1C20633C0007EF1A /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -555,6 +628,11 @@
 			isa = PBXTargetDependency;
 			target = 30B7AC921B74698E00517036 /* WordCounterTodayWidget */;
 			targetProxy = 306CF55A1B7588EC0085FC3B /* PBXContainerItemProxy */;
+		};
+		ED3235951C20633C0007EF1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED32358B1C20633C0007EF1A /* CounterActionExtension */;
+			targetProxy = ED3235941C20633C0007EF1A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -605,6 +683,14 @@
 				30B7ACE41B748BBB00517036 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ED3235901C20633C0007EF1A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED3235911C20633C0007EF1A /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -702,6 +788,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -720,6 +807,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -796,6 +884,35 @@
 			};
 			name = Release;
 		};
+		ED3235971C20633C0007EF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = CounterActionExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arefly.WordCounter.CounterActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		ED3235981C20633C0007EF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CounterActionExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.arefly.WordCounter.CounterActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -834,6 +951,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		ED3235991C20633C0007EF1A /* Build configuration list for PBXNativeTarget "CounterActionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED3235971C20633C0007EF1A /* Debug */,
+				ED3235981C20633C0007EF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

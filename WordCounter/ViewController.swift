@@ -245,14 +245,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         case 0..<330:
             showedKeyboardButtons["word"] = false
             showedKeyboardButtons["character"] = false
-            showedKeyboardButtons["paragraph"] = true
-            showedKeyboardButtons["sentence"] = false
+            showedKeyboardButtons["paragraph"] = false
+            showedKeyboardButtons["sentence"] = true
             break
         case 330..<750:
             showedKeyboardButtons["word"] = false
             showedKeyboardButtons["character"] = true
-            showedKeyboardButtons["paragraph"] = true
-            showedKeyboardButtons["sentence"] = false
+            showedKeyboardButtons["paragraph"] = false
+            showedKeyboardButtons["sentence"] = true
             break
         default:
             showedKeyboardButtons["word"] = true
@@ -486,6 +486,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         updateTextViewCounting()
     }
     
+    // TODO: count only what will be displayed
     func updateTextViewCounting () {
         var wordTitle = ""
         var characterTitle = ""

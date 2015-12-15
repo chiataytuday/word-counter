@@ -147,6 +147,14 @@ class WordCounter {
     
     
     // MARK: - Related func
+    /**
+    Search `regex` in `text`
+    
+    - Parameter regex:  The regex.
+    - Parameter text:   The text.
+    
+    - Returns: A new `[string]` with result.
+    */
     private func matchesForRegexInText(regex: String!, text: String!) -> [String] {
         let regex = try! NSRegularExpression(pattern: regex,
             options: [])
