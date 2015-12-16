@@ -34,7 +34,7 @@
 		30B7ACA81B746F6100517036 /* WordCounterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7ACA61B746F6100517036 /* WordCounterClass.swift */; };
 		30B7ACAB1B747BD400517036 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
 		30B7ACDF1B748B8700517036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30B7ACE11B748B8700517036 /* InfoPlist.strings */; };
-		6A2EC6BBF9B6878F846920A5 /* Pods_WordCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */; };
+		D1118EC73273BEC15CF6067B /* Pods_WordCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */; };
 		ED32358F1C20633C0007EF1A /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32358E1C20633C0007EF1A /* ActionViewController.swift */; };
 		ED3235921C20633C0007EF1A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3235901C20633C0007EF1A /* MainInterface.storyboard */; };
 		ED3235961C20633C0007EF1A /* CounterActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -82,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28ABFBC534088F073BA180DB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		300BAB621B49097100FE8B37 /* WordCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		300BAB661B49097100FE8B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		300BAB671B49097100FE8B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +123,8 @@
 		30B7ACE01B748B8700517036 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		30B7ACE31B748BBA00517036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30B7ACE41B748BBB00517036 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5BA74942AB1C3B797E5D3AA7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5D570F50824021A22FD5F5EC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 		ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A2EC6BBF9B6878F846920A5 /* Pods_WordCounter.framework in Frameworks */,
+				D1118EC73273BEC15CF6067B /* Pods_WordCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +175,8 @@
 			children = (
 				7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */,
 				E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */,
+				5BA74942AB1C3B797E5D3AA7 /* Pods.debug.xcconfig */,
+				28ABFBC534088F073BA180DB /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			children = (
 				30B7AC951B74698E00517036 /* NotificationCenter.framework */,
 				20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */,
+				5D570F50824021A22FD5F5EC /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -820,7 +826,6 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -839,7 +844,6 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

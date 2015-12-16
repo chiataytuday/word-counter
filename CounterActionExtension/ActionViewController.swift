@@ -8,7 +8,6 @@
 
 import UIKit
 import MobileCoreServices
-import Async
 
 class ActionViewController: UIViewController {
 
