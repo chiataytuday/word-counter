@@ -23,7 +23,6 @@ class WordCounter {
     let sentenceSingular = NSLocalizedString("Global.Units.Sentence.Singular", comment: "sentence")
     let sentencePlural = NSLocalizedString("Global.Units.Sentence.Plural", comment: "sentences")
     
-    
     // MARK: - Get string func
     func getWordCountString (s: String) -> String {
         let count = wordCount(s)
@@ -144,6 +143,8 @@ class WordCounter {
         sentenceCounts = modifiedLines.count
         return sentenceCounts
     }
+    
+    // TODO: Count words without pountuation
     
     
     // MARK: - Related func

@@ -3,7 +3,7 @@
   WordCounter
 
   Created by Arefly on 7/8/2015.
-  Copyright (c) 2015年 Arefly. All rights reserved.
+  Copyright (c) 2015 Arefly. All rights reserved.
 */
 
 CFBundleDisplayName = "字数统计";

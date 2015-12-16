@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  WordCounter
+
+  Created by Jason Ho on 16/12/2015.
+  Copyright © 2015 Arefly. All rights reserved.
+*/
+
+CFBundleDisplayName = "統計字數";

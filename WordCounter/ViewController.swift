@@ -54,6 +54,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     var appFirstLaunch = false
     var appJustUpdate = false
     
+    var presentingOtherView = false
+    
     //var isZhUser = false
     
     // MARK: - UI var
@@ -114,10 +116,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIApplicationDidBecomeActiveNotification, object: nil)
-        
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startEditing", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
@@ -143,8 +142,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
     }
     
-    
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print("[提示] View Controller 之 super.viewDidAppear() 已加載")
@@ -156,7 +153,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         
-        var presentingOtherView = false
+        
         if( (appFirstLaunch) || (appJustUpdate) ){
             presentingOtherView = true
             
@@ -672,6 +669,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     // MARK: - General func
+    func didBecomeActive() {
+        doAfterRotate()
+        
+        if(!presentingOtherView){
+            startEditing()
+        }
+    }
+    
     func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
         if let _ = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
             print("[提示] App於本機並非首次開啓")
@@ -701,12 +706,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             print("[提示] 用戶已按下以後再說按鈕")
             self.defaults.setBool(true, forKey: "everShowPresentReviewAgain")
             self.startEditing()
+            self.presentingOtherView = false
         }))
         
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下永遠再不顯示按鈕")
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
             self.startEditing()
+            self.presentingOtherView = false
         }))
         
         presentViewController(reviewAlert, animated: true, completion: nil)
