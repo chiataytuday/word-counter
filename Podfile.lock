@@ -1,0 +1,19 @@
+PODS:
+  - AsyncSwift (1.6.4)
+  - EAIntroView (2.8.1):
+    - EARestrictedScrollView (~> 0.2.0)
+  - EARestrictedScrollView (0.2.0)
+  - MBProgressHUD (0.9.1)
+
+DEPENDENCIES:
+  - AsyncSwift
+  - EAIntroView (~> 2.8.0)
+  - MBProgressHUD (~> 0.9.1)
+
+SPEC CHECKSUMS:
+  AsyncSwift: 3c90beed237324f1b57e1f1c414dc5501985d208
+  EAIntroView: 73abfa89caa311f450af876421d950b96679e845
+  EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+
+COCOAPODS: 0.39.0
