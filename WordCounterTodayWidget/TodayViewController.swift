@@ -12,13 +12,11 @@ import NotificationCenter
 class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProviding {
     
     var sharedData = NSUserDefaults(suiteName: "group.com.arefly.WordCounter")
-        
+    
     @IBOutlet var textView: UITextView!
     @IBOutlet var wordsCountLabel: UILabel!
     @IBOutlet var parasCountLabel: UILabel!
     @IBOutlet var charsCountLabel: UILabel!
-    
-    var wordCounterClass = WordCounter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,9 +66,9 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             textView.text = clipBoard
             
-            wordCounts = wordCounterClass.wordCount(textView.text)
-            charCount = wordCounterClass.characterCount(textView.text)
-            paraCount = wordCounterClass.paragraphCount(textView.text)
+            wordCounts = WordCounter().wordCount(textView.text)
+            charCount = WordCounter().characterCount(textView.text)
+            paraCount = WordCounter().paragraphCount(textView.text)
         }else{
             print("[提示] 用戶剪貼簿內並未任何內容")
             textView.text = NSLocalizedString("Global.Text.NothingOnClipboard", comment: "Nothing in your clipboard!")
