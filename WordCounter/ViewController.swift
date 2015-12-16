@@ -391,11 +391,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         barItems.append(doneKeyboardBarButtonItem)
         barItems.append(infoKeyboardBarButtonItem)
         
-        //keyBoardToolBar.items = barItems
         keyBoardToolBar.setItems(barItems, animated: true)
         
         keyBoardToolBar.setNeedsLayout()
-        //keyBoardToolBar.layoutIfNeeded()
         
         /*keyBoardToolBar.sizeToFit()
         keyBoardToolBar.frame.size.height = 44*/
@@ -489,15 +487,24 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // TODO: count only what will be displayed
     func updateTextViewCounting () {
         var wordTitle = ""
+        
         var characterTitle = ""
         var paragraphTitle = ""
         var sentenceTitle = ""
         
         Async.background {
             wordTitle = WordCounter().getWordCountString(self.tv.text)
-            characterTitle = WordCounter().getCharacterCountString(self.tv.text)
-            paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
-            sentenceTitle = WordCounter().getSentenceCountString(self.tv.text)
+            
+            if(self.showedKeyboardButtons["character"] == true){
+                characterTitle = WordCounter().getCharacterCountString(self.tv.text)
+            }
+            if(self.showedKeyboardButtons["paragraph"] == true){
+                paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
+            }
+            if(self.showedKeyboardButtons["sentence"] == true){
+                sentenceTitle = WordCounter().getSentenceCountString(self.tv.text)
+            }
+            
             }.main {
                 self.topBarCountButton.title = wordTitle
                 
