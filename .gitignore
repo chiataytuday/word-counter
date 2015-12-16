@@ -2,7 +2,10 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+## Mac
 .DS_Store
+.Trashes
+*.swp
 
 ## Build generated
 build/
