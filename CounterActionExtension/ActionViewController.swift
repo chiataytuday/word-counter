@@ -88,10 +88,6 @@ class ActionViewController: UIViewController {
                 let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), characterTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paragraphTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Sentence", comment: "Sentences: %@"), sentenceTitle)
                 
                 let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-                countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.EditText", comment: "Edit"), style: .Default, handler: { (action: UIAlertAction) in
-                    print("[提示] 用戶已按下編輯文字按鈕")
-                    
-                }))
                 countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
                     print("[提示] 用戶已按下確定按鈕")
                     self.closeWindow()
