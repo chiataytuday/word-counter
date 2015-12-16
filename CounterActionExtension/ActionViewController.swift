@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import Foundation
 import MobileCoreServices
+import Async
+import MBProgressHUD
 
 class ActionViewController: UIViewController {
 
@@ -31,7 +34,12 @@ class ActionViewController: UIViewController {
                     //self.convertedString = self.convertedString!.uppercaseString
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.contentTextView.text = self.convertedString!
+                        
+                        let text = self.convertedString!
+                        
+                        self.contentTextView.text = text
+                        
+                        self.showCountResult(text)
                     }
                 }
             })
@@ -41,6 +49,34 @@ class ActionViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showCountResult (text: String) {
+        let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
+        
+        var wordTitle = ""
+        var characterTitle = ""
+        var paragraphTitle = ""
+        var sentenceTitle = ""
+        
+        Async.background {
+            wordTitle = WordCounter().getWordCountString(text)
+            characterTitle = WordCounter().getCharacterCountString(text)
+            paragraphTitle = WordCounter().getParagraphCountString(text)
+            sentenceTitle = WordCounter().getSentenceCountString(text)
+            }.main {
+                MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+                
+                let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
+                let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), characterTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paragraphTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Sentence", comment: "Sentences: %@"), sentenceTitle)
+                
+                let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下確定按鈕")
+                }))
+                self.presentViewController(countingResultAlert, animated: true, completion: nil)
+        }
     }
 
     @IBAction func done() {
