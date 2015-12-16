@@ -29,9 +29,6 @@
 /* Class = "UILabel"; text = "更新了什麽？"; ObjectID = "Uqt-YN-UPL"; */
 "Uqt-YN-UPL.text" = "更新了什麽？";
 
-/* Class = "UINavigationItem"; title = "字数统计工具"; ObjectID = "bK1-6I-0cD"; */
-"bK1-6I-0cD.title" = "字数统计工具";
-
 /* Class = "UITableViewSection"; headerTitle = "分享"; ObjectID = "bsu-Ro-zGO"; */
 "bsu-Ro-zGO.headerTitle" = "分享";
 

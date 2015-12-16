@@ -66,6 +66,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewDidLoad()
         print("[提示] View Controller 之 super.viewDidLoad() 已加載")
         
+        self.title = NSLocalizedString("Global.NavBar.Title", comment: "Word Counter")
+        
+        
         if(isAppFirstLaunch()){
             appFirstLaunch = true
         }

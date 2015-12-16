@@ -13,10 +13,14 @@ Global.ProgressingHUD.Label.Counting = "Counting...";
 
 Global.TextView.PlaceHolder.Text = "Type or paste here...";
 
+Global.NavBar.Title = "Word Counter";
+
 Global.Button.Done = "Done";
 Global.Button.OK = "OK";
 Global.Button.Yes = "Yes";
 Global.Button.Close = "Close";
+
+Global.Button.EditText = "Edit text";
 
 Global.Units.Word.Singular = "word";
 Global.Units.Word.Plural = "words";

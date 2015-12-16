@@ -202,7 +202,7 @@
             </objects>
             <point key="canvasLocation" x="1115" y="355"/>
         </scene>
-        <!--Word Counter-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="mainViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="WordCounter" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,7 +229,7 @@
                             <constraint firstItem="whe-qS-vlc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sbe-wf-gKm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Word Counter" id="bK1-6I-0cD">
+                    <navigationItem key="navigationItem" id="bK1-6I-0cD">
                         <barButtonItem key="leftBarButtonItem" title="0 words" id="5Gp-KT-7nU">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -306,7 +306,7 @@
                                     <constraint firstAttribute="height" constant="35" id="PE6-cW-OLm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ii-l7-dh6">

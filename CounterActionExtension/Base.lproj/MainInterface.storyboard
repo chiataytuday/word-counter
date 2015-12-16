@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Word Counter-->
+        <!--Action View Controller-->
         <scene sceneID="7MM-of-jgj">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="ObA-dk-sSI" customClass="ActionViewController" customModule="CounterActionExtension" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                             <constraint firstItem="E4Z-BR-oF6" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="kAe-cJ-Jft"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Word Counter" id="gq1-ds-ID4">
+                    <navigationItem key="navigationItem" id="gq1-ds-ID4">
                         <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="HlH-WE-9GA">
                             <connections>
                                 <action selector="done" destination="ObA-dk-sSI" id="1uH-zN-LXw"/>
@@ -41,6 +41,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="E4Z-BR-oF6" id="2Q5-Ie-AGN"/>
+                        <outlet property="doneButton" destination="HlH-WE-9GA" id="hrD-Oo-ku3"/>
                         <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>
                     </connections>
                 </viewController>

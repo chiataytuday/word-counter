@@ -11,7 +11,7 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProviding {
     
-    var sharedData = NSUserDefaults(suiteName: "group.com.arefly.WordCounter")
+    let sharedData = NSUserDefaults(suiteName: "group.com.arefly.WordCounter")
     
     @IBOutlet var textView: UITextView!
     @IBOutlet var wordsCountLabel: UILabel!

@@ -13,10 +13,14 @@ Global.ProgressingHUD.Label.Counting = "統計中...";
 
 Global.TextView.PlaceHolder.Text = "請在此輸入或粘貼文字...";
 
+Global.NavBar.Title = "字數統計工具";
+
 Global.Button.Done = "完成";
 Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
 Global.Button.Close = "關閉";
+
+Global.Button.EditText = "編輯文字";
 
 Global.Units.Word.Singular = "字";
 Global.Units.Word.Plural = "字";
