@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewDidLoad()
         print("[提示] View Controller 之 super.viewDidLoad() 已加載")
         
-        self.title = NSLocalizedString("Global.NavBar.Title", comment: "Word Counter")
+        self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
         
         
         if(isAppFirstLaunch()){
@@ -484,7 +484,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         updateTextViewCounting()
     }
     
-    // TODO: count only what will be displayed
+    // TODO: OPTIMISE - count only what will be displayed
     func updateTextViewCounting () {
         var wordTitle = ""
         

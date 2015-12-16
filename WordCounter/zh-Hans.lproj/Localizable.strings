@@ -13,8 +13,6 @@ Global.ProgressingHUD.Label.Counting = "统计中...";
 
 Global.TextView.PlaceHolder.Text = "请在此输入或粘贴文字...";
 
-Global.NavBar.Title = "字数统计工具";
-
 Global.Button.Done = "完成";
 Global.Button.OK = "好！";
 Global.Button.Yes = "确定";
@@ -60,8 +58,17 @@ Global.Alert.PlzRate.Button.Yes = "好的";
 Global.Alert.PlzRate.Button.Later = "稍等";
 Global.Alert.PlzRate.Button.Cancel = "不再提示";
 
+
+Main.NavBar.Title = "字数统计工具";
+
+
+About.NavBar.Title = "关于";
+
 About.Title.Text.Version = "版本 %@";
 About.Subtitle.Text.Build = "版本号 %@";
+
+About.Alert.ShowGithub.Title = "您已成为开发者啦！";
+About.Alert.ShowGithub.Content = "于Github上查看 字数统计工具 源代码？";
 
 
 "Welcome.Global.Text.About" = "- 我们将继续为 字数统计工具 提供支援并加入更多功能；如果您对本程序有任何意见或建议，欢迎发送邮件至 eflyjason@gmail.com 联系开发者，谢谢！ :)";

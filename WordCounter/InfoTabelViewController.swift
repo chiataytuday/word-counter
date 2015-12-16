@@ -16,12 +16,12 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
     @IBOutlet var versionTitle: UILabel!
     @IBOutlet var buildSubtitle: UILabel!
     
-    @IBOutlet var shareButton: UIButton!
-    
     // MARK: - Override func
     override func viewDidLoad() {
         super.viewDidLoad()
         print("[提示] Info Tabel View Controller 之 super.viewDidLoad() 已加載")
+        
+        self.title = NSLocalizedString("About.NavBar.Title", comment: "About")
         
         let dictionary = NSBundle.mainBundle().infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
@@ -99,6 +99,24 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
                 break
             case 2:
                 UIApplication.sharedApplication().openURL(NSURL(string: "http://www.arefly.com/")!)
+                
+                break
+            case 3:
+                let showGithubAlert = UIAlertController(
+                    title: NSLocalizedString("About.Alert.ShowGithub.Title", comment: "You are now a developer!"),
+                    message: NSLocalizedString("About.Alert.ShowGithub.Content", comment: "Open the repository of Word Counter Tools on GitHub?"),
+                    preferredStyle: .Alert)
+                
+                showGithubAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下確定打開Github按鈕")
+                    UIApplication.sharedApplication().openURL(NSURL(string: "http://bit.ly/WordCounterGithub")!)
+                }))
+                
+                showGithubAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下取消按鈕")
+                }))
+                
+                presentViewController(showGithubAlert, animated: true, completion: nil)
                 
                 break
             default:

@@ -27,7 +27,7 @@ class ActionViewController: UIViewController {
             self.preferredContentSize = CGSizeMake(550, 600)
         }
         
-        self.title = NSLocalizedString("Global.NavBar.Title", comment: "Word Counter")
+        self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
         
         doneButton.title = NSLocalizedString("Global.Button.Done", comment: "Done")
         doneButton.action = "closeWindow"
