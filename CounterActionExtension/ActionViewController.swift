@@ -77,10 +77,10 @@ class ActionViewController: UIViewController {
         var sentenceTitle = ""
         
         Async.background {
-            wordTitle = WordCounter().getWordCountString(text)
-            characterTitle = WordCounter().getCharacterCountString(text)
-            paragraphTitle = WordCounter().getParagraphCountString(text)
-            sentenceTitle = WordCounter().getSentenceCountString(text)
+            wordTitle = WordCounter().getCountString(text, type: "word")
+            characterTitle = WordCounter().getCountString(text, type: "character")
+            paragraphTitle = WordCounter().getCountString(text, type: "paragraph")
+            sentenceTitle = WordCounter().getCountString(text, type: "sentence")
             }.main {
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
                 

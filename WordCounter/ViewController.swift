@@ -35,17 +35,26 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // MARK: - keyboardButton var
     var keyBoardToolBar = UIToolbar()
     
-    var wordKeyboardBarButtonItem: UIBarButtonItem!
-    var characterKeyboardBarButtonItem: UIBarButtonItem!
-    var paragraphKeyboardBarButtonItem: UIBarButtonItem!
-    var sentenceKeyboardBarButtonItem: UIBarButtonItem!
-    
-    var flexSpaceKeyboardBarButtonItem: UIBarButtonItem!
-    
-    var doneKeyboardBarButtonItem: UIBarButtonItem!
-    var infoKeyboardBarButtonItem: UIBarButtonItem!
-    
     var showedKeyboardButtons = [String: Bool]()
+    
+    var countingKeyboardBarButtonItemsNames = [String]()
+    var countingKeyboardBarButtonItems = [String: UIBarButtonItem]()
+    
+    var stableKeyboardBarButtonItemsNames = [String]()
+    var stableKeyboardBarButtonItems = [String: UIBarButtonItem]()
+    
+    
+    //var wordKeyboardBarButtonItem: UIBarButtonItem!
+    //var characterKeyboardBarButtonItem: UIBarButtonItem!
+    //var paragraphKeyboardBarButtonItem: UIBarButtonItem!
+    //var sentenceKeyboardBarButtonItem: UIBarButtonItem!
+    
+    //var flexSpaceKeyboardBarButtonItem: UIBarButtonItem!
+    //var doneKeyboardBarButtonItem: UIBarButtonItem!
+    //var infoKeyboardBarButtonItem: UIBarButtonItem!
+    
+    
+    
     
     // MARK: - Bool var
     var keyboardShowing = false
@@ -343,25 +352,25 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         keyBoardToolBar.translucent = false
         keyBoardToolBar.barTintColor = UIColor(colorLiteralRed: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
         
-        flexSpaceKeyboardBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         
-        doneKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Done, target: self, action: "doneButtonAction")
+        stableKeyboardBarButtonItems["flexSpace"] = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        stableKeyboardBarButtonItemsNames.append("flexSpace")
+        
+        stableKeyboardBarButtonItems["done"] = UIBarButtonItem(title: "", style: .Done, target: self, action: "doneButtonAction")
+        stableKeyboardBarButtonItemsNames.append("done")
         
         let infoButton: UIButton = UIButton(type: UIButtonType.InfoLight)
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-        infoKeyboardBarButtonItem = UIBarButtonItem(customView: infoButton)
+        stableKeyboardBarButtonItems["info"] = UIBarButtonItem(customView: infoButton)
+        stableKeyboardBarButtonItemsNames.append("info")
         
-        wordKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
-        wordKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
-        paragraphKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
-        paragraphKeyboardBarButtonItem.tintColor = UIColor.blackColor()
+        countingKeyboardBarButtonItemsNames = ["word", "paragraph", "character", "sentence"]
+        for name in countingKeyboardBarButtonItemsNames {
+            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
+            countingKeyboardBarButtonItems[name]!.tintColor = UIColor.blackColor()
+        }
         
-        characterKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
-        characterKeyboardBarButtonItem.tintColor = UIColor.blackColor()
-        
-        sentenceKeyboardBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
-        sentenceKeyboardBarButtonItem.tintColor = UIColor.blackColor()
         
         updateToolBar()
     }
@@ -371,25 +380,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         print("i HATE \(showedKeyboardButtons["paragraph"])")
         
-        if(showedKeyboardButtons["word"] == true){
-            barItems.append(wordKeyboardBarButtonItem)
+        for name in countingKeyboardBarButtonItemsNames {
+            if(showedKeyboardButtons[name] == true){
+                barItems.append(countingKeyboardBarButtonItems[name]!)
+            }
         }
-        
-        if(showedKeyboardButtons["paragraph"] == true){
-            barItems.append(paragraphKeyboardBarButtonItem)
+        for name in stableKeyboardBarButtonItemsNames {
+            barItems.append(stableKeyboardBarButtonItems[name]!)
         }
-        
-        if(showedKeyboardButtons["character"] == true){
-            barItems.append(characterKeyboardBarButtonItem)
-        }
-        
-        if(showedKeyboardButtons["sentence"] == true){
-            barItems.append(sentenceKeyboardBarButtonItem)
-        }
-        
-        barItems.append(flexSpaceKeyboardBarButtonItem)
-        barItems.append(doneKeyboardBarButtonItem)
-        barItems.append(infoKeyboardBarButtonItem)
         
         keyBoardToolBar.setItems(barItems, animated: true)
         
@@ -400,8 +398,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.inputAccessoryView = keyBoardToolBar
         
-        doneKeyboardBarButtonItem.title = ""
-        doneKeyboardBarButtonItem.title = NSLocalizedString("Global.Button.Done", comment: "Done")
+        stableKeyboardBarButtonItems["done"]!.title = ""
+        stableKeyboardBarButtonItems["done"]!.title = NSLocalizedString("Global.Button.Done", comment: "Done")
         
         print(barItems)
         
@@ -442,43 +440,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func textViewDidChange(textView: UITextView) {
-        /*if(count(Array(tv.text)) > 2){
-        var lastSecChar = String(Array(tv.text)[count(tv.text)-2]) as String?
-        if (lastSecChar) != nil {
-        if (lastSecChar! == " ") {
-        getWordCounts()
-        }
-        }
-        }*/
-        
-        /*if(!tooManyWords){
-            topBarCountButton.tintColor = UIColor.blackColor()
-            wordKeyboard.tintColor = UIColor.blackColor()
-            paragraph.tintColor = UIColor.blackColor()
-            character.tintColor = UIColor.blackColor()
-            
-            getWordCounts()
-            getParagraphCounts()
-            getCharacterCounts()
-        }else{
-            topBarCountButton.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
-            topBarCountButton.tintColor = self.view.tintColor
-            
-            wordKeyboard.title = ""
-            paragraph.title = ""
-            
-            if (UIScreen.mainScreen().bounds.size.width > 750){
-                wordKeyboard.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
-                wordKeyboard.tintColor = self.view.tintColor
-            }else{
-                paragraph.title = NSLocalizedString("Global.Button.CountEllipsis", comment: "Count...")
-                paragraph.tintColor = self.view.tintColor
-            }
-            
-            
-            character.title = ""
-        }*/
-        
         tvPlaceholderLabel.hidden = !textView.text.isEmpty
         
         updateTextViewCounting()
@@ -486,39 +447,30 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     // TODO: OPTIMISE - count only what will be displayed
     func updateTextViewCounting () {
-        var wordTitle = ""
+        //var wordTitle = ""
         
-        var characterTitle = ""
-        var paragraphTitle = ""
-        var sentenceTitle = ""
+        var titles = [
+            "word": "-MUST_NEED-",
+            "character": "",
+            "paragraph": "",
+            "sentence": "",
+        ]
         
         Async.background {
-            wordTitle = WordCounter().getWordCountString(self.tv.text)
-            
-            if(self.showedKeyboardButtons["character"] == true){
-                characterTitle = WordCounter().getCharacterCountString(self.tv.text)
+            for (name, _) in titles {
+                if( (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") ){
+                    titles[name] = WordCounter().getCountString(self.tv.text, type: name)
+                }
             }
-            if(self.showedKeyboardButtons["paragraph"] == true){
-                paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
-            }
-            if(self.showedKeyboardButtons["sentence"] == true){
-                sentenceTitle = WordCounter().getSentenceCountString(self.tv.text)
-            }
-            
             }.main {
-                self.topBarCountButton.title = wordTitle
+                self.topBarCountButton.title = titles["word"]
                 
-                self.wordKeyboardBarButtonItem.title = ""
-                self.paragraphKeyboardBarButtonItem.title = ""
-                self.characterKeyboardBarButtonItem.title = ""
-                self.sentenceKeyboardBarButtonItem.title = ""
+                for name in self.countingKeyboardBarButtonItemsNames {
+                    self.countingKeyboardBarButtonItems[name]!.title = ""
+                    self.countingKeyboardBarButtonItems[name]!.title = titles[name]
+                }
                 
-                self.wordKeyboardBarButtonItem.title = wordTitle
-                self.characterKeyboardBarButtonItem.title = characterTitle
-                self.paragraphKeyboardBarButtonItem.title = paragraphTitle
-                self.sentenceKeyboardBarButtonItem.title = sentenceTitle
-                
-                print(sentenceTitle)
+                print(titles["sentence"])
         }
     }
     
@@ -583,10 +535,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         var sentenceTitle = ""
         
         Async.background {
-            wordTitle = WordCounter().getWordCountString(self.tv.text)
-            characterTitle = WordCounter().getCharacterCountString(self.tv.text)
-            paragraphTitle = WordCounter().getParagraphCountString(self.tv.text)
-            sentenceTitle = WordCounter().getSentenceCountString(self.tv.text)
+            wordTitle = WordCounter().getCountString(self.tv.text, type: "word")
+            characterTitle = WordCounter().getCountString(self.tv.text, type: "character")
+            paragraphTitle = WordCounter().getCountString(self.tv.text, type: "paragraph")
+            sentenceTitle = WordCounter().getCountString(self.tv.text, type: "sentence")
             }.main {
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
                 

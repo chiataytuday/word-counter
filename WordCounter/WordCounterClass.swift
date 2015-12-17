@@ -24,42 +24,40 @@ class WordCounter {
     let sentencePlural = NSLocalizedString("Global.Units.Sentence.Plural", comment: "sentences")
     
     // MARK: - Get string func
-    func getWordCountString (s: String) -> String {
-        let count = wordCount(s)
+    func getCountString(s: String, type: String) -> String {
+        var title = ""
         
-        let words = (count == 1) ? wordSingular : wordPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(count), words)
+        switch type {
+        case "word":
+            let count = wordCount(s)
+            
+            let words = (count == 1) ? wordSingular : wordPlural
+            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(count), words)
+            break
+        case "character":
+            let count = characterCount(s)
+            
+            let words = (count == 1) ? charSingular : charPlural
+            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(count), words)
+            break
+        case "paragraph":
+            let count = paragraphCount(s)
+            
+            let words = (count == 1) ? paraSingular : paraPlural
+            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(count), words)
+            break
+        case "sentence":
+            let count = sentenceCount(s)
+            
+            let words = (count == 1) ? sentenceSingular : sentencePlural
+            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Sentence", comment: "%1$@ %2$@"), String(count), words)
+            break
+        default:
+            title = "[ERROR_TYPE]"
+        }
         
         return title
     }
-    
-    func getCharacterCountString (s: String) -> String {
-        let count = characterCount(s)
-        
-        let words = (count == 1) ? charSingular : charPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(count), words)
-        
-        return title
-    }
-    
-    func getParagraphCountString (s: String) -> String {
-        let count = paragraphCount(s)
-        
-        let words = (count == 1) ? paraSingular : paraPlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(count), words)
-        
-        return title
-    }
-    
-    func getSentenceCountString (s: String) -> String {
-        let count = sentenceCount(s)
-        
-        let words = (count == 1) ? sentenceSingular : sentencePlural
-        let title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Sentence", comment: "%1$@ %2$@"), String(count), words)
-        
-        return title
-    }
-    
     
     // MARK: - Get count func
     func wordCount(s: String) -> Int {
