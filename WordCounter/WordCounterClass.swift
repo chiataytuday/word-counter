@@ -9,58 +9,43 @@
 import Foundation
 
 class WordCounter {
-    
-    // MARK: - Noun var
-    let wordSingular = NSLocalizedString("Global.Units.Word.Singular", comment: "word")
-    let wordPlural = NSLocalizedString("Global.Units.Word.Plural", comment: "words")
-    
-    let charSingular = NSLocalizedString("Global.Units.Character.Singular", comment: "character")
-    let charPlural = NSLocalizedString("Global.Units.Character.Plural", comment: "characters")
-    
-    let paraSingular = NSLocalizedString("Global.Units.Paragraph.Singular", comment: "paragraph")
-    let paraPlural = NSLocalizedString("Global.Units.Paragraph.Plural", comment: "paragraphs")
-    
-    let sentenceSingular = NSLocalizedString("Global.Units.Sentence.Singular", comment: "sentence")
-    let sentencePlural = NSLocalizedString("Global.Units.Sentence.Plural", comment: "sentences")
-    
     // MARK: - Get string func
     func getCountString(s: String, type: String) -> String {
-        var title = ""
+        let count = getCount(s, type: type)
+        
+        let words = (count == 1) ?
+            NSLocalizedString("Global.Units.\(type.capitalizedString).Singular", comment: "Singular Unit") :
+            NSLocalizedString("Global.Units.\(type.capitalizedString).Plural", comment: "Plural Unit")
+        
+        let returnString = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(type.capitalizedString)", comment: "%1$@ %2$@"), String(count), words)
+        
+        return returnString
+    }
+    
+    // MARK: - Get count func
+    func getCount(s: String, type: String) -> Int {
+        var returnInt = 0
         
         switch type {
         case "word":
-            let count = wordCount(s)
-            
-            let words = (count == 1) ? wordSingular : wordPlural
-            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(count), words)
+            returnInt = wordCount(s)
             break
         case "character":
-            let count = characterCount(s)
-            
-            let words = (count == 1) ? charSingular : charPlural
-            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(count), words)
+            returnInt = characterCount(s)
             break
         case "paragraph":
-            let count = paragraphCount(s)
-            
-            let words = (count == 1) ? paraSingular : paraPlural
-            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(count), words)
+            returnInt = paragraphCount(s)
             break
         case "sentence":
-            let count = sentenceCount(s)
-            
-            let words = (count == 1) ? sentenceSingular : sentencePlural
-            title = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Sentence", comment: "%1$@ %2$@"), String(count), words)
+            returnInt = sentenceCount(s)
             break
         default:
-            title = "[ERROR_TYPE]"
+            returnInt = 0
         }
         
-        return title
+        return returnInt
     }
     
-    // TODO: Add a new function call all functions here
-    // MARK: - Get count func
     func wordCount(s: String) -> Int {
         var counts = 0
         let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
