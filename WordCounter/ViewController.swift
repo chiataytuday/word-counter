@@ -445,7 +445,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         updateTextViewCounting()
     }
     
-    // TODO: OPTIMISE - count only what will be displayed
     func updateTextViewCounting () {
         //var wordTitle = ""
         
@@ -521,6 +520,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         countResultButtonAction()
     }
     
+    
     func countResultButtonAction () {
         let keyboardShowingBefore = keyboardShowing
         
@@ -529,23 +529,35 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
         progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
-        var wordTitle = ""
-        var characterTitle = ""
-        var paragraphTitle = ""
-        var sentenceTitle = ""
+        var titles = [
+            "word": "",
+            "character": "",
+            "paragraph": "",
+            "sentence": "",
+        ]
         
         Async.background {
-            wordTitle = WordCounter().getCountString(self.tv.text, type: "word")
-            characterTitle = WordCounter().getCountString(self.tv.text, type: "character")
-            paragraphTitle = WordCounter().getCountString(self.tv.text, type: "paragraph")
-            sentenceTitle = WordCounter().getCountString(self.tv.text, type: "sentence")
+            for name in self.countingKeyboardBarButtonItemsNames {
+                titles[name] = WordCounter().getCountString(self.tv.text, type: name)
+            }
             }.main {
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
                 
-                let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-                let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), characterTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paragraphTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Sentence", comment: "Sentences: %@"), sentenceTitle) 
+                let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
                 
-                let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                var message = ""
+                
+                for (index, name) in self.countingKeyboardBarButtonItemsNames.enumerate() {
+                    let localizedString = "Global.Alert.Counter.Content.\(name.capitalizedString)"
+                    
+                    message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
+                    
+                    if(index != self.countingKeyboardBarButtonItemsNames.count-1) {
+                        message += "\n"
+                    }
+                }
+                
+                let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .Alert)
                 countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
                     print("[提示] 用戶已按下確定按鈕")
                     if(keyboardShowingBefore){
@@ -650,6 +662,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
     }
     
+    // TODO: show review alert after update
     func presentReviewAlert() {
         let reviewAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.PlzRate.Title", comment: "Thanks!"),

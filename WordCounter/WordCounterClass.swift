@@ -59,6 +59,7 @@ class WordCounter {
         return title
     }
     
+    // TODO: Add a new function call all functions here
     // MARK: - Get count func
     func wordCount(s: String) -> Int {
         var counts = 0
