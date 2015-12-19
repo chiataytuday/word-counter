@@ -66,8 +66,6 @@ class WordCounter {
             if !(s != nil) { return false }
             if (s!).characters.count < 1 { return false }
             
-            print("WHAT THE \(s!)")
-
             if(s!.containsChineseCharacters){
                 var results = self.matchesForRegexInText("\\p{Han}", text: s!)
                 var sArray: Array = Array((s!).characters)
@@ -113,6 +111,7 @@ class WordCounter {
             let s = $0 as String?
             if !(s != nil) { return false }
             if (s!).characters.count < 1 { return false }
+            if (s!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty) { return false }
             return true
         })
         paragraphCounts = modifiedLines.count

@@ -390,8 +390,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func updateToolBar() {
         var barItems = [UIBarButtonItem]()
         
-        print("i HATE \(showedKeyboardButtons["Paragraph"])")
-        
         for name in countingKeyboardBarButtonItemsNames {
             if(showedKeyboardButtons[name] == true){
                 barItems.append(countingKeyboardBarButtonItems[name]!)
@@ -413,12 +411,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         stableKeyboardBarButtonItems["Done"]!.title = ""
         stableKeyboardBarButtonItems["Done"]!.title = NSLocalizedString("Global.Button.Done", comment: "Done")
         
+        print("i HATE \(showedKeyboardButtons["Paragraph"])")
+        
         print(barItems)
-        
         print(barItems.count)
-        
         print(countingKeyboardBarButtonItems)
-        
         print(stableKeyboardBarButtonItems)
         
         updateTextViewCounting()
