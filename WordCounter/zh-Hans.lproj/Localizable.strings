@@ -6,6 +6,8 @@
   Copyright (c) 2015 Arefly. All rights reserved.
 */
 
+// TODO: Tradionial -> here
+
 Global.Text.ShareMessage = "还在逐字统计字数？快去 App Store 上看看「字数统计工具」吧！";
 Global.Text.NothingOnClipboard = "剪切板内并无任何内容！";
 

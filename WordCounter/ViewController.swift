@@ -249,10 +249,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         print("[提示] 準備使用 checkScreenWidthToSetButton() 函數")
         
         showedKeyboardButtons = [
-            "word": false,
-            "character": false,
-            "paragraph": false,
-            "sentence": false,
+            "Word": false,
+            "Character": false,
+            "Paragraph": false,
+            "Sentence": false,
         ]
         
         let bounds = UIApplication.sharedApplication().keyWindow?.bounds
@@ -262,22 +262,22 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         switch width {
         case 0..<330:
-            showedKeyboardButtons["word"] = false
-            showedKeyboardButtons["character"] = false
-            showedKeyboardButtons["paragraph"] = false
-            showedKeyboardButtons["sentence"] = true
+            showedKeyboardButtons["Word"] = false
+            showedKeyboardButtons["Character"] = false
+            showedKeyboardButtons["Paragraph"] = false
+            showedKeyboardButtons["Sentence"] = true
             break
         case 330..<750:
-            showedKeyboardButtons["word"] = false
-            showedKeyboardButtons["character"] = true
-            showedKeyboardButtons["paragraph"] = false
-            showedKeyboardButtons["sentence"] = true
+            showedKeyboardButtons["Word"] = false
+            showedKeyboardButtons["Character"] = true
+            showedKeyboardButtons["Paragraph"] = false
+            showedKeyboardButtons["Sentence"] = true
             break
         default:
-            showedKeyboardButtons["word"] = true
-            showedKeyboardButtons["character"] = true
-            showedKeyboardButtons["paragraph"] = true
-            showedKeyboardButtons["sentence"] = true
+            showedKeyboardButtons["Word"] = true
+            showedKeyboardButtons["Character"] = true
+            showedKeyboardButtons["Paragraph"] = true
+            showedKeyboardButtons["Sentence"] = true
         }
         
         updateToolBar()
@@ -365,19 +365,19 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
         
-        stableKeyboardBarButtonItems["flexSpace"] = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        stableKeyboardBarButtonItemsNames.append("flexSpace")
+        stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        stableKeyboardBarButtonItemsNames.append("FlexSpace")
         
-        stableKeyboardBarButtonItems["done"] = UIBarButtonItem(title: "", style: .Done, target: self, action: "doneButtonAction")
-        stableKeyboardBarButtonItemsNames.append("done")
+        stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(title: "", style: .Done, target: self, action: "doneButtonAction")
+        stableKeyboardBarButtonItemsNames.append("Done")
         
         let infoButton: UIButton = UIButton(type: UIButtonType.InfoLight)
         infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
-        stableKeyboardBarButtonItems["info"] = UIBarButtonItem(customView: infoButton)
-        stableKeyboardBarButtonItemsNames.append("info")
+        stableKeyboardBarButtonItems["Info"] = UIBarButtonItem(customView: infoButton)
+        stableKeyboardBarButtonItemsNames.append("Info")
         
         
-        countingKeyboardBarButtonItemsNames = ["word", "paragraph", "character", "sentence"]
+        countingKeyboardBarButtonItemsNames = ["Word", "Character", "Paragraph", "Sentence"]
         for name in countingKeyboardBarButtonItemsNames {
             countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
             countingKeyboardBarButtonItems[name]!.tintColor = UIColor.blackColor()
@@ -390,7 +390,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func updateToolBar() {
         var barItems = [UIBarButtonItem]()
         
-        print("i HATE \(showedKeyboardButtons["paragraph"])")
+        print("i HATE \(showedKeyboardButtons["Paragraph"])")
         
         for name in countingKeyboardBarButtonItemsNames {
             if(showedKeyboardButtons[name] == true){
@@ -410,8 +410,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.inputAccessoryView = keyBoardToolBar
         
-        stableKeyboardBarButtonItems["done"]!.title = ""
-        stableKeyboardBarButtonItems["done"]!.title = NSLocalizedString("Global.Button.Done", comment: "Done")
+        stableKeyboardBarButtonItems["Done"]!.title = ""
+        stableKeyboardBarButtonItems["Done"]!.title = NSLocalizedString("Global.Button.Done", comment: "Done")
         
         print(barItems)
         
@@ -468,10 +468,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //var wordTitle = ""
         
         var titles = [
-            "word": "-MUST_NEED-",
-            "character": "",
-            "paragraph": "",
-            "sentence": "",
+            "Word": "-MUST_NEED-",
+            "Character": "",
+            "Paragraph": "",
+            "Sentence": "",
         ]
         
         Async.background {
@@ -481,14 +481,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 }
             }
             }.main {
-                self.topBarCountButton.title = titles["word"]
+                self.topBarCountButton.title = titles["Word"]
                 
                 for name in self.countingKeyboardBarButtonItemsNames {
                     self.countingKeyboardBarButtonItems[name]!.title = ""
                     self.countingKeyboardBarButtonItems[name]!.title = titles[name]
                 }
                 
-                print(titles["sentence"])
+                print(titles["Sentence"])
         }
     }
     
@@ -549,10 +549,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
         var titles = [
-            "word": "",
-            "character": "",
-            "paragraph": "",
-            "sentence": "",
+            "Word": "",
+            "Character": "",
+            "Paragraph": "",
+            "Sentence": "",
         ]
         
         Async.background {
@@ -567,7 +567,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 var message = ""
                 
                 for (index, name) in self.countingKeyboardBarButtonItemsNames.enumerate() {
-                    let localizedString = "Global.Alert.Counter.Content.\(name.capitalizedString)"
+                    let localizedString = "Global.Alert.Counter.Content.\(name)"
                     
                     message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
                     

@@ -42,8 +42,8 @@ Global.Units.Sentence.Singular = "sentence";
 Global.Units.Sentence.Plural = "sentences";
 
 Global.Count.Text.Word = "%1$@ %2$@";
-Global.Count.Text.Paragraph = "%1$@ %2$@";
 Global.Count.Text.Character = "%1$@ %2$@";
+Global.Count.Text.Paragraph = "%1$@ %2$@";
 Global.Count.Text.Sentence = "%1$@ %2$@";
 
 Global.Alert.Counter.Title = "Counter";

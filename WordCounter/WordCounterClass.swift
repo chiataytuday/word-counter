@@ -9,15 +9,19 @@
 import Foundation
 
 class WordCounter {
+    // MARK: - Var
+    var punctuations = [".", "!", "?", ";", "。", "！", "？", "；"]
+
+    
     // MARK: - Get string func
     func getCountString(s: String, type: String) -> String {
         let count = getCount(s, type: type)
         
         let words = (count == 1) ?
-            NSLocalizedString("Global.Units.\(type.capitalizedString).Singular", comment: "Singular Unit") :
-            NSLocalizedString("Global.Units.\(type.capitalizedString).Plural", comment: "Plural Unit")
+            NSLocalizedString("Global.Units.\(type).Singular", comment: "Singular Unit") :
+            NSLocalizedString("Global.Units.\(type).Plural", comment: "Plural Unit")
         
-        let returnString = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(type.capitalizedString)", comment: "%1$@ %2$@"), String(count), words)
+        let returnString = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(type)", comment: "%1$@ %2$@"), String(count), words)
         
         return returnString
     }
@@ -27,16 +31,16 @@ class WordCounter {
         var returnInt = 0
         
         switch type {
-        case "word":
+        case "Word":
             returnInt = wordCount(s)
             break
-        case "character":
+        case "Character":
             returnInt = characterCount(s)
             break
-        case "paragraph":
+        case "Paragraph":
             returnInt = paragraphCount(s)
             break
-        case "sentence":
+        case "Sentence":
             returnInt = sentenceCount(s)
             break
         default:
@@ -46,7 +50,12 @@ class WordCounter {
         return returnInt
     }
     
-    func wordCount(s: String) -> Int {
+    func wordCount(var s: String) -> Int {
+        for punctuation in punctuations {
+            // Remove punctuations
+            s = s.stringByReplacingOccurrencesOfString(punctuation, withString: "")
+        }
+        
         var counts = 0
         let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
         let joinedString = lines.joinWithSeparator(" ")
@@ -56,6 +65,8 @@ class WordCounter {
             let s = $0 as String?
             if !(s != nil) { return false }
             if (s!).characters.count < 1 { return false }
+            
+            print("WHAT THE \(s!)")
 
             if(s!.containsChineseCharacters){
                 var results = self.matchesForRegexInText("\\p{Han}", text: s!)
@@ -63,8 +74,8 @@ class WordCounter {
                 if(String(sArray[0]) != results[0]){
                     counts += 1
                 }
-                //println(sArray[count(sArray)-1])
-                //println(results[count(results)-1])
+                //print(sArray[count(sArray)-1])
+                //print(results[count(results)-1])
                 if(String(sArray[sArray.count-1]) != results[results.count-1]){
                     counts += 1
                 }
