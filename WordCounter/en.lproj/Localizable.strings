@@ -63,6 +63,12 @@ Global.Alert.PlzRate.Button.Yes = "Sure!";
 Global.Alert.PlzRate.Button.Later = "Not now";
 Global.Alert.PlzRate.Button.Cancel = "No, thanks!";
 
+Global.Alert.PlzRateUpdate.Title = "Thanks for update!";
+Global.Alert.PlzRateUpdate.Content = "You have used Word Counter Tools for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?";
+Global.Alert.PlzRateUpdate.Button.Yes = "Sure!";
+Global.Alert.PlzRateUpdate.Button.Later = "Not now";
+Global.Alert.PlzRateUpdate.Button.Cancel = "No, thanks!";
+
 
 Main.NavBar.Title = "Word Counter";
 

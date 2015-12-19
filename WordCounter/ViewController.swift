@@ -88,7 +88,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
 
         
         
-        
 
         
         tvPlaceholderLabel = UILabel()
@@ -125,18 +124,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         doAfterRotate()
         //checkScreenWidthToSetButton()
         
+        
         if(defaults.objectForKey("appLaunchTimes") == nil){
             defaults.setInteger(1, forKey: "appLaunchTimes")
         }else{
             defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
         }
-        print("[提示] 已設定appLaunchTimes值爲"+String(defaults.integerForKey("appLaunchTimes")))
+        print("[提示] 已設定appLaunchTimes值爲\(defaults.integerForKey("appLaunchTimes"))")
         
         if(defaults.objectForKey("everShowPresentReviewAgain") == nil){
             defaults.setBool(true, forKey: "everShowPresentReviewAgain")
         }
         
         
+        //appJustUpdate = true
         if(defaults.objectForKey("appLaunchTimesAfterUpdate") == nil){
             defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
         }
@@ -147,6 +148,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if(defaults.integerForKey("appLaunchTimesAfterUpdate") != -1){
             defaults.setInteger(defaults.integerForKey("appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
         }
+        print("[提示] 已設定appLaunchTimesAfterUpdate值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -199,20 +201,18 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }
         }
         
-        /*print("[提示] appLaunchTimesAfterUpdate的值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
+        
         if(defaults.integerForKey("appLaunchTimesAfterUpdate") != -1){
             if(!presentingOtherView){
                 print("[提示] appLaunchTimesAfterUpdate的值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
                 if(defaults.integerForKey("appLaunchTimesAfterUpdate") % 10 == 0){
                     presentingOtherView = true
                     
-                    print("YAY I DID IT!!!")
-                    
-                    presentingOtherView = false
+                    presentUpdateReviewAlert()
                     //defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
                 }
             }
-        }*/
+        }
         
         if(!presentingOtherView){
             startEditing()
@@ -681,7 +681,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
     }
     
-    // TODO: show review alert after update
+    
     func presentReviewAlert() {
         let reviewAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.PlzRate.Title", comment: "Thanks!"),
@@ -694,6 +694,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             print("[提示] 用戶已按下發表評論按鈕")
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
             UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
+            self.presentingOtherView = false
         }))
         
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Later", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
@@ -706,6 +707,39 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下永遠再不顯示按鈕")
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
+            self.startEditing()
+            self.presentingOtherView = false
+        }))
+        
+        presentViewController(reviewAlert, animated: true, completion: nil)
+    }
+    
+    func presentUpdateReviewAlert() {
+        let reviewAlert = UIAlertController(
+            title: NSLocalizedString("Global.Alert.PlzRateUpdate.Title", comment: "Thanks for update!"),
+            message: String.localizedStringWithFormat(
+                NSLocalizedString("Global.Alert.PlzRateUpdate.Content", comment: "You have used Word Counter Tools for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?"),
+                defaults.integerForKey("appLaunchTimesAfterUpdate"),
+                NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+            ),
+            preferredStyle: .Alert)
+        
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下發表評論按鈕")
+            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
+            UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
+            self.presentingOtherView = false
+        }))
+        
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Later", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下以後再說按鈕")
+            self.startEditing()
+            self.presentingOtherView = false
+        }))
+        
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下永遠再不顯示按鈕")
+            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
             self.startEditing()
             self.presentingOtherView = false
         }))

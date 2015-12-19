@@ -63,6 +63,12 @@ Global.Alert.PlzRate.Button.Yes = "好的";
 Global.Alert.PlzRate.Button.Later = "稍等";
 Global.Alert.PlzRate.Button.Cancel = "不再提示";
 
+Global.Alert.PlzRateUpdate.Title = "多謝更新！";
+Global.Alert.PlzRateUpdate.Content = "你已經使用%1$d次%2$@版的「字數統計工具」啦！\n喜歡本次更新麼？去 App Store 評分吧！";
+Global.Alert.PlzRateUpdate.Button.Yes = "好的";
+Global.Alert.PlzRateUpdate.Button.Later = "稍等";
+Global.Alert.PlzRateUpdate.Button.Cancel = "不再提示";
+
 
 Main.NavBar.Title = "字數統計工具";
 
