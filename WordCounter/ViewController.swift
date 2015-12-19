@@ -43,19 +43,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     var stableKeyboardBarButtonItemsNames = [String]()
     var stableKeyboardBarButtonItems = [String: UIBarButtonItem]()
     
-    
-    //var wordKeyboardBarButtonItem: UIBarButtonItem!
-    //var characterKeyboardBarButtonItem: UIBarButtonItem!
-    //var paragraphKeyboardBarButtonItem: UIBarButtonItem!
-    //var sentenceKeyboardBarButtonItem: UIBarButtonItem!
-    
-    //var flexSpaceKeyboardBarButtonItem: UIBarButtonItem!
-    //var doneKeyboardBarButtonItem: UIBarButtonItem!
-    //var infoKeyboardBarButtonItem: UIBarButtonItem!
-    
-    
-    
-    
     // MARK: - Bool var
     var keyboardShowing = false
     var iAdShowing = false
@@ -133,10 +120,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "presentReviewAlert", name: "com.arefly.WordCounter.presentReviewAlert", object: nil)
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
         
         doAfterRotate()
@@ -151,6 +134,18 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         if(defaults.objectForKey("everShowPresentReviewAgain") == nil){
             defaults.setBool(true, forKey: "everShowPresentReviewAgain")
+        }
+        
+        
+        if(defaults.objectForKey("appLaunchTimesAfterUpdate") == nil){
+            defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
+        }
+        if(appJustUpdate){
+            defaults.setInteger(1, forKey: "appLaunchTimesAfterUpdate")
+        }
+        
+        if(defaults.integerForKey("appLaunchTimesAfterUpdate") != -1){
+            defaults.setInteger(defaults.integerForKey("appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
         }
     }
     
@@ -193,16 +188,31 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         print("[提示] everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.boolForKey("everShowPresentReviewAgain")))
         if(defaults.boolForKey("everShowPresentReviewAgain")){
             if(!presentingOtherView){
-                print("[提示] appLaunchTimes的值爲"+String(defaults.integerForKey("appLaunchTimes")))
+                print("[提示] appLaunchTimes的值爲\(defaults.integerForKey("appLaunchTimes"))")
                 //defaults.setInteger(8, forKey: "appLaunchTimes")
                 if(defaults.integerForKey("appLaunchTimes") % 9 == 0){
                     presentingOtherView = true
                     
                     presentReviewAlert()
-                    defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
+                    //defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
                 }
             }
         }
+        
+        /*print("[提示] appLaunchTimesAfterUpdate的值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
+        if(defaults.integerForKey("appLaunchTimesAfterUpdate") != -1){
+            if(!presentingOtherView){
+                print("[提示] appLaunchTimesAfterUpdate的值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
+                if(defaults.integerForKey("appLaunchTimesAfterUpdate") % 10 == 0){
+                    presentingOtherView = true
+                    
+                    print("YAY I DID IT!!!")
+                    
+                    presentingOtherView = false
+                    //defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
+                }
+            }
+        }*/
         
         if(!presentingOtherView){
             startEditing()
@@ -304,7 +314,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         setTextViewSize(n)
         
-        doAfterRotate()
+        checkScreenWidthToSetButton()
         
         //updateTextViewCounting()
         textViewDidChange(self.tv)
@@ -353,6 +363,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         keyBoardToolBar.barTintColor = UIColor(colorLiteralRed: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
         
         
+        stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
+        
         stableKeyboardBarButtonItems["flexSpace"] = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         stableKeyboardBarButtonItemsNames.append("flexSpace")
         
@@ -376,7 +388,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func updateToolBar() {
-        var barItems: [UIBarButtonItem] = []
+        var barItems = [UIBarButtonItem]()
         
         print("i HATE \(showedKeyboardButtons["paragraph"])")
         
@@ -403,6 +415,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         print(barItems)
         
+        print(barItems.count)
+        
+        print(countingKeyboardBarButtonItems)
+        
+        print(stableKeyboardBarButtonItems)
+        
         updateTextViewCounting()
     }
     
@@ -420,7 +438,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     */
     
     func endEditing() {
-        self.tv.endEditing(true)
+        self.tv.resignFirstResponder()
+        //self.tv.endEditing(true)
         //self.view.endEditing(true)
     }
     
@@ -484,7 +503,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
     }
     
-
+    
     // MARK: - Button action func
     @IBAction func clearButtonClicked(sender: AnyObject) {
         let keyboardShowingBefore = keyboardShowing
@@ -513,7 +532,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func infoButtonAction () {
-        performSegueWithIdentifier("goInfo", sender: nil)
+        self.performSegueWithIdentifier("goInfo", sender: nil)
     }
     
     func countButtonClickedFromKeyboardBarButtonItem() {
