@@ -6,8 +6,6 @@
   Copyright (c) 2015 Arefly. All rights reserved.
 */
 
-// TODO: Tradionial -> here
-
 Global.Text.ShareMessage = "还在逐字统计字数？快去 App Store 上看看「字数统计工具」吧！";
 Global.Text.NothingOnClipboard = "剪切板内并无任何内容！";
 
@@ -40,13 +38,18 @@ Global.Units.Paragraph.Plural = "段";
 Global.Units.Short.Paragraph.Singular = "段";
 Global.Units.Short.Paragraph.Plural = "段";
 
-Global.Count.Text.Character = "%1$@个%2$@";
-Global.Count.Text.Paragraph = "%1$@%2$@";
+Global.Units.Sentence.Singular = "句";
+Global.Units.Sentence.Plural = "句";
+
 Global.Count.Text.Word = "%1$@个%2$@";
+Global.Count.Text.Character = "%1$@个%2$@";
+Global.Count.Text.Sentence = "%1$@%2$@";
+Global.Count.Text.Paragraph = "%1$@%2$@";
 
 Global.Alert.Counter.Title = "统计";
-Global.Alert.Counter.Content.Word = "字数：%@";
-Global.Alert.Counter.Content.Character = "字符：%@";
+Global.Alert.Counter.Content.Word = "字数：%@（不包括标点符号）";
+Global.Alert.Counter.Content.Character = "字符：%@（包括标点符号）";
+Global.Alert.Counter.Content.Sentence = "句数：%@";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
 
 
@@ -55,13 +58,13 @@ Global.Alert.BeforeClear.Content = "警告：本操作不可逆！";
 
 
 Global.Alert.PlzRate.Title = "多谢！";
-Global.Alert.PlzRate.Content = "你已经使用%d次字数统计工具啦！\n喜欢么？去 App Store 评分吧！";
+Global.Alert.PlzRate.Content = "你已经使用%d次字数统计工具啦！\n喜欢吗？去 App Store 评分吧！";
 Global.Alert.PlzRate.Button.Yes = "好的";
 Global.Alert.PlzRate.Button.Later = "稍等";
 Global.Alert.PlzRate.Button.Cancel = "不再提示";
 
 Global.Alert.PlzRateUpdate.Title = "多谢更新！";
-Global.Alert.PlzRateUpdate.Content = "你已经使用%1$d次%2$@版的字数统计工具啦！\n喜欢本次更新么？去 App Store 评分吧！";
+Global.Alert.PlzRateUpdate.Content = "你已经使用%1$d次%2$@版的字数统计工具啦！\n喜欢本次更新吗？去 App Store 评分吧！";
 Global.Alert.PlzRateUpdate.Button.Yes = "好的";
 Global.Alert.PlzRateUpdate.Button.Later = "稍等";
 Global.Alert.PlzRateUpdate.Button.Cancel = "不再提示";

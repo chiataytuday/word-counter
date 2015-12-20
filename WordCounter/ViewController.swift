@@ -251,8 +251,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         showedKeyboardButtons = [
             "Word": false,
             "Character": false,
-            "Paragraph": false,
             "Sentence": false,
+            "Paragraph": false,
         ]
         
         let bounds = UIApplication.sharedApplication().keyWindow?.bounds
@@ -264,20 +264,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         case 0..<330:
             showedKeyboardButtons["Word"] = false
             showedKeyboardButtons["Character"] = false
-            showedKeyboardButtons["Paragraph"] = false
             showedKeyboardButtons["Sentence"] = true
+            showedKeyboardButtons["Paragraph"] = false
             break
         case 330..<750:
             showedKeyboardButtons["Word"] = false
             showedKeyboardButtons["Character"] = true
-            showedKeyboardButtons["Paragraph"] = false
             showedKeyboardButtons["Sentence"] = true
+            showedKeyboardButtons["Paragraph"] = false
             break
         default:
             showedKeyboardButtons["Word"] = true
             showedKeyboardButtons["Character"] = true
-            showedKeyboardButtons["Paragraph"] = true
             showedKeyboardButtons["Sentence"] = true
+            showedKeyboardButtons["Paragraph"] = true
         }
         
         updateToolBar()
@@ -377,7 +377,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         stableKeyboardBarButtonItemsNames.append("Info")
         
         
-        countingKeyboardBarButtonItemsNames = ["Word", "Character", "Paragraph", "Sentence"]
+        countingKeyboardBarButtonItemsNames = ["Word", "Character", "Sentence", "Paragraph"]
         for name in countingKeyboardBarButtonItemsNames {
             countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
             countingKeyboardBarButtonItems[name]!.tintColor = UIColor.blackColor()
@@ -467,8 +467,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         var titles = [
             "Word": "-MUST_NEED-",
             "Character": "",
-            "Paragraph": "",
             "Sentence": "",
+            "Paragraph": "",
         ]
         
         Async.background {
@@ -548,8 +548,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         var titles = [
             "Word": "",
             "Character": "",
-            "Paragraph": "",
             "Sentence": "",
+            "Paragraph": "",
         ]
         
         Async.background {
