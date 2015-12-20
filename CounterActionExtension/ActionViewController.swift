@@ -71,23 +71,31 @@ class ActionViewController: UIViewController {
         let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
         progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
-        var wordTitle = ""
-        var characterTitle = ""
-        var paragraphTitle = ""
-        var sentenceTitle = ""
+        let itemNames = ["Word", "Character", "Sentence", "Paragraph"]
+        var titles = [String: String]()
         
         Async.background {
-            wordTitle = WordCounter().getCountString(text, type: "Word")
-            characterTitle = WordCounter().getCountString(text, type: "Character")
-            paragraphTitle = WordCounter().getCountString(text, type: "Paragraph")
-            sentenceTitle = WordCounter().getCountString(text, type: "Sentence")
+            for name in itemNames {
+                titles[name] = WordCounter().getCountString(text, type: name)
+            }
             }.main {
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
                 
-                let title = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-                let message = String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Word", comment: "Words: %@"), wordTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Character", comment: "Characters: %@"), characterTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Paragraph", comment: "Paragraphs: %@"), paragraphTitle) + "\n" + String.localizedStringWithFormat(NSLocalizedString("Global.Alert.Counter.Content.Sentence", comment: "Sentences: %@"), sentenceTitle)
+                let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
                 
-                let countingResultAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                var message = ""
+                
+                for (index, name) in itemNames.enumerate() {
+                    let localizedString = "Global.Alert.Counter.Content.\(name)"
+                    
+                    message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
+                    
+                    if(index != itemNames.count-1) {
+                        message += "\n"
+                    }
+                }
+                
+                let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .Alert)
                 countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
                     print("[提示] 用戶已按下確定按鈕")
                     self.closeWindow()

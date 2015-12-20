@@ -36,27 +36,14 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         let tapGesture = UITapGestureRecognizer(target: self, action: "pressedOnce")
         self.view.addGestureRecognizer(tapGesture)
         
-        var wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
-        var wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
+        let wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
+        let wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
         
-        var charSingular = NSLocalizedString("Global.Units.Short.Character.Singular", comment: "char.")
-        var charPlural = NSLocalizedString("Global.Units.Short.Character.Plural", comment: "chars.")
+        let charSingular = NSLocalizedString("Global.Units.Short.Character.Singular", comment: "char.")
+        let charPlural = NSLocalizedString("Global.Units.Short.Character.Plural", comment: "chars.")
         
-        var paraSingular = NSLocalizedString("Global.Units.Short.Paragraph.Singular", comment: "para.")
-        var paraPlural = NSLocalizedString("Global.Units.Short.Paragraph.Plural", comment: "paras.")
-        
-        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-            print("提示：用戶正使用iPad！")
-            wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
-            wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
-            
-            charSingular = NSLocalizedString("Global.Units.Character.Singular", comment: "character")
-            charPlural = NSLocalizedString("Global.Units.Character.Plural", comment: "characters")
-            
-            paraSingular = NSLocalizedString("Global.Units.Paragraph.Singular", comment: "paragraph")
-            paraPlural = NSLocalizedString("Global.Units.Paragraph.Plural", comment: "paragraphs")
-        }
-        
+        let paraSingular = NSLocalizedString("Global.Units.Short.Paragraph.Singular", comment: "para.")
+        let paraPlural = NSLocalizedString("Global.Units.Short.Paragraph.Plural", comment: "paras.")
         
         var wordCounts = 0
         var charCount = 0
