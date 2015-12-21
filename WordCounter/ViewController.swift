@@ -164,12 +164,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         
-        presentIntroView()
-        if( (appFirstLaunch) || (appJustUpdate) ){
+        
+        //if( (appFirstLaunch) || (appJustUpdate) ){
             presentingOtherView = true
             
-            
-        }
+            presentIntroView()
+        //}
         
         if( (iAdShowing) && (iAdHeight > 0.0) ){
             self.tv.contentInset.bottom = iAdHeight
@@ -658,6 +658,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     // MARK: - Intro View
     func presentIntroView() {
+        if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+            UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+        }
+        
         let screenWidth = self.view.bounds.size.width
         let screenHeight = self.view.bounds.size.height
         
@@ -666,7 +670,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             "1-3-ActionExtension-How.png",
             "1-3-MoreCountingType.png",
             "1-3-ImproveTodayWidget.png",
-            "1-3-About.png"
+            "1-3-About.png",
         ]
         
         let contentTitleTexts = [
@@ -698,7 +702,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 page.descFont = UIFont(name: (page.descFont?.fontName)!, size: 12)
             }
             
-            print("WOW!: \(page.titlePositionY)")
+            //print("WOW!: \(page.titlePositionY)")
             
             let titlePositionFromBottom = page.titlePositionY
             
@@ -718,7 +722,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         intro.delegate = self
         intro.showInView(self.view, animateDuration: 0.5)
         intro.showFullscreen()
-        intro.skipButton.setTitle("跳過哈哈", forState: .Normal)
+        intro.skipButton.setTitle(NSLocalizedString("Welcome.Global.Button.Skip", comment: "Skip"), forState: .Normal)
         intro.pageControlY = 20
     }
     

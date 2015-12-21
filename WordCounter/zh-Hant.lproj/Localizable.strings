@@ -82,6 +82,8 @@ About.Alert.ShowGithub.Title = "您已成為開發人員啦！";
 About.Alert.ShowGithub.Content = "於GitHub上查看「字數統計工具」原始碼？";
 
 
+Welcome.Global.Button.Skip = "跳過";
+
 "Welcome.Global.Text.About" = "- 我們將繼續爲「字數統計工具」提供支援並加入更多功能；如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";
 
 "Welcome.Version.1-1.Text.TodayWidget.Introduction" = "重點：直接於通知中心「今天」視圖內統計您剪貼簿內的字數！";
