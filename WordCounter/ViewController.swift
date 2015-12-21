@@ -165,11 +165,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         
         
-        //if( (appFirstLaunch) || (appJustUpdate) ){
+        if( (appFirstLaunch) || (appJustUpdate) ){
             presentingOtherView = true
             
             presentIntroView()
-        //}
+        }
         
         if( (iAdShowing) && (iAdHeight > 0.0) ){
             self.tv.contentInset.bottom = iAdHeight
@@ -408,13 +408,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         stableKeyboardBarButtonItems["Done"]!.title = ""
         stableKeyboardBarButtonItems["Done"]!.title = NSLocalizedString("Global.Button.Done", comment: "Done")
-        
-        print("i HATE \(showedKeyboardButtons["Paragraph"])")
-        
-        print(barItems)
-        print(barItems.count)
-        print(countingKeyboardBarButtonItems)
-        print(stableKeyboardBarButtonItems)
         
         updateTextViewCounting()
     }
@@ -728,6 +721,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func introDidFinish(introView: EAIntroView!) {
         presentingOtherView = false
+        appFirstLaunch = false
         startEditing()
     }
     
