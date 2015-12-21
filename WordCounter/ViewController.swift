@@ -658,7 +658,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     // MARK: - Intro View
     func presentIntroView() {
-        if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         }
         
@@ -691,7 +691,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         var introPages = [EAIntroPage]()
         
-        for (index, _) in contentImages.enumerate() {
+        for (index, _) in contentTitleTexts.enumerate() {
             
             let page = EAIntroPage()
             page.title = contentTitleTexts[index]

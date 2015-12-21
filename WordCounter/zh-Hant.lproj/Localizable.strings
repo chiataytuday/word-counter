@@ -84,8 +84,21 @@ About.Alert.ShowGithub.Content = "於GitHub上查看「字數統計工具」原�
 
 Welcome.Global.Button.Skip = "跳過";
 
-"Welcome.Global.Text.About" = "- 我們將繼續爲「字數統計工具」提供支援並加入更多功能；如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";
+Welcome.Global.Title.About = "多謝！";
+Welcome.Global.Text.About = "我們將繼續為「字數統計工具」提供支援並加入更多功能；\n如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";
 
+/***** VERSION 1.1-1.3 *****/
 "Welcome.Version.1-1.Text.TodayWidget.Introduction" = "重點：直接於通知中心「今天」視圖內統計您剪貼簿內的字數！";
 "Welcome.Version.1-1.Text.TodayWidget.How" = "通過「編輯」按鈕加入該工具";
-"Welcome.Version.1-1.Text.TooManyCharacter" = "爲防止卡頓、在字符數量超過1500後「字數統計工具」將自動切換爲手動模式";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "為防止卡頓、在字符數量超過1500後「字數統計工具」將自動切換為手動模式";
+
+/***** VERSION 1.3-NOW *****/
+"Welcome.Version.1-3.Title.ActionExtension.Introduction" = "重點：動作模組 Action Extension";
+"Welcome.Version.1-3.Title.ActionExtension.How" = "重點：動作模組 Action Extension";
+"Welcome.Version.1-3.Title.MoreCountingType" = "重點：更多統計項目";
+"Welcome.Version.1-3.Title.ImproveTodayWidget" = "「今天」工具";
+
+"Welcome.Version.1-3.Text.ActionExtension.Introduction" = "重點：\n直接使用分享菜單內的「動作模組 Action Extension」統計字數！";
+"Welcome.Version.1-3.Text.ActionExtension.How" = "通過文字選單中「共享...」按鈕加入該工具";
+"Welcome.Version.1-3.Text.MoreCountingType" = "重點：加入句數統計及\n分別計算含/不含標點符號之字數";
+"Welcome.Version.1-3.Text.ImproveTodayWidget" = "優化「今天」工具\n快去試試吧！";
