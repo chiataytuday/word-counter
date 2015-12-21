@@ -10,6 +10,5 @@
 #define WordCounter_BridgingHeader_h
 
 //#import <Google/Analytics.h>
-#import <EAIntroView/EAIntroView.h>
 
 #endif

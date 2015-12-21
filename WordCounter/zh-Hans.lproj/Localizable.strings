@@ -84,6 +84,6 @@ About.Alert.ShowGithub.Content = "于Github上查看 字数统计工具 源代�
 
 "Welcome.Global.Text.About" = "- 我们将继续为 字数统计工具 提供支援并加入更多功能；如果您对本程序有任何意见或建议，欢迎发送邮件至 eflyjason@gmail.com 联系开发者，谢谢！ :)";
 
-"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- 重点：直接于通知中心“今天”视图内统计您剪切板内的字数！";
-"Welcome.Version.1-1.Text.TodayWidget.How" = "- 通过“编辑”按钮加入该工具";
-"Welcome.Version.1-1.Text.TooManyCharacter" = "- 为防止卡顿丶在字符数量超过1500后 字数统计工具 将自动切换为手动模式";
+"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "重点：直接于通知中心“今天”视图内统计您剪切板内的字数！";
+"Welcome.Version.1-1.Text.TodayWidget.How" = "通过“编辑”按钮加入该工具";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "为防止卡顿丶在字符数量超过1500后 字数统计工具 将自动切换为手动模式";

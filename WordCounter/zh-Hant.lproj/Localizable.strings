@@ -84,6 +84,6 @@ About.Alert.ShowGithub.Content = "於GitHub上查看「字數統計工具」原�
 
 "Welcome.Global.Text.About" = "- 我們將繼續爲「字數統計工具」提供支援並加入更多功能；如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";
 
-"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- 重點：直接於通知中心「今天」視圖內統計您剪貼簿內的字數！";
-"Welcome.Version.1-1.Text.TodayWidget.How" = "- 通過「編輯」按鈕加入該工具";
-"Welcome.Version.1-1.Text.TooManyCharacter" = "- 爲防止卡頓、在字符數量超過1500後「字數統計工具」將自動切換爲手動模式";
+"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "重點：直接於通知中心「今天」視圖內統計您剪貼簿內的字數！";
+"Welcome.Version.1-1.Text.TodayWidget.How" = "通過「編輯」按鈕加入該工具";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "爲防止卡頓、在字符數量超過1500後「字數統計工具」將自動切換爲手動模式";

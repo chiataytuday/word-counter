@@ -11,8 +11,9 @@ import Foundation
 import iAd
 import Async
 import MBProgressHUD
+import EAIntroView
 
-class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate {
+class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate, EAIntroDelegate {
     
     // MARK: - Basic var
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -56,6 +57,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     // MARK: - UI var
     var tvPlaceholderLabel: UILabel!
+    
+    // MARK: Welcome page var
+    var intro = EAIntroView()
     
     // MARK: - Override func
     override func viewDidLoad() {
@@ -162,15 +166,15 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         
-        
+        presentIntroView()
         if( (appFirstLaunch) || (appJustUpdate) ){
             presentingOtherView = true
             
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            /*let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             
             let WelcomePageVC: WelcomePageViewController = storyboard.instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
             
-            self.presentViewController(WelcomePageVC, animated: true, completion: nil)
+            self.presentViewController(WelcomePageVC, animated: true, completion: nil)*/
         }
         
         if( (iAdShowing) && (iAdHeight > 0.0) ){
@@ -676,6 +680,66 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             print("[提示] App於本機首次開啓")
             return true
         }
+    }
+    
+    func presentIntroView() {
+        
+        let screenWidth = self.view.bounds.size.width
+        let screenHeight = self.view.bounds.size.height
+        
+        let contentImages = ["1_1_today_widget.png", "1_1_today_widget_how.png", "1_1_today_widget_how.png", "1_1_today_widget_how.png", "1_1_too_many_charas.png", "1_1_thanks.png"]
+        
+        let contentTitleTexts = [
+            NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.Introduction", comment: "Action Extension"),
+            NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.How", comment: "Action Extension"),
+            NSLocalizedString("Welcome.Version.1-3.Title.MoreCountingType", comment: "Counting sentences"),
+            NSLocalizedString("Welcome.Version.1-3.Title.RemoveTooManyCharacter", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Title.ImproveTodayWidget", comment: ""),
+            NSLocalizedString("Welcome.Global.Title.About", comment: "Thanks!"),
+        ]
+        
+        let contentDetailTexts = [
+            NSLocalizedString("Welcome.Version.1-3.Text.ActionExtension.Introduction", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Text.ActionExtension.How", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Text.MoreCountingType", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Text.RemoveTooManyCharacter", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Text.ImproveTodayWidget", comment: ""),
+            NSLocalizedString("Welcome.Global.Text.About", comment: ""),
+        ]
+        
+        var introPages = [EAIntroPage]()
+        
+        for (index, _) in contentImages.enumerate() {
+            
+            let page = EAIntroPage()
+            page.title = contentTitleTexts[index]
+            page.desc = contentDetailTexts[index]
+            
+            if (index == contentImages.count-1) {
+                //About Content
+                page.descFont = UIFont(name: (page.descFont?.fontName)!, size: 12)
+            }
+            
+            print("WOW!: \(page.titlePositionY)")
+            
+            let titlePositionFromBottom = page.titlePositionY
+            
+            let imageView = UIImageView(image: UIImage(named: contentImages[index]))
+            imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-titlePositionFromBottom-100)
+            imageView.contentMode = .ScaleAspectFit
+            
+            page.titleIconView = imageView
+
+            page.bgColor = self.view.tintColor
+            
+            introPages.append(page)
+        }
+        
+        intro = EAIntroView(frame: self.view.bounds, andPages: introPages)
+        intro.delegate = self
+        intro.showInView(self.view, animateDuration: 0.5)
+        intro.showFullscreen()
+        intro.skipButton.setTitle("跳過哈哈", forState: .Normal)
     }
     
     

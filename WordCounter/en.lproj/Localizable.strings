@@ -82,8 +82,25 @@ About.Alert.ShowGithub.Title = "You are now a developer!";
 About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tools on GitHub?";
 
 
-Welcome.Global.Text.About = "- We promise to keep working on Word Counter Tools and make it better. If you have any questions or suggestions for this app, feel free to contact Arefly at eflyjason@gmail.com. We will try our best. Thanks! :)";
+Welcome.Global.Title.About = "Thanks!";
+Welcome.Global.Text.About = "We promise to keep working on Word Counter Tools and make it better.\nIf you have any questions or suggestions for this app,\nfeel free to contact Arefly at eflyjason@gmail.com.\nWe will try our best. Thanks! :)";
 
-"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "- NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
-"Welcome.Version.1-1.Text.TodayWidget.How" = "- Add widget by \"Edit\" button in Today view";
-"Welcome.Version.1-1.Text.TooManyCharacter" = "- If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";
+
+/***** VERSION 1.1-1.3 *****/
+"Welcome.Version.1-1.Text.TodayWidget.Introduction" = "NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";
+"Welcome.Version.1-1.Text.TodayWidget.How" = "Add widget by \"Edit\" button in Today view";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "If characters is larger than 1500, Word Counter Tools will automatically change to manual mode in order to prevent the serious lag.";
+
+
+/***** VERSION 1.3-NOW *****/
+"Welcome.Version.1-3.Title.ActionExtension.Introduction" = "Action Extension";
+"Welcome.Version.1-3.Title.ActionExtension.How" = "Action Extension";
+"Welcome.Version.1-3.Title.MoreCountingType" = "Counting sentences";
+"Welcome.Version.1-3.Title.RemoveTooManyCharacter" = "No more manual mode!";
+"Welcome.Version.1-3.Title.ImproveTodayWidget" = "Today Widget";
+
+"Welcome.Version.1-3.Text.ActionExtension.Introduction" = "NEW: Check how many words is there in selected text by using Action Extension in Share menu!";
+"Welcome.Version.1-3.Text.ActionExtension.How" = "Add extension by \"Share...\" button in text menu";
+"Welcome.Version.1-3.Text.MoreCountingType" = "NEW: Check how many sentences!";
+"Welcome.Version.1-3.Text.RemoveTooManyCharacter" = "Remove manual mode added in Version 1.1 as the lagging after 1500 words is solved.\nNow all of the text, no matter how much is it, will be count automatiicly!";
+"Welcome.Version.1-3.Text.ImproveTodayWidget" = "Improved Today Widget greatly.";
