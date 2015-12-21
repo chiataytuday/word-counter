@@ -16,13 +16,6 @@
 		3021E3791B54DCD900AEF136 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
 		3021E37F1B54DDA500AEF136 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E3811B54DDA500AEF136 /* InfoPlist.strings */; };
 		3021E38E1B54E3C900AEF136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */; };
-		30438A9A1B7599330053FA8E /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30438A971B7599330053FA8E /* StartPageViewController.swift */; };
-		30438A9B1B7599330053FA8E /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30438A981B7599330053FA8E /* WelcomePageViewController.swift */; };
-		30438A9C1B7599330053FA8E /* StartPageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30438A991B7599330053FA8E /* StartPageItemController.swift */; };
-		30438AA51B75A2AC0053FA8E /* 1_1_today_widget.png in Resources */ = {isa = PBXBuildFile; fileRef = 30438AA41B75A2AC0053FA8E /* 1_1_today_widget.png */; };
-		30438AA71B75AABB0053FA8E /* 1_1_too_many_charas in Resources */ = {isa = PBXBuildFile; fileRef = 30438AA61B75AAB80053FA8E /* 1_1_too_many_charas */; };
-		30438AA91B75AB4D0053FA8E /* 1_1_today_widget_how.png in Resources */ = {isa = PBXBuildFile; fileRef = 30438AA81B75AB4D0053FA8E /* 1_1_today_widget_how.png */; };
-		30438AAB1B75AB840053FA8E /* 1_1_thanks.png in Resources */ = {isa = PBXBuildFile; fileRef = 30438AAA1B75AB840053FA8E /* 1_1_thanks.png */; };
 		306CF5591B7588EC0085FC3B /* WordCounterTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30B7AC931B74698E00517036 /* WordCounterTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		309080611B4A0A7700C0AE5A /* InfoTabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */; };
 		309496621B748F8E00360A77 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 309496641B748F8E00360A77 /* MainInterface.storyboard */; };
@@ -40,6 +33,11 @@
 		ED2A74CF1C2140AA00CD28A3 /* BasicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B41C21B7AE85B001C9E80 /* BasicConfig.swift */; };
 		ED2A74D11C21419B00CD28A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
 		ED2A74D21C2143DF00CD28A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300BAB711B49097100FE8B37 /* Images.xcassets */; };
+		ED2AB5D41C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */; };
+		ED2AB5D61C27F797004DCC68 /* 1-3-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D51C27F797004DCC68 /* 1-3-MoreCountingType.png */; };
+		ED2AB5D81C27F81D004DCC68 /* 1-3-About.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D71C27F81D004DCC68 /* 1-3-About.png */; };
+		ED2AB5DA1C27F8C8004DCC68 /* 1-3-ActionExtension-How.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D91C27F8C8004DCC68 /* 1-3-ActionExtension-How.png */; };
+		ED2AB5DC1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5DB1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png */; };
 		ED32358F1C20633C0007EF1A /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32358E1C20633C0007EF1A /* ActionViewController.swift */; };
 		ED3235921C20633C0007EF1A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3235901C20633C0007EF1A /* MainInterface.storyboard */; };
 		ED3235961C20633C0007EF1A /* CounterActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -107,13 +105,6 @@
 		3021E3841B54E2D100AEF136 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3021E3851B54E2D100AEF136 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		30438A971B7599330053FA8E /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
-		30438A981B7599330053FA8E /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
-		30438A991B7599330053FA8E /* StartPageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageItemController.swift; sourceTree = "<group>"; };
-		30438AA41B75A2AC0053FA8E /* 1_1_today_widget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_1_today_widget.png; sourceTree = "<group>"; };
-		30438AA61B75AAB80053FA8E /* 1_1_too_many_charas */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1_1_too_many_charas; sourceTree = "<group>"; };
-		30438AA81B75AB4D0053FA8E /* 1_1_today_widget_how.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_1_today_widget_how.png; sourceTree = "<group>"; };
-		30438AAA1B75AB840053FA8E /* 1_1_thanks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_1_thanks.png; sourceTree = "<group>"; };
 		305E388D1B7D822E00CCFD0B /* WordCounter-BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WordCounter-BridgingHeader.h"; sourceTree = "<group>"; };
 		309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabelViewController.swift; sourceTree = "<group>"; };
 		309496631B748F8E00360A77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -135,6 +126,11 @@
 		77A4E5315F4671B198FC848E /* Pods_CounterActionExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CounterActionExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A98A962C8187D47F2A9E6B /* Pods-CounterActionExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CounterActionExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
+		ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ActionExtension-Introduction.png"; sourceTree = "<group>"; };
+		ED2AB5D51C27F797004DCC68 /* 1-3-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-MoreCountingType.png"; sourceTree = "<group>"; };
+		ED2AB5D71C27F81D004DCC68 /* 1-3-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-About.png"; sourceTree = "<group>"; };
+		ED2AB5D91C27F8C8004DCC68 /* 1-3-ActionExtension-How.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ActionExtension-How.png"; sourceTree = "<group>"; };
+		ED2AB5DB1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ImproveTodayWidget.png"; sourceTree = "<group>"; };
 		ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED32358E1C20633C0007EF1A /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		ED3235911C20633C0007EF1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 				300BAB6C1B49097100FE8B37 /* ViewController.swift */,
 				309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */,
 				30B7ACA61B746F6100517036 /* WordCounterClass.swift */,
-				30438A9D1B7599660053FA8E /* Welcome Pages */,
 				3021E37B1B54DCD900AEF136 /* Localizable.strings */,
 				300BAB6E1B49097100FE8B37 /* Main.storyboard */,
 				3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */,
@@ -264,33 +259,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		30438A9D1B7599660053FA8E /* Welcome Pages */ = {
-			isa = PBXGroup;
-			children = (
-				30438A971B7599330053FA8E /* StartPageViewController.swift */,
-				30438A991B7599330053FA8E /* StartPageItemController.swift */,
-				30438A981B7599330053FA8E /* WelcomePageViewController.swift */,
-			);
-			name = "Welcome Pages";
-			sourceTree = "<group>";
-		};
 		30438A9E1B759D060053FA8E /* Welcome Image */ = {
 			isa = PBXGroup;
 			children = (
-				30438A9F1B759D0E0053FA8E /* V1.1 */,
+				ED2AB5D71C27F81D004DCC68 /* 1-3-About.png */,
+				ED2AB5DB1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png */,
+				ED2AB5D91C27F8C8004DCC68 /* 1-3-ActionExtension-How.png */,
+				ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */,
+				ED2AB5D51C27F797004DCC68 /* 1-3-MoreCountingType.png */,
 			);
 			name = "Welcome Image";
-			sourceTree = "<group>";
-		};
-		30438A9F1B759D0E0053FA8E /* V1.1 */ = {
-			isa = PBXGroup;
-			children = (
-				30438AA61B75AAB80053FA8E /* 1_1_too_many_charas */,
-				30438AA81B75AB4D0053FA8E /* 1_1_today_widget_how.png */,
-				30438AA41B75A2AC0053FA8E /* 1_1_today_widget.png */,
-				30438AAA1B75AB840053FA8E /* 1_1_thanks.png */,
-			);
-			name = V1.1;
 			sourceTree = "<group>";
 		};
 		30B7AC941B74698E00517036 /* Frameworks */ = {
@@ -495,14 +473,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				300BAB701B49097100FE8B37 /* Main.storyboard in Resources */,
+				ED2AB5D81C27F81D004DCC68 /* 1-3-About.png in Resources */,
+				ED2AB5D61C27F797004DCC68 /* 1-3-MoreCountingType.png in Resources */,
+				ED2AB5D41C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png in Resources */,
 				3021E3791B54DCD900AEF136 /* Localizable.strings in Resources */,
 				300BAB721B49097100FE8B37 /* Images.xcassets in Resources */,
-				30438AA51B75A2AC0053FA8E /* 1_1_today_widget.png in Resources */,
-				30438AA91B75AB4D0053FA8E /* 1_1_today_widget_how.png in Resources */,
-				30438AA71B75AABB0053FA8E /* 1_1_too_many_charas in Resources */,
+				ED2AB5DA1C27F8C8004DCC68 /* 1-3-ActionExtension-How.png in Resources */,
 				3021E38E1B54E3C900AEF136 /* LaunchScreen.storyboard in Resources */,
+				ED2AB5DC1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png in Resources */,
 				3021E37F1B54DDA500AEF136 /* InfoPlist.strings in Resources */,
-				30438AAB1B75AB840053FA8E /* 1_1_thanks.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,12 +657,9 @@
 			files = (
 				300BAB6D1B49097100FE8B37 /* ViewController.swift in Sources */,
 				309B41C31B7AE85B001C9E80 /* BasicConfig.swift in Sources */,
-				30438A9B1B7599330053FA8E /* WelcomePageViewController.swift in Sources */,
 				300BAB6B1B49097100FE8B37 /* WordCounter.xcdatamodeld in Sources */,
 				30B7ACA71B746F6100517036 /* WordCounterClass.swift in Sources */,
 				300BAB681B49097100FE8B37 /* AppDelegate.swift in Sources */,
-				30438A9A1B7599330053FA8E /* StartPageViewController.swift in Sources */,
-				30438A9C1B7599330053FA8E /* StartPageItemController.swift in Sources */,
 				309080611B4A0A7700C0AE5A /* InfoTabelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -92,8 +92,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
 
         
         
-
-        
         tvPlaceholderLabel = UILabel()
         tvPlaceholderLabel.text = NSLocalizedString("Global.TextView.PlaceHolder.Text", comment: "Type or paste here...")
         tvPlaceholderLabel.font = UIFont.systemFontOfSize(tv.font!.pointSize)
@@ -170,11 +168,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if( (appFirstLaunch) || (appJustUpdate) ){
             presentingOtherView = true
             
-            /*let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let WelcomePageVC: WelcomePageViewController = storyboard.instantiateViewControllerWithIdentifier("WelcomePageViewController") as! WelcomePageViewController
-            
-            self.presentViewController(WelcomePageVC, animated: true, completion: nil)*/
         }
         
         if( (iAdShowing) && (iAdHeight > 0.0) ){
@@ -445,7 +439,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     func startEditing() {
-        tv.becomeFirstResponder()
+        self.tv.becomeFirstResponder()
     }
     
     func clearContent() {
@@ -662,38 +656,23 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //self.canDisplayBannerAds = false
     }
     
-    // MARK: - General func
-    func didBecomeActive() {
-        doAfterRotate()
-        
-        if(!presentingOtherView){
-            startEditing()
-        }
-    }
-    
-    func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
-        if let _ = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
-            print("[提示] App於本機並非首次開啓")
-            return false
-        }else{
-            defaults.setBool(true, forKey: "isAppAlreadyLaunchedOnce")
-            print("[提示] App於本機首次開啓")
-            return true
-        }
-    }
-    
+    // MARK: - Intro View
     func presentIntroView() {
-        
         let screenWidth = self.view.bounds.size.width
         let screenHeight = self.view.bounds.size.height
         
-        let contentImages = ["1_1_today_widget.png", "1_1_today_widget_how.png", "1_1_today_widget_how.png", "1_1_today_widget_how.png", "1_1_too_many_charas.png", "1_1_thanks.png"]
+        let contentImages = [
+            "1-3-ActionExtension-Introduction.png",
+            "1-3-ActionExtension-How.png",
+            "1-3-MoreCountingType.png",
+            "1-3-ImproveTodayWidget.png",
+            "1-3-About.png"
+        ]
         
         let contentTitleTexts = [
-            NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.Introduction", comment: "Action Extension"),
-            NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.How", comment: "Action Extension"),
-            NSLocalizedString("Welcome.Version.1-3.Title.MoreCountingType", comment: "Counting sentences"),
-            NSLocalizedString("Welcome.Version.1-3.Title.RemoveTooManyCharacter", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.Introduction", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.How", comment: ""),
+            NSLocalizedString("Welcome.Version.1-3.Title.MoreCountingType", comment: ""),
             NSLocalizedString("Welcome.Version.1-3.Title.ImproveTodayWidget", comment: ""),
             NSLocalizedString("Welcome.Global.Title.About", comment: "Thanks!"),
         ]
@@ -702,7 +681,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             NSLocalizedString("Welcome.Version.1-3.Text.ActionExtension.Introduction", comment: ""),
             NSLocalizedString("Welcome.Version.1-3.Text.ActionExtension.How", comment: ""),
             NSLocalizedString("Welcome.Version.1-3.Text.MoreCountingType", comment: ""),
-            NSLocalizedString("Welcome.Version.1-3.Text.RemoveTooManyCharacter", comment: ""),
             NSLocalizedString("Welcome.Version.1-3.Text.ImproveTodayWidget", comment: ""),
             NSLocalizedString("Welcome.Global.Text.About", comment: ""),
         ]
@@ -725,11 +703,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             let titlePositionFromBottom = page.titlePositionY
             
             let imageView = UIImageView(image: UIImage(named: contentImages[index]))
-            imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-titlePositionFromBottom-100)
+            imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-titlePositionFromBottom-50)
             imageView.contentMode = .ScaleAspectFit
             
             page.titleIconView = imageView
-
+            page.titleIconPositionY = 30
+            
             page.bgColor = self.view.tintColor
             
             introPages.append(page)
@@ -740,8 +719,33 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         intro.showInView(self.view, animateDuration: 0.5)
         intro.showFullscreen()
         intro.skipButton.setTitle("跳過哈哈", forState: .Normal)
+        intro.pageControlY = 20
     }
     
+    func introDidFinish(introView: EAIntroView!) {
+        presentingOtherView = false
+        startEditing()
+    }
+    
+    // MARK: - General func
+    func didBecomeActive() {
+        doAfterRotate()
+        
+        if(!presentingOtherView){
+            startEditing()
+        }
+    }
+    
+    func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
+        if let _ = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+            print("[提示] App於本機並非首次開啓")
+            return false
+        }else{
+            defaults.setBool(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("[提示] App於本機首次開啓")
+            return true
+        }
+    }
     
     func presentReviewAlert() {
         let reviewAlert = UIAlertController(
