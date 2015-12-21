@@ -476,7 +476,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                     self.countingKeyboardBarButtonItems[name]!.title = titles[name]
                 }
                 
-                print(titles["Sentence"])
+                //print(titles["Sentence"])
         }
     }
     
@@ -722,6 +722,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func introDidFinish(introView: EAIntroView!) {
         presentingOtherView = false
         appFirstLaunch = false
+        appJustUpdate = false
         startEditing()
     }
     

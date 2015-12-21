@@ -138,9 +138,6 @@ class WordCounter {
         return sentenceCounts
     }
     
-    // TODO: Count words without pountuation
-    
-    
     // MARK: - Related func
     /**
     Search `regex` in `text`
