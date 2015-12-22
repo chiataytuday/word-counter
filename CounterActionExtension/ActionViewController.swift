@@ -9,8 +9,6 @@
 import UIKit
 import Foundation
 import MobileCoreServices
-import Async
-import MBProgressHUD
 
 class ActionViewController: UIViewController {
 
@@ -18,6 +16,8 @@ class ActionViewController: UIViewController {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var userText: String? = nil
+    
+    var progressBar = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,18 +68,27 @@ class ActionViewController: UIViewController {
     }
     
     func showCountResult (text: String) {
-        let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
-        progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
+        self.progressBar = LoadingUIView.getProgressBar(
+            self.view.window!,
+            msg: NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting..."),
+            indicator: true)
+        
+        self.view.window!.addSubview(self.progressBar)
+        self.view.window!.userInteractionEnabled = false
+        self.progressBar.center = self.view.center
+        
         
         let itemNames = ["Word", "Character", "Sentence", "Paragraph"]
         var titles = [String: String]()
         
-        Async.background {
+        // Cannot use Async since Swift Framework is not allowed using in app extension :(
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             for name in itemNames {
                 titles[name] = WordCounter().getCountString(text, type: name)
             }
-            }.main {
-                MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.progressBar.removeFromSuperview()
+                self.view.window!.userInteractionEnabled = true
                 
                 let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
                 
@@ -101,7 +110,8 @@ class ActionViewController: UIViewController {
                     self.closeWindow()
                 }))
                 self.presentViewController(countingResultAlert, animated: true, completion: nil)
-        }
+            })
+        })
     }
 
     func closeWindow () {

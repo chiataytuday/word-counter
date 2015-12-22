@@ -17,6 +17,5 @@ target 'WordCounterTodayWidget' do
 end
 
 target 'CounterActionExtension' do
-    pod "AsyncSwift"
-    pod 'MBProgressHUD', '~> 0.9.1'
+
 end
