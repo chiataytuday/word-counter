@@ -123,7 +123,6 @@
 		5BA74942AB1C3B797E5D3AA7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5D570F50824021A22FD5F5EC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
-		77A4E5315F4671B198FC848E /* Pods_CounterActionExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CounterActionExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A98A962C8187D47F2A9E6B /* Pods-CounterActionExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CounterActionExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 		ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ActionExtension-Introduction.png"; sourceTree = "<group>"; };
@@ -277,7 +276,6 @@
 				30B7AC951B74698E00517036 /* NotificationCenter.framework */,
 				20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */,
 				5D570F50824021A22FD5F5EC /* Pods.framework */,
-				77A4E5315F4671B198FC848E /* Pods_CounterActionExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
