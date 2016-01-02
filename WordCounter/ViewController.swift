@@ -9,11 +9,12 @@
 import UIKit
 import Foundation
 import iAd
+import GoogleMobileAds
 import Async
 import MBProgressHUD
 import EAIntroView
 
-class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate, EAIntroDelegate {
+class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
     
     // MARK: - Basic var
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -46,7 +47,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     // MARK: - Bool var
     var keyboardShowing = false
+    
     var iAdShowing = false
+    var adMobShowing = false
     
     var appFirstLaunch = false
     var appJustUpdate = false
@@ -58,7 +61,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // MARK: - UI var
     var tvPlaceholderLabel: UILabel!
     
-    // MARK: Welcome page var
+    // MARK: - Welcome page var
     var intro = EAIntroView()
     
     // MARK: - Override func
@@ -157,12 +160,46 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewDidAppear(animated)
         print("[提示] View Controller 之 super.viewDidAppear() 已加載")
         
-        appDelegate.bannerView.delegate = self
-        view.addSubview(appDelegate.bannerView)
+        let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
+        print("[提示] 用戶目前的地區設定爲：\(countryCode)")
         
-        let viewsDictionary = ["bannerView": appDelegate.bannerView]
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        let noIAdCountry = ["CN"]
+        
+        if(noIAdCountry.contains(countryCode)){
+            let adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)
+            
+            adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
+            adMobBannerView.delegate = self
+            
+            adMobBannerView.adUnitID = "ca-app-pub-4890802000578360/7078656138"
+            adMobBannerView.rootViewController = self
+            
+            view.addSubview(adMobBannerView)
+            
+            self.view.addConstraints([
+                NSLayoutConstraint(item: adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
+            ])
+            
+            
+            let adMobRequest = GADRequest()
+            adMobRequest.testDevices = [
+                kGADSimulatorID,
+                "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
+            ]
+            
+            adMobBannerView.loadRequest(adMobRequest)
+            
+        }else{
+            appDelegate.bannerView.delegate = self
+            view.addSubview(appDelegate.bannerView)
+            
+            let viewsDictionary = ["bannerView": appDelegate.bannerView]
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        }
+        
         
         
         if( (appFirstLaunch) || (appJustUpdate) ){
