@@ -17,6 +17,7 @@ Global.Button.Done = "Done";
 Global.Button.OK = "OK";
 Global.Button.Yes = "Yes";
 Global.Button.Close = "Close";
+Global.Button.Clear = "Clear";
 
 Global.Button.EditText = "Edit text";
 
@@ -80,6 +81,12 @@ About.Subtitle.Text.Build = "Build %@";
 
 About.Alert.ShowGithub.Title = "You are now a developer!";
 About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tools on GitHub?";
+
+About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!||--Other Apps by Arefly||";
+About.Table.Section1.Content = "Jason Ho (Arefly)||Developer--eflyjason@gmail.com||Email--http://www.arefly.com/||Website--%1$@||%2$@";
+
+About.Table.Header.Content = "--About";
+About.Table.Footer.Content = "--© Jason Ho (Arefly) 2015";
 
 
 Welcome.Global.Button.Skip = "Skip";

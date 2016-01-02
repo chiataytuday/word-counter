@@ -17,6 +17,7 @@ Global.Button.Done = "完成";
 Global.Button.OK = "好！";
 Global.Button.Yes = "確定";
 Global.Button.Close = "關閉";
+Global.Button.Clear = "清空";
 
 Global.Button.EditText = "編輯文字";
 
@@ -80,6 +81,12 @@ About.Subtitle.Text.Build = "版本號 %@";
 
 About.Alert.ShowGithub.Title = "您已成為開發人員啦！";
 About.Alert.ShowGithub.Content = "於GitHub上查看「字數統計工具」原始碼？";
+
+About.Table.Section0.Content = "分享本工具！||--於 App Store 評分！||--其它由「暢想資源」製作之 Apps||";
+About.Table.Section1.Content = "何一非（暢想資源）||開發人員--eflyjason@gmail.com||郵箱--http://www.arefly.com/||網站--%1$@||%2$@";
+
+About.Table.Header.Content = "--關於";
+About.Table.Footer.Content = "--© 2015 何一非（暢想資源）";
 
 
 Welcome.Global.Button.Skip = "跳過";

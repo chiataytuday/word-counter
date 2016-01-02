@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     @IBOutlet var tv: UITextView!
     
     @IBOutlet var topBarCountButton: UIBarButtonItem!
+    @IBOutlet var clearButton: UIBarButtonItem!
     
     // MARK: - keyboardButton var
     var keyBoardToolBar = UIToolbar()
@@ -72,6 +73,13 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         print("[提示] View Controller 之 super.viewDidLoad() 已加載")
         
         self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
+        
+        topBarCountButton.action = "topBarCountingButtonClicked:"
+        
+        clearButton.title = NSLocalizedString("Global.Button.Clear", comment: "Clear")
+        clearButton.action = "clearButtonClicked:"
+        
+        
         
         
         if(isAppFirstLaunch()){
@@ -526,7 +534,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     // MARK: - Button action func
-    @IBAction func clearButtonClicked(sender: AnyObject) {
+    func clearButtonClicked(sender: AnyObject) {
         let keyboardShowingBefore = keyboardShowing
         
         endEditing()
@@ -609,7 +617,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     
-    @IBAction func topBarCountingButtonClicked(sender: AnyObject) {
+    func topBarCountingButtonClicked(sender: AnyObject) {
         countResultButtonAction()
     }
     

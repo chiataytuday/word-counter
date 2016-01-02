@@ -12,9 +12,10 @@ import MessageUI
 
 class InfoTabelViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    // MARK: - IBOutlet var
-    @IBOutlet var versionTitle: UILabel!
-    @IBOutlet var buildSubtitle: UILabel!
+    // MARK: - Table Content var
+    var tableContent = [[String]]()
+    var headerContent = [String]()
+    var footerContent = [String]()
     
     // MARK: - Override func
     override func viewDidLoad() {
@@ -23,12 +24,21 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         
         self.title = NSLocalizedString("About.NavBar.Title", comment: "About")
         
+        
         let dictionary = NSBundle.mainBundle().infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
         
-        versionTitle.text = String.localizedStringWithFormat(NSLocalizedString("About.Title.Text.Version", comment: "Version %@"), version)
-        buildSubtitle.text = String.localizedStringWithFormat(NSLocalizedString("About.Subtitle.Text.Build", comment: "Build %@"), build)
+        let versionText = String.localizedStringWithFormat(NSLocalizedString("About.Title.Text.Version", comment: "Version %@"), version)
+        let buildText = String.localizedStringWithFormat(NSLocalizedString("About.Subtitle.Text.Build", comment: "Build %@"), build)
+        
+        print(String.localizedStringWithFormat(NSLocalizedString("About.Section1.Content", comment: "Section 1 Content"), versionText, buildText))
+        
+        tableContent.append(NSLocalizedString("About.Table.Section0.Content", comment: "Section 0 Content").componentsSeparatedByString("--"))
+        tableContent.append(String.localizedStringWithFormat(NSLocalizedString("About.Table.Section1.Content", comment: "Section 1 Content"), versionText, buildText).componentsSeparatedByString("--"))
+        
+        headerContent = NSLocalizedString("About.Table.Header.Content", comment: "Header Content").componentsSeparatedByString("--")
+        footerContent = NSLocalizedString("About.Table.Footer.Content", comment: "Footer Content").componentsSeparatedByString("--")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,6 +47,36 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
     }
     
     // MARK: - Table func
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableContent[section].count
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return tableContent.count
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerContent[section]
+    }
+    
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return footerContent[section]
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellContent = tableContent[indexPath.section][indexPath.row].componentsSeparatedByString("||")
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath: indexPath)
+        cell.textLabel?.text = cellContent[0]
+        cell.detailTextLabel?.text = cellContent[1]
+        
+        if(indexPath.section == 0){
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        }
+        
+        return cell
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 0:
