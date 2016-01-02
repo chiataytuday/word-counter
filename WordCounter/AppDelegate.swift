@@ -7,19 +7,19 @@
 //
 
 import UIKit
-import iAd
 import CoreData
+import iAd
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var iAdBannerView: ADBannerView!
+    var adMobBannerView: GADBannerView!
     
     let defaults = NSUserDefaults.standardUserDefaults()
 
-    
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         print("[提示] 準備加載 didFinishLaunchingWithOptions")
@@ -50,6 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iAdBannerView.translatesAutoresizingMaskIntoConstraints = false
         iAdBannerView.hidden = true
         iAdBannerView.alpha = 0
+        
+        adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)
+        adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
+        adMobBannerView.hidden = true
+        adMobBannerView.alpha = 0
+        adMobBannerView.adUnitID = "ca-app-pub-4890802000578360/7078656138"
         
         // Override point for customization after application launch.
         return true

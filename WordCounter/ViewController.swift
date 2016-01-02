@@ -8,11 +8,12 @@
 
 import UIKit
 import Foundation
-import iAd
-import GoogleMobileAds
 import Async
 import MBProgressHUD
 import EAIntroView
+import iAd
+import GoogleMobileAds
+
 
 class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
     
@@ -27,7 +28,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // MARK: - Init var
     var countNumNow = 0
     
-    var iAdHeight: CGFloat = 0.0
+    var adBannerHeight: CGFloat = 0.0
     
     // MARK: - IBOutlet var
     @IBOutlet var tv: UITextView!
@@ -48,8 +49,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // MARK: - Bool var
     var keyboardShowing = false
     
-    var iAdShowing = false
-    var adMobShowing = false
+    var adBannerShowing = false
     
     var appFirstLaunch = false
     var appJustUpdate = false
@@ -166,20 +166,15 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let noIAdCountry = ["CN"]
         
         if(noIAdCountry.contains(countryCode)){
-            let adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)
             
-            adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
-            adMobBannerView.delegate = self
-            
-            adMobBannerView.adUnitID = "ca-app-pub-4890802000578360/7078656138"
-            adMobBannerView.rootViewController = self
-            
-            view.addSubview(adMobBannerView)
+            appDelegate.adMobBannerView.delegate = self
+            appDelegate.adMobBannerView.rootViewController = self
+            view.addSubview(appDelegate.adMobBannerView)
             
             self.view.addConstraints([
-                NSLayoutConstraint(item: adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
             ])
             
             
@@ -189,8 +184,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
             ]
             
-            adMobBannerView.loadRequest(adMobRequest)
-            
+            appDelegate.adMobBannerView.loadRequest(adMobRequest)
         }else{
             appDelegate.iAdBannerView.delegate = self
             view.addSubview(appDelegate.iAdBannerView)
@@ -208,10 +202,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             presentIntroView()
         }
         
-        if( (iAdShowing) && (iAdHeight > 0.0) ){
-            self.tv.contentInset.bottom = iAdHeight
-            self.tv.scrollIndicatorInsets.bottom = iAdHeight
-        //}else if (self.tv.contentInset.bottom != 0){
+        if( (adBannerShowing) && (adBannerHeight > 0.0) ){
+            self.tv.contentInset.bottom = adBannerHeight
+            self.tv.scrollIndicatorInsets.bottom = adBannerHeight
         }else{
             self.tv.contentInset.bottom = 0
             self.tv.scrollIndicatorInsets.bottom = 0
@@ -324,15 +317,15 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func doAfterRotate () {
         print("[提示] -- 已呼叫 doAfterRotate --")
         
-        if(iAdShowing){
-            iAdHeight = CGRectGetHeight(appDelegate.iAdBannerView.frame)
+        if(adBannerShowing){
+            adBannerHeight = CGRectGetHeight(appDelegate.iAdBannerView.frame)
         }
-        print("[提示] 已設定iAd高度：\(iAdHeight)")
+        print("[提示] 已獲取adBanner高度：\(adBannerHeight)")
         
         if (!keyboardShowing){
-            if( (iAdShowing) && (iAdHeight > 0.0) ){
-                self.tv.contentInset.bottom = iAdHeight
-                self.tv.scrollIndicatorInsets.bottom = iAdHeight
+            if( (adBannerShowing) && (adBannerHeight > 0.0) ){
+                self.tv.contentInset.bottom = adBannerHeight
+                self.tv.scrollIndicatorInsets.bottom = adBannerHeight
                 //}else if (self.tv.contentInset.bottom != 0){
             }else{
                 self.tv.contentInset.bottom = 0
@@ -373,9 +366,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         keyboardShowing = false
         
-        if( (iAdShowing) && (iAdHeight > 0.0) ){
-            self.tv.contentInset.bottom = iAdHeight
-            self.tv.scrollIndicatorInsets.bottom = iAdHeight
+        if( (adBannerShowing) && (adBannerHeight > 0.0) ){
+            self.tv.contentInset.bottom = adBannerHeight
+            self.tv.scrollIndicatorInsets.bottom = adBannerHeight
         }else{
             self.tv.contentInset.bottom = 0
             self.tv.scrollIndicatorInsets.bottom = 0
@@ -623,47 +616,79 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     
-    // MARK: - iAd func
+    // MARK: - iAd & AdMob func
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
         print("[提示] 用戶已點擊iAd廣告")
         
         return true
     }
+    func adViewWillPresentScreen(bannerView: GADBannerView!) {
+        print("[提示] 用戶已點擊AdMob廣告")
+    }
+    
     
     func bannerViewActionDidFinish(banner: ADBannerView!) {
         print("[提示] 用戶已關閉iAd廣告")
     }
+    func adViewDidDismissScreen(bannerView: GADBannerView!) {
+        print("[提示] 用戶已關閉AdMob廣告")
+    }
     
     
+    func showAds(frame: CGRect) {
+        adBannerShowing = true
+        
+        adBannerHeight = CGRectGetHeight(frame)
+        
+        if(!keyboardShowing){
+            self.tv.contentInset.bottom = adBannerHeight
+            self.tv.scrollIndicatorInsets.bottom = adBannerHeight
+        }
+    }
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         print("[提示] iAd已成功加載！")
-        //appDelegate.bannerView.hidden = false
         
-        if(!iAdShowing){
+        if(!adBannerShowing){
             UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.appDelegate.iAdBannerView.alpha = 1
+                banner.alpha = 1
                 }, completion: {
                     (value: Bool) in
                     self.appDelegate.iAdBannerView.hidden = false
             })
             
-            iAdShowing = true
-            
-            iAdHeight = CGRectGetHeight(appDelegate.iAdBannerView.frame)
-            
-            if(!keyboardShowing){
-                self.tv.contentInset.bottom = iAdHeight
-                self.tv.scrollIndicatorInsets.bottom = iAdHeight
-            }
+            showAds(self.appDelegate.iAdBannerView.frame)
         }
+    }
+    func adViewDidReceiveAd(banner: GADBannerView!) {
+        print("[提示] AdMob已成功加載！")
         
-        //self.canDisplayBannerAds = true
+        if(!adBannerShowing){
+            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.appDelegate.adMobBannerView.alpha = 1
+                }, completion: {
+                    (value: Bool) in
+                    self.appDelegate.adMobBannerView.hidden = false
+            })
+            
+            showAds(self.appDelegate.adMobBannerView.frame)
+        }
     }
     
+    
+    func hideAds() {
+        adBannerShowing = false
+        
+        adBannerHeight = 0.0
+        
+        if(!keyboardShowing){
+            self.tv.contentInset.bottom = 0
+            self.tv.scrollIndicatorInsets.bottom = 0
+        }
+    }
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        print("[警告] iAd加載錯誤！")
+        print("[警告] iAd加載錯誤：\(error.localizedDescription)")
 
-        if(iAdShowing){
+        if(adBannerShowing){
             UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 self.appDelegate.iAdBannerView.alpha = 0
                 }, completion: {
@@ -671,19 +696,22 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                     self.appDelegate.iAdBannerView.hidden = true
             })
             
-            
-            iAdShowing = false
-            
-            iAdHeight = 0.0
-            
-            if(!keyboardShowing){
-                self.tv.contentInset.bottom = 0
-                self.tv.scrollIndicatorInsets.bottom = 0
-            }
+            hideAds()
         }
+    }
+    func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+        print("[警告] AdMob加載錯誤：\(error.localizedDescription)")
         
-        
-        //self.canDisplayBannerAds = false
+        if(adBannerShowing){
+            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.appDelegate.adMobBannerView.alpha = 0
+                }, completion: {
+                    (value: Bool) in
+                    self.appDelegate.adMobBannerView.hidden = true
+            })
+            
+            hideAds()
+        }
     }
     
     // MARK: - Intro View
