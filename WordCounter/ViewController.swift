@@ -49,12 +49,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // MARK: - Bool var
     var keyboardShowing = false
     
-    var adBannerShowing = false
-    
     var appFirstLaunch = false
     var appJustUpdate = false
     
     var presentingOtherView = false
+    
+    // MARK: - iAd & AdMob var
+    var adBannerShowing = false
+    var showingAd = ""
     
     //var isZhUser = false
     
@@ -182,6 +184,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             adMobRequest.testDevices = [
                 kGADSimulatorID,
                 "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
+                "02e875974400ad52909c9d4a1899aa96",         // Arefly's iPad
             ]
             
             appDelegate.adMobBannerView.loadRequest(adMobRequest)
@@ -253,6 +256,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         print("[提示] View Controller 之 super.viewWillDisappear() 已加載")
         
         appDelegate.iAdBannerView.removeFromSuperview()
+        appDelegate.adMobBannerView.removeFromSuperview()
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
@@ -318,7 +322,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         print("[提示] -- 已呼叫 doAfterRotate --")
         
         if(adBannerShowing){
-            adBannerHeight = CGRectGetHeight(appDelegate.iAdBannerView.frame)
+            adBannerHeight = CGRectGetHeight(getCurrentAdBannerFrame())
         }
         print("[提示] 已獲取adBanner高度：\(adBannerHeight)")
         
@@ -326,7 +330,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             if( (adBannerShowing) && (adBannerHeight > 0.0) ){
                 self.tv.contentInset.bottom = adBannerHeight
                 self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-                //}else if (self.tv.contentInset.bottom != 0){
             }else{
                 self.tv.contentInset.bottom = 0
                 self.tv.scrollIndicatorInsets.bottom = 0
@@ -617,6 +620,24 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     // MARK: - iAd & AdMob func
+    func getCurrentAdBannerFrame() -> CGRect {
+        var returnCGRect = CGRect()
+        
+        switch showingAd {
+        case "iAd":
+            returnCGRect = self.appDelegate.iAdBannerView.frame
+            break
+        case "AdMob":
+            returnCGRect = self.appDelegate.adMobBannerView.frame
+            break
+        default:
+            break
+        }
+        
+        return returnCGRect
+    }
+    
+    
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
         print("[提示] 用戶已點擊iAd廣告")
         
@@ -635,10 +656,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     
     
-    func showAds(frame: CGRect) {
+    func showAds() {
         adBannerShowing = true
         
-        adBannerHeight = CGRectGetHeight(frame)
+        adBannerHeight = CGRectGetHeight(getCurrentAdBannerFrame())
         
         if(!keyboardShowing){
             self.tv.contentInset.bottom = adBannerHeight
@@ -656,7 +677,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                     self.appDelegate.iAdBannerView.hidden = false
             })
             
-            showAds(self.appDelegate.iAdBannerView.frame)
+            showingAd = "iAd"
+            showAds()
         }
     }
     func adViewDidReceiveAd(banner: GADBannerView!) {
@@ -670,12 +692,15 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                     self.appDelegate.adMobBannerView.hidden = false
             })
             
-            showAds(self.appDelegate.adMobBannerView.frame)
+            showingAd = "AdMob"
+            showAds()
         }
     }
     
     
     func hideAds() {
+        showingAd = ""
+        
         adBannerShowing = false
         
         adBannerHeight = 0.0
