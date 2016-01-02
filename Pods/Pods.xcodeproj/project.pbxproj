@@ -9,29 +9,29 @@
 /* Begin PBXBuildFile section */
 		0682D104346222948C6EBAF2AC35356A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201D084016D57025D7C6A446E2BDCD6 /* Foundation.framework */; };
 		092101C73343155946C8754794E4C1F3 /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF0DE5FE6707A2A88FA50C35B6BCBC0 /* EARestrictedScrollView.framework */; };
-		09B6B995C282D3C6F89B764F748E9523 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D61483C056B8DE3EBE90CC111601B433 /* EARestrictedScrollView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0F6FCF15CC1F4F05C46539443FDA2AAB /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1BA776E2F33D16AB4C01C3BFEC096A8 /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09B6B995C282D3C6F89B764F748E9523 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F81BEFDA0D455DD92D5DBA4663350E /* EARestrictedScrollView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0F6FCF15CC1F4F05C46539443FDA2AAB /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6626419ABCAFAF950D057F587C97882E /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1876C5C411BB80E373A2F5FF06E65908 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201D084016D57025D7C6A446E2BDCD6 /* Foundation.framework */; };
-		1E7623B9420C3E71FAE3287C0CECA040 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = A1F7C642ED9A61E2FA486BFD8CB6B056 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2AAD8559A7E416702CE6539179B26CFB /* AsyncSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3CA4F04AC1A2A6A8E02C7524133A4 /* AsyncSwift-dummy.m */; };
+		1E7623B9420C3E71FAE3287C0CECA040 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = F02C83DC9087626BB85F58E93A9B37B4 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2AAD8559A7E416702CE6539179B26CFB /* AsyncSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C1EE49ED321771D23270E96BDD856 /* AsyncSwift-dummy.m */; };
 		2CC238584D4B68839B8E65A889207755 /* Pods-WordCounter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF722F37BE8FBC76EBC60CE66C98ACC /* Pods-WordCounter-dummy.m */; };
-		3E4BDD4BA1AA509CABA071F595B60BA3 /* EAIntroView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74303006290F7F35A850C2A301995DEB /* EAIntroView-dummy.m */; };
+		3E4BDD4BA1AA509CABA071F595B60BA3 /* EAIntroView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 841725A039CDB81A4EA6BFAB8BCE0B32 /* EAIntroView-dummy.m */; };
 		40C42F3F5DD94F29414FB7BF431221AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8997709C013241A3A65C3C096C47A608 /* CoreGraphics.framework */; };
 		4F95BA35E3817F0EE956F245F52585CB /* Pods-WordCounter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EC4178E70A32F7DC6386F1C10C92B76 /* Pods-WordCounter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		51B15CE7BAA3F2EE32164C33E33AF986 /* EAIntroView.h in Headers */ = {isa = PBXBuildFile; fileRef = 42DDCCD689EF51CD3E92E0BC04D883A1 /* EAIntroView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F4847EAE6106DBA843FAA50604C9D00 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E421B11221EF6495AFAD7D6E21979BF3 /* EAIntroPage.m */; };
+		51B15CE7BAA3F2EE32164C33E33AF986 /* EAIntroView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F0E99048D132363459B35F90095C563 /* EAIntroView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F4847EAE6106DBA843FAA50604C9D00 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EB72FD3C347EC17A589A5E34FA37F0A1 /* EAIntroPage.m */; };
 		7223F2D78A55A3B6DF2F4C9373E140BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201D084016D57025D7C6A446E2BDCD6 /* Foundation.framework */; };
-		79FA844F72D61D53FB67A4EBC0A074F4 /* EARestrictedScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = F3462AAAF9F86AE3076EADDCE3B5B626 /* EARestrictedScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79FA844F72D61D53FB67A4EBC0A074F4 /* EARestrictedScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = E1729738F62555CA020B7434FC0B7EFA /* EARestrictedScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		867042EFD80B12A0506FF47A01B34130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201D084016D57025D7C6A446E2BDCD6 /* Foundation.framework */; };
-		8A08D88C81AF32A04CC84751A8BFDE2B /* EAIntroPage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BEDDBC7B0646290105853E3E3B176F3 /* EAIntroPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E17CC11959A1FE5566CE528047ACDC0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D51ADBE628FC2D1CEF48545C875F2DEA /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A1402E09498287925DECA915C04DB448 /* AsyncSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 87244BB49148B6840669F626933DD29C /* AsyncSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAB5A02B52569BF85D97928DE476552F /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDDB0A85CEFCD18B7C4B2205BC463C6 /* EAIntroView.m */; };
-		AFBC3405169EC62D3D6CC38549B64DF1 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6882D85FCB4FD1D97EA5EE1464E6B8 /* Async.swift */; };
-		B4BA22DA572ACC3B91A14D73EA4EDAB5 /* EARestrictedScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 72C372C7597309CA865686BA535934BF /* EARestrictedScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB010EE04BA829E196554A00A951AA7C /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2811E201CB5BEF91B94B23BE4CEC8F /* MBProgressHUD-dummy.m */; };
-		E16DD200CA0A80E1ACC6CCF4EA042C43 /* EARestrictedScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D1BCE9A407464631D3023F46A7AFCF /* EARestrictedScrollView-dummy.m */; };
-		E6BBBAE283EA73B9EF8AFD32824BB61D /* EAIntroView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D35B820C71CEF74BB1CD918970AFC66 /* EAIntroView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A08D88C81AF32A04CC84751A8BFDE2B /* EAIntroPage.h in Headers */ = {isa = PBXBuildFile; fileRef = D13FB8637E950B9FFDE5B552D35FF641 /* EAIntroPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E17CC11959A1FE5566CE528047ACDC0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DA82D051960C54316A19C3323CBBF7 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A1402E09498287925DECA915C04DB448 /* AsyncSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACDDCE3244329A4EFF3436C27468EE9 /* AsyncSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAB5A02B52569BF85D97928DE476552F /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F915D8AEC4C5F85D2F2D25030409A /* EAIntroView.m */; };
+		AFBC3405169EC62D3D6CC38549B64DF1 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839F708465E54F11ABAF2E43B32DBE9B /* Async.swift */; };
+		B4BA22DA572ACC3B91A14D73EA4EDAB5 /* EARestrictedScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE4985B1AC50F156ED0D95BCF2EE6018 /* EARestrictedScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB010EE04BA829E196554A00A951AA7C /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA37CA4440BFA14113DA5AAAD2CAD08 /* MBProgressHUD-dummy.m */; };
+		E16DD200CA0A80E1ACC6CCF4EA042C43 /* EARestrictedScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A8C6F4ED0449483802A5E89FD1857 /* EARestrictedScrollView-dummy.m */; };
+		E6BBBAE283EA73B9EF8AFD32824BB61D /* EAIntroView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC3DAD39B02C533145828EE44477799 /* EAIntroView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F57122FC0850FCC91F371A3467FBD6C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201D084016D57025D7C6A446E2BDCD6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,57 +75,58 @@
 
 /* Begin PBXFileReference section */
 		01242B650B71FDD0046AF711373FF9CC /* Pods-WordCounter-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WordCounter-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0D8C1EE49ED321771D23270E96BDD856 /* AsyncSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AsyncSwift-dummy.m"; sourceTree = "<group>"; };
 		0F38F78A5EE50DD4FA7E2065BDC6981B /* Pods-WordCounter-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WordCounter-resources.sh"; sourceTree = "<group>"; };
+		1124DFF3A18C989D99CA89146F176153 /* EAIntroView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-prefix.pch"; sourceTree = "<group>"; };
 		1AC25678C0DA06A375BDF2EF004F543E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CDDB0A85CEFCD18B7C4B2205BC463C6 /* EAIntroView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroView.m; path = EAIntroView/EAIntroView.m; sourceTree = "<group>"; };
-		1EF2B236DFBCB564D8FD0F6EA8B78F0C /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
-		2BEDDBC7B0646290105853E3E3B176F3 /* EAIntroPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroPage.h; path = EAIntroView/EAIntroPage.h; sourceTree = "<group>"; };
+		1E6F5619D6A78910DDE6B88F3B5A07C0 /* AsyncSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AsyncSwift.xcconfig; sourceTree = "<group>"; };
+		1F0E99048D132363459B35F90095C563 /* EAIntroView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroView.h; path = EAIntroView/EAIntroView.h; sourceTree = "<group>"; };
+		2B29F3759F06B0CA613A4BD1E581983D /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		2C0AD2E82BDEB1D3BB96AFAA4CB4D59F /* EARestrictedScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = EARestrictedScrollView.modulemap; sourceTree = "<group>"; };
 		2EF0DE5FE6707A2A88FA50C35B6BCBC0 /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EARestrictedScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		36A2C10FC471AB774403C746ECF6599B /* AsyncSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AsyncSwift.modulemap; sourceTree = "<group>"; };
-		39D0C3B4C3053DA72F86483D4A91DAD0 /* EARestrictedScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-prefix.pch"; sourceTree = "<group>"; };
-		3A639B0E2706DF9A58066382BBD1FBB0 /* AsyncSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncSwift-prefix.pch"; sourceTree = "<group>"; };
-		42DDCCD689EF51CD3E92E0BC04D883A1 /* EAIntroView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroView.h; path = EAIntroView/EAIntroView.h; sourceTree = "<group>"; };
+		39D7294B63AA41A722FA9C0594D99CF5 /* EAIntroView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = EAIntroView.modulemap; sourceTree = "<group>"; };
+		3B95093423218C5361FB06500B7DCF73 /* AsyncSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncSwift-prefix.pch"; sourceTree = "<group>"; };
 		45EE03A467C715CE3C6889EC814DF252 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 		4718DC017678DE72D71F48F0C6E260B0 /* EAIntroView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EAIntroView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48630AA2480B1EB58B37092031B6D054 /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E373798F1F4720C3D0C76331E936599 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51E6F0DA4D6450E664803F5D8C179475 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A489CACCA6A7F1F3922D1A6BF27DEE /* EARestrictedScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-prefix.pch"; sourceTree = "<group>"; };
+		58DA82D051960C54316A19C3323CBBF7 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		60616A69526F1604D524AC44B11D9941 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
-		61996B35F4DF59098B2E3CC826A298B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B965CA2D48148754A7EC1D67D693C09 /* EAIntroView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-prefix.pch"; sourceTree = "<group>"; };
+		635A8C6F4ED0449483802A5E89FD1857 /* EARestrictedScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EARestrictedScrollView-dummy.m"; sourceTree = "<group>"; };
+		6626419ABCAFAF950D057F587C97882E /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		6ACDDCE3244329A4EFF3436C27468EE9 /* AsyncSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncSwift-umbrella.h"; sourceTree = "<group>"; };
+		6BACAA772569974743F6A215F51F0D18 /* AsyncSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AsyncSwift.modulemap; sourceTree = "<group>"; };
 		705270E6AFB6591D398E63A17A92655D /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EARestrictedScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7066CC69B9342BC00CC90A73F2C31A91 /* EAIntroView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = EAIntroView.modulemap; sourceTree = "<group>"; };
-		72C372C7597309CA865686BA535934BF /* EARestrictedScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-umbrella.h"; sourceTree = "<group>"; };
-		734CB7A973E1EEE65EF2BA6A7DA9A1F5 /* AsyncSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AsyncSwift.xcconfig; sourceTree = "<group>"; };
-		74303006290F7F35A850C2A301995DEB /* EAIntroView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EAIntroView-dummy.m"; sourceTree = "<group>"; };
 		7EB33DC6715F14AAF47B7A5868E8F73B /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF722F37BE8FBC76EBC60CE66C98ACC /* Pods-WordCounter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WordCounter-dummy.m"; sourceTree = "<group>"; };
-		7F2811E201CB5BEF91B94B23BE4CEC8F /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		81D1BCE9A407464631D3023F46A7AFCF /* EARestrictedScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EARestrictedScrollView-dummy.m"; sourceTree = "<group>"; };
-		87244BB49148B6840669F626933DD29C /* AsyncSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncSwift-umbrella.h"; sourceTree = "<group>"; };
+		7FC3DAD39B02C533145828EE44477799 /* EAIntroView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-umbrella.h"; sourceTree = "<group>"; };
+		839F708465E54F11ABAF2E43B32DBE9B /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Source/Async.swift; sourceTree = "<group>"; };
+		841725A039CDB81A4EA6BFAB8BCE0B32 /* EAIntroView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EAIntroView-dummy.m"; sourceTree = "<group>"; };
 		88B0F4CCCE81D77BED68072084006D8E /* Pods-WordCounter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-WordCounter.modulemap"; sourceTree = "<group>"; };
 		8997709C013241A3A65C3C096C47A608 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		89EFBB3BA74B22CC1679E34660989682 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		8D35B820C71CEF74BB1CD918970AFC66 /* EAIntroView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-umbrella.h"; sourceTree = "<group>"; };
+		8D9F915D8AEC4C5F85D2F2D25030409A /* EAIntroView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroView.m; path = EAIntroView/EAIntroView.m; sourceTree = "<group>"; };
 		8EC4178E70A32F7DC6386F1C10C92B76 /* Pods-WordCounter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WordCounter-umbrella.h"; sourceTree = "<group>"; };
-		9B89FB65F528EDA4F4FB7A134A99367D /* EARestrictedScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EARestrictedScrollView.xcconfig; sourceTree = "<group>"; };
-		A1F7C642ED9A61E2FA486BFD8CB6B056 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		B0DD17FC5968A6C3E7FFB3474CE503A8 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
-		B1BA776E2F33D16AB4C01C3BFEC096A8 /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		933CBBB0B5F94E07427000E7269A4F32 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
+		96D5A9F3317B64915EC263C14C0FEBAA /* EARestrictedScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EARestrictedScrollView.xcconfig; sourceTree = "<group>"; };
+		96F81BEFDA0D455DD92D5DBA4663350E /* EARestrictedScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EARestrictedScrollView.m; path = EARestrictedScrollView/EARestrictedScrollView.m; sourceTree = "<group>"; };
+		A7FFD987B7C2B0498B92E6DBF479FA93 /* EAIntroView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EAIntroView.xcconfig; sourceTree = "<group>"; };
+		ADA37CA4440BFA14113DA5AAAD2CAD08 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BCC726C81AB825E54802AEA8A5226EC4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0A438456DE280EB8D3998FF0A65B131 /* Pods_WordCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA52AF4E6EE86797BAAED672C2EC5C0E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C11E715F850567E96CE0585291972A44 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		C4ACE62B1189402D7585433F2266DF64 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "GoogleMobileAdsSdkiOS-7.6.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		CA34B1834DCE89B1EDA9CD3CC1192A37 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDFFC954EFE26D516AD386CE66A617F2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF121789C02AF893E3CC18F57A8E44BE /* Pods-WordCounter-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounter-acknowledgements.plist"; sourceTree = "<group>"; };
-		CFC3CA4F04AC1A2A6A8E02C7524133A4 /* AsyncSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AsyncSwift-dummy.m"; sourceTree = "<group>"; };
-		D3B6536BBEFFC6821AAAC78B875A7580 /* EAIntroView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EAIntroView.xcconfig; sourceTree = "<group>"; };
-		D51ADBE628FC2D1CEF48545C875F2DEA /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		D61483C056B8DE3EBE90CC111601B433 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EARestrictedScrollView.m; path = EARestrictedScrollView/EARestrictedScrollView.m; sourceTree = "<group>"; };
+		D13FB8637E950B9FFDE5B552D35FF641 /* EAIntroPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroPage.h; path = EAIntroView/EAIntroPage.h; sourceTree = "<group>"; };
 		DC45E1CC3CFF0106F15171142514FEBB /* Pods-WordCounter-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WordCounter-frameworks.sh"; sourceTree = "<group>"; };
+		DF24FD84517E7BCD801D769E8D467D93 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1729738F62555CA020B7434FC0B7EFA /* EARestrictedScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EARestrictedScrollView.h; path = EARestrictedScrollView/EARestrictedScrollView.h; sourceTree = "<group>"; };
 		E201D084016D57025D7C6A446E2BDCD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E421B11221EF6495AFAD7D6E21979BF3 /* EAIntroPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroPage.m; path = EAIntroView/EAIntroPage.m; sourceTree = "<group>"; };
-		F3462AAAF9F86AE3076EADDCE3B5B626 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EARestrictedScrollView.h; path = EARestrictedScrollView/EARestrictedScrollView.h; sourceTree = "<group>"; };
-		FA6882D85FCB4FD1D97EA5EE1464E6B8 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Source/Async.swift; sourceTree = "<group>"; };
-		FCFEAE8BFAC3EB2DC6CFFDDBA5F8C74E /* EARestrictedScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = EARestrictedScrollView.modulemap; sourceTree = "<group>"; };
+		EB72FD3C347EC17A589A5E34FA37F0A1 /* EAIntroPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroPage.m; path = EAIntroView/EAIntroPage.m; sourceTree = "<group>"; };
+		F02C83DC9087626BB85F58E93A9B37B4 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FE4985B1AC50F156ED0D95BCF2EE6018 /* EARestrictedScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,39 +175,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09C68A7936E86D9CAAD28059118D2876 /* AsyncSwift */ = {
+		0ABA537F84D11BE3C2AD76AC33004F69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FA6882D85FCB4FD1D97EA5EE1464E6B8 /* Async.swift */,
-				596C8C92BA6E13FA1CFA6D984026A37D /* Support Files */,
+				C4ACE62B1189402D7585433F2266DF64 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0F530E2FDB750928A3398FBA08A4F202 /* EARestrictedScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E1729738F62555CA020B7434FC0B7EFA /* EARestrictedScrollView.h */,
+				96F81BEFDA0D455DD92D5DBA4663350E /* EARestrictedScrollView.m */,
+				F2ED7D56B9CCDEF1E92584ECACABEDD7 /* Support Files */,
+			);
+			path = EARestrictedScrollView;
+			sourceTree = "<group>";
+		};
+		1C6FC0F162DC0BF7563388EB82673312 /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				0ABA537F84D11BE3C2AD76AC33004F69 /* Frameworks */,
+			);
+			path = "Google-Mobile-Ads-SDK";
+			sourceTree = "<group>";
+		};
+		3256F757C1B22B2120FFF1F84534270E /* AsyncSwift */ = {
+			isa = PBXGroup;
+			children = (
+				839F708465E54F11ABAF2E43B32DBE9B /* Async.swift */,
+				5AE4C01DE990200A36998BACF66997C4 /* Support Files */,
 			);
 			path = AsyncSwift;
-			sourceTree = "<group>";
-		};
-		0DEC883822CFBA75BC85C19003E2940C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7066CC69B9342BC00CC90A73F2C31A91 /* EAIntroView.modulemap */,
-				D3B6536BBEFFC6821AAAC78B875A7580 /* EAIntroView.xcconfig */,
-				74303006290F7F35A850C2A301995DEB /* EAIntroView-dummy.m */,
-				6B965CA2D48148754A7EC1D67D693C09 /* EAIntroView-prefix.pch */,
-				8D35B820C71CEF74BB1CD918970AFC66 /* EAIntroView-umbrella.h */,
-				CA52AF4E6EE86797BAAED672C2EC5C0E /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/EAIntroView";
-			sourceTree = "<group>";
-		};
-		315AFB627A62F29620F0AE7657DAA98F /* EAIntroView */ = {
-			isa = PBXGroup;
-			children = (
-				2BEDDBC7B0646290105853E3E3B176F3 /* EAIntroPage.h */,
-				E421B11221EF6495AFAD7D6E21979BF3 /* EAIntroPage.m */,
-				42DDCCD689EF51CD3E92E0BC04D883A1 /* EAIntroView.h */,
-				1CDDB0A85CEFCD18B7C4B2205BC463C6 /* EAIntroView.m */,
-				0DEC883822CFBA75BC85C19003E2940C /* Support Files */,
-			);
-			path = EAIntroView;
 			sourceTree = "<group>";
 		};
 		34DD715C72B6F050ADCB6FC6A4DB8FD7 /* Pods-WordCounter */ = {
@@ -227,43 +228,30 @@
 			path = "Target Support Files/Pods-WordCounter";
 			sourceTree = "<group>";
 		};
-		584F20F9126BE9FBD913D4F13B242FE1 /* Pods */ = {
+		591047608B21EFE8BDE7B56B85EB93EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				09C68A7936E86D9CAAD28059118D2876 /* AsyncSwift */,
-				315AFB627A62F29620F0AE7657DAA98F /* EAIntroView */,
-				8E443526F3912A2A281483AB8EACE3A0 /* EARestrictedScrollView */,
-				D0EE7BE8F10B80782C81FEA1E4354448 /* MBProgressHUD */,
+				3256F757C1B22B2120FFF1F84534270E /* AsyncSwift */,
+				A6ECAD5755AF50E0515B0E8A117BEAA4 /* EAIntroView */,
+				0F530E2FDB750928A3398FBA08A4F202 /* EARestrictedScrollView */,
+				1C6FC0F162DC0BF7563388EB82673312 /* Google-Mobile-Ads-SDK */,
+				B9ACABBDB05B98EE0808EDDFD3D3F13F /* MBProgressHUD */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		596C8C92BA6E13FA1CFA6D984026A37D /* Support Files */ = {
+		5AE4C01DE990200A36998BACF66997C4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				36A2C10FC471AB774403C746ECF6599B /* AsyncSwift.modulemap */,
-				734CB7A973E1EEE65EF2BA6A7DA9A1F5 /* AsyncSwift.xcconfig */,
-				CFC3CA4F04AC1A2A6A8E02C7524133A4 /* AsyncSwift-dummy.m */,
-				3A639B0E2706DF9A58066382BBD1FBB0 /* AsyncSwift-prefix.pch */,
-				87244BB49148B6840669F626933DD29C /* AsyncSwift-umbrella.h */,
-				51E6F0DA4D6450E664803F5D8C179475 /* Info.plist */,
+				6BACAA772569974743F6A215F51F0D18 /* AsyncSwift.modulemap */,
+				1E6F5619D6A78910DDE6B88F3B5A07C0 /* AsyncSwift.xcconfig */,
+				0D8C1EE49ED321771D23270E96BDD856 /* AsyncSwift-dummy.m */,
+				3B95093423218C5361FB06500B7DCF73 /* AsyncSwift-prefix.pch */,
+				6ACDDCE3244329A4EFF3436C27468EE9 /* AsyncSwift-umbrella.h */,
+				CDFFC954EFE26D516AD386CE66A617F2 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/AsyncSwift";
-			sourceTree = "<group>";
-		};
-		79956F34E4E19214388ED60E2D7546AE /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				61996B35F4DF59098B2E3CC826A298B6 /* Info.plist */,
-				1EF2B236DFBCB564D8FD0F6EA8B78F0C /* MBProgressHUD.modulemap */,
-				B0DD17FC5968A6C3E7FFB3474CE503A8 /* MBProgressHUD.xcconfig */,
-				7F2811E201CB5BEF91B94B23BE4CEC8F /* MBProgressHUD-dummy.m */,
-				89EFBB3BA74B22CC1679E34660989682 /* MBProgressHUD-prefix.pch */,
-				B1BA776E2F33D16AB4C01C3BFEC096A8 /* MBProgressHUD-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/MBProgressHUD";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -271,7 +259,7 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				8A217EECD283C7B02C32AD90A948034B /* Frameworks */,
-				584F20F9126BE9FBD913D4F13B242FE1 /* Pods */,
+				591047608B21EFE8BDE7B56B85EB93EB /* Pods */,
 				805D71CB9ECF6E93D57E2C4DE153FBAB /* Products */,
 				EB36C6296342DA80ED515D87D272332E /* Targets Support Files */,
 			);
@@ -298,16 +286,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8E443526F3912A2A281483AB8EACE3A0 /* EARestrictedScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				F3462AAAF9F86AE3076EADDCE3B5B626 /* EARestrictedScrollView.h */,
-				D61483C056B8DE3EBE90CC111601B433 /* EARestrictedScrollView.m */,
-				F318ACE084419CA9ED8891C2AE7EF37A /* Support Files */,
-			);
-			path = EARestrictedScrollView;
-			sourceTree = "<group>";
-		};
 		90537F43882A67D1477A976B55F1229F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,14 +295,54 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		D0EE7BE8F10B80782C81FEA1E4354448 /* MBProgressHUD */ = {
+		A6ECAD5755AF50E0515B0E8A117BEAA4 /* EAIntroView */ = {
 			isa = PBXGroup;
 			children = (
-				A1F7C642ED9A61E2FA486BFD8CB6B056 /* MBProgressHUD.h */,
-				D51ADBE628FC2D1CEF48545C875F2DEA /* MBProgressHUD.m */,
-				79956F34E4E19214388ED60E2D7546AE /* Support Files */,
+				D13FB8637E950B9FFDE5B552D35FF641 /* EAIntroPage.h */,
+				EB72FD3C347EC17A589A5E34FA37F0A1 /* EAIntroPage.m */,
+				1F0E99048D132363459B35F90095C563 /* EAIntroView.h */,
+				8D9F915D8AEC4C5F85D2F2D25030409A /* EAIntroView.m */,
+				D8ABF491AFE7BF91C25A8283F2043F76 /* Support Files */,
+			);
+			path = EAIntroView;
+			sourceTree = "<group>";
+		};
+		AD4311A040C428D52C5D2AD3BBE39640 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF24FD84517E7BCD801D769E8D467D93 /* Info.plist */,
+				2B29F3759F06B0CA613A4BD1E581983D /* MBProgressHUD.modulemap */,
+				933CBBB0B5F94E07427000E7269A4F32 /* MBProgressHUD.xcconfig */,
+				ADA37CA4440BFA14113DA5AAAD2CAD08 /* MBProgressHUD-dummy.m */,
+				C11E715F850567E96CE0585291972A44 /* MBProgressHUD-prefix.pch */,
+				6626419ABCAFAF950D057F587C97882E /* MBProgressHUD-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MBProgressHUD";
+			sourceTree = "<group>";
+		};
+		B9ACABBDB05B98EE0808EDDFD3D3F13F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F02C83DC9087626BB85F58E93A9B37B4 /* MBProgressHUD.h */,
+				58DA82D051960C54316A19C3323CBBF7 /* MBProgressHUD.m */,
+				AD4311A040C428D52C5D2AD3BBE39640 /* Support Files */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		D8ABF491AFE7BF91C25A8283F2043F76 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				39D7294B63AA41A722FA9C0594D99CF5 /* EAIntroView.modulemap */,
+				A7FFD987B7C2B0498B92E6DBF479FA93 /* EAIntroView.xcconfig */,
+				841725A039CDB81A4EA6BFAB8BCE0B32 /* EAIntroView-dummy.m */,
+				1124DFF3A18C989D99CA89146F176153 /* EAIntroView-prefix.pch */,
+				7FC3DAD39B02C533145828EE44477799 /* EAIntroView-umbrella.h */,
+				BCC726C81AB825E54802AEA8A5226EC4 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/EAIntroView";
 			sourceTree = "<group>";
 		};
 		EB36C6296342DA80ED515D87D272332E /* Targets Support Files */ = {
@@ -335,15 +353,15 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		F318ACE084419CA9ED8891C2AE7EF37A /* Support Files */ = {
+		F2ED7D56B9CCDEF1E92584ECACABEDD7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				FCFEAE8BFAC3EB2DC6CFFDDBA5F8C74E /* EARestrictedScrollView.modulemap */,
-				9B89FB65F528EDA4F4FB7A134A99367D /* EARestrictedScrollView.xcconfig */,
-				81D1BCE9A407464631D3023F46A7AFCF /* EARestrictedScrollView-dummy.m */,
-				39D0C3B4C3053DA72F86483D4A91DAD0 /* EARestrictedScrollView-prefix.pch */,
-				72C372C7597309CA865686BA535934BF /* EARestrictedScrollView-umbrella.h */,
-				4E373798F1F4720C3D0C76331E936599 /* Info.plist */,
+				2C0AD2E82BDEB1D3BB96AFAA4CB4D59F /* EARestrictedScrollView.modulemap */,
+				96D5A9F3317B64915EC263C14C0FEBAA /* EARestrictedScrollView.xcconfig */,
+				635A8C6F4ED0449483802A5E89FD1857 /* EARestrictedScrollView-dummy.m */,
+				55A489CACCA6A7F1F3922D1A6BF27DEE /* EARestrictedScrollView-prefix.pch */,
+				FE4985B1AC50F156ED0D95BCF2EE6018 /* EARestrictedScrollView-umbrella.h */,
+				CA34B1834DCE89B1EDA9CD3CC1192A37 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/EARestrictedScrollView";
@@ -603,7 +621,7 @@
 /* Begin XCBuildConfiguration section */
 		141E9F1626FE34EE75CDC2B7581B19F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0DD17FC5968A6C3E7FFB3474CE503A8 /* MBProgressHUD.xcconfig */;
+			baseConfigurationReference = 933CBBB0B5F94E07427000E7269A4F32 /* MBProgressHUD.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -630,7 +648,7 @@
 		};
 		15CF7D027BB2AFB39E6DF45D4CF2AF3B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 734CB7A973E1EEE65EF2BA6A7DA9A1F5 /* AsyncSwift.xcconfig */;
+			baseConfigurationReference = 1E6F5619D6A78910DDE6B88F3B5A07C0 /* AsyncSwift.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -657,7 +675,7 @@
 		};
 		365DD57373C89786B18F860381E5CD57 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B89FB65F528EDA4F4FB7A134A99367D /* EARestrictedScrollView.xcconfig */;
+			baseConfigurationReference = 96D5A9F3317B64915EC263C14C0FEBAA /* EARestrictedScrollView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -715,7 +733,7 @@
 		};
 		45F2576EF83AA5CEF505EAA8628B0C00 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 734CB7A973E1EEE65EF2BA6A7DA9A1F5 /* AsyncSwift.xcconfig */;
+			baseConfigurationReference = 1E6F5619D6A78910DDE6B88F3B5A07C0 /* AsyncSwift.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -743,7 +761,7 @@
 		};
 		597F4661C5B3A0FDFA8A05A5084A38FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B89FB65F528EDA4F4FB7A134A99367D /* EARestrictedScrollView.xcconfig */;
+			baseConfigurationReference = 96D5A9F3317B64915EC263C14C0FEBAA /* EARestrictedScrollView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -770,7 +788,7 @@
 		};
 		8A58180B42951AA214A675B052BF0576 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3B6536BBEFFC6821AAAC78B875A7580 /* EAIntroView.xcconfig */;
+			baseConfigurationReference = A7FFD987B7C2B0498B92E6DBF479FA93 /* EAIntroView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -827,7 +845,7 @@
 		};
 		9D60719BA7107F9E172828472AB4BDF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3B6536BBEFFC6821AAAC78B875A7580 /* EAIntroView.xcconfig */;
+			baseConfigurationReference = A7FFD987B7C2B0498B92E6DBF479FA93 /* EAIntroView.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -893,7 +911,7 @@
 		};
 		EF9333AF1E81B83A4C56BE7DC73ABC82 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0DD17FC5968A6C3E7FFB3474CE503A8 /* MBProgressHUD.xcconfig */;
+			baseConfigurationReference = 933CBBB0B5F94E07427000E7269A4F32 /* MBProgressHUD.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
