@@ -32,10 +32,9 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         let versionText = String.localizedStringWithFormat(NSLocalizedString("About.Title.Text.Version", comment: "Version %@"), version)
         let buildText = String.localizedStringWithFormat(NSLocalizedString("About.Subtitle.Text.Build", comment: "Build %@"), build)
         
-        print(String.localizedStringWithFormat(NSLocalizedString("About.Section1.Content", comment: "Section 1 Content"), versionText, buildText))
-        
         tableContent.append(NSLocalizedString("About.Table.Section0.Content", comment: "Section 0 Content").componentsSeparatedByString("--"))
         tableContent.append(String.localizedStringWithFormat(NSLocalizedString("About.Table.Section1.Content", comment: "Section 1 Content"), versionText, buildText).componentsSeparatedByString("--"))
+        
         
         headerContent = NSLocalizedString("About.Table.Header.Content", comment: "Header Content").componentsSeparatedByString("--")
         footerContent = NSLocalizedString("About.Table.Footer.Content", comment: "Footer Content").componentsSeparatedByString("--")

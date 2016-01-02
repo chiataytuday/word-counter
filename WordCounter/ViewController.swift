@@ -176,7 +176,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let noIAdCountry = ["CN"]
         
         if(noIAdCountry.contains(countryCode)){
-            
             appDelegate.adMobBannerView.delegate = self
             appDelegate.adMobBannerView.rootViewController = self
             view.addSubview(appDelegate.adMobBannerView)
@@ -187,15 +186,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
             ])
             
-            
-            let adMobRequest = GADRequest()
-            adMobRequest.testDevices = [
-                kGADSimulatorID,
-                "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
-                "02e875974400ad52909c9d4a1899aa96",         // Arefly's iPad
-            ]
-            
-            appDelegate.adMobBannerView.loadRequest(adMobRequest)
+            appDelegate.adMobBannerView.loadRequest(appDelegate.adMobRequest)
         }else{
             appDelegate.iAdBannerView.delegate = self
             view.addSubview(appDelegate.iAdBannerView)

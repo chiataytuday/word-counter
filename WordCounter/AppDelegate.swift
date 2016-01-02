@@ -15,8 +15,11 @@ import GoogleMobileAds
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
+    
     var iAdBannerView: ADBannerView!
+    
     var adMobBannerView: GADBannerView!
+    var adMobRequest: GADRequest!
     
     let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -31,31 +34,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         }
         
-        /*
-        // Configure tracker from GoogleService-Info.plist.
-        var configureError:NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
-        // Optional: configure GAI options.
-        var gai = GAI.sharedInstance()
-        gai.trackerWithTrackingId("UA-38324036-2")
-        gai.trackUncaughtExceptions = true  // report uncaught exceptions
-        //gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
-        */
-        
-        //NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.presentReviewAlert", object: self)
         
         iAdBannerView = ADBannerView(adType: .Banner)
         iAdBannerView.translatesAutoresizingMaskIntoConstraints = false
         iAdBannerView.hidden = true
         iAdBannerView.alpha = 0
         
+        
         adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)
         adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
         adMobBannerView.hidden = true
         adMobBannerView.alpha = 0
-        adMobBannerView.adUnitID = "ca-app-pub-4890802000578360/7078656138"
+        adMobBannerView.adUnitID = BasicConfig().adMobUnitId
+        
+        adMobRequest = GADRequest()
+        adMobRequest.testDevices = [
+            kGADSimulatorID,
+            "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
+            "02e875974400ad52909c9d4a1899aa96",         // Arefly's iPad
+        ]
+        
         
         // Override point for customization after application launch.
         return true
