@@ -640,19 +640,23 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
         print("[提示] 用戶已點擊iAd廣告")
+        endEditing()
         
         return true
     }
     func adViewWillPresentScreen(bannerView: GADBannerView!) {
         print("[提示] 用戶已點擊AdMob廣告")
+        endEditing()
     }
     
     
     func bannerViewActionDidFinish(banner: ADBannerView!) {
         print("[提示] 用戶已關閉iAd廣告")
+        startEditing()
     }
     func adViewDidDismissScreen(bannerView: GADBannerView!) {
         print("[提示] 用戶已關閉AdMob廣告")
+        startEditing()
     }
     
     
