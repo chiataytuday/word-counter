@@ -14,7 +14,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    var bannerView: ADBannerView!
+    var iAdBannerView: ADBannerView!
     
     let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -46,10 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.presentReviewAlert", object: self)
         
-        bannerView = ADBannerView(adType: .Banner)
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        bannerView.hidden = true
-        bannerView.alpha = 0
+        iAdBannerView = ADBannerView(adType: .Banner)
+        iAdBannerView.translatesAutoresizingMaskIntoConstraints = false
+        iAdBannerView.hidden = true
+        iAdBannerView.alpha = 0
         
         // Override point for customization after application launch.
         return true

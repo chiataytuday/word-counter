@@ -192,10 +192,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             adMobBannerView.loadRequest(adMobRequest)
             
         }else{
-            appDelegate.bannerView.delegate = self
-            view.addSubview(appDelegate.bannerView)
+            appDelegate.iAdBannerView.delegate = self
+            view.addSubview(appDelegate.iAdBannerView)
             
-            let viewsDictionary = ["bannerView": appDelegate.bannerView]
+            let viewsDictionary = ["bannerView": appDelegate.iAdBannerView]
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
             view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
         }
@@ -259,7 +259,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewWillDisappear(animated)
         print("[提示] View Controller 之 super.viewWillDisappear() 已加載")
         
-        appDelegate.bannerView.removeFromSuperview()
+        appDelegate.iAdBannerView.removeFromSuperview()
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
@@ -325,7 +325,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         print("[提示] -- 已呼叫 doAfterRotate --")
         
         if(iAdShowing){
-            iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
+            iAdHeight = CGRectGetHeight(appDelegate.iAdBannerView.frame)
         }
         print("[提示] 已設定iAd高度：\(iAdHeight)")
         
@@ -641,15 +641,15 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         if(!iAdShowing){
             UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.appDelegate.bannerView.alpha = 1
+                self.appDelegate.iAdBannerView.alpha = 1
                 }, completion: {
                     (value: Bool) in
-                    self.appDelegate.bannerView.hidden = false
+                    self.appDelegate.iAdBannerView.hidden = false
             })
             
             iAdShowing = true
             
-            iAdHeight = CGRectGetHeight(appDelegate.bannerView.frame)
+            iAdHeight = CGRectGetHeight(appDelegate.iAdBannerView.frame)
             
             if(!keyboardShowing){
                 self.tv.contentInset.bottom = iAdHeight
@@ -665,10 +665,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
 
         if(iAdShowing){
             UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.appDelegate.bannerView.alpha = 0
+                self.appDelegate.iAdBannerView.alpha = 0
                 }, completion: {
                     (value: Bool) in
-                    self.appDelegate.bannerView.hidden = true
+                    self.appDelegate.iAdBannerView.hidden = true
             })
             
             
