@@ -33,8 +33,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     // MARK: - IBOutlet var
     @IBOutlet var tv: UITextView!
     
-    @IBOutlet var topBarCountButton: UIBarButtonItem!
-    @IBOutlet var clearButton: UIBarButtonItem!
+    // MARK: - Navbar var
+    var topBarCountButton: UIBarButtonItem!
+    var clearButton: UIBarButtonItem!
     
     // MARK: - keyboardButton var
     var keyBoardToolBar = UIToolbar()
@@ -74,11 +75,18 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
         
-        topBarCountButton.action = "topBarCountingButtonClicked:"
         
+        topBarCountButton = UIBarButtonItem()
+        topBarCountButton.tintColor = UIColor.blackColor()
+        topBarCountButton.title = WordCounter().getCountString("", type: "Word")
+        topBarCountButton.action = "topBarCountingButtonClicked:"
+        self.navigationItem.setLeftBarButtonItem(topBarCountButton, animated: true)
+        
+        
+        clearButton = UIBarButtonItem()
         clearButton.title = NSLocalizedString("Global.Button.Clear", comment: "Clear")
         clearButton.action = "clearButtonClicked:"
-        
+        self.navigationItem.setRightBarButtonItem(clearButton, animated: true)
         
         
         
@@ -409,7 +417,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         countingKeyboardBarButtonItemsNames = ["Word", "Character", "Sentence", "Paragraph"]
         for name in countingKeyboardBarButtonItemsNames {
-            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countButtonClickedFromKeyboardBarButtonItem")
+            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countResultButtonAction")
             countingKeyboardBarButtonItems[name]!.tintColor = UIColor.blackColor()
         }
         
@@ -553,10 +561,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     func infoButtonAction () {
         self.performSegueWithIdentifier("goInfo", sender: nil)
-    }
-    
-    func countButtonClickedFromKeyboardBarButtonItem() {
-        countResultButtonAction()
     }
     
     

@@ -93,15 +93,8 @@
                             <constraint firstItem="whe-qS-vlc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sbe-wf-gKm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bK1-6I-0cD">
-                        <barButtonItem key="leftBarButtonItem" title="topBarCountButton" id="5Gp-KT-7nU">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="clearButton" id="9GV-he-5Fw"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="bK1-6I-0cD"/>
                     <connections>
-                        <outlet property="clearButton" destination="9GV-he-5Fw" id="raY-Gy-YWn"/>
-                        <outlet property="topBarCountButton" destination="5Gp-KT-7nU" id="q9y-iA-AAq"/>
                         <outlet property="tv" destination="whe-qS-vlc" id="4DC-LA-prO"/>
                         <segue destination="m2F-Fq-feN" kind="show" identifier="goInfo" id="hVb-HZ-tC8"/>
                     </connections>
