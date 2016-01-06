@@ -82,7 +82,7 @@ About.Subtitle.Text.Build = "Build %@";
 About.Alert.ShowGithub.Title = "You are now a developer!";
 About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tools on GitHub?";
 
-About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!||--Other Apps by Arefly||--Donate & remove ads||";
+About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!||--Other Apps by Arefly||--Donate & Remove AD :)||";
 About.Table.Section1.Content = "Jason Ho (Arefly)||Developer--eflyjason@gmail.com||Email--http://www.arefly.com/||Website--%1$@||%2$@";
 
 About.Table.Header.Content = "--About";

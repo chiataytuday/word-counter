@@ -8,9 +8,10 @@
 
 import UIKit
 import Foundation
+import StoreKit
 import MessageUI
 
-class InfoTabelViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate, MFMailComposeViewControllerDelegate {
     
     // MARK: - Table Content var
     var tableContent = [[String]]()
@@ -38,6 +39,9 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         
         headerContent = NSLocalizedString("About.Table.Header.Content", comment: "Header Content").componentsSeparatedByString("--")
         footerContent = NSLocalizedString("About.Table.Footer.Content", comment: "Footer Content").componentsSeparatedByString("--")
+        
+        
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,6 +115,12 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
                 UIApplication.sharedApplication().openURL(BasicConfig().otherAppsByMe!)
                 
                 break
+            case 3:
+                print("[提示] 用戶已按下捐款按鈕")
+                
+                donateMoney(1)
+                
+                break
             default:
                 //DO NOTHING
                 break
@@ -171,8 +181,107 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    // MARK: - Related func
-    func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
+    
+    // MARK: - IAP Related func
+    func donateMoney(amount: Int) {
+        print("[提示] 用戶已選擇捐款 \(amount) 美元")
+        
+        print("[提示] 準備獲取產品信息")
+        print("[提示] 用戶canMakePayments()值爲 \(SKPaymentQueue.canMakePayments())")
+        
+        if (SKPaymentQueue.canMakePayments()){
+            getProductInfo("WordCounter.Donation.\(amount)")
+        }else{
+            alertPlzEnableIAP()
+        }
+    }
+    
+    func getProductInfo(id: String) {
+        print("[提示] 獲取產品信息中")
+        let request = SKProductsRequest(productIdentifiers: [id])
+        
+        request.delegate = self
+        request.start()
+    }
+    
+    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        print("[提示] 準備向蘋果請求內購產品信息")
+        let count : Int = response.products.count
+        if (count > 0) {
+            //var validProducts = response.products
+            let validProduct: SKProduct = response.products[0]
+            print("[提示] 已獲取內購產品信息：")
+            print("[提示] 產品ID：\(validProduct.productIdentifier)")
+            print("[提示] 本地化標題：\(validProduct.localizedTitle)")
+            print("[提示] 本地化描述：\(validProduct.localizedDescription)")
+            print("[提示] 價格：\(validProduct.price)")
+            buyProduct(validProduct)
+        } else {
+            print("[警告] 請求信息失敗")
+        }
+    }
+    
+    func buyProduct(product: SKProduct) {
+        print("[提示] 發送內購產品信息至蘋果中")
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addPayment(payment)
+    }
+    
+    func request(request: SKRequest, didFailWithError error: NSError) {
+        print("[警告] 內購失敗：\(error.localizedDescription)")
+    }
+    
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("[提示] 已獲取蘋果回應")
+        
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+                switch trans.transactionState {
+                case .Purchased:
+                    print("[提示] 用戶內購成功")
+                    print("[提示] 產品ID：\((transaction as! SKPaymentTransaction).payment.productIdentifier)")
+                    self.deliverProduct(transaction as! SKPaymentTransaction)
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                case .Failed:
+                    print("[警告] 用戶內購失敗")
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func deliverProduct(transaction: SKPaymentTransaction) {
+        print("[提示] 用戶已捐款成功！")
+        print("[提示] 產品ID：\(transaction.payment.productIdentifier)")
+    }
+    
+    // TODO: Translation here
+    func alertPlzEnableIAP() {
+        print("[提示] 準備顯示「請開啓內購」通知")
+        let alert = UIAlertController(title: "您已禁止 App 內購買", message: "您禁止了 App 內購買的功能！請於設定內打開該功能、謝謝！", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "進入設定", style: .Default, handler: { alertAction in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+            
+            let url: NSURL? = NSURL(string: UIApplicationOpenSettingsURLString)
+            if url != nil{
+                UIApplication.sharedApplication().openURL(url!)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "稍等", style: .Cancel, handler: { alertAction in
+            //DO NOTHING
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Mail Related func
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        /*
+        // 2016/1/6: App don't need to know it
         switch result.rawValue {
         case MFMailComposeResultCancelled.rawValue:
             print("Mail cancelled")
@@ -185,6 +294,7 @@ class InfoTabelViewController: UITableViewController, MFMailComposeViewControlle
         default:
             break
         }
+        */
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

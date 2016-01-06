@@ -14,7 +14,6 @@ import EAIntroView
 import iAd
 import GoogleMobileAds
 
-
 class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
     
     // MARK: - Basic var
