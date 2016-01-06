@@ -15,7 +15,6 @@ import GoogleMobileAds
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    
     var iAdBannerView: ADBannerView!
     
     var adMobBannerView: GADBannerView!

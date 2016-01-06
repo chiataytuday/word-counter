@@ -147,6 +147,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         //checkScreenWidthToSetButton()
         
         
+        if(defaults.objectForKey("noAd") == nil){
+            defaults.setBool(false, forKey: "noAd")
+        }
+        
+        
         if(defaults.objectForKey("appLaunchTimes") == nil){
             defaults.setInteger(1, forKey: "appLaunchTimes")
         }else{
@@ -180,27 +185,31 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
         print("[提示] 用戶目前的地區設定爲：\(countryCode)")
         
-        let noIAdCountry = ["CN"]
         
-        if(noIAdCountry.contains(countryCode)){
-            appDelegate.adMobBannerView.delegate = self
-            appDelegate.adMobBannerView.rootViewController = self
-            view.addSubview(appDelegate.adMobBannerView)
+        print("[提示] 用戶 noAd 值爲 \(defaults.boolForKey("noAd"))")
+        if(defaults.boolForKey("noAd") == false){
+            let noIAdCountry = ["CN"]
             
-            self.view.addConstraints([
-                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
-            ])
-            
-            appDelegate.adMobBannerView.loadRequest(appDelegate.adMobRequest)
-        }else{
-            appDelegate.iAdBannerView.delegate = self
-            view.addSubview(appDelegate.iAdBannerView)
-            
-            let viewsDictionary = ["bannerView": appDelegate.iAdBannerView]
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+            if(noIAdCountry.contains(countryCode)){
+                appDelegate.adMobBannerView.delegate = self
+                appDelegate.adMobBannerView.rootViewController = self
+                view.addSubview(appDelegate.adMobBannerView)
+                
+                self.view.addConstraints([
+                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
+                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
+                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
+                    ])
+                
+                appDelegate.adMobBannerView.loadRequest(appDelegate.adMobRequest)
+            }else{
+                appDelegate.iAdBannerView.delegate = self
+                view.addSubview(appDelegate.iAdBannerView)
+                
+                let viewsDictionary = ["bannerView": appDelegate.iAdBannerView]
+                view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+                view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+            }
         }
         
         
@@ -852,6 +861,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下發表評論按鈕")
+            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
             UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
             self.presentingOtherView = false
@@ -866,6 +876,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下永遠再不顯示按鈕")
+            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
             self.startEditing()
             self.presentingOtherView = false

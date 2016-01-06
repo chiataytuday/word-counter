@@ -13,6 +13,9 @@ import MessageUI
 
 class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate, MFMailComposeViewControllerDelegate {
     
+    // MARK: - Basic var
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     // MARK: - Table Content var
     var tableContent = [[String]]()
     var headerContent = [String]()
@@ -118,7 +121,23 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             case 3:
                 print("[提示] 用戶已按下捐款按鈕")
                 
-                donateMoney(1)
+                let donateValues = [1, 5, 10, 25, 100]
+                
+                let donateAlert = UIAlertController(
+                    title: NSLocalizedString("About.Alert.Donate.Title", comment: ""),
+                    message: NSLocalizedString("About.Alert.Donate.Content", comment: ""),
+                    preferredStyle: .Alert)
+                
+                for donateValue in donateValues {
+                    donateAlert.addAction(UIAlertAction(title: String.localizedStringWithFormat(NSLocalizedString("About.Alert.Donate.Button", comment: "Donate US $%d!"), donateValue), style: .Default, handler: { (action: UIAlertAction) in
+                        self.donateMoney(donateValue)
+                    }))
+                }
+                donateAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下取消按鈕")
+                }))
+                
+                presentViewController(donateAlert, animated: true, completion: nil)
                 
                 break
             default:
@@ -206,7 +225,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         print("[提示] 準備向蘋果請求內購產品信息")
-        let count : Int = response.products.count
+        let count: Int = response.products.count
         if (count > 0) {
             //var validProducts = response.products
             let validProduct: SKProduct = response.products[0]
@@ -257,6 +276,8 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     func deliverProduct(transaction: SKPaymentTransaction) {
         print("[提示] 用戶已捐款成功！")
         print("[提示] 產品ID：\(transaction.payment.productIdentifier)")
+        
+        defaults.setBool(true, forKey: "noAd")
     }
     
     // TODO: Translation here
@@ -280,21 +301,6 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     
     // MARK: - Mail Related func
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        /*
-        // 2016/1/6: App don't need to know it
-        switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
-            print("Mail cancelled")
-        case MFMailComposeResultSaved.rawValue:
-            print("Mail saved")
-        case MFMailComposeResultSent.rawValue:
-            print("Mail sent")
-        case MFMailComposeResultFailed.rawValue:
-            print("Mail sent failure: \(error!.localizedDescription)")
-        default:
-            break
-        }
-        */
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
