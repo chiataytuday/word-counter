@@ -908,8 +908,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.presentingOtherView = false
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
-            print("[提示] 用戶已按下永遠再不顯示按鈕")
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Cancel", comment: "No for this version, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下此版本永遠再不顯示按鈕")
             self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
             self.startEditing()
             self.presentingOtherView = false
