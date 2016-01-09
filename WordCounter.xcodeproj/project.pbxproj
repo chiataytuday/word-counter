@@ -34,13 +34,13 @@
 		ED2A74D21C2143DF00CD28A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300BAB711B49097100FE8B37 /* Images.xcassets */; };
 		ED2AB5D41C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */; };
 		ED2AB5D61C27F797004DCC68 /* 1-3-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D51C27F797004DCC68 /* 1-3-MoreCountingType.png */; };
-		ED2AB5D81C27F81D004DCC68 /* 1-3-About.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D71C27F81D004DCC68 /* 1-3-About.png */; };
 		ED2AB5DA1C27F8C8004DCC68 /* 1-3-ActionExtension-How.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5D91C27F8C8004DCC68 /* 1-3-ActionExtension-How.png */; };
 		ED2AB5DC1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2AB5DB1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png */; };
 		ED32358F1C20633C0007EF1A /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32358E1C20633C0007EF1A /* ActionViewController.swift */; };
 		ED3235921C20633C0007EF1A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3235901C20633C0007EF1A /* MainInterface.storyboard */; };
 		ED3235961C20633C0007EF1A /* CounterActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ED3E40FC1C2133F3009CF68E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED3E40FE1C2133F3009CF68E /* InfoPlist.strings */; };
+		EDBF74921C40B1A00093F295 /* 1-3-1-About.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBF74911C40B1A00093F295 /* 1-3-1-About.png */; };
 		EDF21D621C296FB400B6C20C /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF21D611C296FB400B6C20C /* ProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,7 +125,6 @@
 		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 		ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ActionExtension-Introduction.png"; sourceTree = "<group>"; };
 		ED2AB5D51C27F797004DCC68 /* 1-3-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-MoreCountingType.png"; sourceTree = "<group>"; };
-		ED2AB5D71C27F81D004DCC68 /* 1-3-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-About.png"; sourceTree = "<group>"; };
 		ED2AB5D91C27F8C8004DCC68 /* 1-3-ActionExtension-How.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ActionExtension-How.png"; sourceTree = "<group>"; };
 		ED2AB5DB1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ImproveTodayWidget.png"; sourceTree = "<group>"; };
 		ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +134,7 @@
 		ED3E40FD1C2133F3009CF68E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED3E40FF1C2133F4009CF68E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ED3E41001C2133F6009CF68E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		EDBF74911C40B1A00093F295 /* 1-3-1-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-1-About.png"; sourceTree = "<group>"; };
 		EDF21D611C296FB400B6C20C /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,7 +259,7 @@
 		30438A9E1B759D060053FA8E /* Welcome Image */ = {
 			isa = PBXGroup;
 			children = (
-				ED2AB5D71C27F81D004DCC68 /* 1-3-About.png */,
+				EDBF74911C40B1A00093F295 /* 1-3-1-About.png */,
 				ED2AB5DB1C27FA03004DCC68 /* 1-3-ImproveTodayWidget.png */,
 				ED2AB5D91C27F8C8004DCC68 /* 1-3-ActionExtension-How.png */,
 				ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */,
@@ -467,9 +467,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				300BAB701B49097100FE8B37 /* Main.storyboard in Resources */,
-				ED2AB5D81C27F81D004DCC68 /* 1-3-About.png in Resources */,
 				ED2AB5D61C27F797004DCC68 /* 1-3-MoreCountingType.png in Resources */,
 				ED2AB5D41C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png in Resources */,
+				EDBF74921C40B1A00093F295 /* 1-3-1-About.png in Resources */,
 				3021E3791B54DCD900AEF136 /* Localizable.strings in Resources */,
 				300BAB721B49097100FE8B37 /* Images.xcassets in Resources */,
 				ED2AB5DA1C27F8C8004DCC68 /* 1-3-ActionExtension-How.png in Resources */,
