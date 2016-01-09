@@ -222,7 +222,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     func getProductInfo(id: String) {
         print("[提示] 獲取產品信息中")
         
-        MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        switchHudWithoutTitle(true)
         
         
         let request = SKProductsRequest(productIdentifiers: [id])
@@ -234,7 +234,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         print("[提示] 已成功向蘋果請求內購產品信息")
         
-        MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+        switchHudWithoutTitle(false)
         
         let count: Int = response.products.count
         if (count > 0) {
@@ -250,15 +250,16 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             print("[警告] 請求信息失敗")
         }
     }
+    func request(request: SKRequest, didFailWithError error: NSError) {
+        switchHudWithoutTitle(false)
+        
+        print("[警告] 內購失敗：\(error.localizedDescription)")
+    }
     
     func buyProduct(product: SKProduct) {
         print("[提示] 發送內購產品信息至蘋果中")
         let payment = SKPayment(product: product)
         SKPaymentQueue.defaultQueue().addPayment(payment)
-    }
-    
-    func request(request: SKRequest, didFailWithError error: NSError) {
-        print("[警告] 內購失敗：\(error.localizedDescription)")
     }
     
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -303,15 +304,21 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     func restoreDonate() {
         print("[提示] 用戶已按下「恢復購買」按鈕")
         
-        MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        switchHudWithoutTitle(true)
         
         SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+    }
+    
+    func paymentQueue(queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: NSError) {
+        print("[警告] 恢復內購失敗：\(error.localizedDescription)")
+        
+        switchHudWithoutTitle(false)
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue) {
         print("[提示] 已完成恢復先前之內購記錄")
         
-        MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+        switchHudWithoutTitle(false)
         
         var willShowSuccess = false
         
@@ -362,5 +369,14 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     // MARK: - Mail Related func
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - Other func
+    func switchHudWithoutTitle(show: Bool){
+        if(show){
+            MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        }else{
+            MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+        }
     }
 }
