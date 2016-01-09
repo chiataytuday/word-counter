@@ -313,22 +313,28 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         
         MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
         
+        var willShowSuccess = false
+        
         for transaction: SKPaymentTransaction in queue.transactions {
             if (transaction.payment.productIdentifier).rangeOfString("WordCounter.Donation.") != nil {
                 print("[提示] 用戶已恢復捐款")
                 print("[提示] 內購ID：\(transaction.payment.productIdentifier)")
                 finishDonating()
                 
-                let restoreSuccessAlert = UIAlertController(
-                    title: NSLocalizedString("About.Alert.RestoreSuccess.Title", comment: "Thank you!"),
-                    message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
-                    preferredStyle: .Alert)
-                restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
-                    print("[提示] 用戶已按下完成按鈕")
-                }))
-                presentViewController(restoreSuccessAlert, animated: true, completion: nil)
+                willShowSuccess = true
             }
             SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
+        }
+        
+        if(willShowSuccess){
+            let restoreSuccessAlert = UIAlertController(
+                title: NSLocalizedString("About.Alert.RestoreSuccess.Title", comment: "Thank you!"),
+                message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
+                preferredStyle: .Alert)
+            restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+                print("[提示] 用戶已按下完成按鈕")
+            }))
+            presentViewController(restoreSuccessAlert, animated: true, completion: nil)
         }
     }
     
