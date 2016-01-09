@@ -82,7 +82,22 @@ About.Subtitle.Text.Build = "版本號 %@";
 About.Alert.ShowGithub.Title = "您已成為開發人員啦！";
 About.Alert.ShowGithub.Content = "於GitHub上查看「字數統計工具」原始碼？";
 
-About.Table.Section0.Content = "分享本工具！||--於 App Store 評分！||--其它由「暢想資源」製作之 Apps||";
+About.Alert.Donate.Title = "為開發人員「暢想資源」捐款 :)";
+About.Alert.Donate.Content = "您的支持與捐贈是我們優化並更新「字數統計工具」的動力！\n為答謝您的支持，App 內的廣告將於您捐款後自動隱藏 :)";
+About.Alert.Donate.Button.Donate = "捐款$%d美元";
+About.Alert.Donate.Button.Restore = "（恢復購買）";
+
+About.Alert.DonateSuccess.Title = "多謝！";
+About.Alert.DonateSuccess.Content = "捐款成功！\n廣告現已被隱藏 :)";
+
+About.Alert.RestoreSuccess.Title = "多謝！";
+About.Alert.RestoreSuccess.Content = "已成功恢復您的捐款！\n廣告現已被隱藏 :)";
+
+About.Alert.IapDisabledAlert.Title = "已禁止 App 內購買";
+About.Alert.IapDisabledAlert.Content = "請於「設定」內開啟該功能";
+About.Alert.IapDisabledAlert.Button.OpenSettings = "進入設定";
+
+About.Table.Section0.Content = "分享本工具！||--於 App Store 評分！||--其它由「暢想資源」製作之 Apps||--捐款並移除廣告 :)||";
 About.Table.Section1.Content = "何一非（暢想資源）||開發人員--eflyjason@gmail.com||郵箱--http://www.arefly.com/||網站--%1$@||%2$@";
 
 About.Table.Header.Content = "--關於";

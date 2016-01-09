@@ -129,10 +129,13 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     preferredStyle: .Alert)
                 
                 for donateValue in donateValues {
-                    donateAlert.addAction(UIAlertAction(title: String.localizedStringWithFormat(NSLocalizedString("About.Alert.Donate.Button", comment: "Donate US $%d!"), donateValue), style: .Default, handler: { (action: UIAlertAction) in
+                    donateAlert.addAction(UIAlertAction(title: String.localizedStringWithFormat(NSLocalizedString("About.Alert.Donate.Button.Donate", comment: "Donate US $%d!"), donateValue), style: .Default, handler: { (action: UIAlertAction) in
                         self.donateMoney(donateValue)
                     }))
                 }
+                donateAlert.addAction(UIAlertAction(title: NSLocalizedString("About.Alert.Donate.Button.Restore", comment: "(Restore purchases)"), style: .Default, handler: { (action: UIAlertAction) in
+                    self.restoreDonate()
+                }))
                 donateAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
                     print("[提示] 用戶已按下取消按鈕")
                 }))
@@ -277,25 +280,63 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         print("[提示] 用戶已捐款成功！")
         print("[提示] 產品ID：\(transaction.payment.productIdentifier)")
         
+        finishDonating()
+        
+        let donateSuccessAlert = UIAlertController(
+            title: NSLocalizedString("About.Alert.DonateSuccess.Title", comment: "Thank you!"),
+            message: NSLocalizedString("About.Alert.DonateSuccess.Content", comment: "We have received your donation!\nAD is hidden now! :)"),
+            preferredStyle: .Alert)
+        donateSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下完成按鈕")
+        }))
+        presentViewController(donateSuccessAlert, animated: true, completion: nil)
+    }
+    
+    func restoreDonate() {
+        print("[提示] 用戶已按下「恢復購買」按鈕")
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue) {
+        print("[提示] 已完成恢復先前之內購記錄")
+        
+        for transaction: SKPaymentTransaction in queue.transactions {
+            if (transaction.payment.productIdentifier).rangeOfString("WordCounter.Donation.") != nil {
+                print("[提示] 用戶已恢復捐款")
+                print("[提示] 內購ID：\(transaction.payment.productIdentifier)")
+                finishDonating()
+            }
+            SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
+        }
+        
+        let restoreSuccessAlert = UIAlertController(
+            title: NSLocalizedString("About.Alert.RestoreSuccess.Title", comment: "Thank you!"),
+            message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
+            preferredStyle: .Alert)
+        restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+            print("[提示] 用戶已按下完成按鈕")
+        }))
+        presentViewController(restoreSuccessAlert, animated: true, completion: nil)
+    }
+    
+    func finishDonating() {
         defaults.setBool(true, forKey: "noAd")
     }
     
-    // TODO: Translation here
     func alertPlzEnableIAP() {
         print("[提示] 準備顯示「請開啓內購」通知")
-        let alert = UIAlertController(title: "您已禁止 App 內購買", message: "您禁止了 App 內購買的功能！請於設定內打開該功能、謝謝！", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "進入設定", style: .Default, handler: { alertAction in
-            alert.dismissViewControllerAnimated(true, completion: nil)
-            
+        let iapDisabledAlert = UIAlertController(title: NSLocalizedString("About.Alert.IapDisabledAlert.Title", comment: "IAP is not allowed!"), message: NSLocalizedString("About.Alert.IapDisabledAlert.Content", comment: "Please enable in-app purchases in Settings app."), preferredStyle: .Alert)
+        iapDisabledAlert.addAction(UIAlertAction(title: NSLocalizedString("About.Alert.IapDisabledAlert.Button.OpenSettings", comment: "Open Settings"), style: .Default, handler: { alertAction in
+            print("[提示] 用戶已按下前往「設定」按鈕")
             let url: NSURL? = NSURL(string: UIApplicationOpenSettingsURLString)
             if url != nil{
                 UIApplication.sharedApplication().openURL(url!)
             }
         }))
-        alert.addAction(UIAlertAction(title: "稍等", style: .Cancel, handler: { alertAction in
-            //DO NOTHING
+        iapDisabledAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { alertAction in
+            print("[提示] 用戶已按下關閉按鈕")
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.presentViewController(iapDisabledAlert, animated: true, completion: nil)
     }
     
     
