@@ -88,10 +88,10 @@ About.Alert.Donate.Button.Donate = "捐款$%d美元";
 About.Alert.Donate.Button.Restore = "（恢復購買）";
 
 About.Alert.DonateSuccess.Title = "多謝！";
-About.Alert.DonateSuccess.Content = "捐款成功！\n廣告現已被隱藏 :)";
+About.Alert.DonateSuccess.Content = "捐款成功！\n廣告現已隱藏 :)";
 
 About.Alert.RestoreSuccess.Title = "多謝！";
-About.Alert.RestoreSuccess.Content = "已成功恢復您的捐款！\n廣告現已被隱藏 :)";
+About.Alert.RestoreSuccess.Content = "已成功恢復您的捐款！\n廣告現已隱藏 :)";
 
 About.Alert.IapDisabledAlert.Title = "已禁止 App 內購買";
 About.Alert.IapDisabledAlert.Content = "請於「設定」內開啟該功能";
