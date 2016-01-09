@@ -83,7 +83,7 @@ About.Alert.ShowGithub.Title = "You are now a developer!";
 About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tools on GitHub?";
 
 About.Alert.Donate.Title = "Donate to developer Arefly! :)";
-About.Alert.Donate.Content = "Your support is our motivation, to encourage us to keep working on Word Counter Tools and give you a better app!\nTo thank you for your support, the AD in app will be hidden once after your donation! :)";
+About.Alert.Donate.Content = "Your support is our motivation to keep working on Word Counter Tools and give you a better app!\nTo thank you for your support, the AD in app will be hidden once after your donation! :)";
 About.Alert.Donate.Button.Donate = "Donate $%d US!";
 About.Alert.Donate.Button.Restore = "(Restore purchases)";
 

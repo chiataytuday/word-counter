@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import StoreKit
 import MessageUI
+import MBProgressHUD
 
 class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate, MFMailComposeViewControllerDelegate {
     
@@ -220,6 +221,10 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     
     func getProductInfo(id: String) {
         print("[提示] 獲取產品信息中")
+        
+        MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        
+        
         let request = SKProductsRequest(productIdentifiers: [id])
         
         request.delegate = self
@@ -227,7 +232,10 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     }
     
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        print("[提示] 準備向蘋果請求內購產品信息")
+        print("[提示] 已成功向蘋果請求內購產品信息")
+        
+        MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+        
         let count: Int = response.products.count
         if (count > 0) {
             //var validProducts = response.products
@@ -256,8 +264,8 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("[提示] 已獲取蘋果回應")
         
-        for transaction:AnyObject in transactions {
-            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+        for transaction: AnyObject in transactions {
+            if let trans: SKPaymentTransaction = transaction as? SKPaymentTransaction{
                 switch trans.transactionState {
                 case .Purchased:
                     print("[提示] 用戶內購成功")
@@ -294,29 +302,34 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     
     func restoreDonate() {
         print("[提示] 用戶已按下「恢復購買」按鈕")
+        
+        MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
+        
         SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue) {
         print("[提示] 已完成恢復先前之內購記錄")
         
+        MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+        
         for transaction: SKPaymentTransaction in queue.transactions {
             if (transaction.payment.productIdentifier).rangeOfString("WordCounter.Donation.") != nil {
                 print("[提示] 用戶已恢復捐款")
                 print("[提示] 內購ID：\(transaction.payment.productIdentifier)")
                 finishDonating()
+                
+                let restoreSuccessAlert = UIAlertController(
+                    title: NSLocalizedString("About.Alert.RestoreSuccess.Title", comment: "Thank you!"),
+                    message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
+                    preferredStyle: .Alert)
+                restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下完成按鈕")
+                }))
+                presentViewController(restoreSuccessAlert, animated: true, completion: nil)
             }
             SKPaymentQueue.defaultQueue().finishTransaction(transaction as SKPaymentTransaction)
         }
-        
-        let restoreSuccessAlert = UIAlertController(
-            title: NSLocalizedString("About.Alert.RestoreSuccess.Title", comment: "Thank you!"),
-            message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
-            preferredStyle: .Alert)
-        restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
-            print("[提示] 用戶已按下完成按鈕")
-        }))
-        presentViewController(restoreSuccessAlert, animated: true, completion: nil)
     }
     
     func finishDonating() {
