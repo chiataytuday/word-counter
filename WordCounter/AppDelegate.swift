@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import iAd
+import Async
 import GoogleMobileAds
 
 @UIApplicationMain
@@ -28,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let userUrl = launchOptions?[UIApplicationLaunchOptionsURLKey] as? NSURL {
             //等待2秒後執行
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            Async.main {
                 self.callToSetClipBoard(userUrl.absoluteString)
-            })
+            }
         }
         
         
@@ -92,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
         
         print("[提示] 準備加載 applicationWillTerminate")
+        // TODO: save user's current text when the app is terminated
     }
 
     // MARK: - Core Data stack
