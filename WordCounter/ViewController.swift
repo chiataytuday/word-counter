@@ -78,13 +78,13 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         topBarCountButton = UIBarButtonItem()
         topBarCountButton.tintColor = UIColor.blackColor()
         topBarCountButton.title = WordCounter().getCountString("", type: "Word")
-        topBarCountButton.action = "topBarCountingButtonClicked:"
+        topBarCountButton.action = #selector(self.topBarCountingButtonClicked(_:))
         self.navigationItem.setLeftBarButtonItem(topBarCountButton, animated: true)
         
         
         clearButton = UIBarButtonItem()
         clearButton.title = NSLocalizedString("Global.Button.Clear", comment: "Clear")
-        clearButton.action = "clearButtonClicked:"
+        clearButton.action = #selector(self.clearButtonClicked(_:))
         self.navigationItem.setRightBarButtonItem(clearButton, animated: true)
         
         
@@ -128,20 +128,20 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         addToolBarToKeyboard()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAfterRotate", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doAfterRotate), name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didBecomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "endEditing", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.endEditing), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setContentFromClipBoard", name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentFromClipBoard), name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
         
         doAfterRotate()
         //checkScreenWidthToSetButton()
@@ -414,18 +414,18 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         stableKeyboardBarButtonItemsNames.append("FlexSpace")
         
-        stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(title: "", style: .Done, target: self, action: "doneButtonAction")
+        stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(title: "", style: .Done, target: self, action: #selector(self.doneButtonAction))
         stableKeyboardBarButtonItemsNames.append("Done")
         
         let infoButton: UIButton = UIButton(type: UIButtonType.InfoLight)
-        infoButton.addTarget(self, action: "infoButtonAction", forControlEvents: UIControlEvents.TouchUpInside)
+        infoButton.addTarget(self, action: #selector(self.infoButtonAction), forControlEvents: UIControlEvents.TouchUpInside)
         stableKeyboardBarButtonItems["Info"] = UIBarButtonItem(customView: infoButton)
         stableKeyboardBarButtonItemsNames.append("Info")
         
         
         countingKeyboardBarButtonItemsNames = ["Word", "Character", "Sentence", "Paragraph"]
         for name in countingKeyboardBarButtonItemsNames {
-            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: "countResultButtonAction")
+            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: #selector(self.countResultButtonAction))
             countingKeyboardBarButtonItems[name]!.tintColor = UIColor.blackColor()
         }
         

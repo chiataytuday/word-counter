@@ -33,7 +33,7 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         textView.selectable = false
 
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "pressedOnce")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.pressedOnce))
         self.view.addGestureRecognizer(tapGesture)
         
         let wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")

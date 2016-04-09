@@ -50,7 +50,9 @@ class WordCounter {
         return returnInt
     }
     
-    func wordCount(var s: String) -> Int {
+    func wordCount(inputString: String) -> Int {
+        
+        var s = inputString
         for punctuation in punctuations {
             // Remove punctuations
             s = s.stringByReplacingOccurrencesOfString(punctuation, withString: "")

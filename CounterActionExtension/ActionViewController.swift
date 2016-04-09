@@ -30,7 +30,7 @@ class ActionViewController: UIViewController {
         self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
         
         doneButton.title = NSLocalizedString("Global.Button.Done", comment: "Done")
-        doneButton.action = "closeWindow"
+        doneButton.action = #selector(self.closeWindow)
         
         let textItem = self.extensionContext!.inputItems[0] as! NSExtensionItem
         let textItemProvider = textItem.attachments![0] as! NSItemProvider
