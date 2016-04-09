@@ -76,19 +76,6 @@
 				<string>-DOS_OBJECT_USE_OBJC=0</string>
 			</dict>
 		</dict>
-		<key>0ABA537F84D11BE3C2AD76AC33004F69</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>C4ACE62B1189402D7585433F2266DF64</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>0D89AD83F7C434270B8D89765D1F830E</key>
 		<dict>
 			<key>containerPortal</key>
@@ -363,7 +350,7 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>0ABA537F84D11BE3C2AD76AC33004F69</string>
+				<string>937E744F4903BBB35EF22A0437B790E4</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1019,6 +1006,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>5C1C242AA2DF7DF8FB02E3F5A7557BCB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GoogleMobileAds.framework</string>
+			<key>path</key>
+			<string>GoogleMobileAdsSdkiOS-7.7.1/GoogleMobileAds.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>5F4847EAE6106DBA843FAA50604C9D00</key>
 		<dict>
 			<key>fileRef</key>
@@ -1508,6 +1508,19 @@
 			<string>text.xcconfig</string>
 			<key>path</key>
 			<string>MBProgressHUD.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>937E744F4903BBB35EF22A0437B790E4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5C1C242AA2DF7DF8FB02E3F5A7557BCB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2034,19 +2047,6 @@
 			<string>4E155FBB6070C868840C7A2BB6E75E85</string>
 			<key>targetProxy</key>
 			<string>E28D81F17011676A9EC7DEBEF5A96998</string>
-		</dict>
-		<key>C4ACE62B1189402D7585433F2266DF64</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleMobileAds.framework</string>
-			<key>path</key>
-			<string>GoogleMobileAdsSdkiOS-7.6.0/GoogleMobileAds.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C7305886B282521DCD6A2D8EA33EE3D7</key>
 		<dict>
