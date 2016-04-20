@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("[提示] 準備加載 didFinishLaunchingWithOptions")
         
         if let userUrl = launchOptions?[UIApplicationLaunchOptionsURLKey] as? NSURL {
-            //等待2秒後執行
-            Async.main {
+            Async.main {                // 於主線執行'
                 self.callToSetClipBoard(userUrl.absoluteString)
             }
         }
