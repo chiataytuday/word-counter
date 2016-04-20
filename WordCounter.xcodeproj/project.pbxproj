@@ -370,7 +370,6 @@
 				30B7AC8F1B74698E00517036 /* Sources */,
 				30B7AC901B74698E00517036 /* Frameworks */,
 				30B7AC911B74698E00517036 /* Resources */,
-				30B7ACA51B7469AE00517036 /* Update Build Number */,
 			);
 			buildRules = (
 			);
@@ -388,7 +387,6 @@
 				ED3235881C20633C0007EF1A /* Sources */,
 				ED3235891C20633C0007EF1A /* Frameworks */,
 				ED32358A1C20633C0007EF1A /* Resources */,
-				ED32359A1C206D570007EF1A /* Update Build Number */,
 			);
 			buildRules = (
 			);
@@ -552,35 +550,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
-		};
-		30B7ACA51B7469AE00517036 /* Update Build Number */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update Build Number";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
-		};
-		ED32359A1C206D570007EF1A /* Update Build Number */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update Build Number";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH";
+			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"WordCounterTodayWidget/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"CounterActionExtension/Info.plist\"";
 		};
 		FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
