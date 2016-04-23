@@ -57,11 +57,11 @@ Global.Alert.Counter.Content.Paragraph = "段落：%@";
 Global.Alert.BeforeClear.Title = "确认清空所有内容？";
 Global.Alert.BeforeClear.Content = "警告：本操作不可逆！";
 
-Global.Alert.BeforeReplaceTextViewToClipboard.Title = "将当前内容替换为剪贴簿内容？";
+Global.Alert.BeforeReplaceTextViewToClipboard.Title = "将当前内容替换为剪切板内容？";
 Global.Alert.BeforeReplaceTextViewToClipboard.Content = "提示：本操作不可逆！";
 
 Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title = "恢复内容？";
-Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content = "恢复上次退出 App 前所写入的内容？";
+Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content = "恢复上次退出程序前所写入的内容？";
 
 
 Global.Alert.PlzRate.Title = "多谢！";

@@ -72,6 +72,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewDidLoad()
         print("[提示] View Controller 之 super.viewDidLoad() 已加載")
         
+        // TODO: use custom color log replace current `print()`
+        
         self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
         
         
