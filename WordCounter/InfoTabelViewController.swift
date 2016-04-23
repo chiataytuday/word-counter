@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import StoreKit
 import MessageUI
+import Async
 import MBProgressHUD
 
 class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate, MFMailComposeViewControllerDelegate {
@@ -97,7 +98,9 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     let objectsToShare = [textToShare, appStoreURL]
                     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                     
-                    self.presentViewController(activityVC, animated: true, completion: nil)
+                    Async.main {
+                        self.presentViewController(activityVC, animated: true, completion: nil)
+                    }
                     
                     if let popView = activityVC.popoverPresentationController {
                         print("[提示] 須使用 popView")
@@ -141,7 +144,9 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     print("[提示] 用戶已按下取消按鈕")
                 }))
                 
-                presentViewController(donateAlert, animated: true, completion: nil)
+                Async.main {
+                    self.presentViewController(donateAlert, animated: true, completion: nil)
+                }
                 
                 break
             default:
@@ -163,7 +168,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                 mailComposerVC.setMessageBody("", isHTML: false)
                 
                 if MFMailComposeViewController.canSendMail() {
-                    dispatch_async(dispatch_get_main_queue()) {
+                    Async.main {
                         self.presentViewController(mailComposerVC, animated: true, completion: nil)
                     }
                 }
@@ -188,7 +193,9 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     print("[提示] 用戶已按下取消按鈕")
                 }))
                 
-                presentViewController(showGithubAlert, animated: true, completion: nil)
+                Async.main {
+                    self.presentViewController(showGithubAlert, animated: true, completion: nil)
+                }
                 
                 break
             default:
@@ -298,7 +305,10 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         donateSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下完成按鈕")
         }))
-        presentViewController(donateSuccessAlert, animated: true, completion: nil)
+        
+        Async.main {
+            self.presentViewController(donateSuccessAlert, animated: true, completion: nil)
+        }
     }
     
     func restoreDonate() {
@@ -341,7 +351,10 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
                 print("[提示] 用戶已按下完成按鈕")
             }))
-            presentViewController(restoreSuccessAlert, animated: true, completion: nil)
+            
+            Async.main {
+                self.presentViewController(restoreSuccessAlert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -362,7 +375,10 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         iapDisabledAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { alertAction in
             print("[提示] 用戶已按下關閉按鈕")
         }))
-        self.presentViewController(iapDisabledAlert, animated: true, completion: nil)
+        
+        Async.main {
+            self.presentViewController(iapDisabledAlert, animated: true, completion: nil)
+        }
     }
     
     

@@ -109,6 +109,7 @@ class ActionViewController: UIViewController {
                     print("[提示] 用戶已按下確定按鈕")
                     self.closeWindow()
                 }))
+                
                 self.presentViewController(countingResultAlert, animated: true, completion: nil)
             })
         })

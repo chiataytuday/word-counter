@@ -618,7 +618,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             }
         }))
         
-        presentViewController(clearContentAlert, animated: true, completion: nil)
+        Async.main {
+            self.presentViewController(clearContentAlert, animated: true, completion: nil)
+        }
     }
     
     func infoButtonAction () {
@@ -950,7 +952,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.presentingOtherView = false
         }))
         
-        presentViewController(reviewAlert, animated: true, completion: nil)
+        Async.main {
+            self.presentViewController(reviewAlert, animated: true, completion: nil)
+        }
     }
     
     func presentUpdateReviewAlert() {
@@ -983,6 +987,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.presentingOtherView = false
         }))
         
-        presentViewController(reviewAlert, animated: true, completion: nil)
+        Async.main {
+            self.presentViewController(reviewAlert, animated: true, completion: nil)
+        }
     }
 }
