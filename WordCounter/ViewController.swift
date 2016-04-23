@@ -607,7 +607,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "WARNING: This action is irreversible!"),
             preferredStyle: .Alert)
         
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Destructive, handler: { (action: UIAlertAction) in
             print("[提示] 用戶已按下確定清空按鈕")
             self.clearContent()
             self.startEditing()
