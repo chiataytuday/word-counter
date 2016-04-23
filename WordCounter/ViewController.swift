@@ -191,8 +191,14 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewDidAppear(animated)
         print("[提示] View Controller 之 super.viewDidAppear() 已加載")
         
-        let countryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as! String
+        var countryCode = "US"
+        if let userCountryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String {
+            countryCode = userCountryCode
+        }else{
+            print("[警告] 無法獲取用戶目前區域，將由默認地區\(countryCode)代替")
+        }
         print("[提示] 用戶目前的地區設定爲：\(countryCode)")
+        
         
         
         print("[提示] 用戶 noAd 值爲 \(defaults.boolForKey("noAd"))")
