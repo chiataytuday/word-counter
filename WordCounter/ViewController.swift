@@ -139,9 +139,16 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.endEditing), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didEnterBackground), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentFromClipBoard), name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentFromClipBoard), name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
+        
+        
+        
+        
         
         doAfterRotate()
         //checkScreenWidthToSetButton()
@@ -279,10 +286,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
-        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.getContentFromClipBoard", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
         
         //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -473,6 +480,11 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     */
     
+    func replaceTextViewContent(text: String) {
+        self.tv.text = text
+        self.textViewDidChange(self.tv)      // Call textViewDidChange manually
+    }
+    
     func endEditing() {
         self.tv.resignFirstResponder()
         //self.tv.endEditing(true)
@@ -486,8 +498,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func clearContent() {
         endEditing()
         
-        tv.text = ""
-        textViewDidChange(self.tv)      // Call textViewDidChange manually
+        self.replaceTextViewContent("")
         
         //updateTextViewCounting()
         
@@ -533,10 +544,53 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
-            tv.text = clipBoard
-            //updateTextViewCounting()
-            textViewDidChange(self.tv)      // Call textViewDidChange manually
+            if(tv.text.isEmpty){
+                self.replaceTextViewContent(clipBoard)
+            }else{
+                let replaceContentAlert = UIAlertController(
+                    title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Title", comment: "Replace all content?"),
+                    message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Content", comment: "WARNING: This action is irreversible!"),
+                    preferredStyle: .Alert)
+                
+                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下確定替換內容為剪切版內容")
+                    self.replaceTextViewContent(clipBoard)
+                }))
+                
+                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+                    print("[提示] 用戶已按下取消按鈕")
+                }))
+                
+                Async.main {
+                    self.presentViewController(replaceContentAlert, animated: true, completion: nil)
+                }
+            }
         }
+    }
+    
+    func setContentToTextBeforeEnterBackground() {
+        print("[提示] -- 已開始使用 setContentToTextBeforeEnterBackground() 函數 --")
+        
+        if let textBeforeEnterBackground = defaults.stringForKey("textBeforeEnterBackground") {
+            let replaceContentAlert = UIAlertController(
+                title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title", comment: "Replace all content?"),
+                message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content", comment: "Replace all?"),
+                preferredStyle: .Alert)
+            
+            replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+                print("[提示] 用戶已按下確定替換內容為離開前內容")
+                self.replaceTextViewContent(textBeforeEnterBackground)
+            }))
+            
+            replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+                print("[提示] 用戶已按下取消按鈕")
+            }))
+            
+            Async.main {
+                self.presentViewController(replaceContentAlert, animated: true, completion: nil)
+            }
+        }
+        
     }
     
     
@@ -833,11 +887,25 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     // MARK: - General func
     func didBecomeActive() {
+        
+        print("已呼叫 didBecomeActive()")
+        
         doAfterRotate()
         
         if(!presentingOtherView){
             startEditing()
         }
+    }
+    
+    func didEnterBackground() {
+        
+        print("已呼叫 didEnterBackground()")
+        
+        
+        endEditing()
+        
+        let tvText = self.tv.text
+        defaults.setObject(tvText, forKey: "textBeforeEnterBackground")
     }
     
     func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓

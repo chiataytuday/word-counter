@@ -28,8 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("[提示] 準備加載 didFinishLaunchingWithOptions")
         
         if let userUrl = launchOptions?[UIApplicationLaunchOptionsURLKey] as? NSURL {
-            Async.main {                // 於主線執行'
-                self.callToSetClipBoard(userUrl.absoluteString)
+            self.callToSetClipBoard(userUrl.absoluteString)
+        }
+        
+        if let textBeforeEnterBackground = defaults.stringForKey("textBeforeEnterBackground") {
+            if(!textBeforeEnterBackground.isEmpty){
+                self.callToSetTextBeforeEnterBackground()
             }
         }
         
@@ -88,11 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        print("[提示] 準備加載 applicationWillTerminate")
+        
+        
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
-        
-        print("[提示] 準備加載 applicationWillTerminate")
-        // TODO: save user's current text when the app is terminated
     }
 
     // MARK: - Core Data stack
@@ -180,8 +184,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func callToSetClipBoard(url: String) {
         print("[提示] callToSetClipBoard 接受的網址爲：\(url)")
         if (url == "count://fromClipBoard") {
-            print("[提示] 已準備將用戶剪貼簿內容設定爲TextView之內容")
-            NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.getContentFromClipBoard", object: self)
+            Async.main {                // 於主線執行
+                print("[提示] 已準備將用戶剪貼簿內容設定爲TextView之內容")
+                NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.setContentFromClipBoard", object: self)
+            }
+        }
+    }
+    
+    func callToSetTextBeforeEnterBackground() {
+        print("[提示] 準備 callToSetTextBeforeEnterBackground")
+        Async.main {                // 於主線執行
+            print("[提示] 已準備提示用戶是否將進入背景前的內容設定爲TextView之內容")
+            NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: self)
         }
     }
 
