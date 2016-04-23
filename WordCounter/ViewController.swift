@@ -109,7 +109,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         self.tv.delegate = self
         self.tv.layoutManager.allowsNonContiguousLayout = false
-
+        
         
         
         tvPlaceholderLabel = UILabel()
@@ -548,8 +548,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                 self.replaceTextViewContent(clipBoard)
             }else{
                 let replaceContentAlert = UIAlertController(
-                    title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Title", comment: "Replace all content?"),
-                    message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Content", comment: "WARNING: This action is irreversible!"),
+                    title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Title", comment: "Replace current contents with clipboard contents?"),
+                    message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Content", comment: "NOTICE: This action is irreversible!"),
                     preferredStyle: .Alert)
                 
                 replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
@@ -573,8 +573,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         if let textBeforeEnterBackground = defaults.stringForKey("textBeforeEnterBackground") {
             let replaceContentAlert = UIAlertController(
-                title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title", comment: "Replace all content?"),
-                message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content", comment: "Replace all?"),
+                title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title", comment: "Restore contents?"),
+                message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content", comment: "Restore contents written before quitting the app last time?"),
                 preferredStyle: .Alert)
             
             replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in

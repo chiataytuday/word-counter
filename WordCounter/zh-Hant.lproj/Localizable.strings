@@ -54,8 +54,14 @@ Global.Alert.Counter.Content.Sentence = "句數：%@";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
 
 
-Global.Alert.BeforeClear.Title = "確認清空所有文字？";
+Global.Alert.BeforeClear.Title = "確認清空所有內容？";
 Global.Alert.BeforeClear.Content = "警告：本操作不可逆！";
+
+Global.Alert.BeforeReplaceTextViewToClipboard.Title = "將當前內容替換為剪貼簿內容？";
+Global.Alert.BeforeReplaceTextViewToClipboard.Content = "提示：本操作不可逆！";
+
+Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title = "回復內容？";
+Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content = "回復上次退出 App 前所寫入的內容？";
 
 
 Global.Alert.PlzRate.Title = "多謝！";

@@ -57,6 +57,12 @@ Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
 Global.Alert.BeforeClear.Title = "Clear all content?";
 Global.Alert.BeforeClear.Content = "WARNING: This action is irreversible!";
 
+Global.Alert.BeforeReplaceTextViewToClipboard.Title = "Replace current contents with clipboard contents?";
+Global.Alert.BeforeReplaceTextViewToClipboard.Content = "NOTICE: This action is irreversible!";
+
+Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title = "Restore contents?";
+Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content = "Restore contents written before quitting the app last time?";
+
 
 Global.Alert.PlzRate.Title = "Thanks!";
 Global.Alert.PlzRate.Content = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
