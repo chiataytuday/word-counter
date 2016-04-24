@@ -579,6 +579,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func setContentToTextBeforeEnterBackground() {
         print("[提示] -- 已開始使用 setContentToTextBeforeEnterBackground() 函數 --")
         
+        
+        // TODO: just auto load back without alert :)
         if let textBeforeEnterBackground = defaults.stringForKey("textBeforeEnterBackground") {
             if(textBeforeEnterBackground != self.tv.text){
                 let replaceContentAlert = UIAlertController(
