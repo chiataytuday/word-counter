@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>EAIntroView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>92F1EE170F98EEDB4E6E91EF5C53C651</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AB045440E0FF21FA9AA0E0A151C95FDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7305886B282521DCD6A2D8EA33EE3D7</key>
+		<key>D082FD9722F53B9C3A1229257D4008F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

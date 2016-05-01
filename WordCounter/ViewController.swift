@@ -403,7 +403,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if (keyboardShowing) {
             let d = n.userInfo!
             var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-            r = self.tv.convertRect(r, fromView:nil)
+            r = self.tv.convertRect(r, fromView: nil)
             self.tv.contentInset.bottom = r.size.height
             self.tv.scrollIndicatorInsets.bottom = r.size.height
         }

@@ -85,12 +85,14 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-WordCounter/Async.framework"
+  install_framework "Pods-WordCounter/CocoaLumberjack.framework"
   install_framework "Pods-WordCounter/EAIntroView.framework"
   install_framework "Pods-WordCounter/EARestrictedScrollView.framework"
   install_framework "Pods-WordCounter/MBProgressHUD.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-WordCounter/Async.framework"
+  install_framework "Pods-WordCounter/CocoaLumberjack.framework"
   install_framework "Pods-WordCounter/EAIntroView.framework"
   install_framework "Pods-WordCounter/EARestrictedScrollView.framework"
   install_framework "Pods-WordCounter/MBProgressHUD.framework"

@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'WordCounter' do
     pod "AsyncSwift"
+    pod 'CocoaLumberjack/Swift'
     pod 'MBProgressHUD', '~> 0.9.1'
     pod 'EAIntroView', '~> 2.8.0'
     pod 'Google-Mobile-Ads-SDK', '~> 7.0'
