@@ -144,9 +144,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didEnterBackground), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentFromClipBoard), name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
         
         
         
@@ -296,8 +297,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
         
         //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -553,7 +554,9 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         if let clipBoard = UIPasteboard.generalPasteboard().string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             if( (self.tv.text.isEmpty) || (self.tv.text == clipBoard) ){
-                self.replaceTextViewContent(clipBoard)
+                Async.main {
+                    self.replaceTextViewContent(clipBoard)
+                }
             }else{
                 let replaceContentAlert = UIAlertController(
                     title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Title", comment: "Replace current contents with clipboard contents?"),
@@ -579,26 +582,10 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     func setContentToTextBeforeEnterBackground() {
         print("[提示] -- 已開始使用 setContentToTextBeforeEnterBackground() 函數 --")
         
-        
-        // TODO: just auto load back without alert :)
         if let textBeforeEnterBackground = defaults.stringForKey("textBeforeEnterBackground") {
             if(textBeforeEnterBackground != self.tv.text){
-                let replaceContentAlert = UIAlertController(
-                    title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title", comment: "Restore contents?"),
-                    message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content", comment: "Restore contents written before quitting the app last time?"),
-                    preferredStyle: .Alert)
-                
-                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
-                    print("[提示] 用戶已按下確定替換內容為離開前內容")
-                    self.replaceTextViewContent(textBeforeEnterBackground)
-                }))
-                
-                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
-                    print("[提示] 用戶已按下取消按鈕")
-                }))
-                
                 Async.main {
-                    self.presentViewController(replaceContentAlert, animated: true, completion: nil)
+                    self.replaceTextViewContent(textBeforeEnterBackground)
                 }
             }
         }

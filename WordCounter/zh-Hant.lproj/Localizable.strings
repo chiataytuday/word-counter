@@ -60,9 +60,6 @@ Global.Alert.BeforeClear.Content = "警告：本操作不可逆！";
 Global.Alert.BeforeReplaceTextViewToClipboard.Title = "將當前內容替換為剪貼簿內容？";
 Global.Alert.BeforeReplaceTextViewToClipboard.Content = "提示：本操作不可逆！";
 
-Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Title = "回復內容？";
-Global.Alert.BeforeReplaceTextViewToTextBeforeEnterBackground.Content = "回復上次退出 App 前所寫入的內容？";
-
 
 Global.Alert.PlzRate.Title = "多謝！";
 Global.Alert.PlzRate.Content = "你已經使用%d次「字數統計工具」啦！\n喜歡嗎？去 App Store 評分吧！";
