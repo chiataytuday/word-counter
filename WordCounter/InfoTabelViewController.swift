@@ -27,7 +27,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     // MARK: - Override func
     override func viewDidLoad() {
         super.viewDidLoad()
-        DDLogInfo("準備加載 Info Tabel View Controller 之 viewDidLoad()")
+        DDLogInfo("準備加載 Info Tabel View Controller 之 viewDidLoad")
         
         self.title = NSLocalizedString("About.NavBar.Title", comment: "About")
         
@@ -62,7 +62,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        DDLogInfo("準備加載 Info Table View Controller 之 viewWillAppear()")
+        DDLogInfo("準備加載 Info Table View Controller 之 viewWillAppear")
     }
     
     // MARK: - Table func

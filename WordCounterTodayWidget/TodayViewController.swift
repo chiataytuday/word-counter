@@ -20,7 +20,7 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("[提示] Today View Controller 之 super.viewDidLoad() 已加載")
+        print("[提示] 準備加載 Today View Controller 之 viewDidLoad")
         
         self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.userInteractionEnabled = true
@@ -77,12 +77,12 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("[提示] Today View Controller 之 super.viewDidAppear() 已加載")
+        print("[提示] 準備加載 Today View Controller 之 viewDidAppear")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("[提示] Today View Controller 之 super.viewWillAppear() 已加載")
+        print("[提示] 準備加載 Today View Controller 之 viewWillAppear")
         
     }
     

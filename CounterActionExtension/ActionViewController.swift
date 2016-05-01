@@ -21,7 +21,7 @@ class ActionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("[提示] Action View Controller 之 super.viewDidLoad() 已加載")
+        print("[提示] 準備加載 Action View Controller 之 viewDidLoad")
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.preferredContentSize = CGSizeMake(550, 600)
@@ -46,14 +46,14 @@ class ActionViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("[提示] Action View Controller 之 super.viewWillAppear() 已加載")
+        print("[提示] 準備加載 Action View Controller 之 viewWillAppear")
         
         contentTextView.text = userText
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("[提示] Action View Controller 之 super.viewDidAppear() 已加載")
+        print("[提示] 準備加載 Action View Controller 之 viewDidAppear")
         
         if (userText ?? "").isEmpty {
             print("[警告] 用戶 userText 爲空！")
