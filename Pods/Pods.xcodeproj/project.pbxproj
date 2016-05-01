@@ -350,7 +350,7 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>937E744F4903BBB35EF22A0437B790E4</string>
+				<string>A6986F2FE40C39078C8C7CD27140615E</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -400,6 +400,19 @@
 			<string>EAIntroView.h</string>
 			<key>path</key>
 			<string>EAIntroView/EAIntroView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>24ADDC5D3DE96DD103D3E2081BBD67CB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GoogleMobileAds.framework</string>
+			<key>path</key>
+			<string>GoogleMobileAdsSdkiOS-7.8.0/GoogleMobileAds.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1006,19 +1019,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5C1C242AA2DF7DF8FB02E3F5A7557BCB</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleMobileAds.framework</string>
-			<key>path</key>
-			<string>GoogleMobileAdsSdkiOS-7.7.1/GoogleMobileAds.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>5F4847EAE6106DBA843FAA50604C9D00</key>
 		<dict>
 			<key>fileRef</key>
@@ -1511,19 +1511,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>937E744F4903BBB35EF22A0437B790E4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>5C1C242AA2DF7DF8FB02E3F5A7557BCB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>96D5A9F3317B64915EC263C14C0FEBAA</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1709,6 +1696,19 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>A6986F2FE40C39078C8C7CD27140615E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>24ADDC5D3DE96DD103D3E2081BBD67CB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A6ECAD5755AF50E0515B0E8A117BEAA4</key>
 		<dict>

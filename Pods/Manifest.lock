@@ -1,9 +1,9 @@
 PODS:
   - AsyncSwift (1.7.2)
-  - EAIntroView (2.8.2):
-    - EARestrictedScrollView (~> 0.2.0)
-  - EARestrictedScrollView (0.2.0)
-  - Google-Mobile-Ads-SDK (7.7.1)
+  - EAIntroView (2.8.3):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
+  - Google-Mobile-Ads-SDK (7.8.0)
   - MBProgressHUD (0.9.2)
 
 DEPENDENCIES:
@@ -14,9 +14,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
-  EAIntroView: c45c4cd533cb760800a165115bc3d1fcaff3d5bb
-  EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
-  Google-Mobile-Ads-SDK: e27569901b58881d9a94b42f2c642739cfe3970a
+  EAIntroView: e948c83e642f30010d427e643c18a6f2b529afed
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  Google-Mobile-Ads-SDK: 36b88dd2373f0ee4583e65971cb07b6965c29eef
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
 
 COCOAPODS: 0.39.0

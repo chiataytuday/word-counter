@@ -212,7 +212,6 @@
 		300BAB641B49097100FE8B37 /* WordCounter */ = {
 			isa = PBXGroup;
 			children = (
-				30B7ACAA1B74721000517036 /* WordCounter.entitlements */,
 				300BAB671B49097100FE8B37 /* AppDelegate.swift */,
 				309B41C21B7AE85B001C9E80 /* BasicConfig.swift */,
 				300BAB6C1B49097100FE8B37 /* ViewController.swift */,
@@ -222,7 +221,6 @@
 				300BAB6E1B49097100FE8B37 /* Main.storyboard */,
 				3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */,
 				300BAB711B49097100FE8B37 /* Images.xcassets */,
-				300BAB691B49097100FE8B37 /* WordCounter.xcdatamodeld */,
 				300BAB651B49097100FE8B37 /* Supporting Files */,
 			);
 			path = WordCounter;
@@ -231,6 +229,8 @@
 		300BAB651B49097100FE8B37 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				300BAB691B49097100FE8B37 /* WordCounter.xcdatamodeld */,
+				30B7ACAA1B74721000517036 /* WordCounter.entitlements */,
 				30438A9E1B759D060053FA8E /* Welcome Image */,
 				300BAB661B49097100FE8B37 /* Info.plist */,
 				3021E3811B54DDA500AEF136 /* InfoPlist.strings */,
