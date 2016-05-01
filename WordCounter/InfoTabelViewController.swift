@@ -43,7 +43,17 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         
         
         headerContent = NSLocalizedString("About.Table.Header.Content", comment: "Header Content").componentsSeparatedByString("--")
-        footerContent = NSLocalizedString("About.Table.Footer.Content", comment: "Footer Content").componentsSeparatedByString("--")
+        
+        
+        let startYear = 2015
+        let currentYear = NSCalendar(identifier: NSCalendarIdentifierGregorian)!.components([.Year], fromDate: NSDate()).year
+        
+        var copyrightYears = "\(startYear)"
+        if(currentYear > startYear){
+            copyrightYears = "\(startYear)-\(currentYear)"
+        }
+        
+        footerContent = String.localizedStringWithFormat(NSLocalizedString("About.Table.Footer.Content", comment: "Footer Content"), copyrightYears).componentsSeparatedByString("--")
         
         
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)

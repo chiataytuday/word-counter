@@ -106,7 +106,7 @@ About.Table.Section0.Content = "分享本工具！||--於 App Store 評分！||-
 About.Table.Section1.Content = "何一非（暢想資源）||開發人員--eflyjason@gmail.com||郵箱--http://www.arefly.com/||網站--%1$@||%2$@";
 
 About.Table.Header.Content = "--關於";
-About.Table.Footer.Content = "--© 2015 何一非（暢想資源）";
+About.Table.Footer.Content = "--© %@ 何一非（暢想資源）";
 
 
 Welcome.Global.Button.Skip = "跳過";

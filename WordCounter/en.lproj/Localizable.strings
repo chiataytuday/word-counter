@@ -106,7 +106,7 @@ About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!|
 About.Table.Section1.Content = "Jason Ho (Arefly)||Developer--eflyjason@gmail.com||Email--http://www.arefly.com/||Website--%1$@||%2$@";
 
 About.Table.Header.Content = "--About";
-About.Table.Footer.Content = "--© Jason Ho (Arefly) 2015";
+About.Table.Footer.Content = "--© Jason Ho (Arefly) %@";
 
 
 Welcome.Global.Button.Skip = "Skip";
