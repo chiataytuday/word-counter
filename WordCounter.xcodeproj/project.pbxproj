@@ -329,7 +329,7 @@
 				300BAB5E1B49097100FE8B37 /* Sources */,
 				300BAB5F1B49097100FE8B37 /* Frameworks */,
 				300BAB601B49097100FE8B37 /* Resources */,
-				3090805F1B4A0A3800C0AE5A /* Update Build Number */,
+				3090805F1B4A0A3800C0AE5A /* Update Build Numbers */,
 				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
 				160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */,
 				FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */,
@@ -538,14 +538,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3090805F1B4A0A3800C0AE5A /* Update Build Number */ = {
+		3090805F1B4A0A3800C0AE5A /* Update Build Numbers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Update Build Number";
+			name = "Update Build Numbers";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

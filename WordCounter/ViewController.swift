@@ -131,7 +131,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         addToolBarToKeyboard()
         
         
-        let countMenuItem = UIMenuItem(title: "Count...", action: #selector(self.countSelectionWord))
+        let countMenuItem = UIMenuItem(title: NSLocalizedString("Global.TextView.MenuItem.Count", comment: "Count..."), action: #selector(self.countSelectionWord))
         UIMenuController.sharedMenuController().menuItems = [countMenuItem]
         
         

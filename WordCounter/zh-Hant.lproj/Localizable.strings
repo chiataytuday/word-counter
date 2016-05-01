@@ -11,6 +11,8 @@ Global.Text.NothingOnClipboard = "剪貼簿內並無任何內容！";
 
 Global.ProgressingHUD.Label.Counting = "統計中...";
 
+Global.TextView.MenuItem.Count = "統計字數⋯";
+
 Global.TextView.PlaceHolder.Text = "請在此輸入或粘貼文字...";
 
 Global.Button.Done = "完成";
