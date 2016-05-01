@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        DDLogInfo("準備加載 didFinishLaunchingWithOptions")
         
-        print("[提示] 準備加載 didFinishLaunchingWithOptions")
         
         if let userUrl = launchOptions?[UIApplicationLaunchOptionsURLKey] as? NSURL {
             self.callToSetClipBoard(userUrl.absoluteString)
@@ -97,34 +97,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        DDLogInfo("準備加載 applicationWillResignActive")
         
-        print("[提示] 準備加載 applicationWillResignActive")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        DDLogInfo("準備加載 applicationDidEnterBackground")
         
-        print("[提示] 準備加載 applicationDidEnterBackground")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        
-        print("[提示] 準備加載 applicationWillEnterForeground")
-        
+        DDLogInfo("準備加載 applicationWillEnterForeground")
         
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        DDLogInfo("準備加載 applicationDidBecomeActive")
         
-        print("[提示] 準備加載 applicationDidBecomeActive")
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        print("[提示] 準備加載 applicationWillTerminate")
+        DDLogInfo("準備加載 applicationWillTerminate")
         
         
         // Saves changes in the application's managed object context before the application terminates.
@@ -206,7 +204,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if let userUrl = String(url) as String? {
-            print("[提示] 用戶輸入的網址爲：\(userUrl)")
+            DDLogVerbose("用戶輸入的網址爲：\(userUrl)")
             callToSetClipBoard(userUrl)
             return true
         }
@@ -214,19 +212,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func callToSetClipBoard(url: String) {
-        print("[提示] callToSetClipBoard 接受的網址爲：\(url)")
+        DDLogDebug("準備加載 callToSetClipBoard(\(url))")
         if (url == "count://fromClipBoard") {
             Async.main {                // 於主線執行
-                print("[提示] 已準備將用戶剪貼簿內容設定爲TextView之內容")
+                DDLogVerbose("已準備將用戶剪貼簿內容設定爲TextView之內容")
                 NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.setContentFromClipBoard", object: self)
             }
         }
     }
     
     func callToSetTextBeforeEnterBackground() {
-        print("[提示] 準備 callToSetTextBeforeEnterBackground")
+        DDLogDebug("準備加載 callToSetTextBeforeEnterBackground")
         Async.main {                // 於主線執行
-            print("[提示] 已準備提示用戶是否將進入背景前的內容設定爲TextView之內容")
+            DDLogVerbose("已準備將進入背景前的內容設定爲TextView之內容")
             NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: self)
         }
     }
