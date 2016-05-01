@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import iAd
 import Async
+import CocoaLumberjack
 import GoogleMobileAds
 
 @UIApplicationMain
@@ -56,6 +57,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
             "02e875974400ad52909c9d4a1899aa96",         // Arefly's iPad
         ]
+        
+        
+        
+        
+        /**** Log & Log Color START ****/
+        setenv("XcodeColors", "YES", 0)
+        
+        #if DEBUG
+            let logLevel = DDLogLevel.All
+        #else
+            let logLevel = DDLogLevel.Info
+        #endif
+        
+        DDLog.addLogger(DDTTYLogger.sharedInstance(), withLevel: logLevel) // TTY = Xcode console
+        DDLog.addLogger(DDASLLogger.sharedInstance(), withLevel: logLevel) // ASL = Apple System Logs
+        
+        DDTTYLogger.sharedInstance().logFormatter = CustomLogFormatter()
+        
+        DDTTYLogger.sharedInstance().colorsEnabled = true
+        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.lightGrayColor(), backgroundColor: nil, forFlag: .Verbose)
+        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.grayColor(), backgroundColor: nil, forFlag: .Debug)
+        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.blackColor(), backgroundColor: nil, forFlag: .Info)
+        
+        
+        let fileLogger: DDFileLogger = DDFileLogger() // File Logger
+        fileLogger.rollingFrequency = 60*60*24  // 24 hours
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+        DDLog.addLogger(fileLogger, withLevel: .Warning)
+        /**** Log & Log Color END ****/
+        
+        
         
         
         // Override point for customization after application launch.
