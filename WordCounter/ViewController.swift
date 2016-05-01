@@ -130,6 +130,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         addToolBarToKeyboard()
         
+        
+        let countMenuItem = UIMenuItem(title: "Count...", action: #selector(self.countSelectionWord))
+        UIMenuController.sharedMenuController().menuItems = [countMenuItem]
+        
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
@@ -306,6 +312,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         endEditing()
     }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        if action == #selector(self.countSelectionWord) {
+            if(!(getTextViewSelectionText(self.tv).isEmpty)){
+                return true
+            }
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
     
     // MARK: - Screen config func
     func checkScreenWidthToSetButton () {
@@ -489,6 +506,21 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     }
     */
     
+    func countSelectionWord() {
+        print("已準備顯示所選文字區域的字數統計")
+        let selectedText = getTextViewSelectionText(self.tv)
+        showCountResultAlert(selectedText)
+    }
+    
+    func getTextViewSelectionText(tv: UITextView) -> String {
+        if let selectedRange = tv.selectedTextRange {
+            if let selectedText = tv.textInRange(selectedRange) {
+                return selectedText
+            }
+        }
+        return ""
+    }
+    
     func replaceTextViewContent(text: String) {
         self.tv.text = text
         self.textViewDidChange(self.tv)      // Call textViewDidChange manually
@@ -622,12 +654,16 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         }
     }
     
-    func infoButtonAction () {
+    func infoButtonAction() {
         self.performSegueWithIdentifier("goInfo", sender: nil)
     }
     
     
-    func countResultButtonAction () {
+    func countResultButtonAction() {
+        showCountResultAlert(self.tv.text)
+    }
+    
+    func showCountResultAlert(text: String) {
         let keyboardShowingBefore = keyboardShowing
         
         endEditing()
@@ -644,7 +680,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         Async.background {
             for name in self.countingKeyboardBarButtonItemsNames {
-                titles[name] = WordCounter().getCountString(self.tv.text, type: name)
+                titles[name] = WordCounter().getCountString(text, type: name)
             }
             }.main {
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
