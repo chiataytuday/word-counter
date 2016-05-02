@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import iAd
 import Async
 import CocoaLumberjack
 import GoogleMobileAds
@@ -16,8 +15,6 @@ import GoogleMobileAds
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
-    var iAdBannerView: ADBannerView!
     
     var adMobBannerView: GADBannerView!
     var adMobRequest: GADRequest!
@@ -37,12 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.callToSetTextBeforeEnterBackground()
             }
         }
-        
-        
-        iAdBannerView = ADBannerView(adType: .Banner)
-        iAdBannerView.translatesAutoresizingMaskIntoConstraints = false
-        iAdBannerView.hidden = true
-        iAdBannerView.alpha = 0
         
         
         adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)

@@ -12,10 +12,9 @@ import Async
 import CocoaLumberjack
 import MBProgressHUD
 import EAIntroView
-import iAd
 import GoogleMobileAds
 
-class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
+class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
     
     // MARK: - Basic var
     let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -56,9 +55,8 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     var presentingOtherView = false
     
-    // MARK: - iAd & AdMob var
+    // MARK: - AdMob var
     var adBannerShowing = false
-    var showingAd = ""
     
     //var isZhUser = false
     
@@ -210,28 +208,17 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         
         DDLogVerbose("用戶 noAd 值爲 \(defaults.boolForKey("noAd"))")
         if(defaults.boolForKey("noAd") == false){
-            let noIAdCountry = ["CN"]
+            appDelegate.adMobBannerView.delegate = self
+            appDelegate.adMobBannerView.rootViewController = self
+            view.addSubview(appDelegate.adMobBannerView)
             
-            if(noIAdCountry.contains(countryCode)){
-                appDelegate.adMobBannerView.delegate = self
-                appDelegate.adMobBannerView.rootViewController = self
-                view.addSubview(appDelegate.adMobBannerView)
-                
-                self.view.addConstraints([
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
-                    ])
-                
-                appDelegate.adMobBannerView.loadRequest(appDelegate.adMobRequest)
-            }else{
-                appDelegate.iAdBannerView.delegate = self
-                view.addSubview(appDelegate.iAdBannerView)
-                
-                let viewsDictionary = ["bannerView": appDelegate.iAdBannerView]
-                view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-                view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-            }
+            self.view.addConstraints([
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
+                ])
+            
+            appDelegate.adMobBannerView.loadRequest(appDelegate.adMobRequest)
         }
         
         
@@ -292,7 +279,6 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
         super.viewWillDisappear(animated)
         DDLogInfo("準備加載 View Controller 之 viewWillDisappear")
         
-        appDelegate.iAdBannerView.removeFromSuperview()
         appDelegate.adMobBannerView.removeFromSuperview()
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
@@ -722,44 +708,18 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
     
     
     
-    // MARK: - iAd & AdMob func
+    // MARK: - AdMob func
     func getCurrentAdBannerFrame() -> CGRect {
-        var returnCGRect = CGRect()
-        
-        switch showingAd {
-        case "iAd":
-            returnCGRect = self.appDelegate.iAdBannerView.frame
-            break
-        case "AdMob":
-            returnCGRect = self.appDelegate.adMobBannerView.frame
-            break
-        default:
-            break
-        }
-        
-        return returnCGRect
+        return self.appDelegate.adMobBannerView.frame
     }
     
     
-    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
-        DDLogDebug("準備加載 bannerViewActionShouldBegin")
-        DDLogVerbose("即：用戶已點擊iAd廣告")
-        endEditing()
-        
-        return true
-    }
     func adViewWillPresentScreen(bannerView: GADBannerView!) {
         DDLogDebug("準備加載 adViewWillPresentScreen")
         DDLogVerbose("即：用戶已點擊AdMob廣告")
         endEditing()
     }
     
-    
-    func bannerViewActionDidFinish(banner: ADBannerView!) {
-        DDLogDebug("準備加載 bannerViewActionDidFinish")
-        DDLogVerbose("即：用戶已關閉iAd廣告")
-        startEditing()
-    }
     func adViewDidDismissScreen(bannerView: GADBannerView!) {
         DDLogDebug("準備加載 adViewDidDismissScreen")
         DDLogVerbose("即：用戶已關閉AdMob廣告")
@@ -777,22 +737,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.tv.scrollIndicatorInsets.bottom = adBannerHeight
         }
     }
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        DDLogDebug("準備加載 bannerViewDidLoadAd")
-        DDLogVerbose("即：iAd已成功加載！")
-        
-        if(!adBannerShowing){
-            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                banner.alpha = 1
-                }, completion: {
-                    (value: Bool) in
-                    self.appDelegate.iAdBannerView.hidden = false
-            })
-            
-            showingAd = "iAd"
-            showAds()
-        }
-    }
+    
     func adViewDidReceiveAd(banner: GADBannerView!) {
         DDLogDebug("準備加載 adViewDidReceiveAd")
         DDLogVerbose("即：AdMob已成功加載！")
@@ -805,15 +750,12 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
                     self.appDelegate.adMobBannerView.hidden = false
             })
             
-            showingAd = "AdMob"
             showAds()
         }
     }
     
     
     func hideAds() {
-        showingAd = ""
-        
         adBannerShowing = false
         
         adBannerHeight = 0.0
@@ -823,21 +765,7 @@ class ViewController: UIViewController, UITextViewDelegate, ADBannerViewDelegate
             self.tv.scrollIndicatorInsets.bottom = 0
         }
     }
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        DDLogDebug("準備加載 bannerView: didFailToReceiveAdWithError")
-        DDLogWarn("即：iAd加載錯誤：\(error.localizedDescription)")
-
-        if(adBannerShowing){
-            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.appDelegate.iAdBannerView.alpha = 0
-                }, completion: {
-                    (value: Bool) in
-                    self.appDelegate.iAdBannerView.hidden = true
-            })
-            
-            hideAds()
-        }
-    }
+    
     func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
         DDLogDebug("準備加載 adView: didFailToReceiveAdWithError")
         DDLogWarn("即：AdMob加載錯誤：\(error.localizedDescription)")
