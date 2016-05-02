@@ -796,7 +796,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             "1-3-ActionExtension-How.png",
             "1-3-MoreCountingType.png",
             "1-3-ImproveTodayWidget.png",
-            "1-3-2-About.png",
+            "1-3-3-About.png",
         ]
         
         let contentTitleTexts = [
