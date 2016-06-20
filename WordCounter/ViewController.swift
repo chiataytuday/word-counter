@@ -651,9 +651,9 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
     
     func showCountResultAlert(text: String) {
-        /*let keyboardShowingBefore = keyboardShowing
+        let keyboardShowingBefore = keyboardShowing
         
-        endEditing()*/
+        endEditing()
         
         let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
         progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
@@ -689,15 +689,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
                 let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .Alert)
                 countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
                     DDLogVerbose("用戶已按下確定按鈕")
-                    /*if(keyboardShowingBefore){
+                    if(keyboardShowingBefore){
                         self.startEditing()
-                    }*/
+                    }
                 }))
-                
-                
-                // http://stackoverflow.com/a/28701704/2603230
-                let rootViewController: UIViewController = UIApplication.sharedApplication().windows.last!.rootViewController!
-                rootViewController.presentViewController(countingResultAlert, animated: true, completion: nil)
+                self.presentViewController(countingResultAlert, animated: true, completion: nil)
         }
     }
     
