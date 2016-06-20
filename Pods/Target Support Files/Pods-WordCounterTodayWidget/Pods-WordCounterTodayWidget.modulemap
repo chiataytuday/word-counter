@@ -1,0 +1,6 @@
+framework module Pods_WordCounterTodayWidget {
+  umbrella header "Pods-WordCounterTodayWidget-umbrella.h"
+
+  export *
+  module * { export * }
+}

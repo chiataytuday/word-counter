@@ -1,0 +1,6 @@
+framework module Pods_CounterActionExtension {
+  umbrella header "Pods-CounterActionExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

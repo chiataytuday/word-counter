@@ -1,0 +1,6 @@
+framework module Pods_WordCounterTests {
+  umbrella header "Pods-WordCounterTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A643963C40F2666FEE08FAC /* Pods_CounterActionExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4514572F0021F808136B684 /* Pods_CounterActionExtension.framework */; };
 		300BAB681B49097100FE8B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300BAB671B49097100FE8B37 /* AppDelegate.swift */; };
 		300BAB6B1B49097100FE8B37 /* WordCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 300BAB691B49097100FE8B37 /* WordCounter.xcdatamodeld */; };
 		300BAB6D1B49097100FE8B37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300BAB6C1B49097100FE8B37 /* ViewController.swift */; };
@@ -27,7 +28,9 @@
 		30B7ACA81B746F6100517036 /* WordCounterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7ACA61B746F6100517036 /* WordCounterClass.swift */; };
 		30B7ACAB1B747BD400517036 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3021E37B1B54DCD900AEF136 /* Localizable.strings */; };
 		30B7ACDF1B748B8700517036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30B7ACE11B748B8700517036 /* InfoPlist.strings */; };
-		D1118EC73273BEC15CF6067B /* Pods_WordCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */; };
+		BD443E996249C7C45A6A61D3 /* Pods_WordCounterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3174DC92541C07F6BA6D03 /* Pods_WordCounterTests.framework */; };
+		C614CA4FC410A704AD58AD1E /* Pods_WordCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3563DB053EC451EF549246AB /* Pods_WordCounter.framework */; };
+		E15871E628061C13C93DBAF9 /* Pods_WordCounterTodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CAA653F80C069550B622A1A /* Pods_WordCounterTodayWidget.framework */; };
 		ED16AC771CD6E06E00496B08 /* 1-3-3-About.png in Resources */ = {isa = PBXBuildFile; fileRef = ED16AC761CD6E06E00496B08 /* 1-3-3-About.png */; };
 		ED2A74CE1C2140A000CD28A3 /* WordCounterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B7ACA61B746F6100517036 /* WordCounterClass.swift */; };
 		ED2A74CF1C2140AA00CD28A3 /* BasicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B41C21B7AE85B001C9E80 /* BasicConfig.swift */; };
@@ -85,9 +88,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		174EA2243368AB09F1FE66BC /* Pods-CounterActionExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CounterActionExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.release.xcconfig"; sourceTree = "<group>"; };
-		20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		28ABFBC534088F073BA180DB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		04816380468CE296F98C0BCC /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
+		0CAA653F80C069550B622A1A /* Pods_WordCounterTodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounterTodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5CEAA6F98CE78F7CC3E689 /* Pods-WordCounterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		300BAB621B49097100FE8B37 /* WordCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		300BAB661B49097100FE8B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		300BAB671B49097100FE8B37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,11 +122,15 @@
 		30B7ACE01B748B8700517036 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		30B7ACE31B748BBA00517036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		30B7ACE41B748BBB00517036 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		5BA74942AB1C3B797E5D3AA7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		32081C78114F9E7B54DECE25 /* Pods-WordCounterTodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounterTodayWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget.release.xcconfig"; sourceTree = "<group>"; };
+		3563DB053EC451EF549246AB /* Pods_WordCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FDBD7DC26279DA05346E23E /* Pods-WordCounterTodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounterTodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		5D570F50824021A22FD5F5EC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
-		86A98A962C8187D47F2A9E6B /* Pods-CounterActionExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CounterActionExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
+		800D114D54413546096DA844 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		8FC539292C5EDF66C4C3B818 /* Pods-WordCounterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.release.xcconfig"; sourceTree = "<group>"; };
+		B229EA5EE4307060384E5AE3 /* Pods-CounterActionExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CounterActionExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.release.xcconfig"; sourceTree = "<group>"; };
+		CC3174DC92541C07F6BA6D03 /* Pods_WordCounterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7BE99A82937876CC390C8A2 /* Pods-CounterActionExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CounterActionExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		ED16AC761CD6E06E00496B08 /* 1-3-3-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-3-About.png"; sourceTree = "<group>"; };
 		ED2AB5D31C27F6B8004DCC68 /* 1-3-ActionExtension-Introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-ActionExtension-Introduction.png"; sourceTree = "<group>"; };
 		ED2AB5D51C27F797004DCC68 /* 1-3-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-3-MoreCountingType.png"; sourceTree = "<group>"; };
@@ -138,6 +145,7 @@
 		ED3E41001C2133F6009CF68E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EDD0FBFC1CD5F1D400156AA6 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		EDF21D611C296FB400B6C20C /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		F4514572F0021F808136B684 /* Pods_CounterActionExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CounterActionExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1118EC73273BEC15CF6067B /* Pods_WordCounter.framework in Frameworks */,
+				C614CA4FC410A704AD58AD1E /* Pods_WordCounter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD443E996249C7C45A6A61D3 /* Pods_WordCounterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B7AC961B74698E00517036 /* NotificationCenter.framework in Frameworks */,
+				E15871E628061C13C93DBAF9 /* Pods_WordCounterTodayWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,25 +178,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A643963C40F2666FEE08FAC /* Pods_CounterActionExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0AE76AEC7D189EB0CE73CFF0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */,
-				E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */,
-				5BA74942AB1C3B797E5D3AA7 /* Pods.debug.xcconfig */,
-				28ABFBC534088F073BA180DB /* Pods.release.xcconfig */,
-				86A98A962C8187D47F2A9E6B /* Pods-CounterActionExtension.debug.xcconfig */,
-				174EA2243368AB09F1FE66BC /* Pods-CounterActionExtension.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		300BAB591B49097100FE8B37 = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +194,7 @@
 				ED32358D1C20633C0007EF1A /* CounterActionExtension */,
 				30B7AC941B74698E00517036 /* Frameworks */,
 				300BAB631B49097100FE8B37 /* Products */,
-				0AE76AEC7D189EB0CE73CFF0 /* Pods */,
+				75D640DF181FCC5F83CFEF30 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -275,8 +273,11 @@
 			isa = PBXGroup;
 			children = (
 				30B7AC951B74698E00517036 /* NotificationCenter.framework */,
-				20895410B9CFCFBEF26A989A /* Pods_WordCounter.framework */,
 				5D570F50824021A22FD5F5EC /* Pods.framework */,
+				F4514572F0021F808136B684 /* Pods_CounterActionExtension.framework */,
+				3563DB053EC451EF549246AB /* Pods_WordCounter.framework */,
+				CC3174DC92541C07F6BA6D03 /* Pods_WordCounterTests.framework */,
+				0CAA653F80C069550B622A1A /* Pods_WordCounterTodayWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,6 +300,21 @@
 				30B7ACE11B748B8700517036 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75D640DF181FCC5F83CFEF30 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E7BE99A82937876CC390C8A2 /* Pods-CounterActionExtension.debug.xcconfig */,
+				B229EA5EE4307060384E5AE3 /* Pods-CounterActionExtension.release.xcconfig */,
+				800D114D54413546096DA844 /* Pods-WordCounter.debug.xcconfig */,
+				04816380468CE296F98C0BCC /* Pods-WordCounter.release.xcconfig */,
+				2D5CEAA6F98CE78F7CC3E689 /* Pods-WordCounterTests.debug.xcconfig */,
+				8FC539292C5EDF66C4C3B818 /* Pods-WordCounterTests.release.xcconfig */,
+				3FDBD7DC26279DA05346E23E /* Pods-WordCounterTodayWidget.debug.xcconfig */,
+				32081C78114F9E7B54DECE25 /* Pods-WordCounterTodayWidget.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		ED2A74D01C21414C00CD28A3 /* Supporting Files */ = {
@@ -328,14 +344,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 300BAB841B49097100FE8B37 /* Build configuration list for PBXNativeTarget "WordCounter" */;
 			buildPhases = (
-				0910EA49AEB7C0B4746B7106 /* Check Pods Manifest.lock */,
+				9B2985E80743D93A6E50CE9F /* [CP] Check Pods Manifest.lock */,
 				300BAB5E1B49097100FE8B37 /* Sources */,
 				300BAB5F1B49097100FE8B37 /* Frameworks */,
 				300BAB601B49097100FE8B37 /* Resources */,
 				3090805F1B4A0A3800C0AE5A /* Update Build Numbers */,
 				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
-				160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */,
-				FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */,
+				238E22725F9DDDDE60324D38 /* [CP] Embed Pods Frameworks */,
+				2594D0E55CADA46873371557 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,9 +368,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 300BAB871B49097100FE8B37 /* Build configuration list for PBXNativeTarget "WordCounterTests" */;
 			buildPhases = (
+				CFA68B84D77C2BAE3D053778 /* [CP] Check Pods Manifest.lock */,
 				300BAB761B49097100FE8B37 /* Sources */,
 				300BAB771B49097100FE8B37 /* Frameworks */,
 				300BAB781B49097100FE8B37 /* Resources */,
+				C34F9539B46053C3E9FB18F5 /* [CP] Embed Pods Frameworks */,
+				BA43F7B0AD7573B30E2FA87E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -370,9 +389,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30B7ACA31B74698F00517036 /* Build configuration list for PBXNativeTarget "WordCounterTodayWidget" */;
 			buildPhases = (
+				9B3D8290728E255ECCD50308 /* [CP] Check Pods Manifest.lock */,
 				30B7AC8F1B74698E00517036 /* Sources */,
 				30B7AC901B74698E00517036 /* Frameworks */,
 				30B7AC911B74698E00517036 /* Resources */,
+				C21B0D5428FF04CB742E4E25 /* [CP] Embed Pods Frameworks */,
+				485C4166F3FD34341926B73A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -387,9 +409,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED3235991C20633C0007EF1A /* Build configuration list for PBXNativeTarget "CounterActionExtension" */;
 			buildPhases = (
+				65DA3AD4E55B12C66DD8F14C /* [CP] Check Pods Manifest.lock */,
 				ED3235881C20633C0007EF1A /* Sources */,
 				ED3235891C20633C0007EF1A /* Frameworks */,
 				ED32358A1C20633C0007EF1A /* Resources */,
+				103A5733414E3EF33423D684 /* [CP] Embed Pods Frameworks */,
+				4AA98EC95C13E998F414DB90 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -511,29 +536,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0910EA49AEB7C0B4746B7106 /* Check Pods Manifest.lock */ = {
+		103A5733414E3EF33423D684 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		160C9AEC27EB657C5605C2F8 /* Copy Pods Resources */ = {
+		238E22725F9DDDDE60324D38 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2594D0E55CADA46873371557 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,19 +595,139 @@
 			shellPath = /bin/sh;
 			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"WordCounterTodayWidget/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"CounterActionExtension/Info.plist\"";
 		};
-		FB33F8A3E39D710990E5D1D6 /* Embed Pods Frameworks */ = {
+		485C4166F3FD34341926B73A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AA98EC95C13E998F414DB90 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65DA3AD4E55B12C66DD8F14C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9B2985E80743D93A6E50CE9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9B3D8290728E255ECCD50308 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA43F7B0AD7573B30E2FA87E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C21B0D5428FF04CB742E4E25 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C34F9539B46053C3E9FB18F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFA68B84D77C2BAE3D053778 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -790,7 +950,7 @@
 		};
 		300BAB851B49097100FE8B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7561350F088DF40E8A87DAB1 /* Pods-WordCounter.debug.xcconfig */;
+			baseConfigurationReference = 800D114D54413546096DA844 /* Pods-WordCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
@@ -810,7 +970,7 @@
 		};
 		300BAB861B49097100FE8B37 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E71288F4535446C2BDDE1658 /* Pods-WordCounter.release.xcconfig */;
+			baseConfigurationReference = 04816380468CE296F98C0BCC /* Pods-WordCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
@@ -829,6 +989,7 @@
 		};
 		300BAB881B49097100FE8B37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D5CEAA6F98CE78F7CC3E689 /* Pods-WordCounterTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -846,6 +1007,7 @@
 		};
 		300BAB891B49097100FE8B37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FC539292C5EDF66C4C3B818 /* Pods-WordCounterTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -859,6 +1021,7 @@
 		};
 		30B7ACA11B74698F00517036 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FDBD7DC26279DA05346E23E /* Pods-WordCounterTodayWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -879,6 +1042,7 @@
 		};
 		30B7ACA21B74698F00517036 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32081C78114F9E7B54DECE25 /* Pods-WordCounterTodayWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -895,6 +1059,7 @@
 		};
 		ED3235971C20633C0007EF1A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7BE99A82937876CC390C8A2 /* Pods-CounterActionExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -911,6 +1076,7 @@
 		};
 		ED3235981C20633C0007EF1A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B229EA5EE4307060384E5AE3 /* Pods-CounterActionExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
