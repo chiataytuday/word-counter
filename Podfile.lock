@@ -7,7 +7,7 @@ PODS:
     - CocoaLumberjack/Default
   - CocoaLumberjack/Swift (2.3.0):
     - CocoaLumberjack/Extensions
-  - EAIntroView (2.8.3):
+  - EAIntroView (2.9.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
   - Google-Mobile-Ads-SDK (7.8.1)
@@ -16,18 +16,18 @@ PODS:
 DEPENDENCIES:
   - AsyncSwift
   - CocoaLumberjack/Swift
-  - EAIntroView (~> 2.8.0)
+  - EAIntroView (~> 2.9.0)
   - Google-Mobile-Ads-SDK (~> 7.0)
   - MBProgressHUD (~> 0.9.1)
 
 SPEC CHECKSUMS:
   AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
-  EAIntroView: e948c83e642f30010d427e643c18a6f2b529afed
+  EAIntroView: 76f68cc56242f2e25359419e6ecc2344ee7e1756
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
 
-PODFILE CHECKSUM: 7242e838424af4cedbabdd6c4ee6842043682926
+PODFILE CHECKSUM: a47006f51d2f4ed2b01fd1fab7f864303d57ab64
 
 COCOAPODS: 1.0.1

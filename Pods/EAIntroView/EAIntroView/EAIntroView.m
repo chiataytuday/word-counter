@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSMutableArray *footerConstraints;
 @property (nonatomic, strong) NSMutableArray *titleViewConstraints;
 
+@property (nonatomic, assign) BOOL skipped;
+
 @end
 
 @interface EAIntroPage()
@@ -70,6 +72,7 @@
     _skipButtonY = EA_EMPTY_PROPERTY;
     _skipButtonSideMargin = 10.f;
     _skipButtonAlignment = EAViewAlignmentRight;
+	_skipped = NO;
     _limitPageIndex = -1;
     
     [self buildBackgroundImage];
@@ -176,8 +179,8 @@
     //removeFromSuperview should be called after a delay
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)0);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        if ([(id)self.delegate respondsToSelector:@selector(introDidFinish:)]) {
-            [self.delegate introDidFinish:self];
+        if ([(id)self.delegate respondsToSelector:@selector(introDidFinish:wasSkipped:)]) {
+            [self.delegate introDidFinish:self wasSkipped:self.skipped];
         }
         
         [self removeFromSuperview];
@@ -185,6 +188,7 @@
 }
 
 - (void)skipIntroduction {
+	self.skipped = YES;
     [self hideWithFadeOutDuration:0.3];
 }
 
@@ -354,6 +358,14 @@
     tapToNextButton.frame = pageView.bounds;
     tapToNextButton.translatesAutoresizingMaskIntoConstraints = NO;
     [tapToNextButton addTarget:self action:@selector(goToNext:) forControlEvents:UIControlEventTouchUpInside];
+
+    NSString *accessibilityLabel = [self accessibilityLabelForPage:page];
+    if (accessibilityLabel.length > 0) {
+        tapToNextButton.isAccessibilityElement = YES;
+        tapToNextButton.accessibilityLabel = accessibilityLabel;
+        tapToNextButton.accessibilityTraits = UIAccessibilityTraitButton;
+    }
+    
     [pageView addSubview:tapToNextButton];
     
     NSMutableArray *constraints = @[].mutableCopy;
@@ -380,11 +392,12 @@
         titleLabel.font = page.titleFont;
         titleLabel.textColor = page.titleColor;
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.textAlignment = page.titleAlignment;
         titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         titleLabel.numberOfLines = 0;
         titleLabel.tag = kTitleLabelTag;
         titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        titleLabel.isAccessibilityElement = NO;
         
         [pageView addSubview:titleLabel];
         NSLayoutConstraint *weakConstraint = [NSLayoutConstraint constraintWithItem:pageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:page.titlePositionY];
@@ -401,10 +414,11 @@
         descLabel.font = page.descFont;
         descLabel.textColor = page.descColor;
         descLabel.backgroundColor = [UIColor clearColor];
-        descLabel.textAlignment = NSTextAlignmentCenter;
+        descLabel.textAlignment = page.descAlignment;
         descLabel.userInteractionEnabled = NO;
         descLabel.tag = kDescLabelTag;
         descLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        descLabel.isAccessibilityElement = NO;
         
         [pageView addSubview:descLabel];
         NSLayoutConstraint *weakConstraint = [NSLayoutConstraint constraintWithItem:pageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:descLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:page.descPositionY];
@@ -429,6 +443,23 @@
     pageView.alpha = page.alpha;
     
     return pageView;
+}
+
+- (NSString*)accessibilityLabelForPage:(EAIntroPage*)page
+{
+    NSString *accessibilityLabel = nil;
+    if (page.title) {
+        if (page.desc) {
+            accessibilityLabel = [NSString stringWithFormat:@"%@, %@", page.title, page.desc];
+        }
+        else {
+            accessibilityLabel = page.title;
+        }
+    }
+    else {
+        accessibilityLabel = page.desc;
+    }
+    return accessibilityLabel;
 }
 
 - (void)appendCloseViewAtXIndex:(CGFloat*)xIndex {
@@ -928,7 +959,8 @@ CGFloat easeOutValue(CGFloat value) {
         NSLog(@"Wrong initialPageIndex received: %ld",(long)initialPageIndex);
         return;
     }
-    
+
+	self.skipped = NO;
     self.currentPageIndex = initialPageIndex;
     self.alpha = 0;
 
