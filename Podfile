@@ -8,7 +8,8 @@ target 'WordCounter' do
     pod 'CocoaLumberjack/Swift'
     pod 'MBProgressHUD', '~> 0.9.1'
     pod 'EAIntroView', '~> 2.9.0'
-    pod 'Google-Mobile-Ads-SDK', '~> 7.0'
+    pod 'Firebase/Core'
+    pod 'Firebase/AdMob'
 end
 
 target 'WordCounterTests' do
