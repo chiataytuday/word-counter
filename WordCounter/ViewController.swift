@@ -743,11 +743,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         DDLogVerbose("即：AdMob已成功加載！")
         
         if(!adBannerShowing){
-            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.appDelegate.adMobBannerView.hidden = false
+            self.appDelegate.adMobBannerView.alpha = 0
+            UIView.animateWithDuration(0.5, delay: 0.5, options: .CurveEaseOut, animations: {
                 self.appDelegate.adMobBannerView.alpha = 1
                 }, completion: {
                     (value: Bool) in
-                    self.appDelegate.adMobBannerView.hidden = false
+                    // DO NOTHING
             })
             
             showAds()
@@ -771,7 +773,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         DDLogWarn("即：AdMob加載錯誤：\(error.localizedDescription)")
         
         if(adBannerShowing){
-            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            UIView.animateWithDuration(0.5, delay: 0.5, options: .CurveEaseOut, animations: {
                 self.appDelegate.adMobBannerView.alpha = 0
                 }, completion: {
                     (value: Bool) in
