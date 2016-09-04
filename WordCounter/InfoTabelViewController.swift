@@ -105,7 +105,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                 
                 let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!")
                 
-                if let appStoreURL = BasicConfig().appStoreShortUrl {
+                if let appStoreURL = BasicConfig.appStoreShortUrl {
                     let objectsToShare = [textToShare, appStoreURL]
                     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                     
@@ -124,13 +124,13 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             case 1:
                 DDLogVerbose("用戶已按下評分按鈕")
                 
-                UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
+                UIApplication.sharedApplication().openURL(BasicConfig.appStoreReviewUrl!)
                 
                 break
             case 2:
                 DDLogVerbose("用戶已按下查看其它Apps按鈕")
                 
-                UIApplication.sharedApplication().openURL(BasicConfig().otherAppsByMe!)
+                UIApplication.sharedApplication().openURL(BasicConfig.otherAppsByMe!)
                 
                 break
             case 3:

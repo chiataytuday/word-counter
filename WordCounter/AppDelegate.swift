@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
         adMobBannerView.hidden = true
         adMobBannerView.alpha = 0
-        adMobBannerView.adUnitID = BasicConfig().adMobUnitId
+        adMobBannerView.adUnitID = BasicConfig.adMobUnitId
         
         adMobRequest = GADRequest()
         adMobRequest.testDevices = [

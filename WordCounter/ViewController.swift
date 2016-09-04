@@ -906,7 +906,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             DDLogVerbose("用戶已按下發表評論按鈕")
             self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
             self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
-            UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
+            UIApplication.sharedApplication().openURL(BasicConfig.appStoreReviewUrl!)
             self.presentingOtherView = false
         }))
         
@@ -943,7 +943,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下發表評論按鈕")
             self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
-            UIApplication.sharedApplication().openURL(BasicConfig().appStoreReviewUrl!)
+            UIApplication.sharedApplication().openURL(BasicConfig.appStoreReviewUrl!)
             self.presentingOtherView = false
         }))
         
