@@ -89,18 +89,18 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 
-		if(isAppFirstLaunch()){
+		if isAppFirstLaunch() {
 			appFirstLaunch = true
 		}
 
 
 		let version: String = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 
-		if(defaults.object(forKey: "nowVersion") == nil){
+		if defaults.object(forKey: "nowVersion") == nil {
 			defaults.setValue(version, forKey: "nowVersion")
 			appFirstLaunch = true
-		}else{
-			if(defaults.string(forKey: "nowVersion") != version){
+		} else {
+			if defaults.string(forKey: "nowVersion") != version {
 				appJustUpdate = true
 				defaults.setValue(version, forKey: "nowVersion")
 			}
@@ -161,32 +161,32 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		//checkScreenWidthToSetButton()
 
 
-		if(defaults.object(forKey: "noAd") == nil){
+		if defaults.object(forKey: "noAd") == nil {
 			defaults.set(false, forKey: "noAd")
 		}
 
 
-		if(defaults.object(forKey: "appLaunchTimes") == nil){
+		if defaults.object(forKey: "appLaunchTimes") == nil {
 			defaults.set(1, forKey: "appLaunchTimes")
-		}else{
+		} else {
 			defaults.set(defaults.integer(forKey: "appLaunchTimes") + 1, forKey: "appLaunchTimes")
 		}
 		DDLogVerbose("已設定appLaunchTimes值爲\(defaults.integer(forKey: "appLaunchTimes"))")
 
-		if(defaults.object(forKey: "everShowPresentReviewAgain") == nil){
+		if defaults.object(forKey: "everShowPresentReviewAgain") == nil {
 			defaults.set(true, forKey: "everShowPresentReviewAgain")
 		}
 
 
 		//appJustUpdate = true
-		if(defaults.object(forKey: "appLaunchTimesAfterUpdate") == nil){
+		if defaults.object(forKey: "appLaunchTimesAfterUpdate") == nil {
 			defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")
 		}
-		if(appJustUpdate){
+		if appJustUpdate {
 			defaults.set(1, forKey: "appLaunchTimesAfterUpdate")
 		}
 
-		if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1){
+		if defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1 {
 			defaults.set(defaults.integer(forKey: "appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
 		}
 		DDLogVerbose("已設定appLaunchTimesAfterUpdate值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
@@ -199,7 +199,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		var countryCode = "US"
 		if let userCountryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String {
 			countryCode = userCountryCode
-		}else{
+		} else {
 			DDLogWarn("無法獲取用戶目前區域，將由默認地區\(countryCode)代替")
 		}
 		DDLogVerbose("用戶目前的地區設定爲：\(countryCode)")
@@ -207,7 +207,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 		DDLogVerbose("用戶 noAd 值爲 \(defaults.bool(forKey: "noAd"))")
-		if(defaults.bool(forKey: "noAd") == false){
+		if defaults.bool(forKey: "noAd") == false {
 			appDelegate.adMobBannerView.delegate = self
 			appDelegate.adMobBannerView.rootViewController = self
 			view.addSubview(appDelegate.adMobBannerView)
@@ -223,16 +223,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 
-		if( (appFirstLaunch) || (appJustUpdate) ){
+		if appFirstLaunch || appJustUpdate {
 			presentingOtherView = true
 
 			presentIntroView()
 		}
 
-		if( (adBannerShowing) && (adBannerHeight > 0.0) ){
+		if (adBannerShowing) && (adBannerHeight > 0.0) {
 			self.tv.contentInset.bottom = adBannerHeight
 			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-		}else{
+		} else {
 			self.tv.contentInset.bottom = 0
 			self.tv.scrollIndicatorInsets.bottom = 0
 		}
@@ -243,11 +243,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		//var appLaunchTimes = defaults.integerForKey("appLaunchTimes")
 
 		DDLogVerbose("everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.bool(forKey: "everShowPresentReviewAgain")))
-		if(defaults.bool(forKey: "everShowPresentReviewAgain")){
-			if(!presentingOtherView){
+		if defaults.bool(forKey: "everShowPresentReviewAgain") {
+			if !presentingOtherView {
 				DDLogVerbose("appLaunchTimes的值爲\(defaults.integer(forKey: "appLaunchTimes"))")
 				//defaults.setInteger(8, forKey: "appLaunchTimes")
-				if(defaults.integer(forKey: "appLaunchTimes") % 9 == 0){
+				if defaults.integer(forKey: "appLaunchTimes") % 9 == 0 {
 					presentingOtherView = true
 
 					presentReviewAlert()
@@ -257,10 +257,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		}
 
 
-		if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1){
-			if(!presentingOtherView){
+		if defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1 {
+			if !presentingOtherView {
 				DDLogVerbose("appLaunchTimesAfterUpdate的值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
-				if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 10 == 0){
+				if defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 10 == 0 {
 					presentingOtherView = true
 
 					presentUpdateReviewAlert()
@@ -269,7 +269,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			}
 		}
 
-		if(!presentingOtherView){
+		if !presentingOtherView {
 			startEditing()
 		}
 	}
@@ -301,7 +301,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
 		if action == #selector(self.countSelectionWord) {
-			if(!(getTextViewSelectionText(self.tv).isEmpty)){
+			if !(getTextViewSelectionText(self.tv).isEmpty) {
 				return true
 			}
 			return false
@@ -355,16 +355,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	func doAfterRotate () {
 		DDLogDebug("準備加載 doAfterRotate")
 
-		if(adBannerShowing){
+		if adBannerShowing {
 			adBannerHeight = getCurrentAdBannerFrame().height
 		}
 		DDLogVerbose("已獲取adBanner高度：\(adBannerHeight)")
 
-		if (!keyboardShowing){
-			if( (adBannerShowing) && (adBannerHeight > 0.0) ){
+		if !keyboardShowing {
+			if (adBannerShowing) && (adBannerHeight > 0.0) {
 				self.tv.contentInset.bottom = adBannerHeight
 				self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-			}else{
+			} else {
 				self.tv.contentInset.bottom = 0
 				self.tv.scrollIndicatorInsets.bottom = 0
 			}
@@ -403,10 +403,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		keyboardShowing = false
 
-		if( (adBannerShowing) && (adBannerHeight > 0.0) ){
+		if (adBannerShowing) && (adBannerHeight > 0.0) {
 			self.tv.contentInset.bottom = adBannerHeight
 			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-		}else{
+		} else {
 			self.tv.contentInset.bottom = 0
 			self.tv.scrollIndicatorInsets.bottom = 0
 		}
@@ -456,7 +456,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		var barItems = [UIBarButtonItem]()
 
 		for name in countingKeyboardBarButtonItemsNames {
-			if(showedKeyboardButtons[name] == true){
+			if showedKeyboardButtons[name] == true {
 				barItems.append(countingKeyboardBarButtonItems[name]!)
 			}
 		}
@@ -486,7 +486,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	DDLogVerbose("目前窗口是否處於全屏狀態：\(isFullScreen)")
 
-	if(isFullScreen){
+	if isFullScreen {
 	endEditing()
 	}
 	}
@@ -551,7 +551,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		Async.background {
 			for (name, _) in titles {
-				if( (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") ){
+				if (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") {
 					titles[name] = WordCounter().getCountString(self.tv.text, type: name)
 				}
 			}
@@ -572,11 +572,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		if let clipBoard = UIPasteboard.general.string {
 			DDLogVerbose("已獲取用戶剪貼簿內容：\(clipBoard)")
-			if( (self.tv.text.isEmpty) || (self.tv.text == clipBoard) ){
+			if (self.tv.text.isEmpty) || (self.tv.text == clipBoard) {
 				Async.main {
 					self.replaceTextViewContent(clipBoard)
 				}
-			}else{
+			} else {
 				let replaceContentAlert = UIAlertController(
 					title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Title", comment: "Replace current contents with clipboard contents?"),
 					message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Content", comment: "NOTICE: This action is irreversible!"),
@@ -602,7 +602,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		DDLogDebug("準備加載 setContentToTextBeforeEnterBackground")
 
 		if let textBeforeEnterBackground = defaults.string(forKey: "textBeforeEnterBackground") {
-			if(textBeforeEnterBackground != self.tv.text){
+			if textBeforeEnterBackground != self.tv.text {
 				Async.main {
 					self.replaceTextViewContent(textBeforeEnterBackground)
 				}
@@ -631,7 +631,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
 			DDLogVerbose("用戶已按下取消清空按鈕")
-			if(keyboardShowingBefore){
+			if keyboardShowingBefore {
 				self.startEditing()
 			}
 		}))
@@ -681,7 +681,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 					message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
 
-					if(index != self.countingKeyboardBarButtonItemsNames.count-1) {
+					if index != (self.countingKeyboardBarButtonItemsNames.count-1) {
 						message += "\n"
 					}
 				}
@@ -689,7 +689,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 				let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
 				countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
 					DDLogVerbose("用戶已按下確定按鈕")
-					if(keyboardShowingBefore){
+					if keyboardShowingBefore {
 						self.startEditing()
 					}
 				}))
@@ -731,7 +731,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		adBannerHeight = getCurrentAdBannerFrame().height
 
-		if(!keyboardShowing){
+		if !keyboardShowing {
 			self.tv.contentInset.bottom = adBannerHeight
 			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
 		}
@@ -741,7 +741,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		DDLogDebug("準備加載 adViewDidReceiveAd")
 		DDLogVerbose("即：AdMob已成功加載！")
 
-		if(!adBannerShowing){
+		if !adBannerShowing {
 			self.appDelegate.adMobBannerView.isHidden = false
 			self.appDelegate.adMobBannerView.alpha = 0
 			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
@@ -761,7 +761,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		adBannerHeight = 0.0
 
-		if(!keyboardShowing){
+		if !keyboardShowing {
 			self.tv.contentInset.bottom = 0
 			self.tv.scrollIndicatorInsets.bottom = 0
 		}
@@ -771,7 +771,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		DDLogDebug("準備加載 adView: didFailToReceiveAdWithError")
 		DDLogWarn("即：AdMob加載錯誤：\(error.localizedDescription)")
 
-		if(adBannerShowing){
+		if adBannerShowing {
 			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
 				self.appDelegate.adMobBannerView.alpha = 0
 			}, completion: {
@@ -866,7 +866,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		doAfterRotate()
 
-		if(!presentingOtherView){
+		if !presentingOtherView {
 			startEditing()
 		}
 	}
@@ -883,10 +883,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
 		DDLogDebug("準備加載 isAppFirstLaunch")
-		if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+		if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
 			DDLogVerbose("App於本機並非首次開啓")
 			return false
-		}else{
+		} else {
 			defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
 			DDLogVerbose("App於本機首次開啓")
 			return true

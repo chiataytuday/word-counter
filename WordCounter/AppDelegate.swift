@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 
 		if let textBeforeEnterBackground = defaults.string(forKey: "textBeforeEnterBackground") {
-			if(!textBeforeEnterBackground.isEmpty){
+			if !textBeforeEnterBackground.isEmpty {
 				self.callToSetTextBeforeEnterBackground()
 			}
 		}
@@ -204,7 +204,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func callToSetClipBoard(_ url: String) {
 		DDLogDebug("準備加載 callToSetClipBoard(\(url))")
-		if (url == "count://fromClipBoard") {
+		if url == "count://fromClipBoard" {
 			Async.main {                // 於主線執行
 				DDLogVerbose("已準備將用戶剪貼簿內容設定爲TextView之內容")
 				NotificationCenter.default.post(name: .catnapSetContentFromClipBoard, object: self)
