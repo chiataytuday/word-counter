@@ -11,7 +11,7 @@ import Foundation
 import CocoaLumberjack
 
 class CustomLogFormatter: NSObject, DDLogFormatter {
-    func formatLogMessage(logMessage: DDLogMessage!) -> String! {
+    func formatLogMessage(_ logMessage: DDLogMessage!) -> String! {
         
         var prefixMessage = ""
         switch (logMessage.flag) {
@@ -34,9 +34,9 @@ class CustomLogFormatter: NSObject, DDLogFormatter {
             break
         }
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss.SSS"
-        let timeString = formatter.stringFromDate(NSDate())
+        let timeString = formatter.string(from: Date())
         
         var fileInfo = ""
         let showImportantInfo = [DDLogFlag.Warning, DDLogFlag.Error]

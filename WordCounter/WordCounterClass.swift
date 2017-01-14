@@ -14,7 +14,7 @@ class WordCounter {
 
     
     // MARK: - Get string func
-    func getCountString(s: String, type: String) -> String {
+    func getCountString(_ s: String, type: String) -> String {
         let count = getCount(s, type: type)
         
         let words = (count == 1) ?
@@ -27,7 +27,7 @@ class WordCounter {
     }
     
     // MARK: - Get count func
-    func getCount(s: String, type: String) -> Int {
+    func getCount(_ s: String, type: String) -> Int {
         var returnInt = 0
         
         switch type {
@@ -50,18 +50,18 @@ class WordCounter {
         return returnInt
     }
     
-    func wordCount(inputString: String) -> Int {
+    func wordCount(_ inputString: String) -> Int {
         
         var s = inputString
         for punctuation in punctuations {
             // Remove punctuations
-            s = s.stringByReplacingOccurrencesOfString(punctuation, withString: "")
+            s = s.replacingOccurrences(of: punctuation, with: "")
         }
         
         var counts = 0
-        let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-        let joinedString = lines.joinWithSeparator(" ")
-        let words = joinedString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let lines = s.components(separatedBy: CharacterSet.newlines)
+        let joinedString = lines.joined(separator: " ")
+        let words = joinedString.components(separatedBy: CharacterSet.whitespaces)
         
         let modifiedWords = words.filter({
             let s = $0 as String?
@@ -91,7 +91,7 @@ class WordCounter {
         return counts
     }
     
-    func characterCount(s: String) -> Int {
+    func characterCount(_ s: String) -> Int {
         var characterCounts = 0
         let modifiedCharacter = Array(s.characters).filter({
             let s = String($0) as String?
@@ -106,30 +106,30 @@ class WordCounter {
         return characterCounts
     }
     
-    func paragraphCount(s: String) -> Int {
+    func paragraphCount(_ s: String) -> Int {
         var paragraphCounts = 0
-        let lines = s.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        let lines = s.components(separatedBy: CharacterSet.newlines)
         let modifiedLines = lines.filter({
             let s = $0 as String?
             if !(s != nil) { return false }
             if (s!).characters.count < 1 { return false }
-            if (s!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty) { return false }
+            if (s!.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty) { return false }
             return true
         })
         paragraphCounts = modifiedLines.count
         return paragraphCounts
     }
     
-    func sentenceCount(s: String) -> Int {
+    func sentenceCount(_ s: String) -> Int {
         var sentenceCounts = 0
         var sentencesArr = [String]()
-        s.enumerateSubstringsInRange(s.startIndex..<s.endIndex, options: .BySentences) {
+        s.enumerateSubstrings(in: s.characters.indices, options: .bySentences) {
             substring, substringRange, enclosingRange, stop in
             sentencesArr.append(substring!)
         }
         let modifiedLines = sentencesArr.filter({
             let oS = ($0 as String?)!
-            let s = oS.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "\n "))
+            let s = oS.trimmingCharacters(in: CharacterSet(charactersIn: "\n "))
             
             if (s).characters.count < 1 { return false }
             
@@ -149,17 +149,17 @@ class WordCounter {
     
     - Returns: A new `[string]` with result.
     */
-    private func matchesForRegexInText(regex: String!, text: String!) -> [String] {
+    fileprivate func matchesForRegexInText(_ regex: String!, text: String!) -> [String] {
         let regex = try! NSRegularExpression(pattern: regex,
             options: [])
         let nsString = text as NSString
-        let results = regex.matchesInString(text, options: [], range: NSMakeRange(0, nsString.length)) 
-        return results.map { nsString.substringWithRange($0.range)}
+        let results = regex.matches(in: text, options: [], range: NSMakeRange(0, nsString.length)) 
+        return results.map { nsString.substring(with: $0.range)}
     }
 }
 
 extension String {
     var containsChineseCharacters: Bool {
-        return self.rangeOfString("\\p{Han}", options: .RegularExpressionSearch) != nil
+        return self.range(of: "\\p{Han}", options: .regularExpression) != nil
     }
 }

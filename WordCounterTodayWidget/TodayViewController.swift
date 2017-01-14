@@ -11,7 +11,7 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProviding {
     
-    let sharedData = NSUserDefaults(suiteName: "group.com.arefly.WordCounter")
+    let sharedData = UserDefaults(suiteName: "group.com.arefly.WordCounter")
     
     @IBOutlet var textView: UITextView!
     @IBOutlet var wordsCountLabel: UILabel!
@@ -23,14 +23,14 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         print("[提示] 準備加載 Today View Controller 之 viewDidLoad")
         
         self.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.userInteractionEnabled = true
+        self.view.isUserInteractionEnabled = true
         
         textView.delegate = self
-        textView.userInteractionEnabled = true
+        textView.isUserInteractionEnabled = true
         
-        textView.selectable = true  //BUG IN APPLE SIDE
-        textView.textColor = UIColor.whiteColor()
-        textView.selectable = false
+        textView.isSelectable = true  //BUG IN APPLE SIDE
+        textView.textColor = UIColor.white
+        textView.isSelectable = false
 
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.pressedOnce))
@@ -49,7 +49,7 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         var charCount = 0
         var paraCount = 0
         
-        if let clipBoard = UIPasteboard.generalPasteboard().string {
+        if let clipBoard = UIPasteboard.general.string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
             textView.text = clipBoard
             
@@ -75,37 +75,37 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         charsCountLabel.text = charTitle
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("[提示] 準備加載 Today View Controller 之 viewDidAppear")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("[提示] 準備加載 Today View Controller 之 viewWillAppear")
         
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
 
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets{
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets{
         //return UIEdgeInsetsZero
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
     func pressedOnce() {
         print("[提示] 用戶已按下任意位置！")
-        if let clipBoard = UIPasteboard.generalPasteboard().string {
+        if let clipBoard = UIPasteboard.general.string {
             print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
-            self.extensionContext?.openURL(NSURL(string: "count://fromClipBoard")!, completionHandler:{(success: Bool) -> Void in
+            self.extensionContext?.open(URL(string: "count://fromClipBoard")!, completionHandler:{(success: Bool) -> Void in
                 print("[提示] 已開啓App")
             })
         }

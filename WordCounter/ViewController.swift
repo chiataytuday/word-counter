@@ -17,12 +17,12 @@ import GoogleMobileAds
 class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
     
     // MARK: - Basic var
-    let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     var wordCounterClass = WordCounter()
     
-    let defaults = NSUserDefaults.standardUserDefaults()
-    let sharedData = NSUserDefaults(suiteName: "group.com.arefly.WordCounter")
+    let defaults = UserDefaults.standard
+    let sharedData = UserDefaults(suiteName: "group.com.arefly.WordCounter")
     
     // MARK: - Init var
     var countNumNow = 0
@@ -76,16 +76,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         
         topBarCountButton = UIBarButtonItem()
-        topBarCountButton.tintColor = UIColor.blackColor()
+        topBarCountButton.tintColor = UIColor.black
         topBarCountButton.title = WordCounter().getCountString("", type: "Word")
         topBarCountButton.action = #selector(self.topBarCountingButtonClicked(_:))
-        self.navigationItem.setLeftBarButtonItem(topBarCountButton, animated: true)
+        self.navigationItem.setLeftBarButton(topBarCountButton, animated: true)
         
         
         clearButton = UIBarButtonItem()
         clearButton.title = NSLocalizedString("Global.Button.Clear", comment: "Clear")
         clearButton.action = #selector(self.clearButtonClicked(_:))
-        self.navigationItem.setRightBarButtonItem(clearButton, animated: true)
+        self.navigationItem.setRightBarButton(clearButton, animated: true)
         
         
         
@@ -94,13 +94,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }
         
         
-        let version: String = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        let version: String = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         
-        if(defaults.objectForKey("nowVersion") == nil){
+        if(defaults.object(forKey: "nowVersion") == nil){
             defaults.setValue(version, forKey: "nowVersion")
             appFirstLaunch = true
         }else{
-            if(defaults.stringForKey("nowVersion") != version){
+            if(defaults.string(forKey: "nowVersion") != version){
                 appJustUpdate = true
                 defaults.setValue(version, forKey: "nowVersion")
             }
@@ -114,15 +114,15 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         tvPlaceholderLabel = UILabel()
         tvPlaceholderLabel.text = NSLocalizedString("Global.TextView.PlaceHolder.Text", comment: "Type or paste here...")
-        tvPlaceholderLabel.font = UIFont.systemFontOfSize(tv.font!.pointSize)
+        tvPlaceholderLabel.font = UIFont.systemFont(ofSize: tv.font!.pointSize)
         tvPlaceholderLabel.sizeToFit()
         tv.addSubview(tvPlaceholderLabel)
-        tvPlaceholderLabel.frame.origin = CGPointMake(5, tv.font!.pointSize / 2)
+        tvPlaceholderLabel.frame.origin = CGPoint(x: 5, y: tv.font!.pointSize / 2)
         tvPlaceholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
-        tvPlaceholderLabel.hidden = !tv.text.isEmpty
+        tvPlaceholderLabel.isHidden = !tv.text.isEmpty
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DDLogInfo("準備加載 View Controller 之 viewWillAppear")
         
@@ -130,27 +130,27 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         
         let countMenuItem = UIMenuItem(title: NSLocalizedString("Global.TextView.MenuItem.Count", comment: "Count..."), action: #selector(self.countSelectionWord))
-        UIMenuController.sharedMenuController().menuItems = [countMenuItem]
+        UIMenuController.shared.menuItems = [countMenuItem]
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.doAfterRotate), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doAfterRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didEnterBackground), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.setContentFromClipBoard), name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setContentFromClipBoard), name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
         
         
         
@@ -161,43 +161,43 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         //checkScreenWidthToSetButton()
         
         
-        if(defaults.objectForKey("noAd") == nil){
-            defaults.setBool(false, forKey: "noAd")
+        if(defaults.object(forKey: "noAd") == nil){
+            defaults.set(false, forKey: "noAd")
         }
         
         
-        if(defaults.objectForKey("appLaunchTimes") == nil){
-            defaults.setInteger(1, forKey: "appLaunchTimes")
+        if(defaults.object(forKey: "appLaunchTimes") == nil){
+            defaults.set(1, forKey: "appLaunchTimes")
         }else{
-            defaults.setInteger(defaults.integerForKey("appLaunchTimes") + 1, forKey: "appLaunchTimes")
+            defaults.set(defaults.integer(forKey: "appLaunchTimes") + 1, forKey: "appLaunchTimes")
         }
         DDLogVerbose("已設定appLaunchTimes值爲\(defaults.integerForKey("appLaunchTimes"))")
         
-        if(defaults.objectForKey("everShowPresentReviewAgain") == nil){
-            defaults.setBool(true, forKey: "everShowPresentReviewAgain")
+        if(defaults.object(forKey: "everShowPresentReviewAgain") == nil){
+            defaults.set(true, forKey: "everShowPresentReviewAgain")
         }
         
         
         //appJustUpdate = true
-        if(defaults.objectForKey("appLaunchTimesAfterUpdate") == nil){
-            defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
+        if(defaults.object(forKey: "appLaunchTimesAfterUpdate") == nil){
+            defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")
         }
         if(appJustUpdate){
-            defaults.setInteger(1, forKey: "appLaunchTimesAfterUpdate")
+            defaults.set(1, forKey: "appLaunchTimesAfterUpdate")
         }
         
-        if(defaults.integerForKey("appLaunchTimesAfterUpdate") != -1){
-            defaults.setInteger(defaults.integerForKey("appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
+        if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1){
+            defaults.set(defaults.integer(forKey: "appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
         }
         DDLogVerbose("已設定appLaunchTimesAfterUpdate值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DDLogInfo("準備加載 View Controller 之 viewDidAppear")
         
         var countryCode = "US"
-        if let userCountryCode = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String {
+        if let userCountryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String {
             countryCode = userCountryCode
         }else{
             DDLogWarn("無法獲取用戶目前區域，將由默認地區\(countryCode)代替")
@@ -207,18 +207,18 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         
         DDLogVerbose("用戶 noAd 值爲 \(defaults.boolForKey("noAd"))")
-        if(defaults.boolForKey("noAd") == false){
+        if(defaults.bool(forKey: "noAd") == false){
             appDelegate.adMobBannerView.delegate = self
             appDelegate.adMobBannerView.rootViewController = self
             view.addSubview(appDelegate.adMobBannerView)
             
             self.view.addConstraints([
-                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0),
                 ])
             
-            appDelegate.adMobBannerView.loadRequest(appDelegate.adMobRequest)
+            appDelegate.adMobBannerView.load(appDelegate.adMobRequest)
         }
         
         
@@ -243,11 +243,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         //var appLaunchTimes = defaults.integerForKey("appLaunchTimes")
         
         DDLogVerbose("everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.boolForKey("everShowPresentReviewAgain")))
-        if(defaults.boolForKey("everShowPresentReviewAgain")){
+        if(defaults.bool(forKey: "everShowPresentReviewAgain")){
             if(!presentingOtherView){
                 DDLogVerbose("appLaunchTimes的值爲\(defaults.integerForKey("appLaunchTimes"))")
                 //defaults.setInteger(8, forKey: "appLaunchTimes")
-                if(defaults.integerForKey("appLaunchTimes") % 9 == 0){
+                if(defaults.integer(forKey: "appLaunchTimes") % 9 == 0){
                     presentingOtherView = true
                     
                     presentReviewAlert()
@@ -257,10 +257,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }
         
         
-        if(defaults.integerForKey("appLaunchTimesAfterUpdate") != -1){
+        if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1){
             if(!presentingOtherView){
                 DDLogVerbose("appLaunchTimesAfterUpdate的值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
-                if(defaults.integerForKey("appLaunchTimesAfterUpdate") % 10 == 0){
+                if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 10 == 0){
                     presentingOtherView = true
                     
                     presentUpdateReviewAlert()
@@ -275,31 +275,31 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
    
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         DDLogInfo("準備加載 View Controller 之 viewWillDisappear")
         
         appDelegate.adMobBannerView.removeFromSuperview()
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidBecomeActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "com.arefly.WordCounter.setContentFromClipBoard", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
         
         //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         endEditing()
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(self.countSelectionWord) {
             if(!(getTextViewSelectionText(self.tv).isEmpty)){
                 return true
@@ -321,7 +321,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             "Paragraph": false,
         ]
         
-        let bounds = UIApplication.sharedApplication().keyWindow?.bounds
+        let bounds = UIApplication.shared.keyWindow?.bounds
         let width = bounds!.size.width
         let height = bounds!.size.height
         DDLogVerbose("屏幕高度：\(height)、屏幕寬度：\(width)")
@@ -356,7 +356,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         DDLogDebug("準備加載 doAfterRotate")
         
         if(adBannerShowing){
-            adBannerHeight = CGRectGetHeight(getCurrentAdBannerFrame())
+            adBannerHeight = getCurrentAdBannerFrame().height
         }
         DDLogVerbose("已獲取adBanner高度：\(adBannerHeight)")
         
@@ -374,7 +374,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
     
     // MARK: - Keyboard func
-    func keyboardShow(n: NSNotification) {
+    func keyboardShow(_ n: Notification) {
         keyboardShowing = true
         
         setTextViewSize(n)
@@ -385,11 +385,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         textViewDidChange(self.tv)
     }
     
-    func setTextViewSize (n: NSNotification) {
+    func setTextViewSize (_ n: Notification) {
         if (keyboardShowing) {
             let d = n.userInfo!
-            var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-            r = self.tv.convertRect(r, fromView: nil)
+            var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            r = self.tv.convert(r, from: nil)
             self.tv.contentInset.bottom = r.size.height
             self.tv.scrollIndicatorInsets.bottom = r.size.height
         }
@@ -398,7 +398,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         //self.tv.scrollIndicatorInsets.top = 0
     }
     
-    func keyboardHide(n: NSNotification) {
+    func keyboardHide(_ n: Notification) {
         let selectedRangeBeforeHide = tv.selectedRange
         
         keyboardShowing = false
@@ -419,33 +419,33 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
     
     func addToolBarToKeyboard(){
-        keyBoardToolBar = UIToolbar(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
+        keyBoardToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
         //keyBoardToolBar = UIToolbar()
-        keyBoardToolBar.barStyle = .Default
+        keyBoardToolBar.barStyle = .default
         //keyBoardToolBar.translatesAutoresizingMaskIntoConstraints = false
         
-        keyBoardToolBar.translucent = false
+        keyBoardToolBar.isTranslucent = false
         keyBoardToolBar.barTintColor = UIColor(colorLiteralRed: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
         
         
         stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
         
-        stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         stableKeyboardBarButtonItemsNames.append("FlexSpace")
         
-        stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(title: "", style: .Done, target: self, action: #selector(self.doneButtonAction))
+        stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(self.doneButtonAction))
         stableKeyboardBarButtonItemsNames.append("Done")
         
-        let infoButton: UIButton = UIButton(type: UIButtonType.InfoLight)
-        infoButton.addTarget(self, action: #selector(self.infoButtonAction), forControlEvents: UIControlEvents.TouchUpInside)
+        let infoButton: UIButton = UIButton(type: UIButtonType.infoLight)
+        infoButton.addTarget(self, action: #selector(self.infoButtonAction), for: UIControlEvents.touchUpInside)
         stableKeyboardBarButtonItems["Info"] = UIBarButtonItem(customView: infoButton)
         stableKeyboardBarButtonItemsNames.append("Info")
         
         
         countingKeyboardBarButtonItemsNames = ["Word", "Character", "Sentence", "Paragraph"]
         for name in countingKeyboardBarButtonItemsNames {
-            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .Plain, target: self, action: #selector(self.countResultButtonAction))
-            countingKeyboardBarButtonItems[name]!.tintColor = UIColor.blackColor()
+            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.countResultButtonAction))
+            countingKeyboardBarButtonItems[name]!.tintColor = UIColor.black
         }
         
         
@@ -499,16 +499,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         showCountResultAlert(selectedText)
     }
     
-    func getTextViewSelectionText(tv: UITextView) -> String {
+    func getTextViewSelectionText(_ tv: UITextView) -> String {
         if let selectedRange = tv.selectedTextRange {
-            if let selectedText = tv.textInRange(selectedRange) {
+            if let selectedText = tv.text(in: selectedRange) {
                 return selectedText
             }
         }
         return ""
     }
     
-    func replaceTextViewContent(text: String) {
+    func replaceTextViewContent(_ text: String) {
         self.tv.text = text
         self.textViewDidChange(self.tv)      // Call textViewDidChange manually
     }
@@ -533,8 +533,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         doAfterRotate()
     }
     
-    func textViewDidChange(textView: UITextView) {
-        tvPlaceholderLabel.hidden = !textView.text.isEmpty
+    func textViewDidChange(_ textView: UITextView) {
+        tvPlaceholderLabel.isHidden = !textView.text.isEmpty
         
         updateTextViewCounting()
     }
@@ -570,7 +570,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     func setContentFromClipBoard() {
         DDLogDebug("準備加載 setContentFromClipBoard")
         
-        if let clipBoard = UIPasteboard.generalPasteboard().string {
+        if let clipBoard = UIPasteboard.general.string {
             DDLogVerbose("已獲取用戶剪貼簿內容：\(clipBoard)")
             if( (self.tv.text.isEmpty) || (self.tv.text == clipBoard) ){
                 Async.main {
@@ -580,9 +580,9 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
                 let replaceContentAlert = UIAlertController(
                     title: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Title", comment: "Replace current contents with clipboard contents?"),
                     message: NSLocalizedString("Global.Alert.BeforeReplaceTextViewToClipboard.Content", comment: "NOTICE: This action is irreversible!"),
-                    preferredStyle: .Alert)
+                    preferredStyle: .alert)
                 
-                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Default, handler: { (action: UIAlertAction) in
+                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .default, handler: { (action: UIAlertAction) in
                     DDLogVerbose("用戶已按下確定替換內容為剪切版內容")
                     self.replaceTextViewContent(clipBoard)
                 }))
@@ -601,7 +601,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     func setContentToTextBeforeEnterBackground() {
         DDLogDebug("準備加載 setContentToTextBeforeEnterBackground")
         
-        if let textBeforeEnterBackground = defaults.stringForKey("textBeforeEnterBackground") {
+        if let textBeforeEnterBackground = defaults.string(forKey: "textBeforeEnterBackground") {
             if(textBeforeEnterBackground != self.tv.text){
                 Async.main {
                     self.replaceTextViewContent(textBeforeEnterBackground)
@@ -613,7 +613,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     
     
     // MARK: - Button action func
-    func clearButtonClicked(sender: AnyObject) {
+    func clearButtonClicked(_ sender: AnyObject) {
         let keyboardShowingBefore = keyboardShowing
         
         endEditing()
@@ -621,15 +621,15 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         let clearContentAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.BeforeClear.Title", comment: "Clear all content?"),
             message: NSLocalizedString("Global.Alert.BeforeClear.Content", comment: "WARNING: This action is irreversible!"),
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .Destructive, handler: { (action: UIAlertAction) in
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .destructive, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下確定清空按鈕")
             self.clearContent()
             self.startEditing()
         }))
         
-        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+        clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下取消清空按鈕")
             if(keyboardShowingBefore){
                 self.startEditing()
@@ -642,7 +642,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
     
     func infoButtonAction() {
-        self.performSegueWithIdentifier("goInfo", sender: nil)
+        self.performSegue(withIdentifier: "goInfo", sender: nil)
     }
     
     
@@ -650,13 +650,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         showCountResultAlert(self.tv.text)
     }
     
-    func showCountResultAlert(text: String) {
+    func showCountResultAlert(_ text: String) {
         let keyboardShowingBefore = keyboardShowing
         
         endEditing()
         
-        let progressHUD = MBProgressHUD.showHUDAddedTo(self.view.window, animated: true)
-        progressHUD.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
+        let progressHUD = MBProgressHUD.showAdded(to: self.view.window, animated: true)
+        progressHUD?.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
         var titles = [
             "Word": "",
@@ -698,7 +698,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
     
     
-    func topBarCountingButtonClicked(sender: AnyObject) {
+    func topBarCountingButtonClicked(_ sender: AnyObject) {
         countResultButtonAction()
     }
     
@@ -714,13 +714,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     }
     
     
-    func adViewWillPresentScreen(bannerView: GADBannerView!) {
+    func adViewWillPresentScreen(_ bannerView: GADBannerView!) {
         DDLogDebug("準備加載 adViewWillPresentScreen")
         DDLogVerbose("即：用戶已點擊AdMob廣告")
         endEditing()
     }
     
-    func adViewDidDismissScreen(bannerView: GADBannerView!) {
+    func adViewDidDismissScreen(_ bannerView: GADBannerView!) {
         DDLogDebug("準備加載 adViewDidDismissScreen")
         DDLogVerbose("即：用戶已關閉AdMob廣告")
         startEditing()
@@ -730,7 +730,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     func showAds() {
         adBannerShowing = true
         
-        adBannerHeight = CGRectGetHeight(getCurrentAdBannerFrame())
+        adBannerHeight = getCurrentAdBannerFrame().height
         
         if(!keyboardShowing){
             self.tv.contentInset.bottom = adBannerHeight
@@ -738,14 +738,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }
     }
     
-    func adViewDidReceiveAd(banner: GADBannerView!) {
+    func adViewDidReceiveAd(_ banner: GADBannerView!) {
         DDLogDebug("準備加載 adViewDidReceiveAd")
         DDLogVerbose("即：AdMob已成功加載！")
         
         if(!adBannerShowing){
-            self.appDelegate.adMobBannerView.hidden = false
+            self.appDelegate.adMobBannerView.isHidden = false
             self.appDelegate.adMobBannerView.alpha = 0
-            UIView.animateWithDuration(0.5, delay: 0.5, options: .CurveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
                 self.appDelegate.adMobBannerView.alpha = 1
                 }, completion: {
                     (value: Bool) in
@@ -768,16 +768,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }
     }
     
-    func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+    func adView(_ bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
         DDLogDebug("準備加載 adView: didFailToReceiveAdWithError")
         DDLogWarn("即：AdMob加載錯誤：\(error.localizedDescription)")
         
         if(adBannerShowing){
-            UIView.animateWithDuration(0.5, delay: 0.5, options: .CurveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
                 self.appDelegate.adMobBannerView.alpha = 0
                 }, completion: {
                     (value: Bool) in
-                    self.appDelegate.adMobBannerView.hidden = true
+                    self.appDelegate.adMobBannerView.isHidden = true
             })
             
             hideAds()
@@ -786,8 +786,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     
     // MARK: - Intro View
     func presentIntroView() {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         }
         
         let screenWidth = self.view.bounds.size.width
@@ -819,7 +819,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         var introPages = [EAIntroPage]()
         
-        for (index, _) in contentTitleTexts.enumerate() {
+        for (index, _) in contentTitleTexts.enumerated() {
             
             let page = EAIntroPage()
             page.title = contentTitleTexts[index]
@@ -836,7 +836,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             
             let imageView = UIImageView(image: UIImage(named: contentImages[index]))
             imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-titlePositionFromBottom-50)
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             
             page.titleIconView = imageView
             page.titleIconPositionY = 30
@@ -848,13 +848,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         intro = EAIntroView(frame: self.view.bounds, andPages: introPages)
         intro.delegate = self
-        intro.showInView(self.view, animateDuration: 0.5)
+        intro.show(in: self.view, animateDuration: 0.5)
         intro.showFullscreen()
-        intro.skipButton.setTitle(NSLocalizedString("Welcome.Global.Button.Skip", comment: "Skip"), forState: .Normal)
+        intro.skipButton.setTitle(NSLocalizedString("Welcome.Global.Button.Skip", comment: "Skip"), for: UIControlState())
         intro.pageControlY = 20
     }
     
-    func introDidFinish(introView: EAIntroView!) {
+    func introDidFinish(_ introView: EAIntroView!) {
         presentingOtherView = false
         appFirstLaunch = false
         appJustUpdate = false
@@ -879,16 +879,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         endEditing()
         
         let tvText = self.tv.text
-        defaults.setObject(tvText, forKey: "textBeforeEnterBackground")
+        defaults.set(tvText, forKey: "textBeforeEnterBackground")
     }
     
     func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
         DDLogDebug("準備加載 isAppFirstLaunch")
-        if let _ = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
             DDLogVerbose("App於本機並非首次開啓")
             return false
         }else{
-            defaults.setBool(true, forKey: "isAppAlreadyLaunchedOnce")
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
             DDLogVerbose("App於本機首次開啓")
             return true
         }
@@ -899,28 +899,28 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             title: NSLocalizedString("Global.Alert.PlzRate.Title", comment: "Thanks!"),
             message: String.localizedStringWithFormat(
                 NSLocalizedString("Global.Alert.PlzRate.Content", comment: "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?"),
-                defaults.integerForKey("appLaunchTimes")),
-            preferredStyle: .Alert)
+                defaults.integer(forKey: "appLaunchTimes")),
+            preferredStyle: .alert)
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Yes", comment: "Sure!"), style: .default, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下發表評論按鈕")
-            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
-            self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
-            UIApplication.sharedApplication().openURL(BasicConfig.appStoreReviewUrl!)
+            self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
+            self.defaults.set(false, forKey: "everShowPresentReviewAgain")
+            UIApplication.shared.openURL(BasicConfig.appStoreReviewUrl! as URL)
             self.presentingOtherView = false
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Later", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Later", comment: "Not now"), style: .default, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下以後再說按鈕")
-            self.defaults.setBool(true, forKey: "everShowPresentReviewAgain")
+            self.defaults.set(true, forKey: "everShowPresentReviewAgain")
             self.startEditing()
             self.presentingOtherView = false
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .cancel, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下永遠再不顯示按鈕")
-            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
-            self.defaults.setBool(false, forKey: "everShowPresentReviewAgain")
+            self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
+            self.defaults.set(false, forKey: "everShowPresentReviewAgain")
             self.startEditing()
             self.presentingOtherView = false
         }))
@@ -935,27 +935,27 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             title: NSLocalizedString("Global.Alert.PlzRateUpdate.Title", comment: "Thanks for update!"),
             message: String.localizedStringWithFormat(
                 NSLocalizedString("Global.Alert.PlzRateUpdate.Content", comment: "You have used Word Counter Tools for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?"),
-                defaults.integerForKey("appLaunchTimesAfterUpdate"),
-                NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+                defaults.integer(forKey: "appLaunchTimesAfterUpdate"),
+                Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
             ),
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Yes", comment: "Sure!"), style: .Default, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Yes", comment: "Sure!"), style: .default, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下發表評論按鈕")
-            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
-            UIApplication.sharedApplication().openURL(BasicConfig.appStoreReviewUrl!)
+            self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")
+            UIApplication.shared.openURL(BasicConfig.appStoreReviewUrl! as URL)
             self.presentingOtherView = false
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Later", comment: "Not now"), style: .Default, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Later", comment: "Not now"), style: .default, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下以後再說按鈕")
             self.startEditing()
             self.presentingOtherView = false
         }))
         
-        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Cancel", comment: "No for this version, thanks!"), style: .Cancel, handler: { (action: UIAlertAction) in
+        reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Cancel", comment: "No for this version, thanks!"), style: .cancel, handler: { (action: UIAlertAction) in
             DDLogVerbose("用戶已按下此版本永遠再不顯示按鈕")
-            self.defaults.setInteger(-1, forKey: "appLaunchTimesAfterUpdate")
+            self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")
             self.startEditing()
             self.presentingOtherView = false
         }))
