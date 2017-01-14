@@ -32,16 +32,21 @@ class ActionViewController: UIViewController {
 		doneButton.title = NSLocalizedString("Global.Button.Done", comment: "Done")
 		doneButton.action = #selector(self.closeWindow)
 
-		let textItem = self.extensionContext!.inputItems[0] as! NSExtensionItem
-		let textItemProvider = textItem.attachments![0] as! NSItemProvider
-
-		if textItemProvider.hasItemConformingToTypeIdentifier(kUTTypeText as NSString as String) {
-			textItemProvider.loadItem(forTypeIdentifier: kUTTypeText as String, options: nil, completionHandler: {(string, error) in
-				if let convertedString = string as? String {
-					self.userText = convertedString
+		if let textItem = self.extensionContext!.inputItems[0] as? NSExtensionItem {
+			for textItemProvider in textItem.attachments! {
+				if let textItemProvider = textItemProvider as? NSItemProvider {
+					print("textItemProvider: \(textItemProvider)")
+					if textItemProvider.hasItemConformingToTypeIdentifier(kUTTypeText as String) {
+						textItemProvider.loadItem(forTypeIdentifier: kUTTypeText as String, options: nil, completionHandler: {(string, error) in
+							if let convertedString = string as? String {
+								self.userText = convertedString
+							}
+						})
+					}
 				}
-			})
+			}
 		}
+
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
