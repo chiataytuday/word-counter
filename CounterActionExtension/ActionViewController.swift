@@ -62,6 +62,7 @@ class ActionViewController: UIViewController {
 
 		if (userText ?? "").isEmpty {
 			print("[警告] 用戶 userText 爲空！")
+			self.closeWindow()
 		}else{
 			self.showCountResult(userText!)
 		}
@@ -72,7 +73,7 @@ class ActionViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func showCountResult (_ text: String) {
+	func showCountResult(_ text: String) {
 		self.progressBar = LoadingUIView.getProgressBar(
 			self.view.window!,
 			msg: NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting..."),
@@ -120,7 +121,7 @@ class ActionViewController: UIViewController {
 		}
 	}
 
-	func closeWindow () {
+	func closeWindow() {
 		// Return any edited content to the host app.
 		// This template doesn't do anything, so we just echo the passed in items.
 		self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
