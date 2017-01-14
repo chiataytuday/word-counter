@@ -6,8 +6,8 @@ use_frameworks!
 target 'WordCounter' do
     pod "AsyncSwift"
     pod 'CocoaLumberjack/Swift'
-    pod 'MBProgressHUD', '~> 0.9.1'
-    pod 'EAIntroView', '~> 2.9.0'
+    pod 'MBProgressHUD'
+    pod 'EAIntroView'
     pod 'Firebase/Core'
     pod 'Firebase/AdMob'
 end
