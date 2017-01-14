@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		#if DEBUG
 			let logLevel = DDLogLevel.all
 		#else
-			let logLevel = DDLogLevel.Info
+			let logLevel = DDLogLevel.info
 		#endif
 
 		DDLog.add(DDTTYLogger.sharedInstance(), with: logLevel) // TTY = Xcode console
