@@ -134,23 +134,23 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardHide(_:)), name: .UIKeyboardWillHide, object: nil)
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.doAfterRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doAfterRotate), name: .UIDeviceOrientationDidChange, object: nil)
         
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
         
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: NSNotification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.setContentFromClipBoard), name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setContentFromClipBoard), name: NSNotification.Name("com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
         
         
         
@@ -171,7 +171,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }else{
             defaults.set(defaults.integer(forKey: "appLaunchTimes") + 1, forKey: "appLaunchTimes")
         }
-        DDLogVerbose("已設定appLaunchTimes值爲\(defaults.integerForKey("appLaunchTimes"))")
+        DDLogVerbose("已設定appLaunchTimes值爲\(defaults.integer(forKey: "appLaunchTimes"))")
         
         if(defaults.object(forKey: "everShowPresentReviewAgain") == nil){
             defaults.set(true, forKey: "everShowPresentReviewAgain")
@@ -189,7 +189,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1){
             defaults.set(defaults.integer(forKey: "appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
         }
-        DDLogVerbose("已設定appLaunchTimesAfterUpdate值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
+        DDLogVerbose("已設定appLaunchTimesAfterUpdate值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -206,7 +206,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         
         
-        DDLogVerbose("用戶 noAd 值爲 \(defaults.boolForKey("noAd"))")
+        DDLogVerbose("用戶 noAd 值爲 \(defaults.bool(forKey: "noAd"))")
         if(defaults.bool(forKey: "noAd") == false){
             appDelegate.adMobBannerView.delegate = self
             appDelegate.adMobBannerView.rootViewController = self
@@ -242,10 +242,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         //var everShowPresentReviewAgain = defaults.boolForKey("everShowPresentReviewAgain")
         //var appLaunchTimes = defaults.integerForKey("appLaunchTimes")
         
-        DDLogVerbose("everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.boolForKey("everShowPresentReviewAgain")))
+        DDLogVerbose("everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.bool(forKey: "everShowPresentReviewAgain")))
         if(defaults.bool(forKey: "everShowPresentReviewAgain")){
             if(!presentingOtherView){
-                DDLogVerbose("appLaunchTimes的值爲\(defaults.integerForKey("appLaunchTimes"))")
+                DDLogVerbose("appLaunchTimes的值爲\(defaults.integer(forKey: "appLaunchTimes"))")
                 //defaults.setInteger(8, forKey: "appLaunchTimes")
                 if(defaults.integer(forKey: "appLaunchTimes") % 9 == 0){
                     presentingOtherView = true
@@ -259,7 +259,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1){
             if(!presentingOtherView){
-                DDLogVerbose("appLaunchTimesAfterUpdate的值爲\(defaults.integerForKey("appLaunchTimesAfterUpdate"))")
+                DDLogVerbose("appLaunchTimesAfterUpdate的值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
                 if(defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 10 == 0){
                     presentingOtherView = true
                     
@@ -281,16 +281,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         appDelegate.adMobBannerView.removeFromSuperview()
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidEnterBackground, object: nil)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
         
         //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -587,12 +587,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
                     self.replaceTextViewContent(clipBoard)
                 }))
                 
-                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .Cancel, handler: { (action: UIAlertAction) in
+                replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
                     DDLogVerbose("用戶已按下取消按鈕")
                 }))
                 
                 Async.main {
-                    self.presentViewController(replaceContentAlert, animated: true, completion: nil)
+                    self.present(replaceContentAlert, animated: true, completion: nil)
                 }
             }
         }
@@ -637,7 +637,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }))
         
         Async.main {
-            self.presentViewController(clearContentAlert, animated: true, completion: nil)
+            self.present(clearContentAlert, animated: true, completion: nil)
         }
     }
     
@@ -655,8 +655,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         endEditing()
         
-        let progressHUD = MBProgressHUD.showAdded(to: self.view.window, animated: true)
-        progressHUD?.labelText = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
+        let progressHUD = MBProgressHUD.showAdded(to: self.view.window!, animated: true)
+        progressHUD.label.text = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
         
         var titles = [
             "Word": "",
@@ -670,13 +670,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
                 titles[name] = WordCounter().getCountString(text, type: name)
             }
             }.main {
-                MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+                MBProgressHUD.hide(for: self.view.window!, animated: true)
                 
                 let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
                 
                 var message = ""
                 
-                for (index, name) in self.countingKeyboardBarButtonItemsNames.enumerate() {
+                for (index, name) in self.countingKeyboardBarButtonItemsNames.enumerated() {
                     let localizedString = "Global.Alert.Counter.Content.\(name)"
                     
                     message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
@@ -686,14 +686,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
                     }
                 }
                 
-                let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .Alert)
-                countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .Cancel, handler: { (action: UIAlertAction) in
+                let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+                countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
                     DDLogVerbose("用戶已按下確定按鈕")
                     if(keyboardShowingBefore){
                         self.startEditing()
                     }
                 }))
-                self.presentViewController(countingResultAlert, animated: true, completion: nil)
+                self.present(countingResultAlert, animated: true, completion: nil)
         }
     }
     
@@ -713,14 +713,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         return self.appDelegate.adMobBannerView.frame
     }
     
-    
-    func adViewWillPresentScreen(_ bannerView: GADBannerView!) {
+	func adViewWillPresentScreen(_ bannerView: GADBannerView) {
         DDLogDebug("準備加載 adViewWillPresentScreen")
         DDLogVerbose("即：用戶已點擊AdMob廣告")
         endEditing()
     }
     
-    func adViewDidDismissScreen(_ bannerView: GADBannerView!) {
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
         DDLogDebug("準備加載 adViewDidDismissScreen")
         DDLogVerbose("即：用戶已關閉AdMob廣告")
         startEditing()
@@ -738,7 +737,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }
     }
     
-    func adViewDidReceiveAd(_ banner: GADBannerView!) {
+    func adViewDidReceiveAd(_ banner: GADBannerView) {
         DDLogDebug("準備加載 adViewDidReceiveAd")
         DDLogVerbose("即：AdMob已成功加載！")
         
@@ -768,7 +767,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }
     }
     
-    func adView(_ bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+	func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
         DDLogDebug("準備加載 adView: didFailToReceiveAdWithError")
         DDLogWarn("即：AdMob加載錯誤：\(error.localizedDescription)")
         
@@ -926,7 +925,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }))
         
         Async.main {
-            self.presentViewController(reviewAlert, animated: true, completion: nil)
+            self.present(reviewAlert, animated: true, completion: nil)
         }
     }
     
@@ -961,7 +960,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }))
         
         Async.main {
-            self.presentViewController(reviewAlert, animated: true, completion: nil)
+            self.present(reviewAlert, animated: true, completion: nil)
         }
     }
 }

@@ -82,11 +82,11 @@ class ActionViewController: UIViewController {
         var titles = [String: String]()
         
         // Cannot use Async since Swift Framework is not allowed using in app extension :(
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
+		DispatchQueue.global(qos: .background).async {
             for name in itemNames {
                 titles[name] = WordCounter().getCountString(text, type: name)
             }
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 self.progressBar.removeFromSuperview()
                 self.view.window!.isUserInteractionEnabled = true
                 
@@ -111,8 +111,8 @@ class ActionViewController: UIViewController {
                 }))
                 
                 self.present(countingResultAlert, animated: true, completion: nil)
-            })
-        })
+            }
+        }
     }
 
     func closeWindow () {

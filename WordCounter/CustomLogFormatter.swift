@@ -11,23 +11,23 @@ import Foundation
 import CocoaLumberjack
 
 class CustomLogFormatter: NSObject, DDLogFormatter {
-    func formatLogMessage(_ logMessage: DDLogMessage!) -> String! {
+    func format(message logMessage: DDLogMessage!) -> String! {
         
         var prefixMessage = ""
         switch (logMessage.flag) {
-        case DDLogFlag.Verbose:
+        case DDLogFlag.verbose:
             prefixMessage = "其它"
             break
-        case DDLogFlag.Debug:
+        case DDLogFlag.debug:
             prefixMessage = "記錄"
             break
-        case DDLogFlag.Info:
+        case DDLogFlag.info:
             prefixMessage = "提示"
             break
-        case DDLogFlag.Warning:
+        case DDLogFlag.warning:
             prefixMessage = "警告"
             break
-        case DDLogFlag.Error:
+        case DDLogFlag.error:
             prefixMessage = "錯誤"
             break
         default:
@@ -39,7 +39,7 @@ class CustomLogFormatter: NSObject, DDLogFormatter {
         let timeString = formatter.string(from: Date())
         
         var fileInfo = ""
-        let showImportantInfo = [DDLogFlag.Warning, DDLogFlag.Error]
+        let showImportantInfo = [DDLogFlag.warning, DDLogFlag.error]
         if(showImportantInfo.contains(logMessage.flag)){
             fileInfo = " (\(logMessage.fileName):\(logMessage.line))"
         }

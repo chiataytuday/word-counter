@@ -123,7 +123,7 @@ class WordCounter {
     func sentenceCount(_ s: String) -> Int {
         var sentenceCounts = 0
         var sentencesArr = [String]()
-        s.enumerateSubstrings(in: s.characters.indices, options: .bySentences) {
+        s.enumerateSubstrings(in: s.startIndex..<s.endIndex, options: .bySentences) {
             substring, substringRange, enclosingRange, stop in
             sentencesArr.append(substring!)
         }

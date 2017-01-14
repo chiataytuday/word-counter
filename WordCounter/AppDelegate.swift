@@ -56,26 +56,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setenv("XcodeColors", "YES", 0)
         
         #if DEBUG
-            let logLevel = DDLogLevel.All
+            let logLevel = DDLogLevel.all
         #else
             let logLevel = DDLogLevel.Info
         #endif
         
-        DDLog.addLogger(DDTTYLogger.sharedInstance(), withLevel: logLevel) // TTY = Xcode console
-        DDLog.addLogger(DDASLLogger.sharedInstance(), withLevel: logLevel) // ASL = Apple System Logs
+        DDLog.add(DDTTYLogger.sharedInstance(), with: logLevel) // TTY = Xcode console
+        DDLog.add(DDASLLogger.sharedInstance(), with: logLevel) // ASL = Apple System Logs
         
         DDTTYLogger.sharedInstance().logFormatter = CustomLogFormatter()
         
         DDTTYLogger.sharedInstance().colorsEnabled = true
-        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.lightGrayColor(), backgroundColor: nil, forFlag: .Verbose)
-        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.grayColor(), backgroundColor: nil, forFlag: .Debug)
-        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.blackColor(), backgroundColor: nil, forFlag: .Info)
+        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.lightGray, backgroundColor: nil, for: .verbose)
+        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.gray, backgroundColor: nil, for: .debug)
+        DDTTYLogger.sharedInstance().setForegroundColor(UIColor.black, backgroundColor: nil, for: .info)
         
         
         let fileLogger: DDFileLogger = DDFileLogger() // File Logger
-        fileLogger.rollingFrequency = 60*60*24  // 24 hours
+        fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-        DDLog.addLogger(fileLogger, withLevel: .Warning)
+        DDLog.add(fileLogger, with: .warning)
         /**** Log & Log Color END ****/
         
         
@@ -207,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (url == "count://fromClipBoard") {
             Async.main {                // 於主線執行
                 DDLogVerbose("已準備將用戶剪貼簿內容設定爲TextView之內容")
-                NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.setContentFromClipBoard", object: self)
+                NotificationCenter.default.post(name: NSNotification.Name("com.arefly.WordCounter.setContentFromClipBoard"), object: self)
             }
         }
     }
@@ -216,7 +216,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DDLogDebug("準備加載 callToSetTextBeforeEnterBackground")
         Async.main {                // 於主線執行
             DDLogVerbose("已準備將進入背景前的內容設定爲TextView之內容")
-            NSNotificationCenter.defaultCenter().postNotificationName("com.arefly.WordCounter.setContentToTextBeforeEnterBackground", object: self)
+            NotificationCenter.default.post(name: NSNotification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: self)
         }
     }
 
