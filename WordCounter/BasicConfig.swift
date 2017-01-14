@@ -10,10 +10,10 @@ import UIKit
 import Foundation
 
 class BasicConfig {
-    internal static let appStoreShortUrl = URL(string: "http://bit.ly/WordCounter")
-    internal static let appStoreReviewUrl = URL(string: "itms-apps://itunes.com/apps/WordCounterTools")
-    internal static let otherAppsByMe = URL(string: "itms-apps://itunes.com/apps/XueqinHuang")
-    //"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1019068052&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)"
-    
-    internal static let adMobUnitId = "ca-app-pub-4890802000578360/7078656138"
+	internal static let appStoreShortUrl = URL(string: "http://bit.ly/WordCounter")
+	internal static let appStoreReviewUrl = URL(string: "itms-apps://itunes.com/apps/WordCounterTools")
+	internal static let otherAppsByMe = URL(string: "itms-apps://itunes.com/apps/XueqinHuang")
+	//"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1019068052&onlyLatestVersion=true&pageNumber=0&sortOrdering=1)"
+
+	internal static let adMobUnitId = "ca-app-pub-4890802000578360/7078656138"
 }
