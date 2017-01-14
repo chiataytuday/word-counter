@@ -785,10 +785,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Intro View
 	func presentIntroView() {
-		if UIDevice.current.userInterfaceIdiom == .phone {
-			UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-		}
-
 		let screenWidth = self.view.bounds.size.width
 		let screenHeight = self.view.bounds.size.height
 
@@ -834,11 +830,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			let titlePositionFromBottom = page.titlePositionY
 
 			let imageView = UIImageView(image: UIImage(named: contentImages[index]))
-			imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-titlePositionFromBottom-50)
+			imageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-titlePositionFromBottom-100)
 			imageView.contentMode = .scaleAspectFit
 
 			page.titleIconView = imageView
-			page.titleIconPositionY = 30
+			//page.titleIconPositionY = 30
 
 			page.bgColor = self.view.tintColor
 
@@ -850,7 +846,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		intro.show(in: self.view, animateDuration: 0.5)
 		intro.showFullscreen()
 		intro.skipButton.setTitle(NSLocalizedString("Welcome.Global.Button.Skip", comment: "Skip"), for: UIControlState())
-		intro.pageControlY = 20
+		intro.pageControlY = 50
 	}
 
 	func introDidFinish(_ introView: EAIntroView!) {
