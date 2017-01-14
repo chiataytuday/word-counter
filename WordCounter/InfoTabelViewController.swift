@@ -50,7 +50,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 		let currentYear = (Calendar(identifier: Calendar.Identifier.gregorian) as NSCalendar).components([.year], from: Date()).year
 
 		var copyrightYears = "\(startYear)"
-		if(currentYear! > startYear){
+		if currentYear! > startYear {
 			copyrightYears = "\(startYear)-\(currentYear)"
 		}
 
@@ -89,7 +89,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 		cell.textLabel?.text = cellContent[0]
 		cell.detailTextLabel?.text = cellContent[1]
 
-		if(indexPath.section == 0){
+		if indexPath.section == 0 {
 			cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
 		}
 
@@ -232,7 +232,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 		if (SKPaymentQueue.canMakePayments()){
 			getProductInfo("WordCounter.Donation.\(amount)")
-		}else{
+		} else {
 			alertPlzEnableIAP()
 		}
 	}
@@ -364,7 +364,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 			SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
 		}
 
-		if(willShowSuccess){
+		if willShowSuccess {
 			let restoreSuccessAlert = UIAlertController(
 				title: NSLocalizedString("About.Alert.RestoreSuccess.Title", comment: "Thank you!"),
 				message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
@@ -411,9 +411,9 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 	// MARK: - Other func
 	func switchHudWithoutTitle(_ show: Bool){
-		if(show){
+		if show {
 			MBProgressHUD.showAdded(to: self.view.window!, animated: true)
-		}else{
+		} else {
 			MBProgressHUD.hide(for: self.view.window!, animated: true)
 		}
 	}

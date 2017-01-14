@@ -68,15 +68,15 @@ class WordCounter {
 			if !(s != nil) { return false }
 			if (s!).characters.count < 1 { return false }
 
-			if(s!.containsChineseCharacters){
+			if s!.containsChineseCharacters {
 				var results = self.matchesForRegexInText("\\p{Han}", text: s!)
 				var sArray: Array = Array((s!).characters)
-				if(String(sArray[0]) != results[0]){
+				if String(sArray[0]) != results[0] {
 					counts += 1
 				}
 				//print(sArray[count(sArray)-1])
 				//print(results[count(results)-1])
-				if(String(sArray[sArray.count-1]) != results[results.count-1]){
+				if String(sArray[sArray.count-1]) != results[results.count-1] {
 					counts += 1
 				}
 				counts += results.count

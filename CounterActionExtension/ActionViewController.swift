@@ -105,7 +105,7 @@ class ActionViewController: UIViewController {
 
 					message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
 
-					if(index != itemNames.count-1) {
+					if index != (itemNames.count-1) {
 						message += "\n"
 					}
 				}

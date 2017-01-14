@@ -12,7 +12,6 @@ import CocoaLumberjack
 
 class CustomLogFormatter: NSObject, DDLogFormatter {
 	func format(message logMessage: DDLogMessage!) -> String! {
-
 		var prefixMessage = ""
 		switch (logMessage.flag) {
 		case DDLogFlag.verbose:
@@ -40,7 +39,7 @@ class CustomLogFormatter: NSObject, DDLogFormatter {
 
 		var fileInfo = ""
 		let showImportantInfo = [DDLogFlag.warning, DDLogFlag.error]
-		if(showImportantInfo.contains(logMessage.flag)){
+		if showImportantInfo.contains(logMessage.flag) {
 			fileInfo = " (\(logMessage.fileName):\(logMessage.line))"
 		}
 
