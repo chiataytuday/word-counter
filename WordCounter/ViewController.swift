@@ -148,9 +148,9 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
 
 
-		NotificationCenter.default.addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: NSNotification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: .catnapSetContentToTextBeforeEnterBackground, object: nil)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(self.setContentFromClipBoard), name: NSNotification.Name("com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.setContentFromClipBoard), name: .catnapSetContentFromClipBoard, object: nil)
 
 
 
@@ -289,8 +289,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		NotificationCenter.default.removeObserver(self, name: .UIApplicationDidBecomeActive, object: nil)
 		NotificationCenter.default.removeObserver(self, name: .UIApplicationDidEnterBackground, object: nil)
 
-		NotificationCenter.default.removeObserver(self, name: NSNotification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: nil)
-		NotificationCenter.default.removeObserver(self, name: NSNotification.Name("com.arefly.WordCounter.setContentFromClipBoard"), object: nil)
+		NotificationCenter.default.removeObserver(self, name: .catnapSetContentToTextBeforeEnterBackground, object: nil)
+		NotificationCenter.default.removeObserver(self, name: .catnapSetContentFromClipBoard, object: nil)
 
 		//NSNotificationCenter.defaultCenter().removeObserver(self)
 	}

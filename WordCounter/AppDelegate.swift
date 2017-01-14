@@ -207,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if (url == "count://fromClipBoard") {
 			Async.main {                // 於主線執行
 				DDLogVerbose("已準備將用戶剪貼簿內容設定爲TextView之內容")
-				NotificationCenter.default.post(name: NSNotification.Name("com.arefly.WordCounter.setContentFromClipBoard"), object: self)
+				NotificationCenter.default.post(name: .catnapSetContentFromClipBoard, object: self)
 			}
 		}
 	}
@@ -216,8 +216,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		DDLogDebug("準備加載 callToSetTextBeforeEnterBackground")
 		Async.main {                // 於主線執行
 			DDLogVerbose("已準備將進入背景前的內容設定爲TextView之內容")
-			NotificationCenter.default.post(name: NSNotification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground"), object: self)
+			NotificationCenter.default.post(name: .catnapSetContentToTextBeforeEnterBackground, object: self)
 		}
 	}
 
+}
+
+extension Notification.Name {
+	static let catnapSetContentFromClipBoard = Notification.Name("com.arefly.WordCounter.setContentFromClipBoard")
+	static let catnapSetContentToTextBeforeEnterBackground = Notification.Name("com.arefly.WordCounter.setContentToTextBeforeEnterBackground")
 }
