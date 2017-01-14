@@ -29,8 +29,10 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 		textView.isUserInteractionEnabled = true
 
 		textView.isSelectable = true  //BUG IN APPLE SIDE
-		textView.textColor = UIColor.white
+		textView.textColor = UIColor.black
 		textView.isSelectable = false
+
+		textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
 
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.pressedOnce))
