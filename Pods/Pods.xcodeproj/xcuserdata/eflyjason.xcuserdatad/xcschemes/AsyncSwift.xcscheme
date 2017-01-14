@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1DC35DB2C695031A72543555FB23729"
+               BlueprintIdentifier = "7F45F2F21482C3777494ACE42307212D"
                BuildableName = "Async.framework"
                BlueprintName = "AsyncSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D1DC35DB2C695031A72543555FB23729"
+            BlueprintIdentifier = "7F45F2F21482C3777494ACE42307212D"
             BuildableName = "Async.framework"
             BlueprintName = "AsyncSwift"
             ReferencedContainer = "container:Pods.xcodeproj">

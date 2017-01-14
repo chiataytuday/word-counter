@@ -4,6 +4,7 @@
 //  Copyright (c) 2013-2015 Evgeny Aleksandrov. License: MIT.
 
 #import "EAIntroView.h"
+#import "EARestrictedScrollView.h"
 
 @interface EAIntroView()
 
@@ -68,7 +69,7 @@
     self.backgroundColor = [UIColor blackColor];
     _scrollingEnabled = YES;
     _titleViewY = 20.f;
-    _pageControlY = 50.f;
+    _pageControlY = 70.f;
     _skipButtonY = EA_EMPTY_PROPERTY;
     _skipButtonSideMargin = 10.f;
     _skipButtonAlignment = EAViewAlignmentRight;
@@ -80,13 +81,6 @@
     self.pages = [pagesArray copy];
     
     [self buildFooterView];
-    
-    // Add observer for device orientation:
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceOrientationDidChange:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
 }
 
 - (void)applyDefaultsToBackgroundImageView:(UIImageView *)backgroundImageView {
@@ -162,16 +156,16 @@
         //if run here, it means you can't  call _pages[self.currentPageIndex],
         //to be safe, set to the biggest index
         _currentPageIndex = _pages.count - 1;
-        
+
+        if ([self.delegate respondsToSelector:@selector(introWillFinish:wasSkipped:)]) {
+            [self.delegate introWillFinish:self wasSkipped:self.skipped];
+        }
+
         [self finishIntroductionAndRemoveSelf];
     }
 }
 
 - (void)finishIntroductionAndRemoveSelf {
-	// Remove observer for rotation
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-    
     //prevent last page flicker on disappearing
     self.alpha = 0;
     
@@ -334,57 +328,55 @@
 }
 
 - (UIView *)viewForPage:(EAIntroPage *)page atXIndex:(CGFloat)xIndex {
+    UIView *pageView = [self createViewForPage:page atXIndex:xIndex];
+
+    if(page.customView) {
+        [self configurePageView:pageView withCustomView:page.customView];
+    } else {
+        [self configurePageView:pageView forPage:page];
+    }
+
+    return pageView;
+}
+
+- (UIView *)createViewForPage:(EAIntroPage *)page atXIndex:(CGFloat)xIndex {
     UIView *pageView = [[UIView alloc] initWithFrame:CGRectMake(xIndex, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
-    
+
     pageView.accessibilityLabel = [NSString stringWithFormat:@"intro_page_%lu",(unsigned long)[self.pages indexOfObject:page]];
-    
+
     if(page.alpha < 1.f || !page.bgImage) {
         self.backgroundColor = [UIColor clearColor];
     }
+    return pageView;
+}
 
-    if(page.customView) {
-        [pageView addSubview:page.customView];
-        
-        NSMutableArray *constraints = @[].mutableCopy;
-        [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[customView]-0-|" options:0 metrics:nil views:@{@"customView": page.customView}]];
-        [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[customView]-0-|" options:0 metrics:nil views:@{@"customView": page.customView}]];
-        
-        [pageView addConstraints:constraints];
-        
-        return pageView;
-    }
-    
-    UIButton *tapToNextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    tapToNextButton.frame = pageView.bounds;
-    tapToNextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [tapToNextButton addTarget:self action:@selector(goToNext:) forControlEvents:UIControlEventTouchUpInside];
+- (void)configurePageView:(UIView *)pageView withCustomView:(UIView *)customView {
+    [self addTapToNextActionToPageView:customView];
+    [pageView addSubview:customView];
 
-    NSString *accessibilityLabel = [self accessibilityLabelForPage:page];
-    if (accessibilityLabel.length > 0) {
-        tapToNextButton.isAccessibilityElement = YES;
-        tapToNextButton.accessibilityLabel = accessibilityLabel;
-        tapToNextButton.accessibilityTraits = UIAccessibilityTraitButton;
-    }
-    
-    [pageView addSubview:tapToNextButton];
-    
     NSMutableArray *constraints = @[].mutableCopy;
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tapToNextButton]-0-|" options:0 metrics:nil views:@{@"tapToNextButton": tapToNextButton}]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tapToNextButton]-0-|" options:0 metrics:nil views:@{@"tapToNextButton": tapToNextButton}]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[customView]-0-|" options:0 metrics:nil views:@{@"customView": customView}]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[customView]-0-|" options:0 metrics:nil views:@{@"customView": customView}]];
+
     [pageView addConstraints:constraints];
-    
+}
+
+- (void)configurePageView:(UIView *)pageView forPage:(EAIntroPage *)page {
+    [self addTapToNextActionToPageView:pageView];
+    [self applyAccessibilityLabelForPage:page toView:pageView];
+
     UIView *titleImageView;
     if(page.titleIconView) {
         titleImageView = page.titleIconView;
         titleImageView.tag = kTitleImageViewTag;
         titleImageView.translatesAutoresizingMaskIntoConstraints = NO;
-        
+
         [pageView addSubview:titleImageView];
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topSpace@250-[titleImageView(imageHeight)]" options:NSLayoutFormatAlignAllTop metrics:@{@"imageHeight" : @(page.titleIconView.frame.size.height), @"topSpace" : @(page.titleIconPositionY)} views:@{@"titleImageView" : titleImageView}]];
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[titleImageView(imageWidth)]" options:0 metrics:@{@"imageWidth" : @(page.titleIconView.frame.size.width)} views:@{@"titleImageView" : titleImageView}]];
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[superview]-(<=1)-[titleImageView]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:@{@"superview" : pageView, @"titleImageView" : titleImageView}]];
     }
-    
+
     UILabel *titleLabel;
     if(page.title.length) {
         titleLabel = [[UILabel alloc] init];
@@ -398,14 +390,14 @@
         titleLabel.tag = kTitleLabelTag;
         titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         titleLabel.isAccessibilityElement = NO;
-        
+
         [pageView addSubview:titleLabel];
         NSLayoutConstraint *weakConstraint = [NSLayoutConstraint constraintWithItem:pageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:titleLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:page.titlePositionY];
         weakConstraint.priority = UILayoutPriorityDefaultLow;
         [pageView addConstraint:weakConstraint];
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[titleLabel]-10-|" options:NSLayoutFormatAlignAllTop metrics:nil views:@{@"titleLabel" : titleLabel}]];
     }
-    
+
     UITextView *descLabel;
     if(page.desc.length) {
         descLabel = [[UITextView alloc] init];
@@ -419,44 +411,55 @@
         descLabel.tag = kDescLabelTag;
         descLabel.translatesAutoresizingMaskIntoConstraints = NO;
         descLabel.isAccessibilityElement = NO;
-        
+
         [pageView addSubview:descLabel];
         NSLayoutConstraint *weakConstraint = [NSLayoutConstraint constraintWithItem:pageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:descLabel attribute:NSLayoutAttributeTop multiplier:1.0 constant:page.descPositionY];
         weakConstraint.priority = UILayoutPriorityDefaultLow;
         [pageView addConstraint:weakConstraint];
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-descMargin-[descLabel]-descMargin-|" options:NSLayoutFormatAlignAllTop metrics:@{@"descMargin" : @(page.descSideMargin)} views:@{@"descLabel" : descLabel}]];
     }
-    
+
     // Constraints for handling landscape orientation
     if(titleImageView && titleLabel && descLabel) {
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=0-[titleImageView]->=0-[titleLabel]->=0-[descLabel]" options:0 metrics:nil views:@{@"titleImageView" : titleImageView, @"titleLabel" : titleLabel, @"descLabel" : descLabel}]];
     } else if(!titleImageView && titleLabel && descLabel) {
         [pageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=0-[titleLabel]->=0-[descLabel]" options:0 metrics:nil views:@{@"titleLabel" : titleLabel, @"descLabel" : descLabel}]];
     }
-    
+
     if(page.subviews) {
         for (UIView *subV in page.subviews) {
             [pageView addSubview:subV];
         }
     }
-    
+
     pageView.alpha = page.alpha;
-    
-    return pageView;
 }
 
-- (NSString*)accessibilityLabelForPage:(EAIntroPage*)page
-{
+- (void)addTapToNextActionToPageView:(UIView *)pageView {
+    UITapGestureRecognizer *tapRecognizer =
+            [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)];
+
+    [pageView addGestureRecognizer:tapRecognizer];
+}
+
+- (void)applyAccessibilityLabelForPage:(EAIntroPage *)page toView:(UIView *)view {
+    NSString *accessibilityLabel = [self accessibilityLabelForPage:page];
+    if (accessibilityLabel.length > 0) {
+        view.isAccessibilityElement = YES;
+        view.accessibilityLabel = accessibilityLabel;
+        view.accessibilityTraits = UIAccessibilityTraitButton;
+    }
+}
+
+- (NSString*)accessibilityLabelForPage:(EAIntroPage*)page {
     NSString *accessibilityLabel = nil;
     if (page.title) {
         if (page.desc) {
             accessibilityLabel = [NSString stringWithFormat:@"%@, %@", page.title, page.desc];
-        }
-        else {
+        } else {
             accessibilityLabel = page.title;
         }
-    }
-    else {
+    } else {
         accessibilityLabel = page.desc;
     }
     return accessibilityLabel;
@@ -518,9 +521,13 @@
         [self removeConstraints:self.footerConstraints];
         [self.footerConstraints removeAllObjects];
     }
+
+    CGFloat pageControlHeight = self.pageControl.frame.size.height > 0 ? self.pageControl.frame.size.height : PAGE_CTRL_DEFAULT_HEIGHT;
+    CGFloat skipButtonWidth = self.skipButton.frame.size.width > 0 ? self.skipButton.frame.size.width : SKIP_BTN_DEFAULT_WIDTH;
+    CGFloat skipButtonHeight = self.skipButton.frame.size.height > 0 ? self.skipButton.frame.size.height : SKIP_BTN_DEFAULT_HEIGHT;
     
     NSDictionary *views = @{@"pageControl" : self.pageControl, @"skipButton" : self.skipButton};
-    NSDictionary *metrics = @{@"pageControlBottomPadding" : @(self.pageControlY - self.pageControl.frame.size.height), @"pageControlHeight" : @(self.pageControl.frame.size.height), @"skipButtonBottomPadding" : @(self.skipButtonY - self.skipButton.frame.size.height), @"skipButtonSideMargin" : @(self.skipButtonSideMargin), @"skipButtonWidth" : @(self.skipButton.frame.size.width)};
+    NSDictionary *metrics = @{@"pageControlBottomPadding" : @(self.pageControlY - pageControlHeight), @"pageControlHeight" : @(pageControlHeight), @"skipButtonBottomPadding" : @(self.skipButtonY - skipButtonHeight), @"skipButtonSideMargin" : @(self.skipButtonSideMargin), @"skipButtonWidth" : @(skipButtonWidth)};
     
     [self.footerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[pageControl]-|" options:NSLayoutFormatAlignAllCenterX metrics:metrics views:views]];
     [self.footerConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[pageControl(pageControlHeight)]-pageControlBottomPadding@250-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
@@ -590,6 +597,10 @@
         
         [self makePanelVisibleAtIndex:self.visiblePageIndex];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(intro:didScrollWithOffset:)]) {
+        [self.delegate intro:self didScrollWithOffset:offset];
+    }
 }
 
 CGFloat easeOutValue(CGFloat value) {
@@ -647,9 +658,11 @@ CGFloat easeOutValue(CGFloat value) {
     }
 }
 
-#pragma mark - Notifications
+#pragma mark - UIView lifecycle calls
 
-- (void)deviceOrientationDidChange:(NSNotification *)notification {
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
     // Get amount of pages:
     NSInteger numberOfPages = _pages.count;
     
@@ -983,6 +996,10 @@ CGFloat easeOutValue(CGFloat value) {
 }
 
 - (void)hideWithFadeOutDuration:(CGFloat)duration {
+    if ([self.delegate respondsToSelector:@selector(introWillFinish:wasSkipped:)]) {
+        [self.delegate introWillFinish:self wasSkipped:self.skipped];
+    }
+
     [UIView animateWithDuration:duration animations:^{
         self.alpha = 0;
     } completion:^(BOOL finished){
@@ -1002,12 +1019,28 @@ CGFloat easeOutValue(CGFloat value) {
     
     _currentPageIndex = currentPageIndex;
     
-    CGFloat offset = currentPageIndex * self.scrollView.frame.size.width;
+    [self scrollToPageForIndex:currentPageIndex animated:animated];
+}
+
+- (void)scrollToPageForIndex:(NSUInteger)newPageIndex animated:(BOOL)animated
+{
+    if(![self pageForIndex:newPageIndex]) {
+        NSLog(@"Wrong newPageIndex received: %ld",(long)newPageIndex);
+        return;
+    }
+
+    CGFloat offset = newPageIndex * self.scrollView.frame.size.width;
     CGRect pageRect = { .origin.x = offset, .origin.y = 0.0, .size.width = self.scrollView.frame.size.width, .size.height = self.scrollView.frame.size.height };
     [self.scrollView scrollRectToVisible:pageRect animated:animated];
     
     if(!animated) {
         [self scrollViewDidScroll:self.scrollView];
+    }
+}
+
+- (void)handleBackgroundTap:(UIGestureRecognizer *)tapRecognizer {
+    if (tapRecognizer.state == UIGestureRecognizerStateEnded) {
+        [self goToNext:tapRecognizer];
     }
 }
 
@@ -1018,7 +1051,9 @@ CGFloat easeOutValue(CGFloat value) {
     if(self.currentPageIndex + 1 >= [self.pages count]) {
         [self hideWithFadeOutDuration:0.3];
     } else {
-        [self setCurrentPageIndex:self.currentPageIndex + 1 animated:YES];
+        // Just scroll to the new page.
+        // After scrolling ends, we call -checkIndexForScrollView:, which itself sets the new currentPageIndex.
+        [self scrollToPageForIndex:self.currentPageIndex + 1 animated:YES];
     }
 }
 
