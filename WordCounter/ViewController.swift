@@ -849,7 +849,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		intro.pageControlY = 50
 	}
 
-	func introDidFinish(_ introView: EAIntroView!) {
+	func introDidFinish(_ introView: EAIntroView!, wasSkipped: Bool) {
 		presentingOtherView = false
 		appFirstLaunch = false
 		appJustUpdate = false
