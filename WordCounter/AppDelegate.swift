@@ -61,15 +61,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			let logLevel = DDLogLevel.info
 		#endif
 
-		DDLog.add(DDTTYLogger.sharedInstance(), with: logLevel) // TTY = Xcode console
-		DDLog.add(DDASLLogger.sharedInstance(), with: logLevel) // ASL = Apple System Logs
+		DDLog.add(DDTTYLogger.sharedInstance, with: logLevel) // TTY = Xcode console
+		DDLog.add(DDASLLogger.sharedInstance, with: logLevel) // ASL = Apple System Logs
 
-		DDTTYLogger.sharedInstance().logFormatter = CustomLogFormatter()
+		DDTTYLogger.sharedInstance.logFormatter = CustomLogFormatter()
 
-		DDTTYLogger.sharedInstance().colorsEnabled = true
-		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.lightGray, backgroundColor: nil, for: .verbose)
-		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.gray, backgroundColor: nil, for: .debug)
-		DDTTYLogger.sharedInstance().setForegroundColor(UIColor.black, backgroundColor: nil, for: .info)
+		DDTTYLogger.sharedInstance.colorsEnabled = true
+		DDTTYLogger.sharedInstance.setForegroundColor(UIColor.lightGray, backgroundColor: nil, for: .verbose)
+		DDTTYLogger.sharedInstance.setForegroundColor(UIColor.gray, backgroundColor: nil, for: .debug)
+		DDTTYLogger.sharedInstance.setForegroundColor(UIColor.black, backgroundColor: nil, for: .info)
 
 
 		let fileLogger: DDFileLogger = DDFileLogger() // File Logger
