@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		adMobRequest.testDevices = [
 			kGADSimulatorID,
 			"898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
-			"02e875974400ad52909c9d4a1899aa96",         // Arefly's iPad
+			"381f5843f2f07e9e84957719d7ea8fe8",         // Arefly's iPad Pro
 		]
 
 
