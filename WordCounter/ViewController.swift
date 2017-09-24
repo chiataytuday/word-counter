@@ -352,7 +352,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		textViewDidChange(self.tv)      // Call textViewDidChange manually
 	}
 
-	func doAfterRotate () {
+	@objc func doAfterRotate () {
 		DDLogDebug("準備加載 doAfterRotate")
 
 		if adBannerShowing {
@@ -374,7 +374,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	// MARK: - Keyboard func
-	func keyboardShow(_ n: Notification) {
+	@objc func keyboardShow(_ n: Notification) {
 		keyboardShowing = true
 
 		setTextViewSize(n)
@@ -398,7 +398,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		//self.tv.scrollIndicatorInsets.top = 0
 	}
 
-	func keyboardHide(_ n: Notification) {
+	@objc func keyboardHide(_ n: Notification) {
 		let selectedRangeBeforeHide = tv.selectedRange
 
 		keyboardShowing = false
@@ -425,7 +425,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		//keyBoardToolBar.translatesAutoresizingMaskIntoConstraints = false
 
 		keyBoardToolBar.isTranslucent = false
-		keyBoardToolBar.barTintColor = UIColor(colorLiteralRed: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
+		keyBoardToolBar.barTintColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
 
 
 		stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
@@ -492,7 +492,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 	*/
 
-	func countSelectionWord() {
+	@objc func countSelectionWord() {
 		DDLogDebug("準備加載 countSelectionWord")
 		DDLogVerbose("即：已準備顯示所選文字區域的字數統計")
 		let selectedText = getTextViewSelectionText(self.tv)
@@ -549,25 +549,27 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			"Paragraph": "",
 			]
 
-		Async.background {
-			for (name, _) in titles {
-				if (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") {
-					titles[name] = WordCounter().getCountString(self.tv.text, type: name)
+		if let myText = self.tv.text {
+			Async.background {
+				for (name, _) in titles {
+					if (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") {
+						titles[name] = WordCounter().getCountString(myText, type: name)
+					}
 				}
+				}.main {
+					self.topBarCountButton.title = titles["Word"]
+
+					for name in self.countingKeyboardBarButtonItemsNames {
+						self.countingKeyboardBarButtonItems[name]!.title = ""
+						self.countingKeyboardBarButtonItems[name]!.title = titles[name]
+					}
+
+					//DDLogVerbose(titles["Sentence"])
 			}
-			}.main {
-				self.topBarCountButton.title = titles["Word"]
-
-				for name in self.countingKeyboardBarButtonItemsNames {
-					self.countingKeyboardBarButtonItems[name]!.title = ""
-					self.countingKeyboardBarButtonItems[name]!.title = titles[name]
-				}
-
-				//DDLogVerbose(titles["Sentence"])
 		}
 	}
 
-	func setContentFromClipBoard() {
+	@objc func setContentFromClipBoard() {
 		DDLogDebug("準備加載 setContentFromClipBoard")
 
 		if let clipBoard = UIPasteboard.general.string {
@@ -598,7 +600,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		}
 	}
 
-	func setContentToTextBeforeEnterBackground() {
+	@objc func setContentToTextBeforeEnterBackground() {
 		DDLogDebug("準備加載 setContentToTextBeforeEnterBackground")
 
 		if let textBeforeEnterBackground = defaults.string(forKey: "textBeforeEnterBackground") {
@@ -613,7 +615,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 	// MARK: - Button action func
-	func clearButtonClicked(_ sender: AnyObject) {
+	@objc func clearButtonClicked(_ sender: AnyObject) {
 		let keyboardShowingBefore = keyboardShowing
 
 		endEditing()
@@ -641,12 +643,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		}
 	}
 
-	func infoButtonAction() {
+	@objc func infoButtonAction() {
 		self.performSegue(withIdentifier: "goInfo", sender: nil)
 	}
 
 
-	func countResultButtonAction() {
+	@objc func countResultButtonAction() {
 		showCountResultAlert(self.tv.text)
 	}
 
@@ -698,11 +700,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 
-	func topBarCountingButtonClicked(_ sender: AnyObject) {
+	@objc func topBarCountingButtonClicked(_ sender: AnyObject) {
 		countResultButtonAction()
 	}
 
-	func doneButtonAction() {
+	@objc func doneButtonAction() {
 		endEditing()
 	}
 
@@ -857,7 +859,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	// MARK: - General func
-	func didBecomeActive() {
+	@objc func didBecomeActive() {
 		DDLogDebug("準備加載 didBecomeActive")
 
 		doAfterRotate()
@@ -867,7 +869,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		}
 	}
 
-	func didEnterBackground() {
+	@objc func didEnterBackground() {
 		DDLogDebug("準備加載 didEnterBackground")
 
 

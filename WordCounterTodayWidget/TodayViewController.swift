@@ -103,7 +103,7 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 		return UIEdgeInsetsMake(10, 10, 10, 10)
 	}
 
-	func pressedOnce() {
+	@objc func pressedOnce() {
 		print("[提示] 用戶已按下任意位置！")
 		if let clipBoard = UIPasteboard.general.string {
 			print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")

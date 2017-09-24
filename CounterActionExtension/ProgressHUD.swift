@@ -19,7 +19,7 @@ class LoadingUIView {
 		var strLabel = UILabel()
 
 		let msgNSString: NSString = msg as NSString
-		let msgSize: CGSize = msgNSString.size(attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0)])
+		let msgSize: CGSize = msgNSString.size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17.0)])
 
 		let strLabelWidth: CGFloat = msgSize.width
 
