@@ -243,7 +243,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			if !presentingOtherView {
 				DDLogVerbose("appLaunchTimes的值爲\(defaults.integer(forKey: "appLaunchTimes"))")
 				//defaults.setInteger(8, forKey: "appLaunchTimes")
-				if defaults.integer(forKey: "appLaunchTimes") % 9 == 0 {
+				if defaults.integer(forKey: "appLaunchTimes") % 50 == 0 {
 					presentingOtherView = true
 
 					presentReviewAlert()
@@ -256,7 +256,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		if defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1 {
 			if !presentingOtherView {
 				DDLogVerbose("appLaunchTimesAfterUpdate的值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
-				if defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 10 == 0 {
+				if defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 88 == 0 {
 					presentingOtherView = true
 
 					presentUpdateReviewAlert()
