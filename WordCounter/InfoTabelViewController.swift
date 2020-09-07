@@ -414,10 +414,12 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 	// MARK: - Other func
 	func switchHudWithoutTitle(_ show: Bool){
-		if show {
-			MBProgressHUD.showAdded(to: self.view.window!, animated: true)
-		} else {
-			MBProgressHUD.hide(for: self.view.window!, animated: true)
-		}
+        Async.main {
+            if show {
+                MBProgressHUD.showAdded(to: self.view.window!, animated: true)
+            } else {
+                MBProgressHUD.hide(for: self.view.window!, animated: true)
+            }
+        }
 	}
 }
