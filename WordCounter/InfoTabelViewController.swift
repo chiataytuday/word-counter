@@ -302,8 +302,16 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
 					break
 				case .failed:
-					DDLogError("用戶內購失敗")
+                    DDLogError("用戶內購失敗：\(trans.error.debugDescription)")
 					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    
+                    let errorAlert = UIAlertController(title: "Error!", message: "Failed! Please contact the developer and try other donation options!\n\n\(trans.error.debugDescription)", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { alertAction in
+                        DDLogVerbose("用戶已按下關閉按鈕")
+                    }))
+                    Async.main {
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }
 					break
 				default:
 					break
