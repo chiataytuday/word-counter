@@ -351,7 +351,6 @@
 				3090805F1B4A0A3800C0AE5A /* Update Build Numbers */,
 				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
 				238E22725F9DDDDE60324D38 /* [CP] Embed Pods Frameworks */,
-				2594D0E55CADA46873371557 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -372,8 +371,6 @@
 				300BAB761B49097100FE8B37 /* Sources */,
 				300BAB771B49097100FE8B37 /* Frameworks */,
 				300BAB781B49097100FE8B37 /* Resources */,
-				C34F9539B46053C3E9FB18F5 /* [CP] Embed Pods Frameworks */,
-				BA43F7B0AD7573B30E2FA87E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -393,7 +390,6 @@
 				30B7AC8F1B74698E00517036 /* Sources */,
 				30B7AC901B74698E00517036 /* Frameworks */,
 				30B7AC911B74698E00517036 /* Resources */,
-				485C4166F3FD34341926B73A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -412,7 +408,6 @@
 				ED3235881C20633C0007EF1A /* Sources */,
 				ED3235891C20633C0007EF1A /* Frameworks */,
 				ED32358A1C20633C0007EF1A /* Resources */,
-				4AA98EC95C13E998F414DB90 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -544,7 +539,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/EAIntroView/EAIntroView.framework",
@@ -565,22 +560,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2594D0E55CADA46873371557 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WordCounter/Pods-WordCounter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3090805F1B4A0A3800C0AE5A /* Update Build Numbers */ = {
@@ -596,36 +576,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"WordCounterTodayWidget/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"CounterActionExtension/Info.plist\"";
-		};
-		485C4166F3FD34341926B73A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4AA98EC95C13E998F414DB90 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		65DA3AD4E55B12C66DD8F14C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -679,36 +629,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA43F7B0AD7573B30E2FA87E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C34F9539B46053C3E9FB18F5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CFA68B84D77C2BAE3D053778 /* [CP] Check Pods Manifest.lock */ = {
