@@ -9,11 +9,11 @@
 Global.Text.ShareMessage = "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!";
 Global.Text.NothingOnClipboard = "Nothing on your clipboard!";
 
-Global.ProgressingHUD.Label.Counting = "Counting...";
+Global.ProgressingHUD.Label.Counting = "Counting…";
 
-Global.TextView.PlaceHolder.Text = "Type or paste here...";
+Global.TextView.PlaceHolder.Text = "Type or paste here…";
 
-Global.TextView.MenuItem.Count = "Count...";
+Global.TextView.MenuItem.Count = "Count…";
 
 Global.Button.Done = "Done";
 Global.Button.OK = "OK";
@@ -126,6 +126,6 @@ Welcome.Global.Text.About = "We promise to keep working on Word Counter Tools.\n
 "Welcome.Version.1-3.Title.ImproveTodayWidget" = "Today Widget";
 
 "Welcome.Version.1-3.Text.ActionExtension.Introduction" = "NEW: Check how many words is there by using Action Extension in Share menu!";
-"Welcome.Version.1-3.Text.ActionExtension.How" = "Add extension by \"Share...\" button in text menu.";
+"Welcome.Version.1-3.Text.ActionExtension.How" = "Add extension by \"Share…\" button in text menu.";
 "Welcome.Version.1-3.Text.MoreCountingType" = "NEW: You can now check how many sentences is there!\nPress Result Button (i.e. \"n words\") for detail counting result";
 "Welcome.Version.1-3.Text.ImproveTodayWidget" = "Improved Today Widget.\nTry it now!";

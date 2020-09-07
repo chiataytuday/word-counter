@@ -9,11 +9,11 @@
 Global.Text.ShareMessage = "还在逐字统计字数？快去 App Store 上看看「字数统计工具」吧！";
 Global.Text.NothingOnClipboard = "剪切板内并无任何内容！";
 
-Global.ProgressingHUD.Label.Counting = "统计中...";
+Global.ProgressingHUD.Label.Counting = "统计中…";
 
-Global.TextView.MenuItem.Count = "统计字数⋯";
+Global.TextView.MenuItem.Count = "统计字数…";
 
-Global.TextView.PlaceHolder.Text = "请在此输入或粘贴文字...";
+Global.TextView.PlaceHolder.Text = "请在此输入或粘贴文字…";
 
 Global.Button.Done = "完成";
 Global.Button.OK = "好！";
@@ -126,6 +126,6 @@ Welcome.Global.Text.About = "我们将继续为 字数统计工具 提供支援�
 "Welcome.Version.1-3.Title.ImproveTodayWidget" = "“今天”工具";
 
 "Welcome.Version.1-3.Text.ActionExtension.Introduction" = "重点：\n直接使用分享菜单内的“动作扩展 Action Extension”统计字数！";
-"Welcome.Version.1-3.Text.ActionExtension.How" = "通过文字选单中“共享...”按钮加入该工具";
+"Welcome.Version.1-3.Text.ActionExtension.How" = "通过文字选单中“共享…”按钮加入该工具";
 "Welcome.Version.1-3.Text.MoreCountingType" = "重点：加入句数统计及\n分别计算含/不含标点符号之字数\n按下结果按钮（即“N个字”）以查看详细统计结果";
 "Welcome.Version.1-3.Text.ImproveTodayWidget" = "优化“今天”工具\n快去试试吧！";
