@@ -23,11 +23,11 @@ Global.Button.Clear = "清空";
 
 Global.Button.EditText = "編輯文字";
 
-Global.Units.Word.Singular = "字";
-Global.Units.Word.Plural = "字";
+Global.Units.Word.Singular = "詞";
+Global.Units.Word.Plural = "詞";
 
-Global.Units.Short.Word.Singular = "字";
-Global.Units.Short.Word.Plural = "字";
+Global.Units.Short.Word.Singular = "詞";
+Global.Units.Short.Word.Plural = "詞";
 
 Global.Units.Character.Singular = "字符";
 Global.Units.Character.Plural = "字符";
@@ -50,8 +50,8 @@ Global.Count.Text.Sentence = "%1$@%2$@";
 Global.Count.Text.Paragraph = "%1$@%2$@";
 
 Global.Alert.Counter.Title = "統計";
-Global.Alert.Counter.Content.Word = "字數：%@（不包括標點符號）";
-Global.Alert.Counter.Content.Character = "字符：%@（包括標點符號）";
+Global.Alert.Counter.Content.Word = "詞數：%@";
+Global.Alert.Counter.Content.Character = "字符數：%@";
 Global.Alert.Counter.Content.Sentence = "句數：%@";
 Global.Alert.Counter.Content.Paragraph = "段落：%@";
 

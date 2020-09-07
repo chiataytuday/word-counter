@@ -55,9 +55,9 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 			print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
 			textView.text = clipBoard
 
-			wordCounts = WordCounter().wordCount(textView.text)
-			charCount = WordCounter().characterCount(textView.text)
-			paraCount = WordCounter().paragraphCount(textView.text)
+            wordCounts = WordCounter.getCount(of: textView.text, by: .word)
+            charCount = WordCounter.getCount(of: textView.text, by: .character)
+            paraCount = WordCounter.getCount(of: textView.text, by: .paragraph)
 		}else{
 			print("[提示] 用戶剪貼簿內並未任何內容")
 			textView.text = NSLocalizedString("Global.Text.NothingOnClipboard", comment: "Nothing in your clipboard!")

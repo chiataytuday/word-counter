@@ -19,8 +19,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	// MARK: - Basic var
 	let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
 
-	var wordCounterClass = WordCounter()
-
 	let defaults = UserDefaults.standard
 	let sharedData = UserDefaults(suiteName: "group.com.arefly.WordCounter")
 
@@ -39,10 +37,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	// MARK: - keyboardButton var
 	var keyBoardToolBar = UIToolbar()
 
-	var showedKeyboardButtons = [String: Bool]()
+    var showedKeyboardButtons = [CountByType: Bool]()
 
-	var countingKeyboardBarButtonItemsNames = [String]()
-	var countingKeyboardBarButtonItems = [String: UIBarButtonItem]()
+	var countingKeyboardBarButtonItemsNames = [CountByType]()
+	var countingKeyboardBarButtonItems = [CountByType: UIBarButtonItem]()
 
 	var stableKeyboardBarButtonItemsNames = [String]()
 	var stableKeyboardBarButtonItems = [String: UIBarButtonItem]()
@@ -77,7 +75,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		topBarCountButton = UIBarButtonItem()
 		topBarCountButton.tintColor = UIColor.black
-		topBarCountButton.title = WordCounter().getCountString("", type: "Word")
+        topBarCountButton.title = WordCounter.getHumanReadableCountString(of: "", by: .word)
 		topBarCountButton.action = #selector(self.topBarCountingButtonClicked(_:))
 		self.navigationItem.setLeftBarButton(topBarCountButton, animated: true)
 
@@ -315,10 +313,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		DDLogDebug("準備加載 checkScreenWidthToSetButton")
 
 		showedKeyboardButtons = [
-			"Word": false,
-			"Character": false,
-			"Sentence": false,
-			"Paragraph": false,
+            .word: false,
+            .character: false,
+            .sentence: false,
+            .paragraph: false,
 		]
 
 		let bounds = UIApplication.shared.keyWindow?.bounds
@@ -328,22 +326,22 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		switch width {
 		case 0..<330:
-			showedKeyboardButtons["Word"] = false
-			showedKeyboardButtons["Character"] = false
-			showedKeyboardButtons["Sentence"] = true
-			showedKeyboardButtons["Paragraph"] = false
+            showedKeyboardButtons[.word] = false
+            showedKeyboardButtons[.character] = false
+            showedKeyboardButtons[.sentence] = true
+            showedKeyboardButtons[.paragraph] = false
 			break
 		case 330..<750:
-			showedKeyboardButtons["Word"] = false
-			showedKeyboardButtons["Character"] = true
-			showedKeyboardButtons["Sentence"] = true
-			showedKeyboardButtons["Paragraph"] = false
-			break
-		default:
-			showedKeyboardButtons["Word"] = true
-			showedKeyboardButtons["Character"] = true
-			showedKeyboardButtons["Sentence"] = true
-			showedKeyboardButtons["Paragraph"] = true
+            showedKeyboardButtons[.word] = false
+            showedKeyboardButtons[.character] = true
+            showedKeyboardButtons[.sentence] = true
+            showedKeyboardButtons[.paragraph] = false
+            break
+        default:
+            showedKeyboardButtons[.word] = true
+            showedKeyboardButtons[.character] = true
+            showedKeyboardButtons[.sentence] = true
+            showedKeyboardButtons[.paragraph] = true
 		}
 
 		updateToolBar()
@@ -442,7 +440,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		stableKeyboardBarButtonItemsNames.append("Info")
 
 
-		countingKeyboardBarButtonItemsNames = ["Word", "Character", "Sentence", "Paragraph"]
+        countingKeyboardBarButtonItemsNames = [.word, .character, .sentence, .paragraph];
 		for name in countingKeyboardBarButtonItemsNames {
 			countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.countResultButtonAction))
 			countingKeyboardBarButtonItems[name]!.tintColor = UIColor.black
@@ -542,22 +540,22 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	func updateTextViewCounting () {
 		//var wordTitle = ""
 
-		var titles = [
-			"Word": "-MUST_NEED-",
-			"Character": "",
-			"Sentence": "",
-			"Paragraph": "",
-			]
+        var titles: [CountByType: String] = [
+            .word: "-MUST_NEED-",
+            .character: "",
+            .sentence: "",
+            .paragraph: "",
+        ]
 
 		if let myText = self.tv.text {
 			Async.background {
 				for (name, _) in titles {
 					if (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") {
-						titles[name] = WordCounter().getCountString(myText, type: name)
+                        titles[name] = WordCounter.getHumanReadableCountString(of: myText, by: name)
 					}
 				}
 				}.main {
-					self.topBarCountButton.title = titles["Word"]
+                    self.topBarCountButton.title = titles[.word]
 
 					for name in self.countingKeyboardBarButtonItemsNames {
 						self.countingKeyboardBarButtonItems[name]!.title = ""
@@ -660,16 +658,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		let progressHUD = MBProgressHUD.showAdded(to: self.view.window!, animated: true)
 		progressHUD.label.text = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
 
-		var titles = [
-			"Word": "",
-			"Character": "",
-			"Sentence": "",
-			"Paragraph": "",
-			]
+        var titles: [CountByType: String] = [
+            .word: "",
+            .character: "",
+            .sentence: "",
+            .paragraph: "",
+        ]
 
 		Async.background {
-			for name in self.countingKeyboardBarButtonItemsNames {
-				titles[name] = WordCounter().getCountString(text, type: name)
+			for type in self.countingKeyboardBarButtonItemsNames {
+                titles[type] = WordCounter.getHumanReadableCountString(of: text, by: type)
 			}
 			}.main {
 				MBProgressHUD.hide(for: self.view.window!, animated: true)
@@ -678,10 +676,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 				var message = ""
 
-				for (index, name) in self.countingKeyboardBarButtonItemsNames.enumerated() {
-					let localizedString = "Global.Alert.Counter.Content.\(name)"
+				for (index, type) in self.countingKeyboardBarButtonItemsNames.enumerated() {
+                    let localizedString = "Global.Alert.Counter.Content.\(type.rawValue)"
 
-					message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
+                    message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[type]!)
 
 					if index != (self.countingKeyboardBarButtonItemsNames.count-1) {
 						message += "\n"

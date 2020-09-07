@@ -84,13 +84,13 @@ class ActionViewController: UIViewController {
 		self.progressBar.center = self.view.center
 
 
-		let itemNames = ["Word", "Character", "Sentence", "Paragraph"]
-		var titles = [String: String]()
+        let itemNames: [CountByType] = [.word, .character, .sentence, .paragraph]
+		var titles = [CountByType: String]()
 
 		// Cannot use Async since Swift Framework is not allowed using in app extension :(
 		DispatchQueue.global(qos: .background).async {
-			for name in itemNames {
-				titles[name] = WordCounter().getCountString(text, type: name)
+            for type in itemNames {
+                titles[type] = WordCounter.getHumanReadableCountString(of: text, by: type)
 			}
 			DispatchQueue.main.async {
 				self.progressBar.removeFromSuperview()
@@ -100,10 +100,10 @@ class ActionViewController: UIViewController {
 
 				var message = ""
 
-				for (index, name) in itemNames.enumerated() {
-					let localizedString = "Global.Alert.Counter.Content.\(name)"
+				for (index, type) in itemNames.enumerated() {
+                    let localizedString = "Global.Alert.Counter.Content.\(type.rawValue)"
 
-					message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[name]!)
+					message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[type]!)
 
 					if index != (itemNames.count-1) {
 						message += "\n"
