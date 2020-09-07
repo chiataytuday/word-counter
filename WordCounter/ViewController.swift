@@ -23,8 +23,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	let sharedData = UserDefaults(suiteName: "group.com.arefly.WordCounter")
 
 	// MARK: - Init var
-	var countNumNow = 0
-
 	var adBannerHeight: CGFloat = 0.0
 
 	// MARK: - IBOutlet var
