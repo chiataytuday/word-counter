@@ -85,30 +85,16 @@ class ActionViewController: UIViewController {
 
 
         let itemNames: [CountByType] = [.word, .character, .sentence, .paragraph]
-		var titles = [CountByType: String]()
 
+        var message: String = ""
 		// Cannot use Async since Swift Framework is not allowed using in app extension :(
 		DispatchQueue.global(qos: .background).async {
-            for type in itemNames {
-                titles[type] = WordCounter.getHumanReadableCountString(of: text, by: type)
-			}
+            message = WordCounter.getHumanReadableSummary(of: text, by: itemNames)
 			DispatchQueue.main.async {
 				self.progressBar.removeFromSuperview()
 				self.view.window!.isUserInteractionEnabled = true
 
 				let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-
-				var message = ""
-
-				for (index, type) in itemNames.enumerated() {
-                    let localizedString = "Global.Alert.Counter.Content.\(type.rawValue)"
-
-					message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[type]!)
-
-					if index != (itemNames.count-1) {
-						message += "\n"
-					}
-				}
 
 				let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
 				countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in

@@ -658,33 +658,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		let progressHUD = MBProgressHUD.showAdded(to: self.view.window!, animated: true)
 		progressHUD.label.text = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
 
-        var titles: [CountByType: String] = [
-            .word: "",
-            .character: "",
-            .sentence: "",
-            .paragraph: "",
-        ]
-
+        var message: String = ""
 		Async.background {
-			for type in self.countingKeyboardBarButtonItemsNames {
-                titles[type] = WordCounter.getHumanReadableCountString(of: text, by: type)
-			}
+            message = WordCounter.getHumanReadableSummary(of: text, by: self.countingKeyboardBarButtonItemsNames)
 			}.main {
 				MBProgressHUD.hide(for: self.view.window!, animated: true)
 
 				let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
-
-				var message = ""
-
-				for (index, type) in self.countingKeyboardBarButtonItemsNames.enumerated() {
-                    let localizedString = "Global.Alert.Counter.Content.\(type.rawValue)"
-
-                    message += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), titles[type]!)
-
-					if index != (self.countingKeyboardBarButtonItemsNames.count-1) {
-						message += "\n"
-					}
-				}
 
 				let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
 				countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in

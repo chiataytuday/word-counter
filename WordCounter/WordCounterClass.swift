@@ -56,6 +56,23 @@ class WordCounter {
         }
         return substrings.count
 	}
+    
+    // MARK: - Get summary func
+    static func getHumanReadableSummary(of string: String, by types: [CountByType]) -> String {
+        var summary = ""
+        for (index, type) in types.enumerated() {
+            let countString = WordCounter.getHumanReadableCountString(of: string, by: type);
+            
+            let localizedString = "Global.Alert.Counter.Content.\(type.rawValue)"
+
+            summary += String.localizedStringWithFormat(NSLocalizedString(localizedString, comment: "Localized string for every counting."), countString)
+
+            if index != types.count - 1 {
+                summary += "\n"
+            }
+        }
+        return summary
+    }
 }
 
 extension String {
