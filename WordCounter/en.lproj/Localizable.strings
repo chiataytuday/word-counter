@@ -7,13 +7,13 @@
 */
 
 Global.Text.ShareMessage = "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!";
-Global.Text.NothingOnClipboard = "Nothing on your clipboard!";
+Global.Text.NothingOnClipboard = "Nothing is on your clipboard!";
 
 Global.ProgressingHUD.Label.Counting = "Counting…";
 
 Global.TextView.PlaceHolder.Text = "Type or paste here…";
 
-Global.TextView.MenuItem.Count = "Count…";
+Global.TextView.MenuItem.Count = "Word Count…";
 
 Global.Button.Done = "Done";
 Global.Button.OK = "OK";
