@@ -30,7 +30,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Navbar var
 	var topBarCountButton: UIBarButtonItem!
-	var clearButton: UIBarButtonItem!
+    var shareButton: UIBarButtonItem!
+    var clearButton: UIBarButtonItem!
 
 	// MARK: - keyboardButton var
 	var keyBoardToolBar = UIToolbar()
@@ -78,10 +79,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		self.navigationItem.setLeftBarButton(topBarCountButton, animated: true)
 
 
-		clearButton = UIBarButtonItem()
-		clearButton.title = NSLocalizedString("Global.Button.Clear", comment: "Clear")
-		clearButton.action = #selector(self.clearButtonClicked(_:))
-		self.navigationItem.setRightBarButton(clearButton, animated: true)
+        clearButton = UIBarButtonItem(barButtonSystemItem: .trash, target: nil, action: #selector(self.clearButtonClicked(_:)))
+        shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: #selector(self.shareButtonClicked(sender:)))
+        clearButton.tintColor = .systemRed
+        self.navigationItem.setRightBarButtonItems([shareButton, clearButton], animated: true)
 
 
 
@@ -638,6 +639,27 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			self.present(clearContentAlert, animated: true, completion: nil)
 		}
 	}
+    
+    @objc func shareButtonClicked(sender: UIBarButtonItem) {
+        endEditing()
+
+        // https://stackoverflow.com/a/37939782/2603230
+        let activityViewController: UIActivityViewController = UIActivityViewController(
+            activityItems: [self.tv.text], applicationActivities: nil)
+
+        activityViewController.popoverPresentationController?.barButtonItem = sender
+        //activityViewController.popoverPresentationController?.permittedArrowDirections = .up
+
+        if #available(iOS 13.0, *) {
+            /*activityViewController.activityItemsConfiguration = [
+                UIActivity.ActivityType.copyToPasteboard
+            ] as? UIActivityItemsConfigurationReading*/
+        }
+
+        Async.main {
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+    }
 
 	@objc func infoButtonAction() {
 		self.performSegue(withIdentifier: "goInfo", sender: nil)
