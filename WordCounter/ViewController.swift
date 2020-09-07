@@ -861,17 +861,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		DDLogDebug("準備加載 didBecomeActive")
 
 		doAfterRotate()
-
-		if !presentingOtherView {
-			startEditing()
-		}
 	}
 
 	@objc func didEnterBackground() {
 		DDLogDebug("準備加載 didEnterBackground")
-
-
-		endEditing()
 
 		let tvText = self.tv.text
 		defaults.set(tvText, forKey: "textBeforeEnterBackground")
