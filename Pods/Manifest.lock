@@ -1,5 +1,5 @@
 PODS:
-  - AsyncSwift (2.0.1)
+  - AsyncSwift (2.0.4)
   - CocoaLumberjack/Default (3.2.1)
   - CocoaLumberjack/Swift (3.2.1):
     - CocoaLumberjack/Default
@@ -56,7 +56,7 @@ SPEC REPOS:
     - nanopb
 
 SPEC CHECKSUMS:
-  AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
+  AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
