@@ -53,23 +53,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 		/**** Log & Log Color START ****/
-		setenv("XcodeColors", "YES", 0)
-
 		#if DEBUG
 			let logLevel = DDLogLevel.all
 		#else
 			let logLevel = DDLogLevel.info
 		#endif
-
-		DDLog.add(DDTTYLogger.sharedInstance, with: logLevel) // TTY = Xcode console
-		DDLog.add(DDASLLogger.sharedInstance, with: logLevel) // ASL = Apple System Logs
-
-		DDTTYLogger.sharedInstance.logFormatter = CustomLogFormatter()
-
-		DDTTYLogger.sharedInstance.colorsEnabled = true
-		DDTTYLogger.sharedInstance.setForegroundColor(UIColor.lightGray, backgroundColor: nil, for: .verbose)
-		DDTTYLogger.sharedInstance.setForegroundColor(UIColor.gray, backgroundColor: nil, for: .debug)
-		DDTTYLogger.sharedInstance.setForegroundColor(UIColor.black, backgroundColor: nil, for: .info)
+        
+        if #available(iOS 10.0, *) {
+            DDLog.add(DDOSLogger.sharedInstance, with: logLevel)
+            DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
+        } else {
+            // Fallback on earlier versions
+            DDLog.add(DDTTYLogger.sharedInstance!, with: logLevel) // TTY = Xcode console
+            DDLog.add(DDASLLogger.sharedInstance, with: logLevel) // ASL = Apple System Logs
+            DDTTYLogger.sharedInstance!.logFormatter = CustomLogFormatter()
+        }
 
 
 		let fileLogger: DDFileLogger = DDFileLogger() // File Logger
