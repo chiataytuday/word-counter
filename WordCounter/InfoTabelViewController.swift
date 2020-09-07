@@ -177,7 +177,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 				let mailComposerVC = MFMailComposeViewController()
 				mailComposerVC.mailComposeDelegate = self
 
-				mailComposerVC.setToRecipients(["eflyjason@gmail.com"])
+				mailComposerVC.setToRecipients(["yifei@hesyifei.com"])
 				mailComposerVC.setSubject("About Word Counter Tools")
 				mailComposerVC.setMessageBody("", isHTML: false)
 
@@ -189,7 +189,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 				break
 			case 2:
-				UIApplication.shared.openURL(URL(string: "http://www.arefly.com/")!)
+				UIApplication.shared.openURL(URL(string: "https://www.hesyifei.com/")!)
 
 				break
 			case 3:

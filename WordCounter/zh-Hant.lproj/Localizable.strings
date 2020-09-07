@@ -102,17 +102,17 @@ About.Alert.IapDisabledAlert.Title = "已禁止 App 內購買";
 About.Alert.IapDisabledAlert.Content = "請於「設定」內開啟該功能";
 About.Alert.IapDisabledAlert.Button.OpenSettings = "進入設定";
 
-About.Table.Section0.Content = "分享本工具！||--於 App Store 評分！||--其它由「暢想資源」製作之 Apps||--捐款並移除廣告 :)||";
-About.Table.Section1.Content = "何一非（暢想資源）||開發人員--eflyjason@gmail.com||郵箱--http://www.arefly.com/||網站--%1$@||%2$@";
+About.Table.Section0.Content = "分享本工具！||--於 App Store 評分！||--其它由何一非製作之 Apps||--捐款並移除廣告 :)||";
+About.Table.Section1.Content = "何一非||開發人員--yifei@hesyifei.com||郵箱--https://www.hesyifei.com/||網站--%1$@||%2$@";
 
 About.Table.Header.Content = "--關於";
-About.Table.Footer.Content = "--© %@ 何一非（暢想資源）";
+About.Table.Footer.Content = "--© %@ 何一非";
 
 
 Welcome.Global.Button.Skip = "跳過";
 
 Welcome.Global.Title.About = "多謝！";
-Welcome.Global.Text.About = "我們將繼續為「字數統計工具」提供支援並加入更多功能；\n如果您對本App有任何意見或建議，歡迎發送郵件至 eflyjason@gmail.com 聯繫開發者，謝謝！ :)";
+Welcome.Global.Text.About = "我們將繼續為「字數統計工具」提供支援並加入更多功能；\n如果您對本App有任何意見或建議，歡迎發送郵件至 yifei@hesyifei.com 聯繫開發者，謝謝！ :)";
 
 /***** VERSION 1.1-1.3 *****/
 "Welcome.Version.1-1.Text.TodayWidget.Introduction" = "重點：直接於通知中心「今天」視圖內統計您剪貼簿內的字數！";
