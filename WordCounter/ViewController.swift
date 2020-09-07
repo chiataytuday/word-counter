@@ -242,7 +242,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		//var everShowPresentReviewAgain = defaults.boolForKey("everShowPresentReviewAgain")
 		//var appLaunchTimes = defaults.integerForKey("appLaunchTimes")
 
-		DDLogVerbose("everShowPresentReviewAgain的值爲"+String(stringInterpolationSegment: defaults.bool(forKey: "everShowPresentReviewAgain")))
+        DDLogVerbose("everShowPresentReviewAgain的值爲"+String(defaults.bool(forKey: "everShowPresentReviewAgain")))
 		if defaults.bool(forKey: "everShowPresentReviewAgain") {
 			if !presentingOtherView {
 				DDLogVerbose("appLaunchTimes的值爲\(defaults.integer(forKey: "appLaunchTimes"))")
