@@ -35,6 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
+            "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
+            "381f5843f2f07e9e84957719d7ea8fe8",         // Arefly's iPad Pro
+        ]
+
 
 		adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)
 		adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,11 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		adMobBannerView.adUnitID = BasicConfig.adMobUnitId
 
 		adMobRequest = GADRequest()
-		adMobRequest.testDevices = [
-			kGADSimulatorID,
-			"898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
-			"381f5843f2f07e9e84957719d7ea8fe8",         // Arefly's iPad Pro
-		]
+        
 
 
 
