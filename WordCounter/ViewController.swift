@@ -76,11 +76,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		topBarCountButton.tintColor = UIColor.black
         topBarCountButton.title = WordCounter.getHumanReadableCountString(of: "", by: .word)
 		topBarCountButton.action = #selector(self.topBarCountingButtonClicked(_:))
+        topBarCountButton.target = self
 		self.navigationItem.setLeftBarButton(topBarCountButton, animated: true)
 
 
-        clearButton = UIBarButtonItem(barButtonSystemItem: .trash, target: nil, action: #selector(self.clearButtonClicked(_:)))
-        shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: #selector(self.shareButtonClicked(sender:)))
+        clearButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.clearButtonClicked(_:)))
+        shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.shareButtonClicked(sender:)))
         clearButton.tintColor = .systemRed
         self.navigationItem.setRightBarButtonItems([shareButton, clearButton], animated: true)
 
