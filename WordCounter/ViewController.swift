@@ -803,11 +803,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		let screenHeight = self.view.bounds.size.height
 
 		let contentImages = [
-			"1-3-ActionExtension-Introduction.png",
-			"1-3-ActionExtension-How.png",
-			"1-3-MoreCountingType.png",
-			"1-3-ImproveTodayWidget.png",
-			"1-3-3-About.png",
+			"1-4-ActionExtension-Introduction.png",
+			"1-4-ActionExtension-How.png",
+			"1-4-MoreCountingType.png",
+			"1-4-ImproveTodayWidget.png",
+			"1-4-About.png",
 			]
 
 		let contentTitleTexts = [
