@@ -38,24 +38,21 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.pressedOnce))
 		self.view.addGestureRecognizer(tapGesture)
 
-		let wordSingular = NSLocalizedString("Global.Units.Short.Word.Singular", comment: "word")
-		let wordPlural = NSLocalizedString("Global.Units.Short.Word.Plural", comment: "words")
-
-		let charSingular = NSLocalizedString("Global.Units.Short.Character.Singular", comment: "char.")
-		let charPlural = NSLocalizedString("Global.Units.Short.Character.Plural", comment: "chars.")
-
-		let paraSingular = NSLocalizedString("Global.Units.Short.Paragraph.Singular", comment: "para.")
-		let paraPlural = NSLocalizedString("Global.Units.Short.Paragraph.Plural", comment: "paras.")
-
 		var wordCounts = 0
 		var charCount = 0
 		var paraCount = 0
 
+        var wordType: CountByType = WordCounter.isChineseUser() ? .chineseWord : .word
+
 		if let clipBoard = UIPasteboard.general.string {
 			print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
 			textView.text = clipBoard
+            
+            if (!clipBoard.containsChineseCharacters) {
+                wordType = .word
+            }
 
-            wordCounts = WordCounter.getCount(of: textView.text, by: .word)
+            wordCounts = WordCounter.getCount(of: textView.text, by: wordType)
             charCount = WordCounter.getCount(of: textView.text, by: .character)
             paraCount = WordCounter.getCount(of: textView.text, by: .paragraph)
 		}else{
@@ -63,8 +60,17 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 			textView.text = NSLocalizedString("Global.Text.NothingOnClipboard", comment: "Nothing in your clipboard!")
 		}
 
+        let wordSingular = NSLocalizedString("Global.Units.Short.\(wordType.rawValue).Singular", comment: "word")
+        let wordPlural = NSLocalizedString("Global.Units.Short.\(wordType.rawValue).Plural", comment: "words")
+
+        let charSingular = NSLocalizedString("Global.Units.Short.Character.Singular", comment: "char.")
+        let charPlural = NSLocalizedString("Global.Units.Short.Character.Plural", comment: "chars.")
+
+        let paraSingular = NSLocalizedString("Global.Units.Short.Paragraph.Singular", comment: "para.")
+        let paraPlural = NSLocalizedString("Global.Units.Short.Paragraph.Plural", comment: "paras.")
+
 		let wordWords = (wordCounts == 1) ? wordSingular : wordPlural
-		let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Word", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
+		let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(wordType.rawValue)", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
 
 		let charWords = (charCount == 1) ? charSingular : charPlural
 		let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(charCount), charWords)

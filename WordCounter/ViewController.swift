@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Navbar var
 	var topBarCountButton: UIBarButtonItem!
+    var topBarCountButtonType: CountByType!
     var shareButton: UIBarButtonItem!
     var clearButton: UIBarButtonItem!
 
@@ -74,7 +75,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		topBarCountButton = UIBarButtonItem()
 		topBarCountButton.tintColor = UIColor.black
-        topBarCountButton.title = WordCounter.getHumanReadableCountString(of: "", by: .word)
+        if WordCounter.isChineseUser() {
+            topBarCountButtonType = .chineseWord
+        } else {
+            topBarCountButtonType = .word
+        }
+        topBarCountButton.title = WordCounter.getHumanReadableCountString(of: "", by: topBarCountButtonType)
 		topBarCountButton.action = #selector(self.topBarCountingButtonClicked(_:))
         topBarCountButton.target = self
 		self.navigationItem.setLeftBarButton(topBarCountButton, animated: true)
@@ -540,22 +546,27 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	func updateTextViewCounting () {
 		//var wordTitle = ""
 
-        var titles: [CountByType: String] = [
-            .word: "-MUST_NEED-",
-            .character: "",
-            .sentence: "",
-            .paragraph: "",
-        ]
+        var titles: [CountByType: String] = [:]
 
 		if let myText = self.tv.text {
 			Async.background {
-				for (name, _) in titles {
-					if (self.showedKeyboardButtons[name] == true) || (titles[name] == "-MUST_NEED-") {
-                        titles[name] = WordCounter.getHumanReadableCountString(of: myText, by: name)
-					}
-				}
+                if (WordCounter.isChineseUser()) {
+                    if myText.isEmptyOrContainsChineseCharacters {
+                        self.topBarCountButtonType = .chineseWord
+                    } else {
+                        self.topBarCountButtonType = .word
+                    }
+                }
+                
+                titles[self.topBarCountButtonType] = WordCounter.getHumanReadableCountString(of: myText, by: self.topBarCountButtonType)
+                for (type, enabled) in self.showedKeyboardButtons {
+                    if (!enabled) {
+                        continue
+                    }
+                    titles[type] = WordCounter.getHumanReadableCountString(of: myText, by: type)
+                }
 				}.main {
-                    self.topBarCountButton.title = titles[.word]
+                    self.topBarCountButton.title = titles[self.topBarCountButtonType]
 
 					for name in self.countingKeyboardBarButtonItemsNames {
 						self.countingKeyboardBarButtonItems[name]!.title = ""
@@ -681,7 +692,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
         var message: String = ""
 		Async.background {
-            message = WordCounter.getHumanReadableSummary(of: text, by: self.countingKeyboardBarButtonItemsNames)
+            message = WordCounter.getHumanReadableSummary(of: text, by: WordCounter.getAllTypes(for: text))
 			}.main {
 				MBProgressHUD.hide(for: self.view.window!, animated: true)
 

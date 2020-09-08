@@ -84,12 +84,10 @@ class ActionViewController: UIViewController {
 		self.progressBar.center = self.view.center
 
 
-        let itemNames: [CountByType] = [.word, .character, .sentence, .paragraph]
-
         var message: String = ""
 		// Cannot use Async since Swift Framework is not allowed using in app extension :(
 		DispatchQueue.global(qos: .background).async {
-            message = WordCounter.getHumanReadableSummary(of: text, by: itemNames)
+            message = WordCounter.getHumanReadableSummary(of: text, by: WordCounter.getAllTypes(for: text))
 			DispatchQueue.main.async {
 				self.progressBar.removeFromSuperview()
 				self.view.window!.isUserInteractionEnabled = true

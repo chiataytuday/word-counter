@@ -11,12 +11,18 @@ import Foundation
 enum CountByType: String {
     case character = "Character"
     case word = "Word"
+    case chineseWord = "ChineseWord" // Count English word + Chinese characters
+    case chineseWordWithoutPunctuation = "ChineseWordWithoutPunctuation" // Count English word + Chinese characters - punctuation characters
     case sentence = "Sentence"
     case paragraph = "Paragraph"
 }
 
 
 class WordCounter {
+    static func isChineseUser() -> Bool {
+        return Bundle.main.preferredLocalizations.first?.starts(with: "zh") ?? false
+    }
+    
 	// MARK: - Get string func
 	static func getHumanReadableCountString(of string: String, by type: CountByType) -> String {
         let count = getCount(of: string, by: type)
@@ -36,12 +42,18 @@ class WordCounter {
         switch type {
         case .character:
             enumerateSubstringsOptions = .byComposedCharacterSequences
+            break
         case .word:
             enumerateSubstringsOptions = .byWords
+            break
         case .sentence:
             enumerateSubstringsOptions = .bySentences
+            break
         case .paragraph:
             enumerateSubstringsOptions = .byParagraphs
+            break
+        case .chineseWord, .chineseWordWithoutPunctuation:
+            return getChineseWordCount(of: string, removePunctuations: type == .chineseWordWithoutPunctuation)
         }
 
 		var substrings: [String] = []
@@ -57,7 +69,42 @@ class WordCounter {
         return substrings.count
 	}
     
+    static func getChineseWordCount(of string: String, removePunctuations: Bool) -> Int {
+        var counts = 0
+        let words = string.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+
+        for word in words {
+            // https://developer.apple.com/documentation/foundation/nsregularexpression
+            let englishCharacters = "[\\p{Ll}\\p{Lu}\\p{Lt}\\p{Nd}]"
+            let results = self.matches(for: "\(englishCharacters)", in: word)
+            let resultsGroup = self.matches(for: "\(englishCharacters)+", in: word)
+            //print(results)
+            //print(resultsGroup)
+            counts += word.count - results.count + resultsGroup.count
+            
+            if (removePunctuations) {
+                let punctuations = self.matches(for: "\\W", in: word)
+                print(punctuations)
+                counts -= punctuations.count
+            }
+        }
+
+        return counts
+    }
+    
     // MARK: - Get summary func
+    static func getAllTypes(for string: String) -> [CountByType] {
+        var types: [CountByType] = [];
+        if (isChineseUser() && string.isEmptyOrContainsChineseCharacters) {
+            types.append(contentsOf: [.chineseWord, .chineseWordWithoutPunctuation])
+        }
+        types.append(contentsOf: [.word, .character, .sentence, .paragraph])
+        if (!isChineseUser() && string.containsChineseCharacters) {
+            types.append(contentsOf: [.chineseWord, .chineseWordWithoutPunctuation])
+        }
+        return types
+    }
+    
     static func getHumanReadableSummary(of string: String, by types: [CountByType]) -> String {
         var summary = ""
         for (index, type) in types.enumerated() {
@@ -73,10 +120,30 @@ class WordCounter {
         }
         return summary
     }
+    
+    // MARK: - Related func
+    /**
+    Search `regex` in `text`
+    - Parameter regex:  The regex.
+    - Parameter text:   The text.
+    - Returns: A new `[string]` with result.
+    */
+    fileprivate static func matches(for regex: String, in text: String) -> [String] {
+        let regex = try! NSRegularExpression(pattern: regex,
+                                             options: [])
+        let nsString = text as NSString
+        let results = regex.matches(in: text, options: [], range: NSMakeRange(0, nsString.length))
+        return results.map { nsString.substring(with: $0.range) }
+    }
 }
 
+// https://stackoverflow.com/q/31244367/2603230
 extension String {
 	var containsChineseCharacters: Bool {
 		return self.range(of: "\\p{Han}", options: .regularExpression) != nil
 	}
+    
+    var isEmptyOrContainsChineseCharacters: Bool {
+        return self.isEmpty || self.containsChineseCharacters
+    }
 }
