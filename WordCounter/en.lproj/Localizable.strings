@@ -156,6 +156,6 @@ Welcome.Global.Text.About = "We promise to keep working on Word Counter Tools.\n
 "Welcome.Version.1-4.Title.TodayWidget" = "Today Widget";
 
 "Welcome.Version.1-4.Text.DarkMode" = "Embrace the darkness with the new Dark Mode support!";
-"Welcome.Version.1-4.Text.ActionExtension" = "Check how many words there are by using Action Extension in Share menu!";
 "Welcome.Version.1-4.Text.MoreCountingType" = "Press the toolbar buttons (e.g., \"n words\") for more counting results!";
+"Welcome.Version.1-4.Text.ActionExtension" = "Check how many words there are by using Action Extension in Share menu!";
 "Welcome.Version.1-4.Text.TodayWidget" = "Improved Today Widget.\nTry it now!";
