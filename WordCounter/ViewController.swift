@@ -831,26 +831,26 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		let screenHeight = self.view.bounds.size.height
 
 		let contentImages = [
-			"1-4-ActionExtension-Introduction.png",
-			"1-4-ActionExtension-How.png",
-			"1-4-MoreCountingType.png",
-			"1-4-ImproveTodayWidget.png",
+            "1-4-DarkMode.png",
+            "1-4-MoreCountingType.png",
+            "1-4-ActionExtension.png",
+			"1-4-TodayWidget.png",
 			"1-4-About.png",
 			]
 
 		let contentTitleTexts = [
-			NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.Introduction", comment: ""),
-			NSLocalizedString("Welcome.Version.1-3.Title.ActionExtension.How", comment: ""),
-			NSLocalizedString("Welcome.Version.1-3.Title.MoreCountingType", comment: ""),
-			NSLocalizedString("Welcome.Version.1-3.Title.ImproveTodayWidget", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4.Title.DarkMode", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4.Title.MoreCountingType", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4.Title.ActionExtension", comment: ""),
+			NSLocalizedString("Welcome.Version.1-4.Title.TodayWidget", comment: ""),
 			NSLocalizedString("Welcome.Global.Title.About", comment: "Thanks!"),
 			]
 
 		let contentDetailTexts = [
-			NSLocalizedString("Welcome.Version.1-3.Text.ActionExtension.Introduction", comment: ""),
-			NSLocalizedString("Welcome.Version.1-3.Text.ActionExtension.How", comment: ""),
-			NSLocalizedString("Welcome.Version.1-3.Text.MoreCountingType", comment: ""),
-			NSLocalizedString("Welcome.Version.1-3.Text.ImproveTodayWidget", comment: ""),
+			NSLocalizedString("Welcome.Version.1-4.Text.DarkMode", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4.Text.MoreCountingType", comment: ""),
+			NSLocalizedString("Welcome.Version.1-4.Text.ActionExtension", comment: ""),
+			NSLocalizedString("Welcome.Version.1-4.Text.TodayWidget", comment: ""),
 			NSLocalizedString("Welcome.Global.Text.About", comment: ""),
 			]
 
