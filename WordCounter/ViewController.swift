@@ -64,6 +64,15 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Welcome page var
 	var intro = EAIntroView()
+    
+    // MARK: - Color
+    var toolbarButtonTintColor: UIColor = {
+        if #available(iOS 13, *) {
+            return .label
+        } else {
+            return .black
+        }
+    }()
 
 	// MARK: - Override func
 	override func viewDidLoad() {
@@ -72,10 +81,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 		self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
+        
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = .systemBackground
+        }
 
 
 		topBarCountButton = UIBarButtonItem()
-		topBarCountButton.tintColor = UIColor.black
+		topBarCountButton.tintColor = toolbarButtonTintColor
         if WordCounter.isChineseUser() {
             topBarCountButtonType = .chineseWord
         } else {
@@ -114,7 +127,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		self.tv.delegate = self
 		self.tv.layoutManager.allowsNonContiguousLayout = false
-
+        if #available(iOS 13.0, *) {
+            self.tv.backgroundColor = .systemBackground
+            self.tv.textColor = .label
+        }
 
 
 		tvPlaceholderLabel = UILabel()
@@ -123,7 +139,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		tvPlaceholderLabel.sizeToFit()
 		tv.addSubview(tvPlaceholderLabel)
 		tvPlaceholderLabel.frame.origin = CGPoint(x: 5, y: tv.font!.pointSize / 2)
-		tvPlaceholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
+        if #available(iOS 13.0, *) {
+            tvPlaceholderLabel.textColor = .placeholderText
+        } else {
+            tvPlaceholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
+        }
 		tvPlaceholderLabel.isHidden = !tv.text.isEmpty
 	}
 
@@ -426,12 +446,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	func addToolBarToKeyboard(){
 		keyBoardToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
-		//keyBoardToolBar = UIToolbar()
-		keyBoardToolBar.barStyle = .default
-		//keyBoardToolBar.translatesAutoresizingMaskIntoConstraints = false
-
-		keyBoardToolBar.isTranslucent = false
-		keyBoardToolBar.barTintColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)     //http://stackoverflow.com/a/34290370/2603230
 
 
 		stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
@@ -451,7 +465,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         countingKeyboardBarButtonItemsNames = [.chineseWord, .chineseWordWithoutPunctuation, .word, .character, .sentence, .paragraph];
 		for name in countingKeyboardBarButtonItemsNames {
 			countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.countResultButtonAction))
-			countingKeyboardBarButtonItems[name]!.tintColor = UIColor.black
+			countingKeyboardBarButtonItems[name]!.tintColor = toolbarButtonTintColor
 		}
 
 

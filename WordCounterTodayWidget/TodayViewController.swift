@@ -29,7 +29,11 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 		textView.isUserInteractionEnabled = true
 
 		textView.isSelectable = true  //BUG IN APPLE SIDE
-		textView.textColor = UIColor.black
+        if #available(iOSApplicationExtension 13.0, *) {
+            textView.textColor = .label
+        } else {
+            textView.textColor = .black
+        }
 		textView.isSelectable = false
 
 		textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)

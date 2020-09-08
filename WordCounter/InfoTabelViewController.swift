@@ -30,6 +30,10 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 		DDLogInfo("準備加載 Info Tabel View Controller 之 viewDidLoad")
 
 		self.title = NSLocalizedString("About.NavBar.Title", comment: "About")
+        
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = .systemGroupedBackground
+        }
 
 
 		let dictionary = Bundle.main.infoDictionary!
@@ -91,6 +95,11 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 		let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath)
 		cell.textLabel?.text = cellContent[0]
 		cell.detailTextLabel?.text = cellContent[1]
+        
+        if #available(iOS 13.0, *) {
+            cell.textLabel?.textColor = .label
+            cell.detailTextLabel?.textColor = .label
+        }
 
 		if indexPath.section == 0 {
 			cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator

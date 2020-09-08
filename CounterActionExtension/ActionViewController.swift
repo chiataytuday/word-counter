@@ -28,6 +28,11 @@ class ActionViewController: UIViewController {
 		}
 
 		self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
+        
+        if #available(iOSApplicationExtension 13.0, *) {
+            contentTextView.backgroundColor = .systemBackground
+            contentTextView.textColor = .label
+        }
 
 		doneButton.title = NSLocalizedString("Global.Button.Done", comment: "Done")
 		doneButton.action = #selector(self.closeWindow)
