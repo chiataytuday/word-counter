@@ -237,8 +237,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			appDelegate.adMobBannerView.rootViewController = self
 			view.addSubview(appDelegate.adMobBannerView)
 
+            if #available(iOS 11.0, *) {
+                self.view.addConstraint(
+                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view.safeAreaLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+                )
+            } else {
+                self.view.addConstraint(
+                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+                )
+            }
 			self.view.addConstraints([
-				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0),
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0),
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0),
 				])
@@ -416,8 +424,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			let d = n.userInfo!
 			var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 			r = self.tv.convert(r, from: nil)
-			self.tv.contentInset.bottom = r.size.height
-			self.tv.scrollIndicatorInsets.bottom = r.size.height
+            
+            var height = r.size.height
+            if #available(iOS 11.0, *) {
+                // https://stackoverflow.com/a/48693623/2603230
+                height -= self.view.safeAreaInsets.bottom
+            }
+			self.tv.contentInset.bottom = height
+			self.tv.scrollIndicatorInsets.bottom = height
 		}
 
 		//self.tv.contentInset.top = 0
