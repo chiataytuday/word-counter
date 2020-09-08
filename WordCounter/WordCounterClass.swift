@@ -53,7 +53,12 @@ class WordCounter {
             enumerateSubstringsOptions = .byParagraphs
             break
         case .chineseWord, .chineseWordWithoutPunctuation:
-            return getChineseWordCount(of: string, removePunctuations: type == .chineseWordWithoutPunctuation)
+            if string.isEmptyOrContainsChineseCharacters {
+                return getChineseWordCount(of: string, removePunctuations: type == .chineseWordWithoutPunctuation)
+            } else {
+                enumerateSubstringsOptions = .byWords
+                break
+            }
         }
 
 		var substrings: [String] = []
