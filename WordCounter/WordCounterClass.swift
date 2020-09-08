@@ -54,7 +54,7 @@ class WordCounter {
             break
         case .chineseWord, .chineseWordWithoutPunctuation:
             if string.isEmptyOrContainsChineseCharacters {
-                return getChineseWordCount(of: string, removePunctuations: type == .chineseWordWithoutPunctuation)
+                return getChineseWordCount(of: string, removeChinesePunctuations: type == .chineseWordWithoutPunctuation)
             } else {
                 enumerateSubstringsOptions = .byWords
                 break
@@ -74,7 +74,7 @@ class WordCounter {
         return substrings.count
 	}
     
-    static func getChineseWordCount(of string: String, removePunctuations: Bool) -> Int {
+    static func getChineseWordCount(of string: String, removeChinesePunctuations: Bool) -> Int {
         // https://developer.apple.com/documentation/foundation/nsregularexpression
         let englishCharacters = "[\\p{Ll}\\p{Lu}\\p{Lt}\\p{Nd}]"
         let results = self.matches(for: "\(englishCharacters)", in: string)
@@ -84,7 +84,9 @@ class WordCounter {
         var counts = string.count - results.count + resultsGroup.count
 
         var spacesOrPunctuations = "[\\s"
-        if removePunctuations {
+        // https://stackoverflow.com/a/4328722/2603230
+        spacesOrPunctuations += "!\"#\\$%&'\\(\\)\\*\\+,-\\.\\/:;<=>\\?@\\[\\\\\\]\\^_`{\\|}~"
+        if removeChinesePunctuations {
             spacesOrPunctuations += "\\W"
         }
         spacesOrPunctuations += "]"
