@@ -39,6 +39,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
     var showedKeyboardButtons = [CountByType: Bool]()
 
+    // We have to keep both `countingKeyboardBarButtonItemsNames` and `countingKeyboardBarButtonItems` as `countingKeyboardBarButtonItems` is not ordered.
 	var countingKeyboardBarButtonItemsNames = [CountByType]()
 	var countingKeyboardBarButtonItems = [CountByType: UIBarButtonItem]()
 
@@ -323,6 +324,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             .character: false,
             .sentence: false,
             .paragraph: false,
+            .chineseWord: false,
+            .chineseWordWithoutPunctuation: false,
 		]
 
 		let bounds = UIApplication.shared.keyWindow?.bounds
@@ -332,18 +335,17 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		switch width {
 		case 0..<330:
-            showedKeyboardButtons[.word] = false
-            showedKeyboardButtons[.character] = false
             showedKeyboardButtons[.sentence] = true
-            showedKeyboardButtons[.paragraph] = false
 			break
 		case 330..<750:
-            showedKeyboardButtons[.word] = false
-            showedKeyboardButtons[.character] = true
+            showedKeyboardButtons[WordCounter.isChineseUser() ? .chineseWordWithoutPunctuation : .character] = true
             showedKeyboardButtons[.sentence] = true
-            showedKeyboardButtons[.paragraph] = false
             break
         default:
+            if (WordCounter.isChineseUser()) {
+                showedKeyboardButtons[.chineseWord] = true
+                showedKeyboardButtons[.chineseWordWithoutPunctuation] = true
+            }
             showedKeyboardButtons[.word] = true
             showedKeyboardButtons[.character] = true
             showedKeyboardButtons[.sentence] = true
@@ -437,7 +439,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 		stableKeyboardBarButtonItemsNames.append("FlexSpace")
 
-		stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(self.doneButtonAction))
+        stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonAction))
 		stableKeyboardBarButtonItemsNames.append("Done")
 
 		let infoButton: UIButton = UIButton(type: UIButtonType.infoLight)
@@ -446,7 +448,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		stableKeyboardBarButtonItemsNames.append("Info")
 
 
-        countingKeyboardBarButtonItemsNames = [.word, .character, .sentence, .paragraph];
+        countingKeyboardBarButtonItemsNames = [.chineseWord, .chineseWordWithoutPunctuation, .word, .character, .sentence, .paragraph];
 		for name in countingKeyboardBarButtonItemsNames {
 			countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.countResultButtonAction))
 			countingKeyboardBarButtonItems[name]!.tintColor = UIColor.black
@@ -477,10 +479,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		self.tv.inputAccessoryView = keyBoardToolBar
 
-		stableKeyboardBarButtonItems["Done"]!.title = ""
-		stableKeyboardBarButtonItems["Done"]!.title = NSLocalizedString("Global.Button.Done", comment: "Done")
-
-		updateTextViewCounting()
+        updateTextViewCounting()
 	}
 
 	// MARK: - Textview related func

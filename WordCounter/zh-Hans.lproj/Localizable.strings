@@ -26,8 +26,8 @@ Global.Button.EditText = "编辑文字";
 Global.Units.ChineseWord.Singular = "字";
 Global.Units.ChineseWord.Plural = "字";
 
-Global.Units.ChineseWordWithoutPunctuation.Singular = "字";
-Global.Units.ChineseWordWithoutPunctuation.Plural = "字";
+Global.Units.ChineseWordWithoutPunctuation.Singular = "字（不含标点）";
+Global.Units.ChineseWordWithoutPunctuation.Plural = "字（不含标点）";
 
 Global.Units.Word.Singular = "词";
 Global.Units.Word.Plural = "词";
@@ -58,8 +58,8 @@ Global.Count.Text.Sentence = "%1$@%2$@";
 Global.Count.Text.Paragraph = "%1$@%2$@";
 
 Global.Alert.Counter.Title = "统计";
-Global.Alert.Counter.Content.ChineseWord = "字数：%@（含标点符号）";
-Global.Alert.Counter.Content.ChineseWordWithoutPunctuation = "字数：%@（不含标点符号）";
+Global.Alert.Counter.Content.ChineseWord = "字数：%@（含标点）";
+Global.Alert.Counter.Content.ChineseWordWithoutPunctuation = "字数：%@";
 Global.Alert.Counter.Content.Word = "词数：%@";
 Global.Alert.Counter.Content.Character = "字符数：%@";
 Global.Alert.Counter.Content.Sentence = "句数：%@";
