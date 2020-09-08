@@ -577,7 +577,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\nversion=`expr $version + 1`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"WordCounterTodayWidget/Info.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"CounterActionExtension/Info.plist\"";
+			shellScript = "#version=`/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH`\n#version=`expr $version + 1`\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" $PRODUCT_SETTINGS_PATH\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"WordCounterTodayWidget/Info.plist\"\n#/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version\" \"CounterActionExtension/Info.plist\"\n";
 		};
 		65DA3AD4E55B12C66DD8F14C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
