@@ -34,6 +34,7 @@
                     <view key="view" contentMode="scaleToFill" id="u8C-3T-8bn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="TDA-jg-kch"/>
                 </viewController>
