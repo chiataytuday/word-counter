@@ -125,7 +125,7 @@ About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!|
 About.Table.Section1.Content = "Yifei He 何一非||Developer--yifei@hesyifei.com||Email--https://www.hesyifei.com/||Website--%1$@||%2$@";
 
 About.Table.Header.Content = "--About";
-About.Table.Footer.Content = "--© %@ Yifei He";
+About.Table.Footer.Content = "--© %@ Yifei He 何一非";
 
 
 Welcome.Global.Button.Skip = "Skip";
