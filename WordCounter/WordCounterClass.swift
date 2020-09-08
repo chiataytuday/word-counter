@@ -24,14 +24,19 @@ class WordCounter {
     }
     
 	// MARK: - Get string func
-	static func getHumanReadableCountString(of string: String, by type: CountByType) -> String {
+    static func getHumanReadableCountString(of string: String, by type: CountByType, shouldUseShortForm: Bool = false) -> String {
         let count = getCount(of: string, by: type)
+        
+        var useShort = ""
+        if shouldUseShortForm && count >= 1000 {
+            useShort = ".Short"
+        }
 
 		let words = (count == 1) ?
-            NSLocalizedString("Global.Units.\(type.rawValue).Singular", comment: "Singular Unit") :
-			NSLocalizedString("Global.Units.\(type.rawValue).Plural", comment: "Plural Unit")
+            NSLocalizedString("Global.Units\(useShort).\(type.rawValue).Singular", comment: "Singular Unit") :
+			NSLocalizedString("Global.Units\(useShort).\(type.rawValue).Plural", comment: "Plural Unit")
 
-		let returnString = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(type.rawValue)", comment: "%1$@ %2$@"), String(count), words)
+		let returnString = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text\(useShort).\(type.rawValue)", comment: "%1$@ %2$@"), String(count), words)
 
 		return returnString
 	}

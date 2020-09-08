@@ -25,40 +25,49 @@ Global.Button.EditText = "编辑文字";
 
 Global.Units.ChineseWord.Singular = "字";
 Global.Units.ChineseWord.Plural = "字";
+Global.Units.Short.ChineseWord.Singular = "字";
+Global.Units.Short.ChineseWord.Plural = "字";
 
-Global.Units.ChineseWordWithoutPunctuation.Singular = "字不含标点";
-Global.Units.ChineseWordWithoutPunctuation.Plural = "字不含标点";
+Global.Units.ChineseWordWithoutPunctuation.Singular = "字（不含标点）";
+Global.Units.ChineseWordWithoutPunctuation.Plural = "字（不含标点）";
+Global.Units.Short.ChineseWordWithoutPunctuation.Singular = "字不含标点";
+Global.Units.Short.ChineseWordWithoutPunctuation.Plural = "字不含标点";
 
 Global.Units.Word.Singular = "词";
 Global.Units.Word.Plural = "词";
-
 Global.Units.Short.Word.Singular = "词";
 Global.Units.Short.Word.Plural = "词";
 
 Global.Units.Character.Singular = "字符";
 Global.Units.Character.Plural = "字符";
-
 Global.Units.Short.Character.Singular = "字符";
 Global.Units.Short.Character.Plural = "字符";
 
 Global.Units.Paragraph.Singular = "段";
 Global.Units.Paragraph.Plural = "段";
-
 Global.Units.Short.Paragraph.Singular = "段";
 Global.Units.Short.Paragraph.Plural = "段";
 
 Global.Units.Sentence.Singular = "句";
 Global.Units.Sentence.Plural = "句";
+Global.Units.Short.Sentence.Singular = "句";
+Global.Units.Short.Sentence.Plural = "句";
 
 Global.Count.Text.ChineseWord = "%1$@个%2$@";
+Global.Count.Text.Short.ChineseWord = "%1$@%2$@";
 Global.Count.Text.ChineseWordWithoutPunctuation = "%1$@个%2$@";
+Global.Count.Text.Short.ChineseWordWithoutPunctuation = "%1$@%2$@";
 Global.Count.Text.Word = "%1$@个%2$@";
+Global.Count.Text.Short.Word = "%1$@%2$@";
 Global.Count.Text.Character = "%1$@个%2$@";
+Global.Count.Text.Short.Character = "%1$@%2$@";
 Global.Count.Text.Sentence = "%1$@%2$@";
+Global.Count.Text.Short.Sentence = "%1$@%2$@";
 Global.Count.Text.Paragraph = "%1$@%2$@";
+Global.Count.Text.Short.Paragraph = "%1$@%2$@";
 
 Global.Alert.Counter.Title = "统计";
-Global.Alert.Counter.Content.ChineseWord = "字数：%@含标点";
+Global.Alert.Counter.Content.ChineseWord = "字数：%@（含标点）";
 Global.Alert.Counter.Content.ChineseWordWithoutPunctuation = "字数：%@";
 Global.Alert.Counter.Content.Word = "词数：%@";
 Global.Alert.Counter.Content.Character = "字符数：%@";

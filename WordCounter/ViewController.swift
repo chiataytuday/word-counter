@@ -557,12 +557,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
                     }
                 }
                 
-                titles[self.topBarCountButtonType] = WordCounter.getHumanReadableCountString(of: myText, by: self.topBarCountButtonType)
+                titles[self.topBarCountButtonType] = WordCounter.getHumanReadableCountString(of: myText, by: self.topBarCountButtonType, shouldUseShortForm: true)
                 for (type, enabled) in self.showedKeyboardButtons {
                     if (!enabled) {
                         continue
                     }
-                    titles[type] = WordCounter.getHumanReadableCountString(of: myText, by: type)
+                    titles[type] = WordCounter.getHumanReadableCountString(of: myText, by: type, shouldUseShortForm: true)
                 }
 				}.main {
                     self.topBarCountButton.title = titles[self.topBarCountButtonType]

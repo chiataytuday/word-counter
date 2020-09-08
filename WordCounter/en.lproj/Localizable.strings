@@ -25,37 +25,46 @@ Global.Button.EditText = "Edit text";
 
 Global.Units.ChineseWord.Singular = "words";
 Global.Units.ChineseWord.Plural = "words";
+Global.Units.Short.ChineseWord.Singular = "words";
+Global.Units.Short.ChineseWord.Plural = "words";
 
 Global.Units.ChineseWordWithoutPunctuation.Singular = "words";
 Global.Units.ChineseWordWithoutPunctuation.Plural = "words";
+Global.Units.Short.ChineseWordWithoutPunctuation.Singular = "words";
+Global.Units.Short.ChineseWordWithoutPunctuation.Plural = "words";
 
 Global.Units.Word.Singular = "word";
 Global.Units.Word.Plural = "words";
-
 Global.Units.Short.Word.Singular = "word";
 Global.Units.Short.Word.Plural = "words";
 
 Global.Units.Character.Singular = "character";
 Global.Units.Character.Plural = "characters";
-
 Global.Units.Short.Character.Singular = "char.";
 Global.Units.Short.Character.Plural = "chars.";
 
 Global.Units.Paragraph.Singular = "paragraph";
 Global.Units.Paragraph.Plural = "paragraphs";
-
 Global.Units.Short.Paragraph.Singular = "para.";
 Global.Units.Short.Paragraph.Plural = "paras.";
 
 Global.Units.Sentence.Singular = "sentence";
 Global.Units.Sentence.Plural = "sentences";
+Global.Units.Short.Sentence.Singular = "sent.";
+Global.Units.Short.Sentence.Plural = "sents.";
 
 Global.Count.Text.ChineseWord = "%1$@ %2$@";
+Global.Count.Text.Short.ChineseWord = "%1$@ %2$@";
 Global.Count.Text.ChineseWordWithoutPunctuation = "%1$@ %2$@";
+Global.Count.Text.Short.ChineseWordWithoutPunctuation = "%1$@ %2$@";
 Global.Count.Text.Word = "%1$@ %2$@";
+Global.Count.Text.Short.Word = "%1$@ %2$@";
 Global.Count.Text.Character = "%1$@ %2$@";
+Global.Count.Text.Short.Character = "%1$@ %2$@";
 Global.Count.Text.Sentence = "%1$@ %2$@";
+Global.Count.Text.Short.Sentence = "%1$@ %2$@";
 Global.Count.Text.Paragraph = "%1$@ %2$@";
+Global.Count.Text.Short.Paragraph = "%1$@ %2$@";
 
 Global.Alert.Counter.Title = "Counter";
 Global.Alert.Counter.Content.ChineseWord = "Words (accounting for Chinese characters with punctuations): %@";
