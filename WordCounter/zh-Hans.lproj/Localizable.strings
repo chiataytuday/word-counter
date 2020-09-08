@@ -104,10 +104,10 @@ About.Title.Text.Version = "版本 %@";
 About.Subtitle.Text.Build = "版本号 %@";
 
 About.Alert.ShowGithub.Title = "您已成为开发者啦！";
-About.Alert.ShowGithub.Content = "于Github上查看 字数统计工具 源代码？";
+About.Alert.ShowGithub.Content = "于Github上查看“字数统计工具”源代码？";
 
 About.Alert.Donate.Title = "为开发者 畅想资源 捐款 :)";
-About.Alert.Donate.Content = "您的支持与捐赠是我们优化并更新 字数统计工具 的动力！\n为答谢您的支持，程序内的广告将于您捐款后自动隐藏 :)";
+About.Alert.Donate.Content = "您的支持与捐赠是我们优化并更新“字数统计工具”的动力！\n为答谢您的支持，程序内的广告将于您捐款后自动隐藏 :)";
 About.Alert.Donate.Button.Donate = "捐款$%d美元";
 About.Alert.Donate.Button.Restore = "（恢复购买）";
 
@@ -131,12 +131,12 @@ About.Table.Footer.Content = "--© %@ 何一非";
 Welcome.Global.Button.Skip = "跳过";
 
 Welcome.Global.Title.About = "多谢！";
-Welcome.Global.Text.About = "我们将继续为 字数统计工具 提供支援并加入更多功能；\n如果您对本程序有任何意见或建议，欢迎发送邮件至 yifei@hesyifei.com 联系开发者，谢谢！ :)";
+Welcome.Global.Text.About = "我们将继续为“字数统计工具”提供支援并加入更多功能；\n如果您对本程序有任何意见或建议，欢迎发送邮件至 yifei@hesyifei.com 联系开发者，谢谢！ :)";
 
 /***** VERSION 1.1-1.3 *****/
 "Welcome.Version.1-1.Text.TodayWidget.Introduction" = "重点：直接于通知中心“今天”视图内统计您剪切板内的字数！";
 "Welcome.Version.1-1.Text.TodayWidget.How" = "通过“编辑”按钮加入该工具";
-"Welcome.Version.1-1.Text.TooManyCharacter" = "为防止卡顿丶在字符数量超过1500后 字数统计工具 将自动切换为手动模式";
+"Welcome.Version.1-1.Text.TooManyCharacter" = "为防止卡顿、在字符数量超过1500后 字数统计工具 将自动切换为手动模式";
 
 /***** VERSION 1.3-NOW *****/
 "Welcome.Version.1-3.Title.ActionExtension.Introduction" = "重点：动作扩展 Action Extension";
@@ -144,7 +144,7 @@ Welcome.Global.Text.About = "我们将继续为 字数统计工具 提供支援�
 "Welcome.Version.1-3.Title.MoreCountingType" = "重点：更多统计项目";
 "Welcome.Version.1-3.Title.ImproveTodayWidget" = "“今天”工具";
 
-"Welcome.Version.1-3.Text.ActionExtension.Introduction" = "重点：\n直接使用分享菜单内的“动作扩展 Action Extension”统计字数！";
+"Welcome.Version.1-3.Text.ActionExtension.Introduction" = "重点：\n直接使用分享菜单内的“动作扩展”统计字数！";
 "Welcome.Version.1-3.Text.ActionExtension.How" = "通过文字选单中“共享…”按钮加入该工具";
 "Welcome.Version.1-3.Text.MoreCountingType" = "重点：加入句数统计及\n分别计算含/不含标点符号之字数\n按下结果按钮（即“N个字”）以查看详细统计结果";
 "Welcome.Version.1-3.Text.ImproveTodayWidget" = "优化“今天”工具\n快去试试吧！";
