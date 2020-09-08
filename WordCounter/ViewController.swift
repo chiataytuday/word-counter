@@ -355,7 +355,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		updateToolBar()
 
 		//updateTextViewCounting()
-		textViewDidChange(self.tv)      // Call textViewDidChange manually
+		handleTextViewChange(self.tv)      // Call handleTextViewChange manually
 	}
 
 	@objc func doAfterRotate () {
@@ -388,7 +388,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		checkScreenWidthToSetButton()
 
 		//updateTextViewCounting()
-		textViewDidChange(self.tv)
+        handleTextViewChange(self.tv)
 	}
 
 	func setTextViewSize (_ n: Notification) {
@@ -531,16 +531,19 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		self.replaceTextViewContent("")
 
-		//updateTextViewCounting()
-
 		doAfterRotate()
 	}
 
 	func textViewDidChange(_ textView: UITextView) {
-		tvPlaceholderLabel.isHidden = !textView.text.isEmpty
-
-		updateTextViewCounting()
+		handleTextViewChange(textView)
+        self.storeText(textView.text)
 	}
+    
+    func handleTextViewChange(_ textView: UITextView) {
+        tvPlaceholderLabel.isHidden = !textView.text.isEmpty
+
+        updateTextViewCounting()
+    }
 
 	func updateTextViewCounting () {
 		//var wordTitle = ""
@@ -873,12 +876,17 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		doAfterRotate()
 	}
+    
+    func storeText(_ tvText: String) {
+        //DDLogDebug("準備 storeText \(tvText)")
+
+        defaults.set(tvText, forKey: "textBeforeEnterBackground")
+    }
 
 	@objc func didEnterBackground() {
 		DDLogDebug("準備加載 didEnterBackground")
 
-		let tvText = self.tv.text
-		defaults.set(tvText, forKey: "textBeforeEnterBackground")
+        self.storeText(self.tv.text)
 	}
 
 	func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
