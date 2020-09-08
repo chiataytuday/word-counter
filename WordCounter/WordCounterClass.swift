@@ -77,11 +77,14 @@ class WordCounter {
     static func getChineseWordCount(of string: String, removeChinesePunctuations: Bool) -> Int {
         // https://developer.apple.com/documentation/foundation/nsregularexpression
         let englishCharacters = "[\\p{Ll}\\p{Lu}\\p{Lt}\\p{Nd}]"
-        let results = self.matches(for: "\(englishCharacters)", in: string)
-        let resultsGroup = self.matches(for: "\(englishCharacters)+", in: string)
-        //print(results)
-        //print(resultsGroup)
-        var counts = string.count - results.count + resultsGroup.count
+        let resultsStrings = matches(for: "\(englishCharacters)+", in: string)
+        //print(resultsStrings)
+        //print(resultsRanges)
+        var counts = string.count
+        for resultsString in resultsStrings {
+            counts -= resultsString.count
+        }
+        counts += resultsStrings.count
 
         var spacesOrPunctuations = "[\\s"
         // https://stackoverflow.com/a/4328722/2603230
@@ -90,7 +93,7 @@ class WordCounter {
             spacesOrPunctuations += "\\W"
         }
         spacesOrPunctuations += "]"
-        counts -= self.matches(for: spacesOrPunctuations, in: string).count
+        counts -= matches(for: spacesOrPunctuations, in: string).count
 
         return counts
     }
