@@ -82,6 +82,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             }
         }
     }
+    
+    var adBannerBottomConstraint: NSLayoutConstraint!
 
 	// MARK: - UI var
 	var tvPlaceholderLabel: UILabel!
@@ -253,15 +255,9 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			appDelegate.adMobBannerView.rootViewController = self
 			view.addSubview(appDelegate.adMobBannerView)
 
-            if #available(iOS 11.0, *) {
-                self.view.addConstraint(
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: -(self.inputAccessoryView?.frame.height)!)
-                )
-            } else {
-                self.view.addConstraint(
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-                )
-            }
+            adBannerBottomConstraint = NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -(self.inputAccessoryView?.frame.height ?? 0.0))
+            self.view.addConstraint(adBannerBottomConstraint)
+
 			self.view.addConstraints([
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0),
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0),
@@ -425,6 +421,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         }*/
         
         // If text view is active, `keyboardWillChangeFrame` will handle everything.
+
+        if inputAccessoryView != nil, adBannerBottomConstraint != nil {
+            // Make sure the ad banner is above the input accessory view.
+            let inputAccessoryViewHeight = inputAccessoryView!.frame.height
+            adBannerBottomConstraint.constant = -inputAccessoryViewHeight
+            self.tv.layoutIfNeeded()
+            appDelegate.adMobBannerView.layoutIfNeeded()
+        }
 
 		checkScreenWidthToSetButton()
 	}
