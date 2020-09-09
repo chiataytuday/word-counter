@@ -1,8 +1,5 @@
 PODS:
   - AsyncSwift (2.0.4)
-  - CocoaLumberjack/Core (3.6.2)
-  - CocoaLumberjack/Swift (3.6.2):
-    - CocoaLumberjack/Core
   - EAIntroView (2.10.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
@@ -76,7 +73,6 @@ PODS:
 
 DEPENDENCIES:
   - AsyncSwift
-  - CocoaLumberjack/Swift
   - EAIntroView
   - Firebase/AdMob
   - Firebase/Core
@@ -85,7 +81,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AsyncSwift
-    - CocoaLumberjack
     - EAIntroView
     - EARestrictedScrollView
     - Firebase
@@ -103,7 +98,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
-  CocoaLumberjack: bd155f2dd06c0e0b03f876f7a3ee55693122ec94
   EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   Firebase: 658370fa0181826a74b7cfca8d68c5856ca749ae
@@ -119,6 +113,6 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
 
-PODFILE CHECKSUM: 4d4bd814ab66d762409bf45598128e7824a05896
+PODFILE CHECKSUM: 6013681e27f47d241419bece5a647c474886016b
 
 COCOAPODS: 1.9.3

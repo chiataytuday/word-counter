@@ -3,7 +3,6 @@ use_frameworks!
 
 target 'WordCounter' do
     pod "AsyncSwift"
-    pod 'CocoaLumberjack/Swift'
     pod 'MBProgressHUD'
     pod 'EAIntroView'
     pod 'Firebase/Core'
