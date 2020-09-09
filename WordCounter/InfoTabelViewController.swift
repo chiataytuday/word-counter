@@ -11,7 +11,6 @@ import Foundation
 import StoreKit
 import MessageUI
 import Async
-import CocoaLumberjack
 import MBProgressHUD
 
 class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate, MFMailComposeViewControllerDelegate {
@@ -27,7 +26,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	// MARK: - Override func
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		DDLogInfo("準備加載 Info Tabel View Controller 之 viewDidLoad")
+		print("準備加載 Info Tabel View Controller 之 viewDidLoad")
 
 		self.title = NSLocalizedString("About.NavBar.Title", comment: "About")
         
@@ -69,7 +68,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		DDLogInfo("準備加載 Info Table View Controller 之 viewWillAppear")
+		print("準備加載 Info Table View Controller 之 viewWillAppear")
 	}
 
 	// MARK: - Table func
@@ -113,7 +112,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 		case 0:
 			switch indexPath.row {
 			case 0:
-				DDLogVerbose("用戶已按下分享按鈕")
+				print("用戶已按下分享按鈕")
 
 				let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!")
 
@@ -126,7 +125,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 					}
 
 					if let popView = activityVC.popoverPresentationController {
-						DDLogVerbose("須使用 popView")
+						print("須使用 popView")
 						popView.sourceView = tableView
 						popView.sourceRect = tableView.cellForRow(at: indexPath)!.frame
 					}
@@ -134,19 +133,19 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 				break
 			case 1:
-				DDLogVerbose("用戶已按下評分按鈕")
+				print("用戶已按下評分按鈕")
 
 				UIApplication.shared.openURL(BasicConfig.appStoreReviewUrl! as URL)
 
 				break
 			case 2:
-				DDLogVerbose("用戶已按下查看其它Apps按鈕")
+				print("用戶已按下查看其它Apps按鈕")
 
 				UIApplication.shared.openURL(BasicConfig.otherAppsByMe! as URL)
 
 				break
 			case 3:
-				DDLogVerbose("用戶已按下捐款按鈕")
+				print("用戶已按下捐款按鈕")
 
 				let donateValues = [1, 5, 10, 25, 100]
 
@@ -164,7 +163,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 					self.restoreDonate()
 				}))
 				donateAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
-					DDLogVerbose("用戶已按下取消按鈕")
+					print("用戶已按下取消按鈕")
 				}))
 
 				Async.main {
@@ -208,12 +207,12 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 					preferredStyle: .alert)
 
 				showGithubAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .default, handler: { (action: UIAlertAction) in
-					DDLogVerbose("用戶已按下確定打開Github按鈕")
+					print("用戶已按下確定打開Github按鈕")
 					UIApplication.shared.openURL(URL(string: "http://bit.ly/WordCounterGithub")!)
 				}))
 
 				showGithubAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
-					DDLogVerbose("用戶已按下取消按鈕")
+					print("用戶已按下取消按鈕")
 				}))
 
 				Async.main {
@@ -236,11 +235,25 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 
 	// MARK: - IAP Related func
+    func showError(message: String, error: Error? = nil) {
+        var errorMessage = message
+        errorMessage = "\(errorMessage)\n\nPlease make sure you are connected to the Internet.\n\nIf the error persists, please contact the developer."
+        if (error != nil) {
+            errorMessage = "\(errorMessage)\n\nError description: \(error?.localizedDescription ?? "UNKNOWN ERROR")"
+        }
+        
+        let alert = UIAlertController(title: "Donation Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: nil))
+        Async.main {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 	func donateMoney(_ amount: Int) {
-		DDLogDebug("準備加載 donateMoney(\(amount))")
-		DDLogVerbose("即：準備獲取產品信息")
+		print("準備加載 donateMoney(\(amount))")
+		print("即：準備獲取產品信息")
 
-		DDLogVerbose("用戶canMakePayments()值爲 \(SKPaymentQueue.canMakePayments())")
+		print("用戶canMakePayments()值爲 \(SKPaymentQueue.canMakePayments())")
 
 		if (SKPaymentQueue.canMakePayments()){
 			getProductInfo("WordCounter.Donation.\(amount)")
@@ -250,8 +263,8 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	}
 
 	func getProductInfo(_ id: String) {
-		DDLogDebug("準備加載 getProductInfo(\(id))")
-		DDLogVerbose("即：準備獲取產品信息")
+		print("準備加載 getProductInfo(\(id))")
+		print("即：準備獲取產品信息")
 
 		switchHudWithoutTitle(true)
 
@@ -263,8 +276,8 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	}
 
 	func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-		DDLogDebug("準備加載 productsRequest: didReceiveResponse")
-		DDLogVerbose("即：已獲取蘋果回覆內購產品信息")
+		print("準備加載 productsRequest: didReceiveResponse")
+		print("即：已獲取蘋果回覆內購產品信息")
 
 		switchHudWithoutTitle(false)
 
@@ -272,56 +285,53 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 		if (count > 0) {
 			//var validProducts = response.products
 			let validProduct: SKProduct = response.products[0]
-			DDLogVerbose("已獲取內購產品信息：")
-			DDLogVerbose("產品ID：\(validProduct.productIdentifier)")
-			DDLogVerbose("本地化標題：\(validProduct.localizedTitle)")
-			DDLogVerbose("本地化描述：\(validProduct.localizedDescription)")
-			DDLogVerbose("價格：\(validProduct.price)")
+			print("已獲取內購產品信息：")
+			print("產品ID：\(validProduct.productIdentifier)")
+			print("本地化標題：\(validProduct.localizedTitle)")
+			print("本地化描述：\(validProduct.localizedDescription)")
+			print("價格：\(validProduct.price)")
 			buyProduct(validProduct)
 		} else {
-			DDLogError("請求信息失敗")
+			print("請求信息失敗")
+            showError(message: "Products request count is 0! :(")
 		}
 	}
 	func request(_ request: SKRequest, didFailWithError error: Error) {
-		DDLogDebug("準備加載 request: didFailWithError")
-		DDLogError("即：無法獲取蘋果回覆內購產品信息：\(error.localizedDescription)")
+		print("準備加載 request: didFailWithError")
+		print("即：無法獲取蘋果回覆內購產品信息：\(error.localizedDescription)")
 
 		switchHudWithoutTitle(false)
+        
+        showError(message: "Request failed! :(", error: error)
 	}
 
 	func buyProduct(_ product: SKProduct) {
-		DDLogDebug("準備加載 buyProduct(\(product))")
-		DDLogVerbose("即：發送內購產品信息至蘋果中")
+		print("準備加載 buyProduct(\(product))")
+		print("即：發送內購產品信息至蘋果中")
 
 		let payment = SKPayment(product: product)
 		SKPaymentQueue.default().add(payment)
 	}
 
 	func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-		DDLogDebug("準備加載 paymentQueue: updatedTransactions")
-		DDLogVerbose("即：已獲取蘋果回應")
+		print("準備加載 paymentQueue: updatedTransactions")
+		print("即：已獲取蘋果回應")
 
 		for transaction: AnyObject in transactions {
 			if let trans: SKPaymentTransaction = transaction as? SKPaymentTransaction{
 				switch trans.transactionState {
 				case .purchased:
-					DDLogInfo("用戶內購成功")
-					DDLogVerbose("產品ID：\((transaction as! SKPaymentTransaction).payment.productIdentifier)")
+					print("用戶內購成功")
+					print("產品ID：\((transaction as! SKPaymentTransaction).payment.productIdentifier)")
 					self.deliverProduct(transaction as! SKPaymentTransaction)
 					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
 					break
 				case .failed:
-                    DDLogError("用戶內購失敗：\(trans.error.debugDescription)")
+                    print("用戶內購失敗：\(trans.error.debugDescription)")
 					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     
-                    let errorAlert = UIAlertController(title: "Error!", message: "Failed! Please contact the developer and try other donation options!\n\n\(trans.error.debugDescription)", preferredStyle: .alert)
-                    errorAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { alertAction in
-                        DDLogVerbose("用戶已按下關閉按鈕")
-                    }))
-                    Async.main {
-                        self.present(errorAlert, animated: true, completion: nil)
-                    }
-					break
+                    showError(message: "Donation failed! :(", error: trans.error)
+                    break
 				default:
 					break
 				}
@@ -330,9 +340,9 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	}
 
 	func deliverProduct(_ transaction: SKPaymentTransaction) {
-		DDLogDebug("準備加載 deliverProduct")
-		DDLogVerbose("即：用戶已捐款成功！")
-		DDLogVerbose("產品ID：\(transaction.payment.productIdentifier)")
+		print("準備加載 deliverProduct")
+		print("即：用戶已捐款成功！")
+		print("產品ID：\(transaction.payment.productIdentifier)")
 
 		finishDonating()
 
@@ -341,7 +351,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 			message: NSLocalizedString("About.Alert.DonateSuccess.Content", comment: "We have received your donation!\nAD is hidden now! :)"),
 			preferredStyle: .alert)
 		donateSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下完成按鈕")
+			print("用戶已按下完成按鈕")
 		}))
 
 		Async.main {
@@ -350,8 +360,8 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	}
 
 	func restoreDonate() {
-		DDLogDebug("準備加載 restoreDonate")
-		DDLogVerbose("即：用戶已按下「恢復購買」按鈕")
+		print("準備加載 restoreDonate")
+		print("即：用戶已按下「恢復購買」按鈕")
 
 		switchHudWithoutTitle(true)
 
@@ -359,15 +369,17 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	}
 
 	func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-		DDLogDebug("準備加載 paymentQueue: restoreCompletedTransactionsFailedWithError")
-		DDLogError("即：恢復內購失敗：\(error.localizedDescription)")
+		print("準備加載 paymentQueue: restoreCompletedTransactionsFailedWithError")
+		print("即：恢復內購失敗：\(error.localizedDescription)")
 
 		switchHudWithoutTitle(false)
+        
+        showError(message: "Restore completed transactions failed! :(", error: error)
 	}
 
 	func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-		DDLogDebug("準備加載 paymentQueueRestoreCompletedTransactionsFinished")
-		DDLogError("即：已完成恢復先前之內購記錄")
+		print("準備加載 paymentQueueRestoreCompletedTransactionsFinished")
+		print("即：已完成恢復先前之內購記錄")
 
 		switchHudWithoutTitle(false)
 
@@ -375,8 +387,8 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 		for transaction: SKPaymentTransaction in queue.transactions {
 			if (transaction.payment.productIdentifier).range(of: "WordCounter.Donation.") != nil {
-				DDLogDebug("用戶已恢復捐款")
-				DDLogVerbose("內購ID：\(transaction.payment.productIdentifier)")
+				print("用戶已恢復捐款")
+				print("內購ID：\(transaction.payment.productIdentifier)")
 				finishDonating()
 
 				willShowSuccess = true
@@ -390,13 +402,20 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 				message: NSLocalizedString("About.Alert.RestoreSuccess.Content", comment: "Your donation was restored!\nAD is hidden now! :)"),
 				preferredStyle: .alert)
 			restoreSuccessAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
-				DDLogVerbose("用戶已按下完成按鈕")
+				print("用戶已按下完成按鈕")
 			}))
 
 			Async.main {
 				self.present(restoreSuccessAlert, animated: true, completion: nil)
 			}
-		}
+        } else {
+            let alert = UIAlertController(title: "Donation Record Not Found", message: "We cannot find your donation record! Please contact the developer if you have any questions! :)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: nil))
+            Async.main {
+                self.present(alert, animated: true, completion: nil)
+            }
+
+        }
 	}
 
 	func finishDonating() {
@@ -404,18 +423,18 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 	}
 
 	func alertPlzEnableIAP() {
-		DDLogDebug("準備加載 alertPlzEnableIAP")
-		DDLogVerbose("即：準備顯示「請開啓內購」通知")
+		print("準備加載 alertPlzEnableIAP")
+		print("即：準備顯示「請開啓內購」通知")
 		let iapDisabledAlert = UIAlertController(title: NSLocalizedString("About.Alert.IapDisabledAlert.Title", comment: "IAP is not allowed!"), message: NSLocalizedString("About.Alert.IapDisabledAlert.Content", comment: "Please enable in-app purchases in Settings app."), preferredStyle: .alert)
 		iapDisabledAlert.addAction(UIAlertAction(title: NSLocalizedString("About.Alert.IapDisabledAlert.Button.OpenSettings", comment: "Open Settings"), style: .default, handler: { alertAction in
-			DDLogVerbose("用戶已按下前往「設定」按鈕")
+			print("用戶已按下前往「設定」按鈕")
 			let url: URL? = URL(string: UIApplicationOpenSettingsURLString)
 			if url != nil{
 				UIApplication.shared.openURL(url!)
 			}
 		}))
 		iapDisabledAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { alertAction in
-			DDLogVerbose("用戶已按下關閉按鈕")
+			print("用戶已按下關閉按鈕")
 		}))
 
 		Async.main {

@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 import Async
-import CocoaLumberjack
 import MBProgressHUD
 import EAIntroView
 import GoogleMobileAds
@@ -77,7 +76,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	// MARK: - Override func
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		DDLogInfo("準備加載 View Controller 之 viewDidLoad")
+		print("準備加載 View Controller 之 viewDidLoad")
 
 
 		self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
@@ -149,7 +148,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		DDLogInfo("準備加載 View Controller 之 viewWillAppear")
+		print("準備加載 View Controller 之 viewWillAppear")
 
 		addToolBarToKeyboard()
 
@@ -196,7 +195,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		} else {
 			defaults.set(defaults.integer(forKey: "appLaunchTimes") + 1, forKey: "appLaunchTimes")
 		}
-		DDLogVerbose("已設定appLaunchTimes值爲\(defaults.integer(forKey: "appLaunchTimes"))")
+		print("已設定appLaunchTimes值爲\(defaults.integer(forKey: "appLaunchTimes"))")
 
 		if defaults.object(forKey: "everShowPresentReviewAgain") == nil {
 			defaults.set(true, forKey: "everShowPresentReviewAgain")
@@ -214,24 +213,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		if defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1 {
 			defaults.set(defaults.integer(forKey: "appLaunchTimesAfterUpdate") + 1, forKey: "appLaunchTimesAfterUpdate")
 		}
-		DDLogVerbose("已設定appLaunchTimesAfterUpdate值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
+		print("已設定appLaunchTimesAfterUpdate值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		DDLogInfo("準備加載 View Controller 之 viewDidAppear")
-
-		var countryCode = "US"
-		if let userCountryCode = (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String {
-			countryCode = userCountryCode
-		} else {
-			DDLogWarn("無法獲取用戶目前區域，將由默認地區\(countryCode)代替")
-		}
-		DDLogVerbose("用戶目前的地區設定爲：\(countryCode)")
+		print("準備加載 View Controller 之 viewDidAppear")
 
 
 
-		DDLogVerbose("用戶 noAd 值爲 \(defaults.bool(forKey: "noAd"))")
+		print("用戶 noAd 值爲 \(defaults.bool(forKey: "noAd"))")
 		if defaults.bool(forKey: "noAd") == false {
 			appDelegate.adMobBannerView.delegate = self
 			appDelegate.adMobBannerView.rootViewController = self
@@ -275,10 +266,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		//var everShowPresentReviewAgain = defaults.boolForKey("everShowPresentReviewAgain")
 		//var appLaunchTimes = defaults.integerForKey("appLaunchTimes")
 
-        DDLogVerbose("everShowPresentReviewAgain的值爲"+String(defaults.bool(forKey: "everShowPresentReviewAgain")))
+        print("everShowPresentReviewAgain的值爲"+String(defaults.bool(forKey: "everShowPresentReviewAgain")))
 		if defaults.bool(forKey: "everShowPresentReviewAgain") {
 			if !presentingOtherView {
-				DDLogVerbose("appLaunchTimes的值爲\(defaults.integer(forKey: "appLaunchTimes"))")
+				print("appLaunchTimes的值爲\(defaults.integer(forKey: "appLaunchTimes"))")
 				//defaults.setInteger(8, forKey: "appLaunchTimes")
 				if defaults.integer(forKey: "appLaunchTimes") % 50 == 0 {
 					presentingOtherView = true
@@ -292,7 +283,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		if defaults.integer(forKey: "appLaunchTimesAfterUpdate") != -1 {
 			if !presentingOtherView {
-				DDLogVerbose("appLaunchTimesAfterUpdate的值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
+				print("appLaunchTimesAfterUpdate的值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
 				if defaults.integer(forKey: "appLaunchTimesAfterUpdate") % 88 == 0 {
 					presentingOtherView = true
 
@@ -310,7 +301,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		DDLogInfo("準備加載 View Controller 之 viewWillDisappear")
+		print("準備加載 View Controller 之 viewWillDisappear")
 
 		appDelegate.adMobBannerView.removeFromSuperview()
 
@@ -345,7 +336,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Screen config func
 	func checkScreenWidthToSetButton () {
-		DDLogDebug("準備加載 checkScreenWidthToSetButton")
+		print("準備加載 checkScreenWidthToSetButton")
 
 		showedKeyboardButtons = [
             .word: false,
@@ -359,7 +350,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		let bounds = UIApplication.shared.keyWindow?.bounds
 		let width = bounds!.size.width
 		let height = bounds!.size.height
-		DDLogVerbose("屏幕高度：\(height)、屏幕寬度：\(width)")
+		print("屏幕高度：\(height)、屏幕寬度：\(width)")
 
 		switch width {
 		case 0..<330:
@@ -387,12 +378,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	@objc func doAfterRotate () {
-		DDLogDebug("準備加載 doAfterRotate")
+		print("準備加載 doAfterRotate")
 
 		if adBannerShowing {
 			adBannerHeight = getCurrentAdBannerFrame().height
 		}
-		DDLogVerbose("已獲取adBanner高度：\(adBannerHeight)")
+		print("已獲取adBanner高度：\(adBannerHeight)")
 
 		if !keyboardShowing {
 			if (adBannerShowing) && (adBannerHeight > 0.0) {
@@ -517,7 +508,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	func endEditingIfFullScreen() {
 	let isFullScreen = CGRectEqualToRect((UIApplication.sharedApplication().keyWindow?.bounds)!, UIScreen.mainScreen().bounds)
 
-	DDLogVerbose("目前窗口是否處於全屏狀態：\(isFullScreen)")
+	print("目前窗口是否處於全屏狀態：\(isFullScreen)")
 
 	if isFullScreen {
 	endEditing()
@@ -526,8 +517,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	*/
 
 	@objc func countSelectionWord() {
-		DDLogDebug("準備加載 countSelectionWord")
-		DDLogVerbose("即：已準備顯示所選文字區域的字數統計")
+		print("準備加載 countSelectionWord")
+		print("即：已準備顯示所選文字區域的字數統計")
 		let selectedText = getTextViewSelectionText(self.tv)
 		showCountResultAlert(selectedText)
 	}
@@ -605,16 +596,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 						self.countingKeyboardBarButtonItems[name]!.title = titles[name]
 					}
 
-					//DDLogVerbose(titles["Sentence"])
+					//print(titles["Sentence"])
 			}
 		}
 	}
 
 	@objc func setContentFromClipBoard() {
-		DDLogDebug("準備加載 setContentFromClipBoard")
+		print("準備加載 setContentFromClipBoard")
 
 		if let clipBoard = UIPasteboard.general.string {
-			DDLogVerbose("已獲取用戶剪貼簿內容：\(clipBoard)")
+			print("已獲取用戶剪貼簿內容：\(clipBoard)")
 			if (self.tv.text.isEmpty) || (self.tv.text == clipBoard) {
 				Async.main {
 					self.replaceTextViewContent(clipBoard)
@@ -626,12 +617,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 					preferredStyle: .alert)
 
 				replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .default, handler: { (action: UIAlertAction) in
-					DDLogVerbose("用戶已按下確定替換內容為剪切版內容")
+					print("用戶已按下確定替換內容為剪切版內容")
 					self.replaceTextViewContent(clipBoard)
 				}))
 
 				replaceContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
-					DDLogVerbose("用戶已按下取消按鈕")
+					print("用戶已按下取消按鈕")
 				}))
 
 				Async.main {
@@ -642,7 +633,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	@objc func setContentToTextBeforeEnterBackground() {
-		DDLogDebug("準備加載 setContentToTextBeforeEnterBackground")
+		print("準備加載 setContentToTextBeforeEnterBackground")
 
 		if let textBeforeEnterBackground = defaults.string(forKey: "textBeforeEnterBackground") {
 			if textBeforeEnterBackground != self.tv.text {
@@ -667,13 +658,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			preferredStyle: .alert)
 
 		clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .destructive, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下確定清空按鈕")
+			print("用戶已按下確定清空按鈕")
 			self.clearContent()
 			self.startEditing()
 		}))
 
 		clearContentAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下取消清空按鈕")
+			print("用戶已按下取消清空按鈕")
 			if keyboardShowingBefore {
 				self.startEditing()
 			}
@@ -732,7 +723,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 				let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
 				countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
-					DDLogVerbose("用戶已按下確定按鈕")
+					print("用戶已按下確定按鈕")
 					if keyboardShowingBefore {
 						self.startEditing()
 					}
@@ -758,14 +749,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-		DDLogDebug("準備加載 adViewWillPresentScreen")
-		DDLogVerbose("即：用戶已點擊AdMob廣告")
+		print("準備加載 adViewWillPresentScreen")
+		print("即：用戶已點擊AdMob廣告")
 		endEditing()
 	}
 
 	func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-		DDLogDebug("準備加載 adViewDidDismissScreen")
-		DDLogVerbose("即：用戶已關閉AdMob廣告")
+		print("準備加載 adViewDidDismissScreen")
+		print("即：用戶已關閉AdMob廣告")
 		startEditing()
 	}
 
@@ -782,8 +773,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func adViewDidReceiveAd(_ banner: GADBannerView) {
-		DDLogDebug("準備加載 adViewDidReceiveAd")
-		DDLogVerbose("即：AdMob已成功加載！")
+		print("準備加載 adViewDidReceiveAd")
+		print("即：AdMob已成功加載！")
 
 		if !adBannerShowing {
 			self.appDelegate.adMobBannerView.isHidden = false
@@ -812,8 +803,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-		DDLogDebug("準備加載 adView: didFailToReceiveAdWithError")
-		DDLogWarn("即：AdMob加載錯誤：\(error.localizedDescription)")
+		print("準備加載 adView: didFailToReceiveAdWithError")
+		print("即：AdMob加載錯誤：\(error.localizedDescription)")
 
 		if adBannerShowing {
 			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
@@ -869,7 +860,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 				page.descFont = UIFont(name: (page.descFont?.fontName)!, size: 12)
 			}
 
-			//DDLogVerbose("WOW!: \(page.titlePositionY)")
+			//print("WOW!: \(page.titlePositionY)")
 
 			let titlePositionFromBottom = page.titlePositionY
 
@@ -902,31 +893,31 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - General func
 	@objc func didBecomeActive() {
-		DDLogDebug("準備加載 didBecomeActive")
+		print("準備加載 didBecomeActive")
 
 		doAfterRotate()
 	}
     
     func storeText(_ tvText: String) {
-        //DDLogDebug("準備 storeText \(tvText)")
+        //print("準備 storeText \(tvText)")
 
         defaults.set(tvText, forKey: "textBeforeEnterBackground")
     }
 
 	@objc func didEnterBackground() {
-		DDLogDebug("準備加載 didEnterBackground")
+		print("準備加載 didEnterBackground")
 
         self.storeText(self.tv.text)
 	}
 
 	func isAppFirstLaunch() -> Bool{          //檢測App是否首次開啓
-		DDLogDebug("準備加載 isAppFirstLaunch")
+		print("準備加載 isAppFirstLaunch")
 		if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-			DDLogVerbose("App於本機並非首次開啓")
+			print("App於本機並非首次開啓")
 			return false
 		} else {
 			defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-			DDLogVerbose("App於本機首次開啓")
+			print("App於本機首次開啓")
 			return true
 		}
 	}
@@ -940,7 +931,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			preferredStyle: .alert)
 
 		reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Yes", comment: "Sure!"), style: .default, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下發表評論按鈕")
+			print("用戶已按下發表評論按鈕")
 			self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
 			self.defaults.set(false, forKey: "everShowPresentReviewAgain")
 			UIApplication.shared.openURL(BasicConfig.appStoreReviewUrl! as URL)
@@ -948,14 +939,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		}))
 
 		reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Later", comment: "Not now"), style: .default, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下以後再說按鈕")
+			print("用戶已按下以後再說按鈕")
 			self.defaults.set(true, forKey: "everShowPresentReviewAgain")
 			self.startEditing()
 			self.presentingOtherView = false
 		}))
 
 		reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRate.Button.Cancel", comment: "No, thanks!"), style: .cancel, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下永遠再不顯示按鈕")
+			print("用戶已按下永遠再不顯示按鈕")
 			self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")       // Do not show update alert for this version too
 			self.defaults.set(false, forKey: "everShowPresentReviewAgain")
 			self.startEditing()
@@ -978,20 +969,20 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			preferredStyle: .alert)
 
 		reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Yes", comment: "Sure!"), style: .default, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下發表評論按鈕")
+			print("用戶已按下發表評論按鈕")
 			self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")
 			UIApplication.shared.openURL(BasicConfig.appStoreReviewUrl! as URL)
 			self.presentingOtherView = false
 		}))
 
 		reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Later", comment: "Not now"), style: .default, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下以後再說按鈕")
+			print("用戶已按下以後再說按鈕")
 			self.startEditing()
 			self.presentingOtherView = false
 		}))
 
 		reviewAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Alert.PlzRateUpdate.Button.Cancel", comment: "No for this version, thanks!"), style: .cancel, handler: { (action: UIAlertAction) in
-			DDLogVerbose("用戶已按下此版本永遠再不顯示按鈕")
+			print("用戶已按下此版本永遠再不顯示按鈕")
 			self.defaults.set(-1, forKey: "appLaunchTimesAfterUpdate")
 			self.startEditing()
 			self.presentingOtherView = false

@@ -46,7 +46,6 @@
 		ED3235921C20633C0007EF1A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3235901C20633C0007EF1A /* MainInterface.storyboard */; };
 		ED3235961C20633C0007EF1A /* CounterActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ED32358C1C20633C0007EF1A /* CounterActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ED3E40FC1C2133F3009CF68E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED3E40FE1C2133F3009CF68E /* InfoPlist.strings */; };
-		EDD0FBFD1CD5F1D400156AA6 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD0FBFC1CD5F1D400156AA6 /* CustomLogFormatter.swift */; };
 		EDF21D621C296FB400B6C20C /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF21D611C296FB400B6C20C /* ProgressHUD.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,7 +146,6 @@
 		ED3E40FD1C2133F3009CF68E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED3E40FF1C2133F4009CF68E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ED3E41001C2133F6009CF68E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		EDD0FBFC1CD5F1D400156AA6 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		EDF21D611C296FB400B6C20C /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		F4514572F0021F808136B684 /* Pods_CounterActionExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CounterActionExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -241,7 +239,6 @@
 				300BAB661B49097100FE8B37 /* Info.plist */,
 				3021E3811B54DDA500AEF136 /* InfoPlist.strings */,
 				305E388D1B7D822E00CCFD0B /* WordCounter-BridgingHeader.h */,
-				EDD0FBFC1CD5F1D400156AA6 /* CustomLogFormatter.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -691,7 +688,6 @@
 				30B7ACA71B746F6100517036 /* WordCounterClass.swift in Sources */,
 				300BAB681B49097100FE8B37 /* AppDelegate.swift in Sources */,
 				309080611B4A0A7700C0AE5A /* InfoTabelViewController.swift in Sources */,
-				EDD0FBFD1CD5F1D400156AA6 /* CustomLogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

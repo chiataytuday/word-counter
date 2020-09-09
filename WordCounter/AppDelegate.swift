@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import Async
-import CocoaLumberjack
 import GoogleMobileAds
 
 @UIApplicationMain
@@ -22,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	let defaults = UserDefaults.standard
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		DDLogInfo("準備加載 didFinishLaunchingWithOptions")
+		print("didFinishLaunchingWithOptions")
 
 
 		if let userUrl = launchOptions?[UIApplicationLaunchOptionsKey.url] as? URL {
@@ -54,30 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-		/**** Log & Log Color START ****/
-		#if DEBUG
-			let logLevel = DDLogLevel.all
-		#else
-			let logLevel = DDLogLevel.info
-		#endif
-        
-        if #available(iOS 10.0, *) {
-            DDLog.add(DDOSLogger.sharedInstance, with: logLevel)
-            DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
-        } else {
-            // Fallback on earlier versions
-            DDLog.add(DDTTYLogger.sharedInstance!, with: logLevel) // TTY = Xcode console
-            DDLog.add(DDASLLogger.sharedInstance, with: logLevel) // ASL = Apple System Logs
-            DDTTYLogger.sharedInstance!.logFormatter = CustomLogFormatter()
-        }
-
-
-		let fileLogger: DDFileLogger = DDFileLogger() // File Logger
-		fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
-		fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-		DDLog.add(fileLogger, with: .warning)
-		/**** Log & Log Color END ****/
-
 
 
 
@@ -88,32 +63,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-		DDLogInfo("準備加載 applicationWillResignActive")
+		print("applicationWillResignActive")
 
 	}
 
 	func applicationDidEnterBackground(_ application: UIApplication) {
 		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-		DDLogInfo("準備加載 applicationDidEnterBackground")
+		print("準備加載 applicationDidEnterBackground")
 
 	}
 
 	func applicationWillEnterForeground(_ application: UIApplication) {
 		// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-		DDLogInfo("準備加載 applicationWillEnterForeground")
+		print("準備加載 applicationWillEnterForeground")
 
 	}
 
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-		DDLogInfo("準備加載 applicationDidBecomeActive")
+		print("準備加載 applicationDidBecomeActive")
 
 	}
 
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-		DDLogInfo("準備加載 applicationWillTerminate")
+		print("準備加載 applicationWillTerminate")
 
 
 		// Saves changes in the application's managed object context before the application terminates.
@@ -195,7 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 		if let userUrl = String(describing: url) as String? {
-			DDLogVerbose("用戶輸入的網址爲：\(userUrl)")
+			print("userUrl = \(userUrl)")
 			callToSetClipBoard(userUrl)
 			return true
 		}
@@ -203,19 +178,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func callToSetClipBoard(_ url: String) {
-		DDLogDebug("準備加載 callToSetClipBoard(\(url))")
+		print("callToSetClipBoard(\(url))")
 		if url == "count://fromClipBoard" {
 			Async.main {                // 於主線執行
-				DDLogVerbose("已準備將用戶剪貼簿內容設定爲TextView之內容")
 				NotificationCenter.default.post(name: .catnapSetContentFromClipBoard, object: self)
 			}
 		}
 	}
 
 	func callToSetTextBeforeEnterBackground() {
-		DDLogDebug("準備加載 callToSetTextBeforeEnterBackground")
+		print("callToSetTextBeforeEnterBackground")
 		Async.main {                // 於主線執行
-			DDLogVerbose("已準備將進入背景前的內容設定爲TextView之內容")
 			NotificationCenter.default.post(name: .catnapSetContentToTextBeforeEnterBackground, object: self)
 		}
 	}
