@@ -400,6 +400,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Keyboard func
 	@objc func keyboardShow(_ n: Notification) {
+        print("keyboardShow")
+
 		keyboardShowing = true
 
 		setTextViewSize(n)
@@ -430,6 +432,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	@objc func keyboardHide(_ n: Notification) {
+        print("keyboardHide")
+
 		let selectedRangeBeforeHide = tv.selectedRange
 
 		keyboardShowing = false
