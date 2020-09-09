@@ -14,6 +14,15 @@ import MBProgressHUD
 import EAIntroView
 import GoogleMobileAds
 
+// https://stackoverflow.com/a/46510833/2603230
+class _CustomViewForInputAccessory: UIView {
+    // this is needed so that the inputAccesoryView is properly sized from the auto layout constraints
+    // actual value is not important
+    override var intrinsicContentSize: CGSize {
+        return CGSize.zero
+    }
+}
+
 class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
 
 	// MARK: - Basic var
@@ -35,7 +44,53 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     var clearButton: UIBarButtonItem!
 
 	// MARK: - keyboardButton var
-	var keyBoardToolBar = UIToolbar()
+    // https://stackoverflow.com/a/46510833/2603230
+    var _keyBoardToolBar: UIToolbar!
+    override var canBecomeFirstResponder: Bool { return true }
+
+    var _inputAccessoryView: UIView!
+
+    override var inputAccessoryView: UIView? {
+
+        if _inputAccessoryView == nil {
+
+            _inputAccessoryView = _CustomViewForInputAccessory()
+
+            _keyBoardToolBar = UIToolbar()
+            _keyBoardToolBar.autoresizingMask = [.flexibleHeight]
+
+            _inputAccessoryView.addSubview(_keyBoardToolBar)
+
+            _inputAccessoryView.autoresizingMask = .flexibleHeight
+
+            _keyBoardToolBar.translatesAutoresizingMaskIntoConstraints = false
+
+            _keyBoardToolBar.leadingAnchor.constraint(
+                equalTo: _inputAccessoryView.leadingAnchor,
+                constant: 0
+            ).isActive = true
+
+            _keyBoardToolBar.trailingAnchor.constraint(
+                equalTo: _inputAccessoryView.trailingAnchor,
+                constant: 0
+            ).isActive = true
+
+            _keyBoardToolBar.topAnchor.constraint(
+                equalTo: _inputAccessoryView.topAnchor,
+                constant: 0
+            ).isActive = true
+
+            // this is the important part :
+
+            _keyBoardToolBar.bottomAnchor.constraint(
+                equalTo: _inputAccessoryView.layoutMarginsGuide.bottomAnchor,
+                constant: 0
+            ).isActive = true
+        }
+
+        return _inputAccessoryView
+    }
+
 
     var showedKeyboardButtons = [CountByType: Bool]()
 
@@ -216,6 +271,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 		}
 		DDLogVerbose("已設定appLaunchTimesAfterUpdate值爲\(defaults.integer(forKey: "appLaunchTimesAfterUpdate"))")
 	}
+    
+    func getAccessaryInputHeight() -> CGFloat {
+        var inputAccessoryViewHeight: CGFloat = 0
+        if ((self.inputAccessoryView) != nil) {
+            inputAccessoryViewHeight = self.inputAccessoryView!.bounds.height
+        }
+        return inputAccessoryViewHeight
+    }
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
@@ -236,16 +299,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			appDelegate.adMobBannerView.delegate = self
 			appDelegate.adMobBannerView.rootViewController = self
 			view.addSubview(appDelegate.adMobBannerView)
-
-            if #available(iOS 11.0, *) {
-                self.view.addConstraint(
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view.safeAreaLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-                )
-            } else {
-                self.view.addConstraint(
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-                )
-            }
+            
+            self.view.addConstraint(
+                NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: -getAccessaryInputHeight())
+            )
 			self.view.addConstraints([
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0),
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0),
@@ -261,6 +318,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 			presentIntroView()
 		}
+        
+        self.view.addConstraint(
+            NSLayoutConstraint(item: self.tv, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: -getAccessaryInputHeight())
+        )
 
 		if (adBannerShowing) && (adBannerHeight > 0.0) {
 			self.tv.contentInset.bottom = adBannerHeight
@@ -459,7 +520,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func addToolBarToKeyboard(){
-		keyBoardToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+		//keyBoardToolBar = UIToolbar()
+        //keyBoardToolBar.autoresizingMask = [.flexibleHeight]
 
 
 		stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
@@ -484,6 +546,57 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 		updateToolBar()
+        
+        /*self.view.addSubview(keyBoardToolBar)
+        keyBoardToolBar.layoutIfNeeded()
+
+        if #available(iOS 11.0, *) {
+               keyBoardToolBar.translatesAutoresizingMaskIntoConstraints = false
+            //keyBoardToolBar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+            //keyBoardToolBar.bottomAnchor.constraintLessThanOrEqualToSystemSpacingBelow(self.view.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0).isActive = true
+            /*let constraints = [
+                //keyBoardToolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                //keyBoardToolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                keyBoardToolBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            ]
+            NSLayoutConstraint.activate(constraints)*/
+            textField.leadingAnchor.constraint(
+                equalTo: _inputAccessoryView.leadingAnchor,
+                constant: 8
+            ).isActive = true
+
+            textField.trailingAnchor.constraint(
+                equalTo: _inputAccessoryView.trailingAnchor,
+                constant: -8
+            ).isActive = true
+
+            textField.topAnchor.constraint(
+                equalTo: _inputAccessoryView.topAnchor,
+                constant: 8
+            ).isActive = true
+
+            // this is the important part :
+
+            textField.bottomAnchor.constraint(
+                equalTo: _inputAccessoryView.layoutMarginsGuide.bottomAnchor,
+                constant: -8
+            ).isActive = true
+
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        keyBoardToolBar.layoutIfNeeded()
+
+        
+        self.tv.inputAccessoryView = keyBoardToolBar*/
+        
+
+        
+        //keyBoardToolBar.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        //keyBoardToolBar.updateConstraintsIfNeeded()
+
+
 	}
 
 	func updateToolBar() {
@@ -498,14 +611,14 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			barItems.append(stableKeyboardBarButtonItems[name]!)
 		}
 
-		keyBoardToolBar.setItems(barItems, animated: true)
+        if (_keyBoardToolBar != nil) {
+		_keyBoardToolBar.setItems(barItems, animated: true)
 
-		keyBoardToolBar.setNeedsLayout()
+		_keyBoardToolBar.setNeedsLayout()
+        }
 
 		/*keyBoardToolBar.sizeToFit()
 		keyBoardToolBar.frame.size.height = 44*/
-
-		self.tv.inputAccessoryView = keyBoardToolBar
 
         updateTextViewCounting()
 	}
