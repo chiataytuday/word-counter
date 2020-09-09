@@ -447,22 +447,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         //print(endFrameY)
         
         var height: CGFloat = 0.0
-        if endFrameY >= UIScreen.main.bounds.size.height - self.inputAccessoryView!.frame.height {
+        if endFrameY >= UIScreen.main.bounds.size.height - (self.inputAccessoryView?.frame.height ?? 0.0) {
+            // If the keyboard is closed.
             height = 0.0
         } else {
-            if let endFrameHeight = endFrame?.size.height {
-                //height = endFrameHeight - self.view.convert(self.tv.frame, to: self.view.window).minY
-                let textFieldRect   = tv.convert(tv.frame, to: self.view.window)
-                
-                print(textFieldRect.maxY)
-                print(self.view.window!.frame.height - textFieldRect.maxY)
-                //height = endFrameHeight - (self.view.window!.frame.height -  textFieldRect.maxY) + self.inputAccessoryView!.frame.height
-                height = endFrame!.height - (self.view.frame.height - self.tv.frame.maxY)
-                if #available(iOS 11.0, *) {
-                    //height = endFrame!.height - self.view.safeAreaInsets.bottom - adBannerHeight - self.inputAccessoryView!.frame.height
-                } else {
-                    // Fallback on earlier versions
-                }
+            if let endFrameHeight = endFrame?.height {
+                // Related to https://stackoverflow.com/a/27855636/2603230
+                height = endFrameHeight - (self.view.frame.height - self.tv.frame.maxY)
             } else {
                 height = 0.0
             }
