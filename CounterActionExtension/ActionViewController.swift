@@ -30,6 +30,7 @@ class ActionViewController: UIViewController {
 		self.title = NSLocalizedString("Main.NavBar.Title", comment: "Word Counter")
         
         if #available(iOSApplicationExtension 13.0, *) {
+            self.view.backgroundColor = .systemBackground
             contentTextView.backgroundColor = .systemBackground
             contentTextView.textColor = .label
         }
