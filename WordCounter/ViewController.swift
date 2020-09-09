@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     var clearButton: UIBarButtonItem!
 
 	// MARK: - keyboardButton var
-	var keyBoardToolBar = UIToolbar()
+    var keyBoardToolBar: CustomInputAccessoryWithToolbarView!
 
     var showedKeyboardButtons = [CountByType: Bool]()
 
@@ -459,7 +459,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func addToolBarToKeyboard(){
-		keyBoardToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+		keyBoardToolBar = CustomInputAccessoryWithToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
 
 
 		stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
@@ -484,6 +484,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 		updateToolBar()
+        
+        self.tv.inputAccessoryView = keyBoardToolBar
 	}
 
 	func updateToolBar() {
@@ -498,14 +500,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			barItems.append(stableKeyboardBarButtonItems[name]!)
 		}
 
-		keyBoardToolBar.setItems(barItems, animated: true)
-
-		keyBoardToolBar.setNeedsLayout()
+        if keyBoardToolBar != nil {
+            keyBoardToolBar.toolbar.setItems(barItems, animated: true)
+            keyBoardToolBar.toolbar.setNeedsLayout()
+        }
 
 		/*keyBoardToolBar.sizeToFit()
 		keyBoardToolBar.frame.size.height = 44*/
-
-		self.tv.inputAccessoryView = keyBoardToolBar
 
         updateTextViewCounting()
 	}

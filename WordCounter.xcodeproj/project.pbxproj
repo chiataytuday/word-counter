@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08735C0325083EC500723147 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08735C0225083EC500723147 /* Settings.bundle */; };
+		08735C082508920600723147 /* CustomInputAccessoryWithToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08735C072508920600723147 /* CustomInputAccessoryWithToolbarView.swift */; };
 		08C4A8D4250761FC00F39221 /* 1-4-About.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8D3250761FC00F39221 /* 1-4-About.png */; };
 		08C4A8DC25076A4400F39221 /* 1-4-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8D825076A4400F39221 /* 1-4-MoreCountingType.png */; };
 		08C4A8DF25077FE300F39221 /* 1-4-ActionExtension.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8DD25077FE300F39221 /* 1-4-ActionExtension.png */; };
@@ -91,6 +92,7 @@
 /* Begin PBXFileReference section */
 		04816380468CE296F98C0BCC /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 		08735C0225083EC500723147 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		08735C072508920600723147 /* CustomInputAccessoryWithToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryWithToolbarView.swift; sourceTree = "<group>"; };
 		08C4A8D3250761FC00F39221 /* 1-4-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-4-About.png"; sourceTree = "<group>"; };
 		08C4A8D825076A4400F39221 /* 1-4-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-4-MoreCountingType.png"; sourceTree = "<group>"; };
 		08C4A8DD25077FE300F39221 /* 1-4-ActionExtension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-4-ActionExtension.png"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				300BAB671B49097100FE8B37 /* AppDelegate.swift */,
 				309B41C21B7AE85B001C9E80 /* BasicConfig.swift */,
 				300BAB6C1B49097100FE8B37 /* ViewController.swift */,
+				08735C072508920600723147 /* CustomInputAccessoryWithToolbarView.swift */,
 				309080601B4A0A7700C0AE5A /* InfoTabelViewController.swift */,
 				30B7ACA61B746F6100517036 /* WordCounterClass.swift */,
 				3021E37B1B54DCD900AEF136 /* Localizable.strings */,
@@ -681,6 +684,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08735C082508920600723147 /* CustomInputAccessoryWithToolbarView.swift in Sources */,
 				300BAB6D1B49097100FE8B37 /* ViewController.swift in Sources */,
 				309B41C31B7AE85B001C9E80 /* BasicConfig.swift in Sources */,
 				300BAB6B1B49097100FE8B37 /* WordCounter.xcdatamodeld in Sources */,
