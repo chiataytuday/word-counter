@@ -22,10 +22,10 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	let sharedData = UserDefaults(suiteName: "group.com.arefly.WordCounter")
 
 	// MARK: - Init var
-	var adBannerHeight: CGFloat = 0.0
 
 	// MARK: - IBOutlet var
 	@IBOutlet var tv: UITextView!
+    @IBOutlet var tvBottomConstraint: NSLayoutConstraint!
 
 	// MARK: - Navbar var
 	var topBarCountButton: UIBarButtonItem!
@@ -34,6 +34,19 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     var clearButton: UIBarButtonItem!
 
 	// MARK: - keyboardButton var
+    override var canBecomeFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
+    override var inputAccessoryView: CustomInputAccessoryWithToolbarView? {
+        if keyBoardToolBar == nil {
+            // https://stackoverflow.com/a/58524360/2603230
+            keyBoardToolBar = CustomInputAccessoryWithToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        }
+        return keyBoardToolBar
+    }
+    
     var keyBoardToolBar: CustomInputAccessoryWithToolbarView!
 
     var showedKeyboardButtons = [CountByType: Bool]()
@@ -46,7 +59,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	var stableKeyboardBarButtonItems = [String: UIBarButtonItem]()
 
 	// MARK: - Bool var
-	var keyboardShowing = false
+    var isTextViewActive: Bool {
+        get {
+            return self.tv.isFirstResponder
+        }
+    }
 
 	var appFirstLaunch = false
 	var appJustUpdate = false
@@ -55,8 +72,16 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - AdMob var
 	var adBannerShowing = false
-
-	//var isZhUser = false
+    
+    var adBannerHeight: CGFloat {
+        get {
+            if adBannerShowing {
+                return getCurrentAdBannerFrame().height
+            } else {
+                return 0.0
+            }
+        }
+    }
 
 	// MARK: - UI var
 	var tvPlaceholderLabel: UILabel!
@@ -158,8 +183,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 
-		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardShow(_:)), name: .UIKeyboardWillShow, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidChangeFrame(_:)), name: .UIKeyboardDidChangeFrame, object: nil)
 
 
 		NotificationCenter.default.addObserver(self, selector: #selector(self.doAfterRotate), name: .UIDeviceOrientationDidChange, object: nil)
@@ -230,7 +255,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
             if #available(iOS 11.0, *) {
                 self.view.addConstraint(
-                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view.safeAreaLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+                    NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: -(self.inputAccessoryView?.frame.height)!)
                 )
             } else {
                 self.view.addConstraint(
@@ -241,6 +266,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0),
 				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0),
 				])
+            
+            tvBottomConstraint.isActive = false
+            self.view.addConstraints([
+                NSLayoutConstraint(item: self.tv, attribute: .bottom, relatedBy: .equal, toItem: appDelegate.adMobBannerView, attribute: .top, multiplier: 1.0, constant: 0),
+            ])
 
 			appDelegate.adMobBannerView.load(appDelegate.adMobRequest)
 		}
@@ -253,13 +283,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			presentIntroView()
 		}
 
-		if (adBannerShowing) && (adBannerHeight > 0.0) {
+		/*if (adBannerShowing) && (adBannerHeight > 0.0) {
 			self.tv.contentInset.bottom = adBannerHeight
 			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
 		} else {
 			self.tv.contentInset.bottom = 0
 			self.tv.scrollIndicatorInsets.bottom = 0
-		}
+		}*/
 
 		//defaults.setBool(true, forKey: "everShowPresentReviewAgain")
 
@@ -305,8 +335,8 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		appDelegate.adMobBannerView.removeFromSuperview()
 
-		NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-		NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidChangeFrame, object: nil)
 
 		NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
 
@@ -380,12 +410,9 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	@objc func doAfterRotate () {
 		print("準備加載 doAfterRotate")
 
-		if adBannerShowing {
-			adBannerHeight = getCurrentAdBannerFrame().height
-		}
 		print("已獲取adBanner高度：\(adBannerHeight)")
 
-		if !keyboardShowing {
+		/*if !isTextViewActive {
 			if (adBannerShowing) && (adBannerHeight > 0.0) {
 				self.tv.contentInset.bottom = adBannerHeight
 				self.tv.scrollIndicatorInsets.bottom = adBannerHeight
@@ -393,71 +420,90 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 				self.tv.contentInset.bottom = 0
 				self.tv.scrollIndicatorInsets.bottom = 0
 			}
-		}
+        } else {
+            // keyboardWillChangeFrame will handle everything.
+        }*/
+        
+        // If text view is active, `keyboardWillChangeFrame` will handle everything.
 
 		checkScreenWidthToSetButton()
 	}
 
 	// MARK: - Keyboard func
-	@objc func keyboardShow(_ n: Notification) {
-        print("keyboardShow")
+    @objc func keyboardWillChangeFrame(_ notification: Notification) {
+        print("keyboardWillChangeFrame")
+        guard let userInfo = notification.userInfo else { return }
 
-		keyboardShowing = true
-
-		setTextViewSize(n)
-
-		checkScreenWidthToSetButton()
-
-		//updateTextViewCounting()
-        handleTextViewChange(self.tv)
-	}
-
-	func setTextViewSize (_ n: Notification) {
-		if (keyboardShowing) {
-			let d = n.userInfo!
-			var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-			r = self.tv.convert(r, from: nil)
-            
-            var height = r.size.height
-            if #available(iOS 11.0, *) {
-                // https://stackoverflow.com/a/48693623/2603230
-                height -= self.view.safeAreaInsets.bottom
+        // https://stackoverflow.com/a/27135992/2603230
+        let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        let endFrameY = endFrame?.origin.y ?? 0
+        
+        //print(self.view.convert(endFrame!, to: self.view.window))
+        //print(self.view.frame.height - endFrameY)
+        //print(endFrameY)
+        
+        var height: CGFloat = 0.0
+        if endFrameY >= UIScreen.main.bounds.size.height - self.inputAccessoryView!.frame.height {
+            height = 0.0
+        } else {
+            if let endFrameHeight = endFrame?.size.height {
+                //height = endFrameHeight - self.view.convert(self.tv.frame, to: self.view.window).minY
+                let textFieldRect   = tv.convert(tv.frame, to: self.view.window)
+                
+                print(textFieldRect.maxY)
+                print(self.view.window!.frame.height - textFieldRect.maxY)
+                //height = endFrameHeight - (self.view.window!.frame.height -  textFieldRect.maxY) + self.inputAccessoryView!.frame.height
+                height = endFrame!.height - (self.view.frame.height - self.tv.frame.maxY)
+                if #available(iOS 11.0, *) {
+                    //height = endFrame!.height - self.view.safeAreaInsets.bottom - adBannerHeight - self.inputAccessoryView!.frame.height
+                } else {
+                    // Fallback on earlier versions
+                }
+            } else {
+                height = 0.0
             }
-			self.tv.contentInset.bottom = height
-			self.tv.scrollIndicatorInsets.bottom = height
-		}
-
-		//self.tv.contentInset.top = 0
-		//self.tv.scrollIndicatorInsets.top = 0
-	}
-
-	@objc func keyboardHide(_ n: Notification) {
-        print("keyboardHide")
-
-		let selectedRangeBeforeHide = tv.selectedRange
-
-		keyboardShowing = false
-
-		if (adBannerShowing) && (adBannerHeight > 0.0) {
-			self.tv.contentInset.bottom = adBannerHeight
-			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-		} else {
-			self.tv.contentInset.bottom = 0
-			self.tv.scrollIndicatorInsets.bottom = 0
-		}
-
-		self.tv.contentInset.top = 0
-		self.tv.scrollIndicatorInsets.top = 0
-
-		tv.scrollRangeToVisible(selectedRangeBeforeHide)
-		tv.selectedRange = selectedRangeBeforeHide
-	}
+        }
+        // https://stackoverflow.com/a/29961427/2603230
+        /*height = self.view.frame.height - endFrameY
+        if #available(iOS 11.0, *) {
+            // https://stackoverflow.com/a/48693623/2603230
+            height -= self.view.safeAreaInsets.bottom
+        }
+        height -= self.inputAccessoryView!.frame.height
+        height -= adBannerHeight*/
+        
+        // Note that textView delegate gets called later that keyboard notification unlike TextFields.
+        // So if firstResponder variable is nil it means our textView is firstRespnder.
+        /*if let textField = self.tv {
+            let textFieldPoints = textField.convert(textField.frame.origin, to: self.view.window)
+            let textFieldRect   = textField.convert(textField.frame, to: self.view.window)
+            
+            height = (endFrame?.size.height)! - textFieldRect.minY + self.inputAccessoryView!.frame.height
+            
+            // visible part of the view, where is not covered by the keyboard.
+            //var windowFrame = self.view.frame
+            //windowFrame.size.height -= endFrame.height
+            
+            // if you don't see the firstResponder view in visible part, means the view is beneth the keyboard.
+            /*if !windowFrame.contains(textFieldPoints) {
+                self.scrollView.scrollRectToVisible(textFieldRect, animated: true)
+            }*/
+        }*/
+        self.tv.contentInset.bottom = height
+        self.tv.scrollIndicatorInsets.bottom = height
+        
+        
+        checkScreenWidthToSetButton()
+        
+        handleTextViewChange(self.tv)
+    }
+    
+    @objc func keyboardDidChangeFrame(_ notification: Notification) {
+        // For updating the "Done" button.
+        updateToolBar()
+    }
 
 	func addToolBarToKeyboard(){
-        // https://stackoverflow.com/a/58524360/2603230
-		keyBoardToolBar = CustomInputAccessoryWithToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
-
-
 		stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
 
 		stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -481,6 +527,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		updateToolBar()
         
+        // TODO: not sure if we need it here
         self.tv.inputAccessoryView = keyBoardToolBar
 	}
 
@@ -493,6 +540,11 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			}
 		}
 		for name in stableKeyboardBarButtonItemsNames {
+            if name == "Done" && !isTextViewActive {
+                // Do not add the "Done" button if the text view is not active.
+                continue
+            }
+
 			barItems.append(stableKeyboardBarButtonItems[name]!)
 		}
 
@@ -500,9 +552,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
             keyBoardToolBar.toolbar.setItems(barItems, animated: true)
             keyBoardToolBar.toolbar.setNeedsLayout()
         }
-
-		/*keyBoardToolBar.sizeToFit()
-		keyBoardToolBar.frame.size.height = 44*/
 
         updateTextViewCounting()
 	}
@@ -652,7 +701,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Button action func
 	@objc func clearButtonClicked(_ sender: AnyObject) {
-		let keyboardShowingBefore = keyboardShowing
+		let keyboardShowingBefore = isTextViewActive
 
 		endEditing()
 
@@ -710,7 +759,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func showCountResultAlert(_ text: String) {
-		let keyboardShowingBefore = keyboardShowing
+		let keyboardShowingBefore = isTextViewActive
 
 		endEditing()
 
@@ -768,12 +817,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	func showAds() {
 		adBannerShowing = true
 
-		adBannerHeight = getCurrentAdBannerFrame().height
+		//adBannerHeight = getCurrentAdBannerFrame().height
 
-		if !keyboardShowing {
-			self.tv.contentInset.bottom = adBannerHeight
-			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-		}
+		/*if !isTextViewActive {
+			self.tv.contentInset.bottom += adBannerHeight
+			self.tv.scrollIndicatorInsets.bottom += adBannerHeight
+		}*/
 	}
 
 	func adViewDidReceiveAd(_ banner: GADBannerView) {
@@ -798,12 +847,12 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	func hideAds() {
 		adBannerShowing = false
 
-		adBannerHeight = 0.0
+		//adBannerHeight = 0.0
 
-		if !keyboardShowing {
+		/*if !isTextViewActive {
 			self.tv.contentInset.bottom = 0
 			self.tv.scrollIndicatorInsets.bottom = 0
-		}
+		}*/
 	}
 
 	func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {

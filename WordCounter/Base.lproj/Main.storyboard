@@ -96,6 +96,7 @@
                     <navigationItem key="navigationItem" id="bK1-6I-0cD"/>
                     <connections>
                         <outlet property="tv" destination="whe-qS-vlc" id="4DC-LA-prO"/>
+                        <outlet property="tvBottomConstraint" destination="YjS-R0-sHV" id="rsc-Su-yad"/>
                         <segue destination="m2F-Fq-feN" kind="show" identifier="goInfo" id="hVb-HZ-tC8"/>
                     </connections>
                 </viewController>
