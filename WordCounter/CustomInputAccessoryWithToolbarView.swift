@@ -16,10 +16,10 @@ class CustomInputAccessoryWithToolbarView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        // Adopted from https://stackoverflow.com/a/46510833/2603230
-        toolbar = UIToolbar()
-        toolbar.autoresizingMask = [.flexibleHeight]
+        // https://stackoverflow.com/a/58524360/2603230
+        toolbar = UIToolbar(frame: frame)
 
+        // Below is adopted from https://stackoverflow.com/a/46510833/2603230
         self.addSubview(toolbar)
 
         self.autoresizingMask = .flexibleHeight
@@ -38,18 +38,26 @@ class CustomInputAccessoryWithToolbarView: UIView {
             constant: 0
         ).isActive = true
         // This is the important part:
-        toolbar.bottomAnchor.constraint(
-            equalTo: self.layoutMarginsGuide.bottomAnchor,
-            constant: 0
-        ).isActive = true
+        if #available(iOS 11.0, *) {
+            toolbar.bottomAnchor.constraint(
+                equalTo: self.safeAreaLayoutGuide.bottomAnchor,
+                constant: 0
+            ).isActive = true
+        } else {
+            toolbar.bottomAnchor.constraint(
+                equalTo: self.layoutMarginsGuide.bottomAnchor,
+                constant: 0
+            ).isActive = true
+        }
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    // This is needed so that the inputAccesoryView is properly sized from the auto layout constraints
-    // Actual value is not important
+
+    // https://stackoverflow.com/a/46510833/2603230
+    // This is needed so that the inputAccesoryView is properly sized from the auto layout constraints.
+    // Actual value is not important.
     override var intrinsicContentSize: CGSize {
         return CGSize.zero
     }

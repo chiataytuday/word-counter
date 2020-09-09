@@ -459,6 +459,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func addToolBarToKeyboard(){
+        // https://stackoverflow.com/a/58524360/2603230
 		keyBoardToolBar = CustomInputAccessoryWithToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
 
 
