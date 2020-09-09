@@ -34,7 +34,17 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
     var clearButton: UIBarButtonItem!
 
 	// MARK: - keyboardButton var
+    // https://stackoverflow.com/q/10768659/2603230
+    override var canBecomeFirstResponder: Bool { return true }
+
     var keyBoardToolBar: CustomInputAccessoryWithToolbarView!
+    override var inputAccessoryView: UIView? {
+        if keyBoardToolBar == nil {
+            // https://stackoverflow.com/a/58524360/2603230
+            keyBoardToolBar = CustomInputAccessoryWithToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        }
+        return keyBoardToolBar
+    }
 
     var showedKeyboardButtons = [CountByType: Bool]()
 
@@ -44,6 +54,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	var stableKeyboardBarButtonItemsNames = [String]()
 	var stableKeyboardBarButtonItems = [String: UIBarButtonItem]()
+    var showDoneButton = true
 
 	// MARK: - Bool var
 	var keyboardShowing = false
@@ -400,7 +411,27 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - Keyboard func
 	@objc func keyboardShow(_ n: Notification) {
+        let userInfo = n.userInfo!
+        let beginFrameValue = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)!
+        let beginFrame = beginFrameValue.cgRectValue
+        let endFrameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)!
+        let endFrame = endFrameValue.cgRectValue
+        
+        print(beginFrame.height)
+        print(endFrame.height)
+
+        if beginFrame.height >= endFrame.height {
+            // We are opening the keyboard, the keyboard height should be become smaller.
+            // Related to https://stackoverflow.com/q/22549911/2603230.
+            return
+        }
+
+        
+        print("keyboardShow")
+        
 		keyboardShowing = true
+        showDoneButton = true
+        updateToolBar()
 
 		setTextViewSize(n)
 
@@ -430,9 +461,13 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	@objc func keyboardHide(_ n: Notification) {
+        print("keyboardHide")
+        
 		let selectedRangeBeforeHide = tv.selectedRange
 
 		keyboardShowing = false
+        showDoneButton = false
+        updateToolBar()
 
 		if (adBannerShowing) && (adBannerHeight > 0.0) {
 			self.tv.contentInset.bottom = adBannerHeight
@@ -450,10 +485,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 	func addToolBarToKeyboard(){
-        // https://stackoverflow.com/a/58524360/2603230
-		keyBoardToolBar = CustomInputAccessoryWithToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
-
-
 		stableKeyboardBarButtonItemsNames = [String]()      //Empty stableKeyboardBarButtonItemsNames first
 
 		stableKeyboardBarButtonItems["FlexSpace"] = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -477,7 +508,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 		updateToolBar()
         
-        self.tv.inputAccessoryView = keyBoardToolBar
+        //self.tv.inputAccessoryView = keyBoardToolBar
 	}
 
 	func updateToolBar() {
@@ -489,6 +520,9 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 			}
 		}
 		for name in stableKeyboardBarButtonItemsNames {
+            if name == "Done" && !showDoneButton {
+                continue
+            }
 			barItems.append(stableKeyboardBarButtonItems[name]!)
 		}
 
