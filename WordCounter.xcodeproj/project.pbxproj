@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08735C0325083EC500723147 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08735C0225083EC500723147 /* Settings.bundle */; };
 		08C4A8D4250761FC00F39221 /* 1-4-About.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8D3250761FC00F39221 /* 1-4-About.png */; };
 		08C4A8DC25076A4400F39221 /* 1-4-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8D825076A4400F39221 /* 1-4-MoreCountingType.png */; };
 		08C4A8DF25077FE300F39221 /* 1-4-ActionExtension.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8DD25077FE300F39221 /* 1-4-ActionExtension.png */; };
@@ -89,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		04816380468CE296F98C0BCC /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
+		08735C0225083EC500723147 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		08C4A8D3250761FC00F39221 /* 1-4-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-4-About.png"; sourceTree = "<group>"; };
 		08C4A8D825076A4400F39221 /* 1-4-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-4-MoreCountingType.png"; sourceTree = "<group>"; };
 		08C4A8DD25077FE300F39221 /* 1-4-ActionExtension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-4-ActionExtension.png"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				300BAB6E1B49097100FE8B37 /* Main.storyboard */,
 				3021E38D1B54E3C900AEF136 /* LaunchScreen.storyboard */,
 				300BAB711B49097100FE8B37 /* Images.xcassets */,
+				08735C0225083EC500723147 /* Settings.bundle */,
 				300BAB651B49097100FE8B37 /* Supporting Files */,
 			);
 			path = WordCounter;
@@ -349,6 +352,7 @@
 				300BAB5F1B49097100FE8B37 /* Frameworks */,
 				300BAB601B49097100FE8B37 /* Resources */,
 				3090805F1B4A0A3800C0AE5A /* Update Build Numbers */,
+				08735C042508558200723147 /* Update Setting Bundles Version */,
 				306CF55C1B7588ED0085FC3B /* Embed App Extensions */,
 				238E22725F9DDDDE60324D38 /* [CP] Embed Pods Frameworks */,
 			);
@@ -498,6 +502,7 @@
 				3021E38E1B54E3C900AEF136 /* LaunchScreen.storyboard in Resources */,
 				08C4A8DF25077FE300F39221 /* 1-4-ActionExtension.png in Resources */,
 				08C4A8DC25076A4400F39221 /* 1-4-MoreCountingType.png in Resources */,
+				08735C0325083EC500723147 /* Settings.bundle in Resources */,
 				3021E37F1B54DDA500AEF136 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +538,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08735C042508558200723147 /* Update Setting Bundles Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Update Setting Bundles Version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# https://stackoverflow.com/a/39030153/2603230\n# https://stackoverflow.com/a/61921595/2603230\nversion=\"$MARKETING_VERSION\"\nbuild=\"$CURRENT_PROJECT_VERSION\"\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($build)\" \"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\n";
+		};
 		238E22725F9DDDDE60324D38 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -901,6 +924,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2130;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -925,6 +949,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2130;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -982,6 +1007,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2130;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1007,6 +1033,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2130;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = WordCounterTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1028,6 +1055,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2130;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = CounterActionExtension/Info.plist;
@@ -1049,6 +1077,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2130;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = CounterActionExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
