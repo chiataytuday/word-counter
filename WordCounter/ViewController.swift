@@ -240,13 +240,6 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 			presentIntroView()
 		}
 
-		/*if (adBannerShowing) && (adBannerHeight > 0.0) {
-			self.tv.contentInset.bottom = adBannerHeight
-			self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-		} else {
-			self.tv.contentInset.bottom = 0
-			self.tv.scrollIndicatorInsets.bottom = 0
-		}*/
 
 		//defaults.setBool(true, forKey: "everShowPresentReviewAgain")
 
@@ -362,20 +355,8 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 		handleTextViewChange(self.tv)      // Call handleTextViewChange manually
 	}
 
-	@objc func doAfterRotate () {
+	@objc func doAfterRotate() {
 		print("準備加載 doAfterRotate")
-
-		/*if !isTextViewActive {
-			if (adBannerShowing) && (adBannerHeight > 0.0) {
-				self.tv.contentInset.bottom = adBannerHeight
-				self.tv.scrollIndicatorInsets.bottom = adBannerHeight
-			} else {
-				self.tv.contentInset.bottom = 0
-				self.tv.scrollIndicatorInsets.bottom = 0
-			}
-        } else {
-            // keyboardWillChangeFrame will handle everything.
-        }*/
         
         // If text view is active, `keyboardWillChangeFrame` will handle everything.
 
