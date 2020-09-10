@@ -5,8 +5,6 @@ target 'WordCounter' do
     pod "AsyncSwift"
     pod 'MBProgressHUD'
     pod 'EAIntroView'
-    pod 'Firebase/Core'
-    pod 'Firebase/AdMob'
 end
 
 target 'WordCounterTests' do
