@@ -47,17 +47,19 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 		var paraCount = 0
 
         var wordType: CountByType = WordCounter.isChineseUser() ? .chineseWord : .word
-
+        var charType: CountByType = WordCounter.isChineseUser() ? .chineseWordWithoutPunctuation : .character
+        
 		if let clipBoard = UIPasteboard.general.string {
 			print("[提示] 已獲取用戶剪貼簿內容：\(clipBoard)")
 			textView.text = clipBoard
             
             if (!clipBoard.containsChineseCharacters) {
                 wordType = .word
+                charType = .character
             }
 
             wordCounts = WordCounter.getCount(of: textView.text, by: wordType)
-            charCount = WordCounter.getCount(of: textView.text, by: .character)
+            charCount = WordCounter.getCount(of: textView.text, by: charType)
             paraCount = WordCounter.getCount(of: textView.text, by: .paragraph)
 		}else{
 			print("[提示] 用戶剪貼簿內並未任何內容")
@@ -67,8 +69,8 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
         let wordSingular = NSLocalizedString("Global.Units.Short.\(wordType.rawValue).Singular", comment: "word")
         let wordPlural = NSLocalizedString("Global.Units.Short.\(wordType.rawValue).Plural", comment: "words")
 
-        let charSingular = NSLocalizedString("Global.Units.Short.Character.Singular", comment: "char.")
-        let charPlural = NSLocalizedString("Global.Units.Short.Character.Plural", comment: "chars.")
+        let charSingular = NSLocalizedString("Global.Units.Short.\(charType.rawValue).Singular", comment: "char.")
+        let charPlural = NSLocalizedString("Global.Units.Short.\(charType.rawValue).Plural", comment: "chars.")
 
         let paraSingular = NSLocalizedString("Global.Units.Short.Paragraph.Singular", comment: "para.")
         let paraPlural = NSLocalizedString("Global.Units.Short.Paragraph.Plural", comment: "paras.")
@@ -77,14 +79,20 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 		let wordTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(wordType.rawValue)", comment: "%1$@ %2$@"), String(wordCounts), wordWords)
 
 		let charWords = (charCount == 1) ? charSingular : charPlural
-		let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Character", comment: "%1$@ %2$@"), String(charCount), charWords)
+		let charTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.\(charType.rawValue)", comment: "%1$@ %2$@"), String(charCount), charWords)
 
 		let paraWords = (paraCount == 1) ? paraSingular : paraPlural
 		let paraTitle = String.localizedStringWithFormat(NSLocalizedString("Global.Count.Text.Paragraph", comment: "%1$@ %2$@"), String(paraCount), paraWords)
-
-		wordsCountLabel.text = wordTitle
-		parasCountLabel.text = paraTitle
-		charsCountLabel.text = charTitle
+        
+        if (WordCounter.isChineseUser()) {
+            wordsCountLabel.text = wordTitle // 带标点字数
+            parasCountLabel.text = charTitle // 不带标点字数
+            charsCountLabel.text = paraTitle // 段落数
+        } else {
+            wordsCountLabel.text = wordTitle
+            parasCountLabel.text = paraTitle
+            charsCountLabel.text = charTitle
+        }
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
