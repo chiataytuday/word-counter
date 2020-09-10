@@ -237,6 +237,9 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 		if appFirstLaunch || appJustUpdate {
 			presentingOtherView = true
 
+            // So that the toolbar will not be shown.
+            self.resignFirstResponder()
+
 			presentIntroView()
 		}
 
@@ -767,6 +770,8 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 		presentingOtherView = false
 		appFirstLaunch = false
 		appJustUpdate = false
+        // So that the toolbar at the bottom will show.
+        self.becomeFirstResponder()
 		startEditing()
 	}
 
