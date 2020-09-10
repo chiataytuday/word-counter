@@ -25,7 +25,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 	// MARK: - IBOutlet var
 	@IBOutlet var tv: UITextView!
-    @IBOutlet var tvBottomConstraint: NSLayoutConstraint!
 
 	// MARK: - Navbar var
 	var topBarCountButton: UIBarButtonItem!
@@ -69,21 +68,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	var appJustUpdate = false
 
 	var presentingOtherView = false
-
-	// MARK: - AdMob var
-	var adBannerShowing = false
-    
-    var adBannerHeight: CGFloat {
-        get {
-            if adBannerShowing {
-                return getCurrentAdBannerFrame().height
-            } else {
-                return 0.0
-            }
-        }
-    }
-    
-    var adBannerBottomConstraint: NSLayoutConstraint!
 
 	// MARK: - UI var
 	var tvPlaceholderLabel: UILabel!
@@ -249,28 +233,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 
 
 
-		print("用戶 noAd 值爲 \(defaults.bool(forKey: "noAd"))")
-		if defaults.bool(forKey: "noAd") == false {
-			appDelegate.adMobBannerView.delegate = self
-			appDelegate.adMobBannerView.rootViewController = self
-			view.addSubview(appDelegate.adMobBannerView)
-
-            adBannerBottomConstraint = NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -(self.inputAccessoryView?.frame.height ?? 0.0))
-            self.view.addConstraint(adBannerBottomConstraint)
-
-			self.view.addConstraints([
-				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0),
-				NSLayoutConstraint(item: appDelegate.adMobBannerView, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0),
-				])
-            
-            tvBottomConstraint.isActive = false
-            self.view.addConstraints([
-                NSLayoutConstraint(item: self.tv, attribute: .bottom, relatedBy: .equal, toItem: appDelegate.adMobBannerView, attribute: .top, multiplier: 1.0, constant: 0),
-            ])
-
-			appDelegate.adMobBannerView.load(appDelegate.adMobRequest)
-		}
-
 
 
 		if appFirstLaunch || appJustUpdate {
@@ -328,8 +290,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		print("準備加載 View Controller 之 viewWillDisappear")
-
-		appDelegate.adMobBannerView.removeFromSuperview()
 
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidChangeFrame, object: nil)
@@ -406,8 +366,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	@objc func doAfterRotate () {
 		print("準備加載 doAfterRotate")
 
-		print("已獲取adBanner高度：\(adBannerHeight)")
-
 		/*if !isTextViewActive {
 			if (adBannerShowing) && (adBannerHeight > 0.0) {
 				self.tv.contentInset.bottom = adBannerHeight
@@ -422,15 +380,7 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         
         // If text view is active, `keyboardWillChangeFrame` will handle everything.
 
-        if inputAccessoryView != nil, adBannerBottomConstraint != nil {
-            // Make sure the ad banner is above the input accessory view.
-            let inputAccessoryViewHeight = inputAccessoryView!.frame.height
-            adBannerBottomConstraint.constant = -inputAccessoryViewHeight
-            self.tv.layoutIfNeeded()
-            appDelegate.adMobBannerView.layoutIfNeeded()
-        }
-
-		checkScreenWidthToSetButton()
+        checkScreenWidthToSetButton()
 	}
 
 	// MARK: - Keyboard func
@@ -446,47 +396,23 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
         //print(self.view.frame.height - endFrameY)
         //print(endFrameY)
         
-        var height: CGFloat = 0.0
+        var height: CGFloat = self.inputAccessoryView?.frame.height ?? 0.0
         if endFrameY >= UIScreen.main.bounds.size.height - (self.inputAccessoryView?.frame.height ?? 0.0) {
             // If the keyboard is closed.
-            height = 0.0
+            // Do nothing
         } else {
-            if let endFrameHeight = endFrame?.height {
-                // Related to https://stackoverflow.com/a/27855636/2603230
-                height = endFrameHeight - (self.view.frame.height - self.tv.frame.maxY)
-            } else {
-                height = 0.0
+            if let endFrameHeight = endFrame?.size.height {
+                height = endFrameHeight
             }
         }
-        // https://stackoverflow.com/a/29961427/2603230
-        /*height = self.view.frame.height - endFrameY
+        
         if #available(iOS 11.0, *) {
             // https://stackoverflow.com/a/48693623/2603230
             height -= self.view.safeAreaInsets.bottom
         }
-        height -= self.inputAccessoryView!.frame.height
-        height -= adBannerHeight*/
-        
-        // Note that textView delegate gets called later that keyboard notification unlike TextFields.
-        // So if firstResponder variable is nil it means our textView is firstRespnder.
-        /*if let textField = self.tv {
-            let textFieldPoints = textField.convert(textField.frame.origin, to: self.view.window)
-            let textFieldRect   = textField.convert(textField.frame, to: self.view.window)
-            
-            height = (endFrame?.size.height)! - textFieldRect.minY + self.inputAccessoryView!.frame.height
-            
-            // visible part of the view, where is not covered by the keyboard.
-            //var windowFrame = self.view.frame
-            //windowFrame.size.height -= endFrame.height
-            
-            // if you don't see the firstResponder view in visible part, means the view is beneth the keyboard.
-            /*if !windowFrame.contains(textFieldPoints) {
-                self.scrollView.scrollRectToVisible(textFieldRect, animated: true)
-            }*/
-        }*/
+
         self.tv.contentInset.bottom = height
         self.tv.scrollIndicatorInsets.bottom = height
-        
         
         checkScreenWidthToSetButton()
         
@@ -790,81 +716,6 @@ class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegat
 	}
 
 
-
-	// MARK: - AdMob func
-	func getCurrentAdBannerFrame() -> CGRect {
-		return self.appDelegate.adMobBannerView.frame
-	}
-
-	func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-		print("準備加載 adViewWillPresentScreen")
-		print("即：用戶已點擊AdMob廣告")
-		endEditing()
-	}
-
-	func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-		print("準備加載 adViewDidDismissScreen")
-		print("即：用戶已關閉AdMob廣告")
-		startEditing()
-	}
-
-
-	func showAds() {
-		adBannerShowing = true
-
-		//adBannerHeight = getCurrentAdBannerFrame().height
-
-		/*if !isTextViewActive {
-			self.tv.contentInset.bottom += adBannerHeight
-			self.tv.scrollIndicatorInsets.bottom += adBannerHeight
-		}*/
-	}
-
-	func adViewDidReceiveAd(_ banner: GADBannerView) {
-		print("準備加載 adViewDidReceiveAd")
-		print("即：AdMob已成功加載！")
-
-		if !adBannerShowing {
-			self.appDelegate.adMobBannerView.isHidden = false
-			self.appDelegate.adMobBannerView.alpha = 0
-			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
-				self.appDelegate.adMobBannerView.alpha = 1
-			}, completion: {
-				(value: Bool) in
-				// DO NOTHING
-			})
-
-			showAds()
-		}
-	}
-
-
-	func hideAds() {
-		adBannerShowing = false
-
-		//adBannerHeight = 0.0
-
-		/*if !isTextViewActive {
-			self.tv.contentInset.bottom = 0
-			self.tv.scrollIndicatorInsets.bottom = 0
-		}*/
-	}
-
-	func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-		print("準備加載 adView: didFailToReceiveAdWithError")
-		print("即：AdMob加載錯誤：\(error.localizedDescription)")
-
-		if adBannerShowing {
-			UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
-				self.appDelegate.adMobBannerView.alpha = 0
-			}, completion: {
-				(value: Bool) in
-				self.appDelegate.adMobBannerView.isHidden = true
-			})
-
-			hideAds()
-		}
-	}
 
 	// MARK: - Intro View
 	func presentIntroView() {

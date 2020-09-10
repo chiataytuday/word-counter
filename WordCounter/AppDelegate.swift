@@ -9,14 +9,10 @@
 import UIKit
 import CoreData
 import Async
-import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
-
-	var adMobBannerView: GADBannerView!
-	var adMobRequest: GADRequest!
 
 	let defaults = UserDefaults.standard
 
@@ -33,22 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				self.callToSetTextBeforeEnterBackground()
 			}
 		}
-
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [
-            "898636d9efb529b668ee419acdcf5a76",         // Arefly's iPhone
-            "381f5843f2f07e9e84957719d7ea8fe8",         // Arefly's iPad Pro
-        ]
-
-
-		adMobBannerView = GADBannerView.init(adSize: kGADAdSizeSmartBannerPortrait)
-		adMobBannerView.translatesAutoresizingMaskIntoConstraints = false
-		adMobBannerView.isHidden = true
-		adMobBannerView.alpha = 0
-		adMobBannerView.adUnitID = BasicConfig.adMobUnitId
-
-		adMobRequest = GADRequest()
-        
 
 
 

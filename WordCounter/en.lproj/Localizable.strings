@@ -107,21 +107,21 @@ About.Alert.ShowGithub.Title = "You are now a developer!";
 About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tools on GitHub?";
 
 About.Alert.Donate.Title = "Donate to developer Yifei! :)";
-About.Alert.Donate.Content = "Your support is our motivation to keep working on Word Counter Tools and give you a better app!\nTo thank you for your support, the ad in app will be hidden once after your donation! :)";
+About.Alert.Donate.Content = "Since Word Counter Tools does not have any ads (yay!), we would really appreciate your support. It helps us to provide you with a better app! :)";
 About.Alert.Donate.Button.Donate = "Donate $%d US!";
 About.Alert.Donate.Button.Restore = "(Restore purchases)";
 
 About.Alert.DonateSuccess.Title = "Thank you!";
-About.Alert.DonateSuccess.Content = "We have received your donation!\nAd is hidden now! :)";
+About.Alert.DonateSuccess.Content = "We have received your donation!\nThank you soooo much! :D";
 
 About.Alert.RestoreSuccess.Title = "Thank you!";
-About.Alert.RestoreSuccess.Content = "Your donation was restored!\nAd is hidden now! :)";
+About.Alert.RestoreSuccess.Content = "Your donation was restored!\nThank you soooo much! :D";
 
 About.Alert.IapDisabledAlert.Title = "IAP is not allowed!";
 About.Alert.IapDisabledAlert.Content = "Please enable in-app purchases in Settings app.";
 About.Alert.IapDisabledAlert.Button.OpenSettings = "Open Settings";
 
-About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!||--Other Apps by Yifei||--Donate & Remove ad :)||";
+About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!||--Other Apps by Yifei||--Donate :)||";
 About.Table.Section1.Content = "Yifei He 何一非||Developer--yifei@hesyifei.com||Email--https://www.hesyifei.com/||Website--%1$@||%2$@";
 
 About.Table.Header.Content = "--About";
