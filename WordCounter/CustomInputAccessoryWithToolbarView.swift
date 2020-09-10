@@ -12,7 +12,7 @@ import UIKit
 // https://stackoverflow.com/a/63805005/2603230
 class CustomInputAccessoryWithToolbarView: UIView {
     public var toolbar: UIToolbar!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
