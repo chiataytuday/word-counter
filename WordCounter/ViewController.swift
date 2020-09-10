@@ -705,12 +705,20 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 		let screenWidth = self.view.bounds.size.width
 		let screenHeight = self.view.bounds.size.height
 
+        var imagesLangPrefix = "en"
+        if WordCounter.isChineseUser() {
+            if WordCounter.isSimplifiedChineseUser() {
+                imagesLangPrefix = "zh-Hans"
+            } else {
+                imagesLangPrefix = "zh-Hant"
+            }
+        }
 		var contentImages = [
-            "1-4-DarkMode.png",
-            "1-4-MoreCountingType.png",
-            "1-4-ActionExtension.png",
-			"1-4-TodayWidget.png",
-			"1-4-About.png",
+            "\(imagesLangPrefix)-1-4-DarkMode.png",
+            "\(imagesLangPrefix)-1-4-MoreCountingType.png",
+            "\(imagesLangPrefix)-1-4-ActionExtension.png",
+			"\(imagesLangPrefix)-1-4-TodayWidget.png",
+			"\(imagesLangPrefix)-1-4-About.png",
 			]
 
 		var contentTitleTexts = [

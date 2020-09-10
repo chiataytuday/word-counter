@@ -23,6 +23,10 @@ class WordCounter {
         return Bundle.main.preferredLocalizations.first?.starts(with: "zh") ?? false
     }
     
+    static func isSimplifiedChineseUser() -> Bool {
+        return Bundle.main.preferredLocalizations.first?.starts(with: "zh-Hans") ?? false
+    }
+    
 	// MARK: - Get string func
     static func getHumanReadableCountString(of string: String, by type: CountByType, shouldUseShortForm: Bool = false) -> String {
         let count = getCount(of: string, by: type)
