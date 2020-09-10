@@ -13,7 +13,7 @@ Global.ProgressingHUD.Label.Counting = "統計中⋯";
 
 Global.TextView.MenuItem.Count = "統計字數⋯";
 
-Global.TextView.PlaceHolder.Text = "請在此輸入或粘貼文字⋯";
+Global.TextView.PlaceHolder.Text = "請在此輸入或貼上文字⋯";
 
 Global.Button.Done = "完成";
 Global.Button.OK = "好！";
