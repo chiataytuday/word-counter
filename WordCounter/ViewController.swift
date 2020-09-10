@@ -705,7 +705,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 		let screenWidth = self.view.bounds.size.width
 		let screenHeight = self.view.bounds.size.height
 
-		let contentImages = [
+		var contentImages = [
             "1-4-DarkMode.png",
             "1-4-MoreCountingType.png",
             "1-4-ActionExtension.png",
@@ -713,7 +713,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 			"1-4-About.png",
 			]
 
-		let contentTitleTexts = [
+		var contentTitleTexts = [
             NSLocalizedString("Welcome.Version.1-4.Title.DarkMode", comment: ""),
             NSLocalizedString("Welcome.Version.1-4.Title.MoreCountingType", comment: ""),
             NSLocalizedString("Welcome.Version.1-4.Title.ActionExtension", comment: ""),
@@ -721,13 +721,22 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 			NSLocalizedString("Welcome.Global.Title.About", comment: "Thanks!"),
 			]
 
-		let contentDetailTexts = [
+		var contentDetailTexts = [
 			NSLocalizedString("Welcome.Version.1-4.Text.DarkMode", comment: ""),
             NSLocalizedString("Welcome.Version.1-4.Text.MoreCountingType", comment: ""),
 			NSLocalizedString("Welcome.Version.1-4.Text.ActionExtension", comment: ""),
 			NSLocalizedString("Welcome.Version.1-4.Text.TodayWidget", comment: ""),
 			NSLocalizedString("Welcome.Global.Text.About", comment: ""),
 			]
+        
+        if #available(iOS 13.0, *) {
+            // Do nothing
+        } else {
+            // Do not include dark mode below iOS 13.
+            contentImages.removeFirst()
+            contentTitleTexts.removeFirst()
+            contentDetailTexts.removeFirst()
+        }
 
 		var introPages = [EAIntroPage]()
 
