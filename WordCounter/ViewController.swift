@@ -11,9 +11,8 @@ import Foundation
 import Async
 import MBProgressHUD
 import EAIntroView
-import GoogleMobileAds
 
-class ViewController: UIViewController, UITextViewDelegate, GADBannerViewDelegate, EAIntroDelegate {
+class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
 	// MARK: - Basic var
 	let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
