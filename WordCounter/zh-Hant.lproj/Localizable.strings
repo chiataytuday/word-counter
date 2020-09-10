@@ -107,7 +107,7 @@ About.Alert.ShowGithub.Title = "您已成為開發人員啦！";
 About.Alert.ShowGithub.Content = "於GitHub上查看「字數統計工具」原始碼？";
 
 About.Alert.Donate.Title = "為開發人員捐款";
-About.Alert.Donate.Content = "您的捐贈可以助我們優化並更新「字數統計工具」、並為您保持一個無廣告創作環境！^_^";
+About.Alert.Donate.Content = "您的捐贈可以助我們優化並更新「字數統計工具」並為您保持一個無廣告創作環境！^_^";
 About.Alert.Donate.Button.Donate = "捐款$%d美元";
 About.Alert.Donate.Button.Restore = "（恢復購買）";
 
