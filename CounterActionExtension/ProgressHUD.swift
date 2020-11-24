@@ -19,7 +19,7 @@ class LoadingUIView {
         var strLabel = UILabel()
 
         let msgNSString: NSString = msg as NSString
-        let msgSize: CGSize = msgNSString.size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17.0)])
+        let msgSize: CGSize = msgNSString.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)])
 
         let strLabelWidth: CGFloat = msgSize.width
 
@@ -34,7 +34,7 @@ class LoadingUIView {
         messageFrame.layer.cornerRadius = 15
         messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
         if indicator {
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+            activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.white)
             activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
             activityIndicator.startAnimating()
             messageFrame.addSubview(activityIndicator)

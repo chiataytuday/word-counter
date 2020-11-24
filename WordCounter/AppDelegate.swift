@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let defaults = UserDefaults.standard
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("didFinishLaunchingWithOptions")
 
 
-        if let userUrl = launchOptions?[UIApplicationLaunchOptionsKey.url] as? URL {
+        if let userUrl = launchOptions?[UIApplication.LaunchOptionsKey.url] as? URL {
             self.callToSetClipBoard(userUrl.absoluteString)
         }
 

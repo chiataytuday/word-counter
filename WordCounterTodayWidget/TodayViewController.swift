@@ -118,7 +118,7 @@ class TodayViewController: UIViewController, UITextViewDelegate, NCWidgetProvidi
 
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets{
         //return UIEdgeInsetsZero
-        return UIEdgeInsetsMake(10, 10, 10, 10)
+        return UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
     }
 
     @objc func pressedOnce() {

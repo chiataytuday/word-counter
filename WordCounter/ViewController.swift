@@ -168,18 +168,18 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
 
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidChangeFrame(_:)), name: .UIKeyboardDidChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidChangeFrame(_:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
 
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.doAfterRotate), name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.doAfterRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
 
 
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
 
         //2015-12-11: Change to DidEnterBackgroundNotification as it is more suiable in Slide Over view
-        NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
 
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.setContentToTextBeforeEnterBackground), name: .catnapSetContentToTextBeforeEnterBackground, object: nil)
@@ -286,13 +286,13 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         super.viewWillDisappear(animated)
         print("準備加載 View Controller 之 viewWillDisappear")
 
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardDidChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
 
-        NotificationCenter.default.removeObserver(self, name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
 
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
 
         NotificationCenter.default.removeObserver(self, name: .catnapSetContentToTextBeforeEnterBackground, object: nil)
         NotificationCenter.default.removeObserver(self, name: .catnapSetContentFromClipBoard, object: nil)
@@ -372,7 +372,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         guard let userInfo = notification.userInfo else { return }
 
         // https://stackoverflow.com/a/27135992/2603230
-        let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        let endFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         let endFrameY = endFrame?.origin.y ?? 0
 
         //print(self.view.convert(endFrame!, to: self.view.window))
@@ -416,8 +416,8 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         stableKeyboardBarButtonItems["Done"] = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonAction))
         stableKeyboardBarButtonItemsNames.append("Done")
 
-        let infoButton: UIButton = UIButton(type: UIButtonType.infoLight)
-        infoButton.addTarget(self, action: #selector(self.infoButtonAction), for: UIControlEvents.touchUpInside)
+        let infoButton: UIButton = UIButton(type: UIButton.ButtonType.infoLight)
+        infoButton.addTarget(self, action: #selector(self.infoButtonAction), for: UIControl.Event.touchUpInside)
         stableKeyboardBarButtonItems["Info"] = UIBarButtonItem(customView: infoButton)
         stableKeyboardBarButtonItemsNames.append("Info")
 
@@ -779,7 +779,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         intro.delegate = self
         intro.show(in: self.view, animateDuration: 0.5)
         intro.showFullscreen()
-        intro.skipButton.setTitle(NSLocalizedString("Welcome.Global.Button.Skip", comment: "Skip"), for: UIControlState())
+        intro.skipButton.setTitle(NSLocalizedString("Welcome.Global.Button.Skip", comment: "Skip"), for: UIControl.State())
         intro.pageControlY = 50
     }
 

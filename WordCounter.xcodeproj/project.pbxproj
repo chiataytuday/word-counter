@@ -466,7 +466,7 @@
 					300BAB611B49097100FE8B37 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 77T9PEZRU7;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1220;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -481,7 +481,7 @@
 					30B7AC921B74698E00517036 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 77T9PEZRU7;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1220;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -491,7 +491,7 @@
 					ED32358B1C20633C0007EF1A = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 77T9PEZRU7;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -968,7 +968,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WordCounter/WordCounter-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -992,7 +992,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WordCounter/WordCounter-BridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1054,7 +1054,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1076,7 +1076,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1098,7 +1098,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1119,7 +1119,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

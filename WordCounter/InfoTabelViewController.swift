@@ -101,7 +101,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         }
 
         if indexPath.section == 0 {
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         }
 
         return cell
@@ -428,7 +428,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
         let iapDisabledAlert = UIAlertController(title: NSLocalizedString("About.Alert.IapDisabledAlert.Title", comment: "IAP is not allowed!"), message: NSLocalizedString("About.Alert.IapDisabledAlert.Content", comment: "Please enable in-app purchases in Settings app."), preferredStyle: .alert)
         iapDisabledAlert.addAction(UIAlertAction(title: NSLocalizedString("About.Alert.IapDisabledAlert.Button.OpenSettings", comment: "Open Settings"), style: .default, handler: { alertAction in
             print("用戶已按下前往「設定」按鈕")
-            let url: URL? = URL(string: UIApplicationOpenSettingsURLString)
+            let url: URL? = URL(string: UIApplication.openSettingsURLString)
             if url != nil{
                 UIApplication.shared.openURL(url!)
             }
