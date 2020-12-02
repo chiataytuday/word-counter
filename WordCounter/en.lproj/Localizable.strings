@@ -6,7 +6,7 @@
   Copyright (c) 2015 Arefly. All rights reserved.
 */
 
-Global.Text.ShareMessage = "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!";
+Global.Text.ShareMessage = "Hi! Still counting words one by one? Get Word Counter Tool on App Store today!";
 Global.Text.NothingOnClipboard = "Nothing is on your clipboard!";
 
 Global.ProgressingHUD.Label.Counting = "Counting…";
@@ -83,13 +83,13 @@ Global.Alert.BeforeReplaceTextViewToClipboard.Content = "NOTICE: This action is 
 
 
 Global.Alert.PlzRate.Title = "Thanks!";
-Global.Alert.PlzRate.Content = "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?";
+Global.Alert.PlzRate.Content = "You have used Word Counter Tool for %d times! Love it? Can you take a second to rate our app?";
 Global.Alert.PlzRate.Button.Yes = "Sure!";
 Global.Alert.PlzRate.Button.Later = "Not now";
 Global.Alert.PlzRate.Button.Cancel = "No, thanks!";
 
 Global.Alert.PlzRateUpdate.Title = "Thanks for update!";
-Global.Alert.PlzRateUpdate.Content = "You have used Word Counter Tools for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?";
+Global.Alert.PlzRateUpdate.Content = "You have used Word Counter Tool for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?";
 Global.Alert.PlzRateUpdate.Button.Yes = "Sure!";
 Global.Alert.PlzRateUpdate.Button.Later = "Not now";
 Global.Alert.PlzRateUpdate.Button.Cancel = "No for this version, thanks!";
@@ -104,10 +104,10 @@ About.Title.Text.Version = "Version %@";
 About.Subtitle.Text.Build = "Build %@";
 
 About.Alert.ShowGithub.Title = "You are now a developer!";
-About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tools on GitHub?";
+About.Alert.ShowGithub.Content = "Open the repository of Word Counter Tool on GitHub?";
 
 About.Alert.Donate.Title = "Donate to developer Yifei! :)";
-About.Alert.Donate.Content = "Since Word Counter Tools does not have any ads (yay!), we would really appreciate your support. It helps us to provide you with a better app! :)";
+About.Alert.Donate.Content = "Since Word Counter Tool does not have any ads (yay!), we would really appreciate your support. It helps us to provide you with a better app! :)";
 About.Alert.Donate.Button.Donate = "Donate $%d US!";
 About.Alert.Donate.Button.Restore = "(Restore purchases)";
 
@@ -121,7 +121,7 @@ About.Alert.IapDisabledAlert.Title = "IAP is not allowed!";
 About.Alert.IapDisabledAlert.Content = "Please enable in-app purchases in Settings app.";
 About.Alert.IapDisabledAlert.Button.OpenSettings = "Open Settings";
 
-About.Table.Section0.Content = "Share Word Counter Tools!||--Rate on App Store!||--Other Apps by Yifei||--Donate :)||";
+About.Table.Section0.Content = "Share Word Counter Tool!||--Rate on App Store!||--Other Apps by Yifei||--Donate :)||";
 About.Table.Section1.Content = "Yifei He 何一非||Developer--yifei@hesyifei.com||Email--https://www.hesyifei.com/||Website--%1$@||%2$@";
 
 About.Table.Header.Content = "--About";
@@ -131,7 +131,7 @@ About.Table.Footer.Content = "--© %@ Yifei He 何一非";
 Welcome.Global.Button.Skip = "Skip";
 
 Welcome.Global.Title.About = "Thanks!";
-Welcome.Global.Text.About = "We promise to keep working on Word Counter Tools.\nIf you have any questions or suggestions for this app,\nfeel free to contact Yifei at yifei@hesyifei.com.\nWe will try our best. Thanks! :)";
+Welcome.Global.Text.About = "We promise to keep working on Word Counter Tool.\nIf you have any questions or suggestions for this app,\nfeel free to contact Yifei at yifei@hesyifei.com.\nWe will try our best. Thanks! :)";
 
 /***** VERSION 1.1-1.3 *****/
 "Welcome.Version.1-1.Text.TodayWidget.Introduction" = "NEW: Check how many words is there in your clipboard using Today Widget inside Notification Centre!";

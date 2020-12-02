@@ -114,7 +114,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             case 0:
                 print("用戶已按下分享按鈕")
 
-                let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words one by one? Get Word Counter Tools on App Store today!")
+                let textToShare = NSLocalizedString("Global.Text.ShareMessage", comment: "Hi! Still counting words one by one? Get Word Counter Tool on App Store today!")
 
                 if let appStoreURL = BasicConfig.appStoreShortUrl {
                     let objectsToShare = [textToShare, appStoreURL] as [Any]
@@ -186,7 +186,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                 mailComposerVC.mailComposeDelegate = self
 
                 mailComposerVC.setToRecipients(["yifei@hesyifei.com"])
-                mailComposerVC.setSubject("About Word Counter Tools")
+                mailComposerVC.setSubject("About Word Counter Tool")
                 mailComposerVC.setMessageBody("", isHTML: false)
 
                 if MFMailComposeViewController.canSendMail() {
@@ -203,12 +203,12 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             case 3:
                 let showGithubAlert = UIAlertController(
                     title: NSLocalizedString("About.Alert.ShowGithub.Title", comment: "You are now a developer!"),
-                    message: NSLocalizedString("About.Alert.ShowGithub.Content", comment: "Open the repository of Word Counter Tools on GitHub?"),
+                    message: NSLocalizedString("About.Alert.ShowGithub.Content", comment: "Open the repository of Word Counter Tool on GitHub?"),
                     preferredStyle: .alert)
 
                 showGithubAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Yes", comment: "Yes"), style: .default, handler: { (action: UIAlertAction) in
                     print("用戶已按下確定打開Github按鈕")
-                    UIApplication.shared.openURL(URL(string: "http://bit.ly/WordCounterGithub")!)
+                    UIApplication.shared.openURL(URL(string: "https://github.com/hesyifei/word-counter")!)
                 }))
 
                 showGithubAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: { (action: UIAlertAction) in

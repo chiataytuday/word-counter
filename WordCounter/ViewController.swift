@@ -825,7 +825,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         let reviewAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.PlzRate.Title", comment: "Thanks!"),
             message: String.localizedStringWithFormat(
-                NSLocalizedString("Global.Alert.PlzRate.Content", comment: "You have used Word Counter Tools for %d times! Love it? Can you take a second to rate our app?"),
+                NSLocalizedString("Global.Alert.PlzRate.Content", comment: "You have used Word Counter Tool for %d times! Love it? Can you take a second to rate our app?"),
                 defaults.integer(forKey: "appLaunchTimes")),
             preferredStyle: .alert)
 
@@ -861,7 +861,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         let reviewAlert = UIAlertController(
             title: NSLocalizedString("Global.Alert.PlzRateUpdate.Title", comment: "Thanks for update!"),
             message: String.localizedStringWithFormat(
-                NSLocalizedString("Global.Alert.PlzRateUpdate.Content", comment: "You have used Word Counter Tools for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?"),
+                NSLocalizedString("Global.Alert.PlzRateUpdate.Content", comment: "You have used Word Counter Tool for %1$d times since you updated to Version %2$@! Love this update? Can you take a second to rate our app?"),
                 defaults.integer(forKey: "appLaunchTimesAfterUpdate"),
                 Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
             ),
