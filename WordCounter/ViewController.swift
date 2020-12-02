@@ -424,7 +424,8 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
         countingKeyboardBarButtonItemsNames = [.chineseWord, .chineseWordWithoutPunctuation, .word, .character, .sentence, .paragraph];
         for name in countingKeyboardBarButtonItemsNames {
-            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.countResultButtonAction))
+            // We have to set some text in `title` to make sure the button is rendered at the correct position.
+            countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "_", style: .plain, target: self, action: #selector(self.countResultButtonAction))
             countingKeyboardBarButtonItems[name]!.tintColor = toolbarButtonTintColor
         }
 
@@ -454,7 +455,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
         if keyBoardToolBar != nil {
             keyBoardToolBar.toolbar.setItems(barItems, animated: true)
-            keyBoardToolBar.toolbar.setNeedsLayout()
+            //keyBoardToolBar.toolbar.setNeedsLayout()
         }
 
         updateTextViewCounting()
