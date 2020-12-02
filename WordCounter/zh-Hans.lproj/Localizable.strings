@@ -161,10 +161,10 @@ Welcome.Global.Text.About = "我们将继续为“字数统计工具”提供支
 "Welcome.Version.1-4.Text.TodayWidget" = "优化“今天”工具\n快去试试吧！";
 
 /***** VERSION 1.4.1-NOW *****/
-"Welcome.Version.1-4.Title.DarkMode" = "深色模式";
-"Welcome.Version.1-4.Title.MoreCountingType" = "更多统计项目";
-"Welcome.Version.1-4.Title.ActionExtension" = "动作扩展";
+"Welcome.Version.1-4-1.Title.DarkMode" = "深色模式";
+"Welcome.Version.1-4-1.Title.MoreCountingType" = "更多统计项目";
+"Welcome.Version.1-4-1.Title.ActionExtension" = "动作扩展";
 
-"Welcome.Version.1-4.Text.DarkMode" = "深色模式助您在黑暗中寻找光明！";
-"Welcome.Version.1-4.Text.MoreCountingType" = "按下结果按钮（如“…个字”）以查看详细统计结果";
-"Welcome.Version.1-4.Text.ActionExtension" = "直接使用分享菜单内的“动作扩展”统计字数";
+"Welcome.Version.1-4-1.Text.DarkMode" = "深色模式助您在黑暗中寻找光明！";
+"Welcome.Version.1-4-1.Text.MoreCountingType" = "按下结果按钮（如“…个字”）以查看详细统计结果";
+"Welcome.Version.1-4-1.Text.ActionExtension" = "直接使用分享菜单内的“动作扩展”统计字数";
