@@ -550,7 +550,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
                 self.topBarCountButton.title = titles[self.topBarCountButtonType]
 
                 for name in self.countingKeyboardBarButtonItemsNames {
-                    self.countingKeyboardBarButtonItems[name]!.title = ""
+                    self.countingKeyboardBarButtonItems[name]!.title = "_"
                     self.countingKeyboardBarButtonItems[name]!.title = titles[name]
                 }
 
