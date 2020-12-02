@@ -149,7 +149,7 @@ Welcome.Global.Text.About = "我們將繼續為「字數統計工具」提供支
 "Welcome.Version.1-3.Text.MoreCountingType" = "重點：加入句數統計及\n分別計算含/不含標點符號之字數\n按下結果按鈕（即「⋯個字」）以查看詳細統計結果";
 "Welcome.Version.1-3.Text.ImproveTodayWidget" = "優化「今天」工具\n快去試試吧！";
 
-/***** VERSION 1.4-NOW *****/
+/***** VERSION 1.4 *****/
 "Welcome.Version.1-4.Title.DarkMode" = "深色模式";
 "Welcome.Version.1-4.Title.MoreCountingType" = "更多統計項目";
 "Welcome.Version.1-4.Title.ActionExtension" = "動作模組";
@@ -159,3 +159,12 @@ Welcome.Global.Text.About = "我們將繼續為「字數統計工具」提供支
 "Welcome.Version.1-4.Text.MoreCountingType" = "按下結果按鈕（如「⋯個字」）以查看詳細統計結果！";
 "Welcome.Version.1-4.Text.ActionExtension" = "直接使用分享菜單內的「動作模組」統計字數！";
 "Welcome.Version.1-4.Text.TodayWidget" = "優化「今天」工具\n快去試試吧！";
+
+/***** VERSION 1.4.1-NOW *****/
+"Welcome.Version.1-4-1.Title.DarkMode" = "深色模式";
+"Welcome.Version.1-4-1.Title.MoreCountingType" = "更多統計項目";
+"Welcome.Version.1-4-1.Title.ActionExtension" = "動作模組";
+
+"Welcome.Version.1-4-1.Text.DarkMode" = "深色模式助您在黑暗中尋找光明！";
+"Welcome.Version.1-4-1.Text.MoreCountingType" = "按下結果按鈕（如「⋯個字」）以查看詳細統計結果！";
+"Welcome.Version.1-4-1.Text.ActionExtension" = "直接使用分享菜單內的「動作模組」統計字數！";

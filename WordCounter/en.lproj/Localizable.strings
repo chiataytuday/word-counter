@@ -149,7 +149,7 @@ Welcome.Global.Text.About = "We promise to keep working on Word Counter Tools.\n
 "Welcome.Version.1-3.Text.MoreCountingType" = "NEW: You can now check how many sentences is there!\nPress Result Button (i.e. \"… words\") for detail counting result";
 "Welcome.Version.1-3.Text.ImproveTodayWidget" = "Improved Today Widget.\nTry it now!";
 
-/***** VERSION 1.4-NOW *****/
+/***** VERSION 1.4 *****/
 "Welcome.Version.1-4.Title.DarkMode" = "Dark Mode";
 "Welcome.Version.1-4.Title.MoreCountingType" = "More Counting Results";
 "Welcome.Version.1-4.Title.ActionExtension" = "Action Extension";
@@ -159,3 +159,12 @@ Welcome.Global.Text.About = "We promise to keep working on Word Counter Tools.\n
 "Welcome.Version.1-4.Text.MoreCountingType" = "Press the toolbar buttons (e.g., \"… words\") for more counting results!";
 "Welcome.Version.1-4.Text.ActionExtension" = "Check how many words there are by using Action Extension in Share menu!";
 "Welcome.Version.1-4.Text.TodayWidget" = "Improved Today Widget.\nTry it now!";
+
+/***** VERSION 1.4.1-NOW *****/
+"Welcome.Version.1-4-1.Title.DarkMode" = "Dark Mode";
+"Welcome.Version.1-4-1.Title.MoreCountingType" = "More Counting Results";
+"Welcome.Version.1-4-1.Title.ActionExtension" = "Action Extension";
+
+"Welcome.Version.1-4-1.Text.DarkMode" = "Embrace the darkness with the new Dark Mode support!";
+"Welcome.Version.1-4-1.Text.MoreCountingType" = "Press the toolbar buttons (e.g., \"… words\") for more counting results!";
+"Welcome.Version.1-4-1.Text.ActionExtension" = "Check how many words there are by using Action Extension in Share menu!";

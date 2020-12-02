@@ -718,23 +718,20 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
             "\(imagesLangPrefix)-1-4-DarkMode.png",
             "\(imagesLangPrefix)-1-4-MoreCountingType.png",
             "\(imagesLangPrefix)-1-4-ActionExtension.png",
-            "\(imagesLangPrefix)-1-4-TodayWidget.png",
             "\(imagesLangPrefix)-1-4-About.png",
         ]
 
         var contentTitleTexts = [
-            NSLocalizedString("Welcome.Version.1-4.Title.DarkMode", comment: ""),
-            NSLocalizedString("Welcome.Version.1-4.Title.MoreCountingType", comment: ""),
-            NSLocalizedString("Welcome.Version.1-4.Title.ActionExtension", comment: ""),
-            NSLocalizedString("Welcome.Version.1-4.Title.TodayWidget", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4-1.Title.DarkMode", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4-1.Title.MoreCountingType", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4-1.Title.ActionExtension", comment: ""),
             NSLocalizedString("Welcome.Global.Title.About", comment: "Thanks!"),
         ]
 
         var contentDetailTexts = [
-            NSLocalizedString("Welcome.Version.1-4.Text.DarkMode", comment: ""),
-            NSLocalizedString("Welcome.Version.1-4.Text.MoreCountingType", comment: ""),
-            NSLocalizedString("Welcome.Version.1-4.Text.ActionExtension", comment: ""),
-            NSLocalizedString("Welcome.Version.1-4.Text.TodayWidget", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4-1.Text.DarkMode", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4-1.Text.MoreCountingType", comment: ""),
+            NSLocalizedString("Welcome.Version.1-4-1.Text.ActionExtension", comment: ""),
             NSLocalizedString("Welcome.Global.Text.About", comment: ""),
         ]
 
