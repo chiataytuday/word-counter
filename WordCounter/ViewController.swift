@@ -455,7 +455,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
         if keyBoardToolBar != nil {
             keyBoardToolBar.toolbar.setItems(barItems, animated: true)
-            //keyBoardToolBar.toolbar.setNeedsLayout()
+            keyBoardToolBar.toolbar.setNeedsLayout()
         }
 
         updateTextViewCounting()
