@@ -956,7 +956,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2131;
+				CURRENT_PROJECT_VERSION = 2132;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -981,7 +981,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounter/WordCounter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2131;
+				CURRENT_PROJECT_VERSION = 2132;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = WordCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1039,7 +1039,7 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2130;
+				CURRENT_PROJECT_VERSION = 2132;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1048,7 +1048,7 @@
 				INFOPLIST_FILE = WordCounterTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.WordCounter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1065,12 +1065,12 @@
 				CODE_SIGN_ENTITLEMENTS = WordCounterTodayWidget/WordCounterTodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2130;
+				CURRENT_PROJECT_VERSION = 2132;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = WordCounterTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arefly.WordCounter.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1087,13 +1087,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2130;
+				CURRENT_PROJECT_VERSION = 2132;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = CounterActionExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arefly.WordCounter.CounterActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1109,12 +1109,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = ActionIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2130;
+				CURRENT_PROJECT_VERSION = 2132;
 				DEVELOPMENT_TEAM = 77T9PEZRU7;
 				INFOPLIST_FILE = CounterActionExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arefly.WordCounter.CounterActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
