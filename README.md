@@ -1,3 +1,3 @@
 # Word Counter Tool
 
-Download: https://apps.apple.com/us/app/word-counter-tools/id1019068052
+Download: https://apps.apple.com/us/app/word-counter-tool/id1019068052
