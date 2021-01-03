@@ -119,12 +119,12 @@ class WordCounter {
     // MARK: - Get summary func
     static func getAllTypes(for string: String) -> [CountByType] {
         var types: [CountByType] = []
-        let containsChinese = string.isEmptyOrContainsChineseCharacters
-        if containsChinese && isChineseUser() {
+        let containsChinese = string.containsChineseCharacters
+        if isChineseUser() && (containsChinese || string.isEmpty) {
             types.append(contentsOf: [.chineseWord, .chineseWordWithoutPunctuation])
         }
         types.append(contentsOf: [.word, .character, .characterWithSpaces, .sentence, .paragraph])
-        if containsChinese && !isChineseUser() {
+        if !isChineseUser() && containsChinese {
             types.append(contentsOf: [.chineseWord, .chineseWordWithoutPunctuation])
         }
         return types
