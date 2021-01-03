@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Async
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -160,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func callToSetClipBoard(_ url: String) {
         print("callToSetClipBoard(\(url))")
         if url == "count://fromClipBoard" {
-            Async.main {                // 於主線執行
+            DispatchQueue.main.async {                // 於主線執行
                 NotificationCenter.default.post(name: .catnapSetContentFromClipBoard, object: self)
             }
         }
@@ -168,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func callToSetTextBeforeEnterBackground() {
         print("callToSetTextBeforeEnterBackground")
-        Async.main {                // 於主線執行
+        DispatchQueue.main.async {                // 於主線執行
             NotificationCenter.default.post(name: .catnapSetContentToTextBeforeEnterBackground, object: self)
         }
     }

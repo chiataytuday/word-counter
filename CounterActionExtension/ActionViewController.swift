@@ -91,7 +91,6 @@ class ActionViewController: UIViewController {
 
 
         var message: String = ""
-        // Cannot use Async since Swift Framework is not allowed using in app extension :(
         DispatchQueue.global(qos: .background).async {
             message = WordCounter.getHumanReadableSummary(of: text, by: WordCounter.getAllTypes(for: text))
             DispatchQueue.main.async {

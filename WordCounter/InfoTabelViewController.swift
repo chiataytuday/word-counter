@@ -10,7 +10,6 @@ import UIKit
 import Foundation
 import StoreKit
 import MessageUI
-import Async
 import MBProgressHUD
 
 class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserver, SKProductsRequestDelegate, MFMailComposeViewControllerDelegate {
@@ -120,7 +119,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     let objectsToShare = [textToShare, appStoreURL] as [Any]
                     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 
-                    Async.main {
+                    DispatchQueue.main.async {
                         self.present(activityVC, animated: true, completion: nil)
                     }
 
@@ -166,7 +165,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     print("用戶已按下取消按鈕")
                 }))
 
-                Async.main {
+                DispatchQueue.main.async {
                     self.present(donateAlert, animated: true, completion: nil)
                 }
 
@@ -190,7 +189,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                 mailComposerVC.setMessageBody("", isHTML: false)
 
                 if MFMailComposeViewController.canSendMail() {
-                    Async.main {
+                    DispatchQueue.main.async {
                         self.present(mailComposerVC, animated: true, completion: nil)
                     }
                 }
@@ -215,7 +214,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                     print("用戶已按下取消按鈕")
                 }))
 
-                Async.main {
+                DispatchQueue.main.async {
                     self.present(showGithubAlert, animated: true, completion: nil)
                 }
 
@@ -244,7 +243,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
         let alert = UIAlertController(title: "Donation Error", message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: nil))
-        Async.main {
+        DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -354,7 +353,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             print("用戶已按下完成按鈕")
         }))
 
-        Async.main {
+        DispatchQueue.main.async {
             self.present(donateSuccessAlert, animated: true, completion: nil)
         }
     }
@@ -405,13 +404,13 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
                 print("用戶已按下完成按鈕")
             }))
 
-            Async.main {
+            DispatchQueue.main.async {
                 self.present(restoreSuccessAlert, animated: true, completion: nil)
             }
         } else {
             let alert = UIAlertController(title: "Donation Record Not Found", message: "We cannot find your donation record! Please contact the developer if you have any questions! :)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Close", comment: "Close"), style: .cancel, handler: nil))
-            Async.main {
+            DispatchQueue.main.async {
                 self.present(alert, animated: true, completion: nil)
             }
 
@@ -437,7 +436,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
             print("用戶已按下關閉按鈕")
         }))
 
-        Async.main {
+        DispatchQueue.main.async {
             self.present(iapDisabledAlert, animated: true, completion: nil)
         }
     }
@@ -450,7 +449,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
     // MARK: - Other func
     func switchHudWithoutTitle(_ show: Bool){
-        Async.main {
+        DispatchQueue.main.async {
             if show {
                 MBProgressHUD.showAdded(to: self.view.window!, animated: true)
             } else {

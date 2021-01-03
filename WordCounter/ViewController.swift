@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import Async
 import MBProgressHUD
 import EAIntroView
 
@@ -530,7 +529,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         var titles: [CountByType: String] = [:]
 
         if let myText = self.tv.text {
-            Async.background {
+            DispatchQueue.global(qos: .background).async {
                 if (WordCounter.isChineseUser()) {
                     if myText.isEmptyOrContainsChineseCharacters {
                         self.topBarCountButtonType = .chineseWord
@@ -546,15 +545,17 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
                     }
                     titles[type] = WordCounter.getHumanReadableCountString(of: myText, by: type, shouldUseShortForm: true)
                 }
-            }.main {
-                self.topBarCountButton.title = titles[self.topBarCountButtonType]
 
-                for name in self.countingKeyboardBarButtonItemsNames {
-                    self.countingKeyboardBarButtonItems[name]!.title = "_"
-                    self.countingKeyboardBarButtonItems[name]!.title = titles[name]
+                DispatchQueue.main.async {
+                    self.topBarCountButton.title = titles[self.topBarCountButtonType]
+
+                    for name in self.countingKeyboardBarButtonItemsNames {
+                        self.countingKeyboardBarButtonItems[name]!.title = "_"
+                        self.countingKeyboardBarButtonItems[name]!.title = titles[name]
+                    }
+
+                    //print(titles["Sentence"])
                 }
-
-                //print(titles["Sentence"])
             }
         }
     }
@@ -565,7 +566,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         if let clipBoard = UIPasteboard.general.string {
             print("已獲取用戶剪貼簿內容：\(clipBoard)")
             if (self.tv.text.isEmpty) || (self.tv.text == clipBoard) {
-                Async.main {
+                DispatchQueue.main.async {
                     self.replaceTextViewContent(clipBoard)
                 }
             } else {
@@ -583,7 +584,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
                     print("用戶已按下取消按鈕")
                 }))
 
-                Async.main {
+                DispatchQueue.main.async {
                     self.present(replaceContentAlert, animated: true, completion: nil)
                 }
             }
@@ -595,7 +596,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
         if let textBeforeEnterBackground = defaults.string(forKey: "textBeforeEnterBackground") {
             if textBeforeEnterBackground != self.tv.text {
-                Async.main {
+                DispatchQueue.main.async {
                     self.replaceTextViewContent(textBeforeEnterBackground)
                 }
             }
@@ -628,7 +629,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
             }
         }))
 
-        Async.main {
+        DispatchQueue.main.async {
             self.present(clearContentAlert, animated: true, completion: nil)
         }
     }
@@ -649,7 +650,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
              ] as? UIActivityItemsConfigurationReading*/
         }
 
-        Async.main {
+        DispatchQueue.main.async {
             self.present(activityViewController, animated: true, completion: nil)
         }
     }
@@ -672,21 +673,22 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         progressHUD.label.text = NSLocalizedString("Global.ProgressingHUD.Label.Counting", comment: "Counting...")
 
         var message: String = ""
-        Async.background {
+        DispatchQueue.global(qos: .background).async {
             message = WordCounter.getHumanReadableSummary(of: text, by: WordCounter.getAllTypes(for: text))
-        }.main {
-            MBProgressHUD.hide(for: self.view.window!, animated: true)
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: self.view.window!, animated: true)
 
-            let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
+                let alertTitle = NSLocalizedString("Global.Alert.Counter.Title", comment: "Counter")
 
-            let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
-            countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
-                print("用戶已按下確定按鈕")
-                if keyboardShowingBefore {
-                    self.startEditing()
-                }
-            }))
-            self.present(countingResultAlert, animated: true, completion: nil)
+                let countingResultAlert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+                countingResultAlert.addAction(UIAlertAction(title: NSLocalizedString("Global.Button.Done", comment: "Done"), style: .cancel, handler: { (action: UIAlertAction) in
+                    print("用戶已按下確定按鈕")
+                    if keyboardShowingBefore {
+                        self.startEditing()
+                    }
+                }))
+                self.present(countingResultAlert, animated: true, completion: nil)
+            }
         }
     }
 
@@ -852,7 +854,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
             self.presentingOtherView = false
         }))
 
-        Async.main {
+        DispatchQueue.main.async {
             self.present(reviewAlert, animated: true, completion: nil)
         }
     }
@@ -887,7 +889,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
             self.presentingOtherView = false
         }))
 
-        Async.main {
+        DispatchQueue.main.async {
             self.present(reviewAlert, animated: true, completion: nil)
         }
     }
