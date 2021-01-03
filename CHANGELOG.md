@@ -229,7 +229,7 @@
 - 支持 iOS 11
 - 修复其它错误
 
-## Version 1.4 - in review
+## Version 1.4 - 2020-09-11
 
 ### English
 
@@ -253,4 +253,38 @@
 - 您现可使用导航栏右上方的“分享”按钮轻松分享您所输入的内容
 - 支持深色模式
 - 优化字数计算方法
+- 修复其它错误
+
+## Version 1.4.1 - 2020-12-03
+
+### English
+
+- iOS 14 supports
+- Fix minor bugs
+
+### 繁體中文
+
+- 支援 iOS 14
+- 修復其它錯誤
+
+### 简体中文
+
+- 支持 iOS 14
+- 修复其它错误
+
+## Version 1.4.2 - in review
+
+### English
+
+- Support counting “character (with spaces)”
+- Fix minor bugs
+
+### 繁體中文
+
+- 加入「含空格字符數」統計
+- 修復其它錯誤
+
+### 简体中文
+
+- 加入“含空格字符数”统计
 - 修复其它错误
