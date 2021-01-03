@@ -95,7 +95,7 @@ class WordCounter {
         //print(resultsRanges)
         var counts = string.count
         for resultsString in resultsStrings {
-            counts -= resultsString.count
+            counts -= resultsString.range.length
         }
         counts += resultsStrings.count
 
@@ -147,12 +147,17 @@ class WordCounter {
      - Parameter text:   The text.
      - Returns: A new `[string]` with result.
      */
-    fileprivate static func matches(for regex: String, in text: String) -> [String] {
+    fileprivate static func matches(for regex: String, in text: String) -> [NSTextCheckingResult] {
         let regex = try! NSRegularExpression(pattern: regex,
                                              options: [])
         let nsString = text as NSString
         let results = regex.matches(in: text, options: [], range: NSMakeRange(0, nsString.length))
-        return results.map { nsString.substring(with: $0.range) }
+        return results
+    }
+
+    fileprivate static func matchesString(for regex: String, in text: String) -> [String] {
+        let results = matches(for: regex, in: text)
+        return results.map { (text as NSString).substring(with: $0.range) }
     }
 }
 
