@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0850EE042509CDF90017FBDA /* zh-Hans-1-4-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EDFF2509CDF80017FBDA /* zh-Hans-1-4-MoreCountingType.png */; };
-		0850EE052509CDF90017FBDA /* zh-Hans-1-4-TodayWidget.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE002509CDF80017FBDA /* zh-Hans-1-4-TodayWidget.png */; };
 		0850EE062509CDF90017FBDA /* zh-Hans-1-4-ActionExtension.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE012509CDF90017FBDA /* zh-Hans-1-4-ActionExtension.png */; };
 		0850EE072509CDF90017FBDA /* zh-Hans-1-4-DarkMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE022509CDF90017FBDA /* zh-Hans-1-4-DarkMode.png */; };
 		0850EE082509CDF90017FBDA /* zh-Hans-1-4-About.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE032509CDF90017FBDA /* zh-Hans-1-4-About.png */; };
 		0850EE0E2509D52D0017FBDA /* zh-Hant-1-4-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE092509D52D0017FBDA /* zh-Hant-1-4-MoreCountingType.png */; };
-		0850EE0F2509D52D0017FBDA /* zh-Hant-1-4-TodayWidget.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE0A2509D52D0017FBDA /* zh-Hant-1-4-TodayWidget.png */; };
 		0850EE102509D52D0017FBDA /* zh-Hant-1-4-About.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE0B2509D52D0017FBDA /* zh-Hant-1-4-About.png */; };
 		0850EE112509D52D0017FBDA /* zh-Hant-1-4-DarkMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE0C2509D52D0017FBDA /* zh-Hant-1-4-DarkMode.png */; };
 		0850EE122509D52D0017FBDA /* zh-Hant-1-4-ActionExtension.png in Resources */ = {isa = PBXBuildFile; fileRef = 0850EE0D2509D52D0017FBDA /* zh-Hant-1-4-ActionExtension.png */; };
@@ -23,7 +21,6 @@
 		08C4A8DC25076A4400F39221 /* en-1-4-MoreCountingType.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8D825076A4400F39221 /* en-1-4-MoreCountingType.png */; };
 		08C4A8DF25077FE300F39221 /* en-1-4-ActionExtension.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8DD25077FE300F39221 /* en-1-4-ActionExtension.png */; };
 		08C4A8E025077FE300F39221 /* en-1-4-DarkMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8DE25077FE300F39221 /* en-1-4-DarkMode.png */; };
-		08C4A8E22507801800F39221 /* en-1-4-TodayWidget.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C4A8E12507801800F39221 /* en-1-4-TodayWidget.png */; };
 		2A643963C40F2666FEE08FAC /* Pods_CounterActionExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4514572F0021F808136B684 /* Pods_CounterActionExtension.framework */; };
 		300BAB681B49097100FE8B37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300BAB671B49097100FE8B37 /* AppDelegate.swift */; };
 		300BAB6B1B49097100FE8B37 /* WordCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 300BAB691B49097100FE8B37 /* WordCounter.xcdatamodeld */; };
@@ -101,12 +98,10 @@
 /* Begin PBXFileReference section */
 		04816380468CE296F98C0BCC /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounter.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounter/Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
 		0850EDFF2509CDF80017FBDA /* zh-Hans-1-4-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hans-1-4-MoreCountingType.png"; sourceTree = "<group>"; };
-		0850EE002509CDF80017FBDA /* zh-Hans-1-4-TodayWidget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hans-1-4-TodayWidget.png"; sourceTree = "<group>"; };
 		0850EE012509CDF90017FBDA /* zh-Hans-1-4-ActionExtension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hans-1-4-ActionExtension.png"; sourceTree = "<group>"; };
 		0850EE022509CDF90017FBDA /* zh-Hans-1-4-DarkMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hans-1-4-DarkMode.png"; sourceTree = "<group>"; };
 		0850EE032509CDF90017FBDA /* zh-Hans-1-4-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hans-1-4-About.png"; sourceTree = "<group>"; };
 		0850EE092509D52D0017FBDA /* zh-Hant-1-4-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hant-1-4-MoreCountingType.png"; sourceTree = "<group>"; };
-		0850EE0A2509D52D0017FBDA /* zh-Hant-1-4-TodayWidget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hant-1-4-TodayWidget.png"; sourceTree = "<group>"; };
 		0850EE0B2509D52D0017FBDA /* zh-Hant-1-4-About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hant-1-4-About.png"; sourceTree = "<group>"; };
 		0850EE0C2509D52D0017FBDA /* zh-Hant-1-4-DarkMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hant-1-4-DarkMode.png"; sourceTree = "<group>"; };
 		0850EE0D2509D52D0017FBDA /* zh-Hant-1-4-ActionExtension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zh-Hant-1-4-ActionExtension.png"; sourceTree = "<group>"; };
@@ -116,7 +111,6 @@
 		08C4A8D825076A4400F39221 /* en-1-4-MoreCountingType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "en-1-4-MoreCountingType.png"; sourceTree = "<group>"; };
 		08C4A8DD25077FE300F39221 /* en-1-4-ActionExtension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "en-1-4-ActionExtension.png"; sourceTree = "<group>"; };
 		08C4A8DE25077FE300F39221 /* en-1-4-DarkMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "en-1-4-DarkMode.png"; sourceTree = "<group>"; };
-		08C4A8E12507801800F39221 /* en-1-4-TodayWidget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "en-1-4-TodayWidget.png"; sourceTree = "<group>"; };
 		0CAA653F80C069550B622A1A /* Pods_WordCounterTodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordCounterTodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5CEAA6F98CE78F7CC3E689 /* Pods-WordCounterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordCounterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		300BAB621B49097100FE8B37 /* WordCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,19 +279,16 @@
 			children = (
 				08C4A8DD25077FE300F39221 /* en-1-4-ActionExtension.png */,
 				08C4A8DE25077FE300F39221 /* en-1-4-DarkMode.png */,
-				08C4A8E12507801800F39221 /* en-1-4-TodayWidget.png */,
 				08C4A8D825076A4400F39221 /* en-1-4-MoreCountingType.png */,
 				08C4A8D3250761FC00F39221 /* en-1-4-About.png */,
 				0850EE032509CDF90017FBDA /* zh-Hans-1-4-About.png */,
 				0850EE012509CDF90017FBDA /* zh-Hans-1-4-ActionExtension.png */,
 				0850EE022509CDF90017FBDA /* zh-Hans-1-4-DarkMode.png */,
 				0850EDFF2509CDF80017FBDA /* zh-Hans-1-4-MoreCountingType.png */,
-				0850EE002509CDF80017FBDA /* zh-Hans-1-4-TodayWidget.png */,
 				0850EE0B2509D52D0017FBDA /* zh-Hant-1-4-About.png */,
 				0850EE0D2509D52D0017FBDA /* zh-Hant-1-4-ActionExtension.png */,
 				0850EE0C2509D52D0017FBDA /* zh-Hant-1-4-DarkMode.png */,
 				0850EE092509D52D0017FBDA /* zh-Hant-1-4-MoreCountingType.png */,
-				0850EE0A2509D52D0017FBDA /* zh-Hant-1-4-TodayWidget.png */,
 			);
 			name = "Welcome Image";
 			sourceTree = "<group>";
@@ -524,15 +515,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0850EE0E2509D52D0017FBDA /* zh-Hant-1-4-MoreCountingType.png in Resources */,
-				0850EE0F2509D52D0017FBDA /* zh-Hant-1-4-TodayWidget.png in Resources */,
 				08C4A8E025077FE300F39221 /* en-1-4-DarkMode.png in Resources */,
 				0850EE072509CDF90017FBDA /* zh-Hans-1-4-DarkMode.png in Resources */,
 				0850EE112509D52D0017FBDA /* zh-Hant-1-4-DarkMode.png in Resources */,
 				300BAB701B49097100FE8B37 /* Main.storyboard in Resources */,
-				08C4A8E22507801800F39221 /* en-1-4-TodayWidget.png in Resources */,
 				0850EE122509D52D0017FBDA /* zh-Hant-1-4-ActionExtension.png in Resources */,
 				08C4A8D4250761FC00F39221 /* en-1-4-About.png in Resources */,
-				0850EE052509CDF90017FBDA /* zh-Hans-1-4-TodayWidget.png in Resources */,
 				3021E3791B54DCD900AEF136 /* Localizable.strings in Resources */,
 				0850EE062509CDF90017FBDA /* zh-Hans-1-4-ActionExtension.png in Resources */,
 				0850EE102509D52D0017FBDA /* zh-Hant-1-4-About.png in Resources */,
