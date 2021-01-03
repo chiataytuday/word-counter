@@ -49,10 +49,7 @@ class InfoTabelViewController: UITableViewController, SKPaymentTransactionObserv
 
 
         let startYear = 2015
-        var currentYear = 2017
-        if let realYear = (Calendar(identifier: Calendar.Identifier.gregorian) as NSCalendar).components([.year], from: Date()).year {
-            currentYear = realYear
-        }
+        let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())
 
         var copyrightYears = "\(startYear)"
         if currentYear > startYear {
