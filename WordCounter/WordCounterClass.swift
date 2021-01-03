@@ -70,17 +70,21 @@ class WordCounter {
             }
         }
 
-        var substrings: [String] = []
+        var substringsCount = 0
         string.enumerateSubstrings(in: string.startIndex..., options: enumerateSubstringsOptions) {
             substring, substringRange, enclosingRange, stop in
-            if let substring = substring {
-                // https://stackoverflow.com/a/27768113/2603230
-                if !substring.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    substrings.append(substring)
-                }
+            guard let substring = substring else {
+                return
             }
+
+            // https://stackoverflow.com/a/27768113/2603230
+            if substring.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                return
+            }
+
+            substringsCount += 1
         }
-        return substrings.count
+        return substringsCount
     }
 
     static func getChineseWordCount(of string: String, removeChinesePunctuations: Bool) -> Int {

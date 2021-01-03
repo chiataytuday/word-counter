@@ -523,7 +523,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         updateTextViewCounting()
     }
 
-    func updateTextViewCounting () {
+    func updateTextViewCounting() {
         //var wordTitle = ""
 
         var titles: [CountByType: String] = [:]
