@@ -8,181 +8,153 @@
 
 /* Begin PBXBuildFile section */
 		0C8CF77EEEADEE2E35B82FCCDF12F679 /* Pods-WordCounterTodayWidget-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 01D00B2FD352DB1C4F53FB65EC353594 /* Pods-WordCounterTodayWidget-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		356099233472367A3820D75DCD3C5AB8 /* EARestrictedScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D33803B7038463A157545FF5C9290B3 /* EARestrictedScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		36F649E11991BBAE40D19321B72CA45A /* EAIntroView.h in Headers */ = {isa = PBXBuildFile; fileRef = BEA206F28D3002AE7A27896F0499A7C9 /* EAIntroView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48C199F516576147CBEB6A15D21EBD07 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 753A30C62CB0F8D69A4F805670495F8C /* EARestrictedScrollView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		58F0C306541B5F08526BB2B429057BA1 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD79C173B4A3580EEB30FE07A8F7596 /* Async.swift */; };
+		1485A8A7915C2EA30069464EC8446B56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
+		230A1354005F84E52DA9E2A8D7AB2D29 /* Pods-WordCounter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D97B81B732F57FD1B04C8F84A59A8F /* Pods-WordCounter-dummy.m */; };
+		25692AFE35792FB970AD0E122646E488 /* EARestrictedScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C8B5ACB5A4E0E94BE470D530148F9C4 /* EARestrictedScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36F649E11991BBAE40D19321B72CA45A /* EAIntroView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EB903B6B7F026C64ECF4742E2CFA7BF /* EAIntroView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C42AFB882E8FB9A0316743F6B508E22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
 		5FF7DB9079DD5110B926868E29D2BB27 /* Pods-CounterActionExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACA5A0620188DC1476C2AA4A23596EC /* Pods-CounterActionExtension-dummy.m */; };
-		62E66906171074C835FC5388B4C3179F /* AsyncSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7F08A6BFA3AC9B03717BD0990E8286A /* AsyncSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		64556B5BA8F4C2FE944428FF8672634B /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD94E214D0EED9FB0FB1C672EC88165D /* EAIntroView.m */; };
-		64F46B6A8DBA885AF570A54A082D1BAA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E53022516FF045B02BAF95E4121214B /* QuartzCore.framework */; };
-		70EE1C774C978E1876AE6CA1224E897D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 66915F1632C3006D00B7BFD085E9993B /* MBProgressHUD.m */; };
-		7615435863AA1EEF8A414ED897E34FB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
-		786AE1A2DF986A4903519DA2307D4CEF /* AsyncSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A174753BF034D362FB398476F3112AEB /* AsyncSwift-dummy.m */; };
-		81B9E2F21B1EF9FE4E769103108DEA8A /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5D698CDBB0765CC46904DD766B2BF8E /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64556B5BA8F4C2FE944428FF8672634B /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = E413352B08EFE3DAE9AF6F66104C2CEA /* EAIntroView.m */; };
+		70EE1C774C978E1876AE6CA1224E897D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9194CDEF87B791E91850A395BDBF558D /* MBProgressHUD.m */; };
+		718705C4D9EF11F0E239051CB7791827 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
+		7596519E375DA27F6E7D05D440757055 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0DEB6CEA84F3E5E9B7C3F2CF90AD34 /* CoreGraphics.framework */; };
+		81B9E2F21B1EF9FE4E769103108DEA8A /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE72773AD9A0F0578D36057DF98A6AC /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82673DEAB21D5C39B24F4548D9E9C7BE /* EARestrictedScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353881BE08D48B1229AFDB6DB1646ACD /* EARestrictedScrollView.framework */; };
-		8C333141D71E88EEE63AA235A2084618 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
 		8D6BA817FA2C4EB80DB49BB17C9E7178 /* Pods-WordCounterTodayWidget-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5718457A334721D8A10EB97E567283AB /* Pods-WordCounterTodayWidget-dummy.m */; };
-		8E05EC0AF7DD1173BE36F83037873158 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
-		9BF64247CBB69007B832FD9AEC6C72C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
-		A0E2B2BDEEB0D76F78BDABF365A29E71 /* EAIntroView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5044CF9AEC709C9EEF702E75972586FD /* EAIntroView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A17439B0DCEFEBD335BB873441949239 /* EAIntroView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 019A40528281292A61470FA06F8EF919 /* EAIntroView-dummy.m */; };
-		A601994621C892656F60D1A1292A9565 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8F411F42CA6BADF75BC660D20461CE /* CoreGraphics.framework */; };
-		B2383DBFBA39661F4F89E050C40099ED /* Pods-WordCounter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A2D55ACA7CDC55BD23E082D83D24090 /* Pods-WordCounter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6F807410B36805EA83DC26ACC5EDC27 /* Pods-WordCounter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D97B81B732F57FD1B04C8F84A59A8F /* Pods-WordCounter-dummy.m */; };
+		988C810B4A994ADAC600A3A63C442E21 /* EARestrictedScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C18C93A3F83E1FD047E475AFAC816A5D /* EARestrictedScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0E2B2BDEEB0D76F78BDABF365A29E71 /* EAIntroView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9158946BF976A451501233B1A304B2BE /* EAIntroView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A17439B0DCEFEBD335BB873441949239 /* EAIntroView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2163709CE4BB7274DCF81FFEE2E67D /* EAIntroView-dummy.m */; };
+		A2E7E344BC3D085D932EACBF660D0246 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF70656419D0272AC7BCABDD7FDA9C7 /* EARestrictedScrollView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A9B2055315E3E0C62EFC216CE088BF45 /* EARestrictedScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 876B8E6F047743FB2449A22BC07514C7 /* EARestrictedScrollView-dummy.m */; };
+		AC1B5B34F7456E723EC031A496585471 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
 		BFDB221717920C3D7589047764911D32 /* Pods-WordCounterTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B8261904AD480A992EAF885F7811AC /* Pods-WordCounterTests-dummy.m */; };
-		C3D4AD224A9620644A2BA251E0D64D23 /* EARestrictedScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1762D70FD266B1CCBBAB3EA86E86D6 /* EARestrictedScrollView-dummy.m */; };
-		D6CD4BFDA15FD2FBC23680D1E9381045 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
-		DABF20F73D27572CD97071A6D4DB9004 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2208E1C8F14C7EC0BD20E6C2D9A9DB01 /* MBProgressHUD-dummy.m */; };
-		DAD4E35CCEF11450E7B12475A3B7D105 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
-		DC432A6DE7005B1A6BF8012F3A26143C /* EAIntroPage.h in Headers */ = {isa = PBXBuildFile; fileRef = B2222DDE1D6D48B19BCD0666D5564D2A /* EAIntroPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E36016EC16D865F1B77B0A0AEF298E08 /* EARestrictedScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F887954ECC95750A1053F1D978EBC4B1 /* EARestrictedScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DABF20F73D27572CD97071A6D4DB9004 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C79A04765B931D2BD0C47403E6F7BE7 /* MBProgressHUD-dummy.m */; };
+		DC432A6DE7005B1A6BF8012F3A26143C /* EAIntroPage.h in Headers */ = {isa = PBXBuildFile; fileRef = D4016F560E9122FBA1ADC9B7370D896E /* EAIntroPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5907E6BFD00AB18B17B21A11E696AB1 /* Pods-CounterActionExtension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CA88C3B818EF939544025B740B59804 /* Pods-CounterActionExtension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9C08DB691FCA6ECADD9AEC2E435A062 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB9267E06E7424926AA5FCBCB9E133C /* EAIntroPage.m */; };
-		EB2A4C29BE958CCB03B3FD9FAB927F1F /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 318FD2BFE8CD4F2A194B29EB44E610C5 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9C08DB691FCA6ECADD9AEC2E435A062 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E94B1B1A9C102257C275694E2156179 /* EAIntroPage.m */; };
+		EB2A4C29BE958CCB03B3FD9FAB927F1F /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F431FAA4054E7CCF023FBF37AA82CEB /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1B23FF76CFF39633E6F47725D00BE0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
+		F319C231D9E586FF1A3D3EC09090BCE8 /* Pods-WordCounter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A2D55ACA7CDC55BD23E082D83D24090 /* Pods-WordCounter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4DF3BEF0E2764F378BA6478504B445C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
 		F52CB1EE3534DAC99E2131A3D0C142E7 /* Pods-WordCounterTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ECFBDFB20F96A6FF837A4783FF19DE6 /* Pods-WordCounterTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF0EE7E6F869E55DA268F25622674EB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
-		FF23CC64DD86A326E3FE3AA55FCD7581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */; };
+		F612969E69DE5F072AD96720641B1184 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD48A985D3AC156D710DCE05AC47FAF6 /* QuartzCore.framework */; };
+		FBEAEF6A498A3D55B29B8BB3AEEDCBDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1088D65D76B89BEB61EB0CF143E728B3 /* PBXContainerItemProxy */ = {
+		30FA6BE3ABA2D5462B75559383B5E128 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 83EF4E94EC7CCDDCF4BC86C414A2963A;
 			remoteInfo = EARestrictedScrollView;
 		};
-		13F26C9031A6493292C14EE49C3679D6 /* PBXContainerItemProxy */ = {
+		511D2FAF5F532AD8DBC8376D6221A043 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83EF4E94EC7CCDDCF4BC86C414A2963A;
+			remoteInfo = EARestrictedScrollView;
+		};
+		8438DA8C34F5735352238CFE4528308B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 82B0A41D3031FF27D78E17B0A9A46FB0;
 			remoteInfo = MBProgressHUD;
 		};
-		7B00F381DD7CD190D969A0FAA5458D0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 975690F47D860B117FB4B04B42AB69C9;
-			remoteInfo = AsyncSwift;
-		};
-		80ED328CD76449C7F0D626C94F3CBB45 /* PBXContainerItemProxy */ = {
+		C70A3743AD0A41BD874C3605FB1FF530 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CC5D5F25300964D7791790EA262460A0;
 			remoteInfo = EAIntroView;
 		};
-		E8C9BB6EAA38866C1B86DC8B07DF031A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83EF4E94EC7CCDDCF4BC86C414A2963A;
-			remoteInfo = EARestrictedScrollView;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		011B17A044D6145F891A23C28F52B72A /* AsyncSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AsyncSwift-Info.plist"; sourceTree = "<group>"; };
-		019A40528281292A61470FA06F8EF919 /* EAIntroView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EAIntroView-dummy.m"; sourceTree = "<group>"; };
+		0166D23862800AAACA5121BCC0BA1E66 /* EAIntroView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EAIntroView.modulemap; sourceTree = "<group>"; };
 		01D00B2FD352DB1C4F53FB65EC353594 /* Pods-WordCounterTodayWidget-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WordCounterTodayWidget-umbrella.h"; sourceTree = "<group>"; };
 		0C070B692DEE0F829D72BA48C317C94E /* Pods-WordCounterTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounterTests-Info.plist"; sourceTree = "<group>"; };
-		0CD79C173B4A3580EEB30FE07A8F7596 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Async/Async.swift; sourceTree = "<group>"; };
-		0E8F411F42CA6BADF75BC660D20461CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		15B8261904AD480A992EAF885F7811AC /* Pods-WordCounterTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WordCounterTests-dummy.m"; sourceTree = "<group>"; };
-		17C8C663E2E7B835D7887C3E1073B6CF /* EAIntroView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EAIntroView.debug.xcconfig; sourceTree = "<group>"; };
-		1871BAC50BBA73960B3DC5A9F98A5AFC /* EARestrictedScrollView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EARestrictedScrollView-Info.plist"; sourceTree = "<group>"; };
-		1AB9267E06E7424926AA5FCBCB9E133C /* EAIntroPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroPage.m; path = EAIntroView/EAIntroPage.m; sourceTree = "<group>"; };
-		1D1762D70FD266B1CCBBAB3EA86E86D6 /* EARestrictedScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EARestrictedScrollView-dummy.m"; sourceTree = "<group>"; };
-		20F1DFBDCEFF4C7413DDED8720770015 /* EARestrictedScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EARestrictedScrollView.modulemap; sourceTree = "<group>"; };
-		2208E1C8F14C7EC0BD20E6C2D9A9DB01 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		23D3B328CD3272A4FB7FF81890DED1E0 /* AsyncSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AsyncSwift.debug.xcconfig; sourceTree = "<group>"; };
-		2968E61B8A3D37B7B89150F5F8D1196A /* MBProgressHUD-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBProgressHUD-Info.plist"; sourceTree = "<group>"; };
+		1A0DEB6CEA84F3E5E9B7C3F2CF90AD34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		29FD6FAA77D4E0BDB989279F5961F0BA /* Pods-WordCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounter.release.xcconfig"; sourceTree = "<group>"; };
+		2AF70656419D0272AC7BCABDD7FDA9C7 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EARestrictedScrollView.m; path = EARestrictedScrollView/EARestrictedScrollView.m; sourceTree = "<group>"; };
+		2BCA344E1D53F91C821940457691DF2B /* MBProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
 		2CA88C3B818EF939544025B740B59804 /* Pods-CounterActionExtension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CounterActionExtension-umbrella.h"; sourceTree = "<group>"; };
-		2D33803B7038463A157545FF5C9290B3 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EARestrictedScrollView.h; path = EARestrictedScrollView/EARestrictedScrollView.h; sourceTree = "<group>"; };
-		318FD2BFE8CD4F2A194B29EB44E610C5 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		321B4A38F53943FCB67444B3CC6AB5A6 /* AsyncSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AsyncSwift.release.xcconfig; sourceTree = "<group>"; };
+		2E94B1B1A9C102257C275694E2156179 /* EAIntroPage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroPage.m; path = EAIntroView/EAIntroPage.m; sourceTree = "<group>"; };
+		2EB903B6B7F026C64ECF4742E2CFA7BF /* EAIntroView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroView.h; path = EAIntroView/EAIntroView.h; sourceTree = "<group>"; };
 		353881BE08D48B1229AFDB6DB1646ACD /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EARestrictedScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		36ECF721E7C28C8DDBFFFD5F876B40A7 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		3E88629D57B42398790D4DC14C7AE176 /* EARestrictedScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EARestrictedScrollView.debug.xcconfig; sourceTree = "<group>"; };
-		42CAFD837ED183AFD3F2CDF6F1F681C2 /* MBProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
+		41257EAA9F59D2DFB7B4ABB69E84A451 /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		414E0C4F29B6701830DFDEF3D1A197E4 /* EARestrictedScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EARestrictedScrollView.debug.xcconfig; sourceTree = "<group>"; };
 		472B15482BDFF839E69B057147688DDB /* Pods_CounterActionExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CounterActionExtension.framework; path = "Pods-CounterActionExtension.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2D55ACA7CDC55BD23E082D83D24090 /* Pods-WordCounter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WordCounter-umbrella.h"; sourceTree = "<group>"; };
+		4C79A04765B931D2BD0C47403E6F7BE7 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		4E30161DFE977A79F4CCD133889CAB75 /* Pods-CounterActionExtension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CounterActionExtension-Info.plist"; sourceTree = "<group>"; };
-		5044CF9AEC709C9EEF702E75972586FD /* EAIntroView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-umbrella.h"; sourceTree = "<group>"; };
 		531B9E454C6489C68A57BEAC43CDCCB0 /* Pods-WordCounterTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WordCounterTests.modulemap"; sourceTree = "<group>"; };
 		539D291F8183D173F007FB899CB9D652 /* Pods-CounterActionExtension-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CounterActionExtension-acknowledgements.plist"; sourceTree = "<group>"; };
 		5718457A334721D8A10EB97E567283AB /* Pods-WordCounterTodayWidget-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WordCounterTodayWidget-dummy.m"; sourceTree = "<group>"; };
+		5E54A5226D79CF855ED9213D542B4E06 /* MBProgressHUD-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBProgressHUD-Info.plist"; sourceTree = "<group>"; };
 		5EAFA42A9B6E44150808CE01968D9058 /* Pods_WordCounterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WordCounterTests.framework; path = "Pods-WordCounterTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		66915F1632C3006D00B7BFD085E9993B /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		67B8360F3BEAAC0B19C3395A4FD0B160 /* AsyncSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AsyncSwift.modulemap; sourceTree = "<group>"; };
-		6E53022516FF045B02BAF95E4121214B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		703091D00F5FA58857FAB2659FA4D210 /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		6B2163709CE4BB7274DCF81FFEE2E67D /* EAIntroView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EAIntroView-dummy.m"; sourceTree = "<group>"; };
 		73699D230557136BAC50F2188C2A6C51 /* Pods-WordCounter-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WordCounter-frameworks.sh"; sourceTree = "<group>"; };
-		753A30C62CB0F8D69A4F805670495F8C /* EARestrictedScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EARestrictedScrollView.m; path = EARestrictedScrollView/EARestrictedScrollView.m; sourceTree = "<group>"; };
+		73B82984031BC0FC42A97BF735E483C2 /* MBProgressHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.release.xcconfig; sourceTree = "<group>"; };
 		7ACA5A0620188DC1476C2AA4A23596EC /* Pods-CounterActionExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CounterActionExtension-dummy.m"; sourceTree = "<group>"; };
 		7FD74CB146850D1882C0756FB282C1A5 /* Pods-WordCounter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounter-Info.plist"; sourceTree = "<group>"; };
-		80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		83D97B81B732F57FD1B04C8F84A59A8F /* Pods-WordCounter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WordCounter-dummy.m"; sourceTree = "<group>"; };
-		8A2007458118BE46A0245903F2F75463 /* EAIntroView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EAIntroView.release.xcconfig; sourceTree = "<group>"; };
-		8B4A9B6C5605CAB1843CE1A63C3B4754 /* EARestrictedScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-prefix.pch"; sourceTree = "<group>"; };
+		876B8E6F047743FB2449A22BC07514C7 /* EARestrictedScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EARestrictedScrollView-dummy.m"; sourceTree = "<group>"; };
+		89FC8A630641D54FA53EDC3695E09B8B /* EARestrictedScrollView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EARestrictedScrollView-Info.plist"; sourceTree = "<group>"; };
 		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2098FDC108E247D898A0C3E3A92AD4 /* EARestrictedScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-prefix.pch"; sourceTree = "<group>"; };
 		900F07CF02C716486D4C806C911D8EE2 /* Pods-WordCounter-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounter-acknowledgements.plist"; sourceTree = "<group>"; };
+		9158946BF976A451501233B1A304B2BE /* EAIntroView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-umbrella.h"; sourceTree = "<group>"; };
+		9194CDEF87B791E91850A395BDBF558D /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		92E3F18AE1EA22D1671DC8F484D737A9 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		930A69225B38CB445AF8077192BD23C9 /* Pods-WordCounterTodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounterTodayWidget.release.xcconfig"; sourceTree = "<group>"; };
-		93374849B8CCF1C1AAB28BC8E3D31566 /* EAIntroView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EAIntroView-Info.plist"; sourceTree = "<group>"; };
 		95E106CF4BC0FA4C8374348D5BA70B25 /* Pods-WordCounterTodayWidget-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounterTodayWidget-acknowledgements.plist"; sourceTree = "<group>"; };
 		96A97A013E7B852D1C3320B61A638E28 /* Pods_WordCounterTodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WordCounterTodayWidget.framework; path = "Pods-WordCounterTodayWidget.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		983014BC608EC5A097E638E3D78E64F8 /* Pods-CounterActionExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CounterActionExtension.release.xcconfig"; sourceTree = "<group>"; };
-		9971761BD7A50CE6246BA3C90923D86A /* MBProgressHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.release.xcconfig; sourceTree = "<group>"; };
 		9BB3131BE9BFBE8E084BE27335D7816C /* Pods-CounterActionExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CounterActionExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		9C8B5ACB5A4E0E94BE470D530148F9C4 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EARestrictedScrollView.h; path = EARestrictedScrollView/EARestrictedScrollView.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9ECFBDFB20F96A6FF837A4783FF19DE6 /* Pods-WordCounterTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WordCounterTests-umbrella.h"; sourceTree = "<group>"; };
+		9F431FAA4054E7CCF023FBF37AA82CEB /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		9F993663B3367094F9B371817504B205 /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EARestrictedScrollView.framework; path = EARestrictedScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A174753BF034D362FB398476F3112AEB /* AsyncSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AsyncSwift-dummy.m"; sourceTree = "<group>"; };
+		A0AE582AB0119B9CA07996827098932C /* EAIntroView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EAIntroView-Info.plist"; sourceTree = "<group>"; };
+		A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A37D695763CB815895C7F4FE709D94E8 /* EAIntroView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EAIntroView.debug.xcconfig; sourceTree = "<group>"; };
+		AB5C413BA20BE49E1AAB06ADEC079177 /* EARestrictedScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EARestrictedScrollView.release.xcconfig; sourceTree = "<group>"; };
 		ACFDDF446FC1A56A3EAF16EBC7D9D5F9 /* Pods-WordCounterTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WordCounterTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AD48A985D3AC156D710DCE05AC47FAF6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		AF20CFECDDA9C0AB8F134F4CB615A692 /* Pods-CounterActionExtension-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CounterActionExtension-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B2222DDE1D6D48B19BCD0666D5564D2A /* EAIntroPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroPage.h; path = EAIntroView/EAIntroPage.h; sourceTree = "<group>"; };
 		BC76BADCC4C6A68C3472CA57E4E86845 /* Pods-WordCounter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WordCounter.modulemap"; sourceTree = "<group>"; };
-		BEA206F28D3002AE7A27896F0499A7C9 /* EAIntroView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroView.h; path = EAIntroView/EAIntroView.h; sourceTree = "<group>"; };
-		C18A855347F95BB321590C30EEC7A9D0 /* Async.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Async.framework; path = AsyncSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5D698CDBB0765CC46904DD766B2BF8E /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		C18C93A3F83E1FD047E475AFAC816A5D /* EARestrictedScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-umbrella.h"; sourceTree = "<group>"; };
 		C80E8D28B1222EAF6F6D3186EE39D524 /* Pods-WordCounterTodayWidget.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WordCounterTodayWidget.modulemap"; sourceTree = "<group>"; };
 		C9AD2ECC52E3B557409D78B6184BA6F0 /* Pods-WordCounterTodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounterTodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
-		CD94E214D0EED9FB0FB1C672EC88165D /* EAIntroView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroView.m; path = EAIntroView/EAIntroView.m; sourceTree = "<group>"; };
 		CEECFBF571956FD8C71E42BDB99439DC /* Pods-CounterActionExtension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CounterActionExtension.modulemap"; sourceTree = "<group>"; };
+		CFE72773AD9A0F0578D36057DF98A6AC /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		D23AAD15493914B7643F1D747B88DCAF /* EARestrictedScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EARestrictedScrollView.modulemap; sourceTree = "<group>"; };
+		D4016F560E9122FBA1ADC9B7370D896E /* EAIntroPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EAIntroPage.h; path = EAIntroView/EAIntroPage.h; sourceTree = "<group>"; };
 		D43D9F7E576AE0F35EDCF602A46BB21F /* Pods-WordCounterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounterTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB3CC4E83913A3EB8D08A8265C045022 /* Pods-WordCounter-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WordCounter-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E4B1905A122FA86287E15840315AEB37 /* EAIntroView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-prefix.pch"; sourceTree = "<group>"; };
+		DB6CC51B49BC8EFD12194771F3A25243 /* EAIntroView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EAIntroView-prefix.pch"; sourceTree = "<group>"; };
+		E413352B08EFE3DAE9AF6F66104C2CEA /* EAIntroView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EAIntroView.m; path = EAIntroView/EAIntroView.m; sourceTree = "<group>"; };
 		E92D7ED6355E9FAF2C5E8793A8A8EFE6 /* Pods_WordCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WordCounter.framework; path = "Pods-WordCounter.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB986AEFA3CEF38DE87F7E83C61B5B3E /* EARestrictedScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EARestrictedScrollView.release.xcconfig; sourceTree = "<group>"; };
 		EBE4B841D1DF1F44A8E301597A805522 /* Pods-WordCounterTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounterTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		ED4EEBEE8F3346820336B5649A043304 /* AsyncSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncSwift-prefix.pch"; sourceTree = "<group>"; };
 		EF7CDD10CBEFB9F0F3E87DA0081D1E48 /* Pods-WordCounterTodayWidget-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WordCounterTodayWidget-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F0FE5E9A8510EA87DC502BAFBA4CFA1C /* Pods-WordCounterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F432F3CCE3A2D32029376E0AF45EE881 /* EAIntroView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EAIntroView.release.xcconfig; sourceTree = "<group>"; };
 		F7CCF3468195464132488E626C46B13B /* Pods-WordCounterTodayWidget-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WordCounterTodayWidget-Info.plist"; sourceTree = "<group>"; };
-		F7F08A6BFA3AC9B03717BD0990E8286A /* AsyncSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AsyncSwift-umbrella.h"; sourceTree = "<group>"; };
-		F887954ECC95750A1053F1D978EBC4B1 /* EARestrictedScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EARestrictedScrollView-umbrella.h"; sourceTree = "<group>"; };
 		F8A3EF4E024804A993CEA573A33CD02E /* EAIntroView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EAIntroView.framework; path = EAIntroView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA1F57D2C81C029C75E91A4B455F3D7D /* EAIntroView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EAIntroView.modulemap; sourceTree = "<group>"; };
 		FFA563471E57F7814BA4AA3BF047D5A1 /* Pods-WordCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WordCounter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		008964726B7D48D92F0C3D9D2F4D562B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9BF64247CBB69007B832FD9AEC6C72C6 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		02F0CC18ABA94B22595D87C58333F1D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7615435863AA1EEF8A414ED897E34FB7 /* Foundation.framework in Frameworks */,
+				F1B23FF76CFF39633E6F47725D00BE0D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6CD4BFDA15FD2FBC23680D1E9381045 /* Foundation.framework in Frameworks */,
+				718705C4D9EF11F0E239051CB7791827 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,9 +170,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A601994621C892656F60D1A1292A9565 /* CoreGraphics.framework in Frameworks */,
-				FF0EE7E6F869E55DA268F25622674EB9 /* Foundation.framework in Frameworks */,
-				64F46B6A8DBA885AF570A54A082D1BAA /* QuartzCore.framework in Frameworks */,
+				7596519E375DA27F6E7D05D440757055 /* CoreGraphics.framework in Frameworks */,
+				AC1B5B34F7456E723EC031A496585471 /* Foundation.framework in Frameworks */,
+				F612969E69DE5F072AD96720641B1184 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,15 +180,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF23CC64DD86A326E3FE3AA55FCD7581 /* Foundation.framework in Frameworks */,
+				F4DF3BEF0E2764F378BA6478504B445C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9812FD78453D108F734DA0D27AB29DAF /* Frameworks */ = {
+		7C328D159DFAE4968B07C2AEF3E50ADF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C333141D71E88EEE63AA235A2084618 /* Foundation.framework in Frameworks */,
+				FBEAEF6A498A3D55B29B8BB3AEEDCBDE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,15 +197,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				82673DEAB21D5C39B24F4548D9E9C7BE /* EARestrictedScrollView.framework in Frameworks */,
-				DAD4E35CCEF11450E7B12475A3B7D105 /* Foundation.framework in Frameworks */,
+				5C42AFB882E8FB9A0316743F6B508E22 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA889F9457F0C07CF6724986F46055E6 /* Frameworks */ = {
+		CEB03DFABA2C361FB37CE0D8EBBF5FE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E05EC0AF7DD1173BE36F83037873158 /* Foundation.framework in Frameworks */,
+				1485A8A7915C2EA30069464EC8446B56 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,80 +229,27 @@
 			path = "Target Support Files/Pods-WordCounter";
 			sourceTree = "<group>";
 		};
-		0BAAC53EF9B1D237E64C9835AA01C06C /* Support Files */ = {
+		0D0A2F7F33DD0A64CA4FEF294BE1FACF /* EAIntroView */ = {
 			isa = PBXGroup;
 			children = (
-				67B8360F3BEAAC0B19C3395A4FD0B160 /* AsyncSwift.modulemap */,
-				A174753BF034D362FB398476F3112AEB /* AsyncSwift-dummy.m */,
-				011B17A044D6145F891A23C28F52B72A /* AsyncSwift-Info.plist */,
-				ED4EEBEE8F3346820336B5649A043304 /* AsyncSwift-prefix.pch */,
-				F7F08A6BFA3AC9B03717BD0990E8286A /* AsyncSwift-umbrella.h */,
-				23D3B328CD3272A4FB7FF81890DED1E0 /* AsyncSwift.debug.xcconfig */,
-				321B4A38F53943FCB67444B3CC6AB5A6 /* AsyncSwift.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AsyncSwift";
-			sourceTree = "<group>";
-		};
-		237FA073B62704A10E02A523D4AC188B /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				FA1F57D2C81C029C75E91A4B455F3D7D /* EAIntroView.modulemap */,
-				019A40528281292A61470FA06F8EF919 /* EAIntroView-dummy.m */,
-				93374849B8CCF1C1AAB28BC8E3D31566 /* EAIntroView-Info.plist */,
-				E4B1905A122FA86287E15840315AEB37 /* EAIntroView-prefix.pch */,
-				5044CF9AEC709C9EEF702E75972586FD /* EAIntroView-umbrella.h */,
-				17C8C663E2E7B835D7887C3E1073B6CF /* EAIntroView.debug.xcconfig */,
-				8A2007458118BE46A0245903F2F75463 /* EAIntroView.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/EAIntroView";
-			sourceTree = "<group>";
-		};
-		27B31A4F3F62EC5BE001EA24A0FF9E66 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				318FD2BFE8CD4F2A194B29EB44E610C5 /* MBProgressHUD.h */,
-				66915F1632C3006D00B7BFD085E9993B /* MBProgressHUD.m */,
-				67CADC9EF17FEFE9BDFEE64C8E1C1D1D /* Support Files */,
-			);
-			name = MBProgressHUD;
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		287C58D9309D3A585D9BD13D331B597D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				905D55722B1E30AD1AE7753638896A0B /* AsyncSwift */,
-				442D480A74B23CFA489AC32F9369808F /* EAIntroView */,
-				37D63AAB6AB6DF9BA6AD1D8C8266DFBC /* EARestrictedScrollView */,
-				27B31A4F3F62EC5BE001EA24A0FF9E66 /* MBProgressHUD */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		37D63AAB6AB6DF9BA6AD1D8C8266DFBC /* EARestrictedScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				2D33803B7038463A157545FF5C9290B3 /* EARestrictedScrollView.h */,
-				753A30C62CB0F8D69A4F805670495F8C /* EARestrictedScrollView.m */,
-				F07CFE7B2FC3F0CF0416C8252B9E9968 /* Support Files */,
-			);
-			name = EARestrictedScrollView;
-			path = EARestrictedScrollView;
-			sourceTree = "<group>";
-		};
-		442D480A74B23CFA489AC32F9369808F /* EAIntroView */ = {
-			isa = PBXGroup;
-			children = (
-				B2222DDE1D6D48B19BCD0666D5564D2A /* EAIntroPage.h */,
-				1AB9267E06E7424926AA5FCBCB9E133C /* EAIntroPage.m */,
-				BEA206F28D3002AE7A27896F0499A7C9 /* EAIntroView.h */,
-				CD94E214D0EED9FB0FB1C672EC88165D /* EAIntroView.m */,
-				237FA073B62704A10E02A523D4AC188B /* Support Files */,
+				D4016F560E9122FBA1ADC9B7370D896E /* EAIntroPage.h */,
+				2E94B1B1A9C102257C275694E2156179 /* EAIntroPage.m */,
+				2EB903B6B7F026C64ECF4742E2CFA7BF /* EAIntroView.h */,
+				E413352B08EFE3DAE9AF6F66104C2CEA /* EAIntroView.m */,
+				724AD20B55D60B59C7CD22510A26ECFA /* Support Files */,
 			);
 			name = EAIntroView;
 			path = EAIntroView;
+			sourceTree = "<group>";
+		};
+		24F038E0C341B190B186F212330CBE21 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1A0DEB6CEA84F3E5E9B7C3F2CF90AD34 /* CoreGraphics.framework */,
+				A18F6D2DD926B6824D93BC1125E850DD /* Foundation.framework */,
+				AD48A985D3AC156D710DCE05AC47FAF6 /* QuartzCore.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		4B626DBC17895793C7E88BA25D63C5FC /* Pods-WordCounterTests */ = {
@@ -349,6 +268,17 @@
 			path = "Target Support Files/Pods-WordCounterTests";
 			sourceTree = "<group>";
 		};
+		4FD24CA52775B29B79A4728324FF2182 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				9F431FAA4054E7CCF023FBF37AA82CEB /* MBProgressHUD.h */,
+				9194CDEF87B791E91850A395BDBF558D /* MBProgressHUD.m */,
+				C158DD452D750D22EBB5C6E1660E2592 /* Support Files */,
+			);
+			name = MBProgressHUD;
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		62D44D23990229A4E0BA2E45D0FF9D03 /* Pods-WordCounterTodayWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,19 +295,19 @@
 			path = "Target Support Files/Pods-WordCounterTodayWidget";
 			sourceTree = "<group>";
 		};
-		67CADC9EF17FEFE9BDFEE64C8E1C1D1D /* Support Files */ = {
+		66DBEA02B84CD3F335C1418F72739DBC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				703091D00F5FA58857FAB2659FA4D210 /* MBProgressHUD.modulemap */,
-				2208E1C8F14C7EC0BD20E6C2D9A9DB01 /* MBProgressHUD-dummy.m */,
-				2968E61B8A3D37B7B89150F5F8D1196A /* MBProgressHUD-Info.plist */,
-				36ECF721E7C28C8DDBFFFD5F876B40A7 /* MBProgressHUD-prefix.pch */,
-				C5D698CDBB0765CC46904DD766B2BF8E /* MBProgressHUD-umbrella.h */,
-				42CAFD837ED183AFD3F2CDF6F1F681C2 /* MBProgressHUD.debug.xcconfig */,
-				9971761BD7A50CE6246BA3C90923D86A /* MBProgressHUD.release.xcconfig */,
+				D23AAD15493914B7643F1D747B88DCAF /* EARestrictedScrollView.modulemap */,
+				876B8E6F047743FB2449A22BC07514C7 /* EARestrictedScrollView-dummy.m */,
+				89FC8A630641D54FA53EDC3695E09B8B /* EARestrictedScrollView-Info.plist */,
+				8C2098FDC108E247D898A0C3E3A92AD4 /* EARestrictedScrollView-prefix.pch */,
+				C18C93A3F83E1FD047E475AFAC816A5D /* EARestrictedScrollView-umbrella.h */,
+				414E0C4F29B6701830DFDEF3D1A197E4 /* EARestrictedScrollView.debug.xcconfig */,
+				AB5C413BA20BE49E1AAB06ADEC079177 /* EARestrictedScrollView.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MBProgressHUD";
+			path = "../Target Support Files/EARestrictedScrollView";
 			sourceTree = "<group>";
 		};
 		684DDFB4EA01CF42E6F5EDBD9F9C25D1 /* Pods-CounterActionExtension */ = {
@@ -396,21 +326,40 @@
 			path = "Target Support Files/Pods-CounterActionExtension";
 			sourceTree = "<group>";
 		};
-		905D55722B1E30AD1AE7753638896A0B /* AsyncSwift */ = {
+		6C60C611A63BF009450019D2A2FA1123 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CD79C173B4A3580EEB30FE07A8F7596 /* Async.swift */,
-				0BAAC53EF9B1D237E64C9835AA01C06C /* Support Files */,
+				F8A3EF4E024804A993CEA573A33CD02E /* EAIntroView.framework */,
+				9F993663B3367094F9B371817504B205 /* EARestrictedScrollView.framework */,
+				8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */,
+				472B15482BDFF839E69B057147688DDB /* Pods_CounterActionExtension.framework */,
+				E92D7ED6355E9FAF2C5E8793A8A8EFE6 /* Pods_WordCounter.framework */,
+				5EAFA42A9B6E44150808CE01968D9058 /* Pods_WordCounterTests.framework */,
+				96A97A013E7B852D1C3320B61A638E28 /* Pods_WordCounterTodayWidget.framework */,
 			);
-			name = AsyncSwift;
-			path = AsyncSwift;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		724AD20B55D60B59C7CD22510A26ECFA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0166D23862800AAACA5121BCC0BA1E66 /* EAIntroView.modulemap */,
+				6B2163709CE4BB7274DCF81FFEE2E67D /* EAIntroView-dummy.m */,
+				A0AE582AB0119B9CA07996827098932C /* EAIntroView-Info.plist */,
+				DB6CC51B49BC8EFD12194771F3A25243 /* EAIntroView-prefix.pch */,
+				9158946BF976A451501233B1A304B2BE /* EAIntroView-umbrella.h */,
+				A37D695763CB815895C7F4FE709D94E8 /* EAIntroView.debug.xcconfig */,
+				F432F3CCE3A2D32029376E0AF45EE881 /* EAIntroView.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/EAIntroView";
 			sourceTree = "<group>";
 		};
 		9C51871557252D71C8C94B1C863DBADC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				353881BE08D48B1229AFDB6DB1646ACD /* EARestrictedScrollView.framework */,
-				FC92EEC69EC11DE36C6EA240270E0AE1 /* iOS */,
+				24F038E0C341B190B186F212330CBE21 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -426,19 +375,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BD9007A28F2FD4EA44A8C4F37EE827C5 /* Products */ = {
+		A7EE98846824B52DA4BA0F70AAE40DF5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C18A855347F95BB321590C30EEC7A9D0 /* Async.framework */,
-				F8A3EF4E024804A993CEA573A33CD02E /* EAIntroView.framework */,
-				9F993663B3367094F9B371817504B205 /* EARestrictedScrollView.framework */,
-				8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */,
-				472B15482BDFF839E69B057147688DDB /* Pods_CounterActionExtension.framework */,
-				E92D7ED6355E9FAF2C5E8793A8A8EFE6 /* Pods_WordCounter.framework */,
-				5EAFA42A9B6E44150808CE01968D9058 /* Pods_WordCounterTests.framework */,
-				96A97A013E7B852D1C3320B61A638E28 /* Pods_WordCounterTodayWidget.framework */,
+				0D0A2F7F33DD0A64CA4FEF294BE1FACF /* EAIntroView */,
+				E428E6175985A8CCCF27EE3190676321 /* EARestrictedScrollView */,
+				4FD24CA52775B29B79A4728324FF2182 /* MBProgressHUD */,
 			);
-			name = Products;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C158DD452D750D22EBB5C6E1660E2592 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				41257EAA9F59D2DFB7B4ABB69E84A451 /* MBProgressHUD.modulemap */,
+				4C79A04765B931D2BD0C47403E6F7BE7 /* MBProgressHUD-dummy.m */,
+				5E54A5226D79CF855ED9213D542B4E06 /* MBProgressHUD-Info.plist */,
+				92E3F18AE1EA22D1671DC8F484D737A9 /* MBProgressHUD-prefix.pch */,
+				CFE72773AD9A0F0578D36057DF98A6AC /* MBProgressHUD-umbrella.h */,
+				2BCA344E1D53F91C821940457691DF2B /* MBProgressHUD.debug.xcconfig */,
+				73B82984031BC0FC42A97BF735E483C2 /* MBProgressHUD.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MBProgressHUD";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -446,54 +405,40 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				9C51871557252D71C8C94B1C863DBADC /* Frameworks */,
-				287C58D9309D3A585D9BD13D331B597D /* Pods */,
-				BD9007A28F2FD4EA44A8C4F37EE827C5 /* Products */,
+				A7EE98846824B52DA4BA0F70AAE40DF5 /* Pods */,
+				6C60C611A63BF009450019D2A2FA1123 /* Products */,
 				A1BDCA22EEB1FCCA05640F7F64C13DEA /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		F07CFE7B2FC3F0CF0416C8252B9E9968 /* Support Files */ = {
+		E428E6175985A8CCCF27EE3190676321 /* EARestrictedScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				20F1DFBDCEFF4C7413DDED8720770015 /* EARestrictedScrollView.modulemap */,
-				1D1762D70FD266B1CCBBAB3EA86E86D6 /* EARestrictedScrollView-dummy.m */,
-				1871BAC50BBA73960B3DC5A9F98A5AFC /* EARestrictedScrollView-Info.plist */,
-				8B4A9B6C5605CAB1843CE1A63C3B4754 /* EARestrictedScrollView-prefix.pch */,
-				F887954ECC95750A1053F1D978EBC4B1 /* EARestrictedScrollView-umbrella.h */,
-				3E88629D57B42398790D4DC14C7AE176 /* EARestrictedScrollView.debug.xcconfig */,
-				EB986AEFA3CEF38DE87F7E83C61B5B3E /* EARestrictedScrollView.release.xcconfig */,
+				9C8B5ACB5A4E0E94BE470D530148F9C4 /* EARestrictedScrollView.h */,
+				2AF70656419D0272AC7BCABDD7FDA9C7 /* EARestrictedScrollView.m */,
+				66DBEA02B84CD3F335C1418F72739DBC /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/EARestrictedScrollView";
-			sourceTree = "<group>";
-		};
-		FC92EEC69EC11DE36C6EA240270E0AE1 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				0E8F411F42CA6BADF75BC660D20461CE /* CoreGraphics.framework */,
-				80041D5C69F5C4C79D872E80F0FA6B42 /* Foundation.framework */,
-				6E53022516FF045B02BAF95E4121214B /* QuartzCore.framework */,
-			);
-			name = iOS;
+			name = EARestrictedScrollView;
+			path = EARestrictedScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		068E831228F679A62702F43A8AFF8E98 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				988C810B4A994ADAC600A3A63C442E21 /* EARestrictedScrollView-umbrella.h in Headers */,
+				25692AFE35792FB970AD0E122646E488 /* EARestrictedScrollView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		090485AFCE25828BB268C6445DA83C47 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0C8CF77EEEADEE2E35B82FCCDF12F679 /* Pods-WordCounterTodayWidget-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1C63004AA571053D665CC5147CDE6046 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E36016EC16D865F1B77B0A0AEF298E08 /* EARestrictedScrollView-umbrella.h in Headers */,
-				356099233472367A3820D75DCD3C5AB8 /* EARestrictedScrollView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +459,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AB7B70A77E78A36E186D5DCBF9B7BC07 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F319C231D9E586FF1A3D3EC09090BCE8 /* Pods-WordCounter-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF981067E0A4AA6C45A38768DA6BC8B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -521,22 +474,6 @@
 				DC432A6DE7005B1A6BF8012F3A26143C /* EAIntroPage.h in Headers */,
 				A0E2B2BDEEB0D76F78BDABF365A29E71 /* EAIntroView-umbrella.h in Headers */,
 				36F649E11991BBAE40D19321B72CA45A /* EAIntroView.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DD21D1DF9B7D87B29EFFAA67650CA02C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2383DBFBA39661F4F89E050C40099ED /* Pods-WordCounter-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE4D3372EFF6FF521DE0ADA15761FAF9 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62E66906171074C835FC5388B4C3179F /* AsyncSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,20 +490,19 @@
 /* Begin PBXNativeTarget section */
 		52D618696971DC0DE56FF21DDD43137F /* Pods-WordCounter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 570FC05852CDC97CA9BCD49BD4D01EF0 /* Build configuration list for PBXNativeTarget "Pods-WordCounter" */;
+			buildConfigurationList = AF4B3652B6E29D8E848FC6763396518A /* Build configuration list for PBXNativeTarget "Pods-WordCounter" */;
 			buildPhases = (
-				DD21D1DF9B7D87B29EFFAA67650CA02C /* Headers */,
-				4059ED5E5AC2183C93A70A5AC6A23C2A /* Sources */,
-				9812FD78453D108F734DA0D27AB29DAF /* Frameworks */,
-				773DBC8B9FDA9E6C4A22C461FD1074D0 /* Resources */,
+				AB7B70A77E78A36E186D5DCBF9B7BC07 /* Headers */,
+				5127CF5133951AF241FA3C7789F8BAF6 /* Sources */,
+				CEB03DFABA2C361FB37CE0D8EBBF5FE9 /* Frameworks */,
+				8957E7F794F5546782D4EE2631E65C8B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8478FF07499E05C5CC1A336F55EA5858 /* PBXTargetDependency */,
-				DD3FB4F4D3F33414157B298CA92273E0 /* PBXTargetDependency */,
-				84E1D530764210289C2A4BB4DF69BDE9 /* PBXTargetDependency */,
-				1BD6E55D4CEF2AB03D09C478E0C4BE00 /* PBXTargetDependency */,
+				982B561DD175CB4399F33F2647973BB3 /* PBXTargetDependency */,
+				048C2F176B612272903ADD6368B217BB /* PBXTargetDependency */,
+				7AD390E536C5B258412A069EA1635C98 /* PBXTargetDependency */,
 			);
 			name = "Pods-WordCounter";
 			productName = "Pods-WordCounter";
@@ -593,12 +529,12 @@
 		};
 		83EF4E94EC7CCDDCF4BC86C414A2963A /* EARestrictedScrollView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B7F9EAC18E01822EBAF32DE525C67239 /* Build configuration list for PBXNativeTarget "EARestrictedScrollView" */;
+			buildConfigurationList = AA347B2170EC1BFD6D206FF3A22D7691 /* Build configuration list for PBXNativeTarget "EARestrictedScrollView" */;
 			buildPhases = (
-				1C63004AA571053D665CC5147CDE6046 /* Headers */,
-				675FF094AC0250FD21532F551AE89A7A /* Sources */,
-				008964726B7D48D92F0C3D9D2F4D562B /* Frameworks */,
-				0D9CBE641302944B305D3C18EBA6CE31 /* Resources */,
+				068E831228F679A62702F43A8AFF8E98 /* Headers */,
+				3E17F71B4DB82401E59410F5349B66CF /* Sources */,
+				7C328D159DFAE4968B07C2AEF3E50ADF /* Frameworks */,
+				E83D56FD00016460CC8BFC68C109ECE9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -607,24 +543,6 @@
 			name = EARestrictedScrollView;
 			productName = EARestrictedScrollView;
 			productReference = 9F993663B3367094F9B371817504B205 /* EARestrictedScrollView.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		975690F47D860B117FB4B04B42AB69C9 /* AsyncSwift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 79A0C3D01971B7CE18B2E2AE130529B2 /* Build configuration list for PBXNativeTarget "AsyncSwift" */;
-			buildPhases = (
-				DE4D3372EFF6FF521DE0ADA15761FAF9 /* Headers */,
-				3DFDB7C5BD6F649B56699A6DDA594B41 /* Sources */,
-				CA889F9457F0C07CF6724986F46055E6 /* Frameworks */,
-				60DB55F4A0500672EBC451BBE9EEB227 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AsyncSwift;
-			productName = AsyncSwift;
-			productReference = C18A855347F95BB321590C30EEC7A9D0 /* Async.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A89A4270C211D3A3587C381A30B42B00 /* Pods-CounterActionExtension */ = {
@@ -693,7 +611,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				054722379312196D4D8D3B65E8B3C5C3 /* PBXTargetDependency */,
+				7B5377591937A4657099F5D0DF778908 /* PBXTargetDependency */,
 			);
 			name = EAIntroView;
 			productName = EAIntroView;
@@ -718,11 +636,10 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = BD9007A28F2FD4EA44A8C4F37EE827C5 /* Products */;
+			productRefGroup = 6C60C611A63BF009450019D2A2FA1123 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				975690F47D860B117FB4B04B42AB69C9 /* AsyncSwift */,
 				CC5D5F25300964D7791790EA262460A0 /* EAIntroView */,
 				83EF4E94EC7CCDDCF4BC86C414A2963A /* EARestrictedScrollView */,
 				82B0A41D3031FF27D78E17B0A9A46FB0 /* MBProgressHUD */,
@@ -735,13 +652,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0D9CBE641302944B305D3C18EBA6CE31 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		435BF4D16B2F9CAB6E7F883F30E32B74 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -749,14 +659,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60DB55F4A0500672EBC451BBE9EEB227 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		773DBC8B9FDA9E6C4A22C461FD1074D0 /* Resources */ = {
+		8957E7F794F5546782D4EE2631E65C8B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -784,6 +687,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E83D56FD00016460CC8BFC68C109ECE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD5E56EA6D5B4DD2D04A4F32507CB087 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -802,29 +712,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3DFDB7C5BD6F649B56699A6DDA594B41 /* Sources */ = {
+		3E17F71B4DB82401E59410F5349B66CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58F0C306541B5F08526BB2B429057BA1 /* Async.swift in Sources */,
-				786AE1A2DF986A4903519DA2307D4CEF /* AsyncSwift-dummy.m in Sources */,
+				A9B2055315E3E0C62EFC216CE088BF45 /* EARestrictedScrollView-dummy.m in Sources */,
+				A2E7E344BC3D085D932EACBF660D0246 /* EARestrictedScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4059ED5E5AC2183C93A70A5AC6A23C2A /* Sources */ = {
+		5127CF5133951AF241FA3C7789F8BAF6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6F807410B36805EA83DC26ACC5EDC27 /* Pods-WordCounter-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		675FF094AC0250FD21532F551AE89A7A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C3D4AD224A9620644A2BA251E0D64D23 /* EARestrictedScrollView-dummy.m in Sources */,
-				48C199F516576147CBEB6A15D21EBD07 /* EARestrictedScrollView.m in Sources */,
+				230A1354005F84E52DA9E2A8D7AB2D29 /* Pods-WordCounter-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,45 +767,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		054722379312196D4D8D3B65E8B3C5C3 /* PBXTargetDependency */ = {
+		048C2F176B612272903ADD6368B217BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EARestrictedScrollView;
 			target = 83EF4E94EC7CCDDCF4BC86C414A2963A /* EARestrictedScrollView */;
-			targetProxy = E8C9BB6EAA38866C1B86DC8B07DF031A /* PBXContainerItemProxy */;
+			targetProxy = 30FA6BE3ABA2D5462B75559383B5E128 /* PBXContainerItemProxy */;
 		};
-		1BD6E55D4CEF2AB03D09C478E0C4BE00 /* PBXTargetDependency */ = {
+		7AD390E536C5B258412A069EA1635C98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MBProgressHUD;
 			target = 82B0A41D3031FF27D78E17B0A9A46FB0 /* MBProgressHUD */;
-			targetProxy = 13F26C9031A6493292C14EE49C3679D6 /* PBXContainerItemProxy */;
+			targetProxy = 8438DA8C34F5735352238CFE4528308B /* PBXContainerItemProxy */;
 		};
-		8478FF07499E05C5CC1A336F55EA5858 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AsyncSwift;
-			target = 975690F47D860B117FB4B04B42AB69C9 /* AsyncSwift */;
-			targetProxy = 7B00F381DD7CD190D969A0FAA5458D0D /* PBXContainerItemProxy */;
-		};
-		84E1D530764210289C2A4BB4DF69BDE9 /* PBXTargetDependency */ = {
+		7B5377591937A4657099F5D0DF778908 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EARestrictedScrollView;
 			target = 83EF4E94EC7CCDDCF4BC86C414A2963A /* EARestrictedScrollView */;
-			targetProxy = 1088D65D76B89BEB61EB0CF143E728B3 /* PBXContainerItemProxy */;
+			targetProxy = 511D2FAF5F532AD8DBC8376D6221A043 /* PBXContainerItemProxy */;
 		};
-		DD3FB4F4D3F33414157B298CA92273E0 /* PBXTargetDependency */ = {
+		982B561DD175CB4399F33F2647973BB3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EAIntroView;
 			target = CC5D5F25300964D7791790EA262460A0 /* EAIntroView */;
-			targetProxy = 80ED328CD76449C7F0D626C94F3CBB45 /* PBXContainerItemProxy */;
+			targetProxy = C70A3743AD0A41BD874C3605FB1FF530 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0906C0904E7DD2C31E25DBFB3CDB997F /* Release */ = {
+		01185DFAC772E8F82BACF9001CA3E9F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29FD6FAA77D4E0BDB989279F5961F0BA /* Pods-WordCounter.release.xcconfig */;
+			baseConfigurationReference = F0FE5E9A8510EA87DC502BAFBA4CFA1C /* Pods-WordCounterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -913,109 +807,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		0D85C49A05BEA8CEDD3EF5F3999210C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42CAFD837ED183AFD3F2CDF6F1F681C2 /* MBProgressHUD.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
-				PRODUCT_MODULE_NAME = MBProgressHUD;
-				PRODUCT_NAME = MBProgressHUD;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2144E3CEADF56CAA2E61F27D459D916E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB986AEFA3CEF38DE87F7E83C61B5B3E /* EARestrictedScrollView.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/EARestrictedScrollView/EARestrictedScrollView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EARestrictedScrollView/EARestrictedScrollView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/EARestrictedScrollView/EARestrictedScrollView.modulemap";
-				PRODUCT_MODULE_NAME = EARestrictedScrollView;
-				PRODUCT_NAME = EARestrictedScrollView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2F3EE96E19AE87F5D6B1FBC93EF6C7D8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BB3131BE9BFBE8E084BE27335D7816C /* Pods-CounterActionExtension.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1029,43 +826,11 @@
 			};
 			name = Debug;
 		};
-		354A7FB5292F77853254E4550F83B921 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23D3B328CD3272A4FB7FF81890DED1E0 /* AsyncSwift.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AsyncSwift/AsyncSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AsyncSwift/AsyncSwift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AsyncSwift/AsyncSwift.modulemap";
-				PRODUCT_MODULE_NAME = Async;
-				PRODUCT_NAME = Async;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4AFE0E2686EB42CD98B253647EF7805A /* Release */ = {
+		025A2E0B58D87D5C2F380CE79C860A73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 930A69225B38CB445AF8077192BD23C9 /* Pods-WordCounterTodayWidget.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1076,7 +841,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget.modulemap";
@@ -1094,10 +859,11 @@
 			};
 			name = Release;
 		};
-		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1120,133 +886,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		6A1CA3921DEBC1D03E3CDE4843C65F15 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 983014BC608EC5A097E638E3D78E64F8 /* Pods-CounterActionExtension.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		72D21CA579997E28F6B6C17099240311 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFA563471E57F7814BA4AA3BF047D5A1 /* Pods-WordCounter.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7EF7227D9B20A1D549000096ACCB23D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1272,7 +912,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1285,11 +925,76 @@
 			};
 			name = Debug;
 		};
-		836A2BDF603CF2F5A87DC860AE4846F9 /* Release */ = {
+		3E7AD85E839CCDB3AD36B8B1D5D9FED2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9971761BD7A50CE6246BA3C90923D86A /* MBProgressHUD.release.xcconfig */;
+			baseConfigurationReference = 29FD6FAA77D4E0BDB989279F5961F0BA /* Pods-WordCounter.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4769EF7C863310B836C06FC3405E3292 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D43D9F7E576AE0F35EDCF602A46BB21F /* Pods-WordCounterTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		93A2FF79E2EC721C724D10C8C2AF1B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73B82984031BC0FC42A97BF735E483C2 /* MBProgressHUD.release.xcconfig */;
+			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1309,7 +1014,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1317,11 +1022,198 @@
 			};
 			name = Release;
 		};
-		A1CB212EA787D4ED61F196305CB2E2C4 /* Release */ = {
+		99642589FDD67F1A0DB750FD947B61D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A2007458118BE46A0245903F2F75463 /* EAIntroView.release.xcconfig */;
+			baseConfigurationReference = FFA563471E57F7814BA4AA3BF047D5A1 /* Pods-WordCounter.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WordCounter/Pods-WordCounter.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B49E45548491F1BF7C6F02371750B050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9AD2ECC52E3B557409D78B6184BA6F0 /* Pods-WordCounterTodayWidget.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BC8ED8F85CBF238F405D12E05118906D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB3131BE9BFBE8E084BE27335D7816C /* Pods-CounterActionExtension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		CBFD66C31CBBEE4A24B97D6774480A7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BCA344E1D53F91C821940457691DF2B /* MBProgressHUD.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
+				PRODUCT_MODULE_NAME = MBProgressHUD;
+				PRODUCT_NAME = MBProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D56A52B8552FE049F69BE283734A9B91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F432F3CCE3A2D32029376E0AF45EE881 /* EAIntroView.release.xcconfig */;
+			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1341,7 +1233,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1349,141 +1241,10 @@
 			};
 			name = Release;
 		};
-		A67A7E4B13F8546CB2EB031283663216 /* Debug */ = {
+		DBB0714D906FB67C33B1B581B77C214D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0FE5E9A8510EA87DC502BAFBA4CFA1C /* Pods-WordCounterTests.debug.xcconfig */;
+			baseConfigurationReference = AB5C413BA20BE49E1AAB06ADEC079177 /* EARestrictedScrollView.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B141FAE9926DB11C55AA0031BD35CDF2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17C8C663E2E7B835D7887C3E1073B6CF /* EAIntroView.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/EAIntroView/EAIntroView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EAIntroView/EAIntroView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/EAIntroView/EAIntroView.modulemap";
-				PRODUCT_MODULE_NAME = EAIntroView;
-				PRODUCT_NAME = EAIntroView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B637FD264134493C8C1A15FB9757B194 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D43D9F7E576AE0F35EDCF602A46BB21F /* Pods-WordCounterTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTests/Pods-WordCounterTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CD5E4A4277461B2D945E46B2F4B0CA42 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 321B4A38F53943FCB67444B3CC6AB5A6 /* AsyncSwift.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AsyncSwift/AsyncSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AsyncSwift/AsyncSwift-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AsyncSwift/AsyncSwift.modulemap";
-				PRODUCT_MODULE_NAME = Async;
-				PRODUCT_NAME = Async;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		F5597056003CEF6D288CF78613074EB1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E88629D57B42398790D4DC14C7AE176 /* EARestrictedScrollView.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1503,19 +1264,18 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		FEEFB4FCA3E5A4CD64C8E5EB67048F0B /* Debug */ = {
+		E47269CA8F8D6583E5006F6E502BCB09 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9AD2ECC52E3B557409D78B6184BA6F0 /* Pods-WordCounterTodayWidget.debug.xcconfig */;
+			baseConfigurationReference = 414E0C4F29B6701830DFDEF3D1A197E4 /* EARestrictedScrollView.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1524,12 +1284,73 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/EARestrictedScrollView/EARestrictedScrollView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EARestrictedScrollView/EARestrictedScrollView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EARestrictedScrollView/EARestrictedScrollView.modulemap";
+				PRODUCT_MODULE_NAME = EARestrictedScrollView;
+				PRODUCT_NAME = EARestrictedScrollView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F24F5E90C6E29912E3ADE3CDCAFF30C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A37D695763CB815895C7F4FE709D94E8 /* EAIntroView.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/EAIntroView/EAIntroView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EAIntroView/EAIntroView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EAIntroView/EAIntroView.modulemap";
+				PRODUCT_MODULE_NAME = EAIntroView;
+				PRODUCT_NAME = EAIntroView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FAE2393D52A45E60FF6073AE44EBCB0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 983014BC608EC5A097E638E3D78E64F8 /* Pods-CounterActionExtension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WordCounterTodayWidget/Pods-WordCounterTodayWidget.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-CounterActionExtension/Pods-CounterActionExtension.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1538,10 +1359,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1549,8 +1371,8 @@
 		16FF731BE00F3EA076B86428A166D3A6 /* Build configuration list for PBXNativeTarget "EAIntroView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B141FAE9926DB11C55AA0031BD35CDF2 /* Debug */,
-				A1CB212EA787D4ED61F196305CB2E2C4 /* Release */,
+				F24F5E90C6E29912E3ADE3CDCAFF30C7 /* Debug */,
+				D56A52B8552FE049F69BE283734A9B91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1558,17 +1380,8 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
-				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		570FC05852CDC97CA9BCD49BD4D01EF0 /* Build configuration list for PBXNativeTarget "Pods-WordCounter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				72D21CA579997E28F6B6C17099240311 /* Debug */,
-				0906C0904E7DD2C31E25DBFB3CDB997F /* Release */,
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1576,8 +1389,8 @@
 		5890D61455C5645B32E07DF42BDB442C /* Build configuration list for PBXNativeTarget "Pods-WordCounterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A67A7E4B13F8546CB2EB031283663216 /* Debug */,
-				B637FD264134493C8C1A15FB9757B194 /* Release */,
+				01185DFAC772E8F82BACF9001CA3E9F7 /* Debug */,
+				4769EF7C863310B836C06FC3405E3292 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1585,8 +1398,8 @@
 		6EB140C0B626E90DA85DF7EEC9E3F333 /* Build configuration list for PBXNativeTarget "Pods-WordCounterTodayWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FEEFB4FCA3E5A4CD64C8E5EB67048F0B /* Debug */,
-				4AFE0E2686EB42CD98B253647EF7805A /* Release */,
+				B49E45548491F1BF7C6F02371750B050 /* Debug */,
+				025A2E0B58D87D5C2F380CE79C860A73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1594,26 +1407,26 @@
 		70191416B9573C7ABB42333A08FA2DE4 /* Build configuration list for PBXNativeTarget "MBProgressHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D85C49A05BEA8CEDD3EF5F3999210C0 /* Debug */,
-				836A2BDF603CF2F5A87DC860AE4846F9 /* Release */,
+				CBFD66C31CBBEE4A24B97D6774480A7E /* Debug */,
+				93A2FF79E2EC721C724D10C8C2AF1B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79A0C3D01971B7CE18B2E2AE130529B2 /* Build configuration list for PBXNativeTarget "AsyncSwift" */ = {
+		AA347B2170EC1BFD6D206FF3A22D7691 /* Build configuration list for PBXNativeTarget "EARestrictedScrollView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				354A7FB5292F77853254E4550F83B921 /* Debug */,
-				CD5E4A4277461B2D945E46B2F4B0CA42 /* Release */,
+				E47269CA8F8D6583E5006F6E502BCB09 /* Debug */,
+				DBB0714D906FB67C33B1B581B77C214D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B7F9EAC18E01822EBAF32DE525C67239 /* Build configuration list for PBXNativeTarget "EARestrictedScrollView" */ = {
+		AF4B3652B6E29D8E848FC6763396518A /* Build configuration list for PBXNativeTarget "Pods-WordCounter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F5597056003CEF6D288CF78613074EB1 /* Debug */,
-				2144E3CEADF56CAA2E61F27D459D916E /* Release */,
+				99642589FDD67F1A0DB750FD947B61D8 /* Debug */,
+				3E7AD85E839CCDB3AD36B8B1D5D9FED2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1621,8 +1434,8 @@
 		DBA18572D4F8E73FF501555EF59E670E /* Build configuration list for PBXNativeTarget "Pods-CounterActionExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2F3EE96E19AE87F5D6B1FBC93EF6C7D8 /* Debug */,
-				6A1CA3921DEBC1D03E3CDE4843C65F15 /* Release */,
+				BC8ED8F85CBF238F405D12E05118906D /* Debug */,
+				FAE2393D52A45E60FF6073AE44EBCB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

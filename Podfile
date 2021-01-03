@@ -1,8 +1,7 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target 'WordCounter' do
-    pod "AsyncSwift"
     pod 'MBProgressHUD'
     pod 'EAIntroView'
 end
