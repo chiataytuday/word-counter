@@ -80,7 +80,7 @@ Global.Alert.Counter.Content.Word = "詞數：%@";
 Global.Alert.Counter.Content.Character = "字符數：%@";
 Global.Alert.Counter.Content.CharacterWithSpaces = "字符數：%@";
 Global.Alert.Counter.Content.Sentence = "句數：%@";
-Global.Alert.Counter.Content.Paragraph = "段落：%@";
+Global.Alert.Counter.Content.Paragraph = "段落數：%@";
 
 
 Global.Alert.BeforeClear.Title = "確認清空所有內容？";
