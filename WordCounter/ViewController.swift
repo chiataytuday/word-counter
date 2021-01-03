@@ -321,6 +321,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         showedKeyboardButtons = [
             .word: false,
             .character: false,
+            .characterWithSpaces: false,
             .sentence: false,
             .paragraph: false,
             .chineseWord: false,
@@ -347,6 +348,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
             }
             showedKeyboardButtons[.word] = true
             showedKeyboardButtons[.character] = true
+            showedKeyboardButtons[.characterWithSpaces] = width > 1000
             showedKeyboardButtons[.sentence] = true
             showedKeyboardButtons[.paragraph] = true
         }
@@ -421,7 +423,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
         stableKeyboardBarButtonItemsNames.append("Info")
 
 
-        countingKeyboardBarButtonItemsNames = [.chineseWord, .chineseWordWithoutPunctuation, .word, .character, .sentence, .paragraph];
+        countingKeyboardBarButtonItemsNames = [.chineseWord, .chineseWordWithoutPunctuation, .word, .character, .characterWithSpaces, .sentence, .paragraph];
         for name in countingKeyboardBarButtonItemsNames {
             // We have to set some text in `title` to make sure the button is rendered at the correct position.
             countingKeyboardBarButtonItems[name] = UIBarButtonItem(title: "_", style: .plain, target: self, action: #selector(self.countResultButtonAction))
@@ -639,7 +641,7 @@ class ViewController: UIViewController, UITextViewDelegate, EAIntroDelegate {
 
         // https://stackoverflow.com/a/37939782/2603230
         let activityViewController: UIActivityViewController = UIActivityViewController(
-            activityItems: [self.tv.text], applicationActivities: nil)
+            activityItems: [self.tv.text ?? ""], applicationActivities: nil)
 
         activityViewController.popoverPresentationController?.barButtonItem = sender
         //activityViewController.popoverPresentationController?.permittedArrowDirections = .up

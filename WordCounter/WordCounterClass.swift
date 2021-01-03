@@ -10,6 +10,7 @@ import Foundation
 
 enum CountByType: String {
     case character = "Character"
+    case characterWithSpaces = "CharacterWithSpaces"
     case word = "Word"
     case chineseWord = "ChineseWord" // Count English word + Chinese characters
     case chineseWordWithoutPunctuation = "ChineseWordWithoutPunctuation" // Count English word + Chinese characters - punctuation characters
@@ -49,7 +50,7 @@ class WordCounter {
     static func getCount(of string: String, by type: CountByType) -> Int {
         var enumerateSubstringsOptions: NSString.EnumerationOptions;
         switch type {
-        case .character:
+        case .character, .characterWithSpaces:
             enumerateSubstringsOptions = .byComposedCharacterSequences
             break
         case .word:
@@ -78,7 +79,11 @@ class WordCounter {
             }
 
             // https://stackoverflow.com/a/27768113/2603230
-            if substring.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            var shouldSkip = substring.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            if type == .characterWithSpaces {
+                shouldSkip = substring.trimmingCharacters(in: .newlines).isEmpty
+            }
+            if shouldSkip {
                 return
             }
 
@@ -113,12 +118,13 @@ class WordCounter {
 
     // MARK: - Get summary func
     static func getAllTypes(for string: String) -> [CountByType] {
-        var types: [CountByType] = [];
-        if (isChineseUser() && string.isEmptyOrContainsChineseCharacters) {
+        var types: [CountByType] = []
+        let containsChinese = string.isEmptyOrContainsChineseCharacters
+        if containsChinese && isChineseUser() {
             types.append(contentsOf: [.chineseWord, .chineseWordWithoutPunctuation])
         }
-        types.append(contentsOf: [.word, .character, .sentence, .paragraph])
-        if (!isChineseUser() && string.containsChineseCharacters) {
+        types.append(contentsOf: [.word, .character, .characterWithSpaces, .sentence, .paragraph])
+        if containsChinese && !isChineseUser() {
             types.append(contentsOf: [.chineseWord, .chineseWordWithoutPunctuation])
         }
         return types

@@ -43,6 +43,11 @@ Global.Units.Character.Plural = "characters";
 Global.Units.Short.Character.Singular = "char.";
 Global.Units.Short.Character.Plural = "chars.";
 
+Global.Units.CharacterWithSpaces.Singular = "character (with spaces)";
+Global.Units.CharacterWithSpaces.Plural = "characters (with spaces)";
+Global.Units.Short.CharacterWithSpaces.Singular = "char. w/spaces";
+Global.Units.Short.CharacterWithSpaces.Plural = "chars. w/spaces";
+
 Global.Units.Paragraph.Singular = "paragraph";
 Global.Units.Paragraph.Plural = "paragraphs";
 Global.Units.Short.Paragraph.Singular = "para.";
@@ -61,6 +66,8 @@ Global.Count.Text.Word = "%1$@ %2$@";
 Global.Count.Text.Short.Word = "%1$@ %2$@";
 Global.Count.Text.Character = "%1$@ %2$@";
 Global.Count.Text.Short.Character = "%1$@ %2$@";
+Global.Count.Text.CharacterWithSpaces = "%1$@ %2$@";
+Global.Count.Text.Short.CharacterWithSpaces = "%1$@ %2$@";
 Global.Count.Text.Sentence = "%1$@ %2$@";
 Global.Count.Text.Short.Sentence = "%1$@ %2$@";
 Global.Count.Text.Paragraph = "%1$@ %2$@";
@@ -71,6 +78,7 @@ Global.Alert.Counter.Content.ChineseWord = "Words (accounting for Chinese charac
 Global.Alert.Counter.Content.ChineseWordWithoutPunctuation = "Words (accounting for Chinese characters without punctuations): %@";
 Global.Alert.Counter.Content.Word = "Words: %@";
 Global.Alert.Counter.Content.Character = "Characters: %@";
+Global.Alert.Counter.Content.CharacterWithSpaces = "Characters: %@";
 Global.Alert.Counter.Content.Sentence = "Sentences: %@";
 Global.Alert.Counter.Content.Paragraph = "Paragraphs: %@";
 
