@@ -272,7 +272,7 @@
 - 支持 iOS 14
 - 修复其它错误
 
-## Version 1.4.2 - in review
+## Version 1.4.2 - 2021-01-05
 
 ### English
 
